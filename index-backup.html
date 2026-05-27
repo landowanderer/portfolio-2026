@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HARRY WU | Visual Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.2;
+      -webkit-font-smoothing: antialiased;
+      overflow-y: scroll;
+    }
+
+    .font-black-custom {
+      font-family: "Arial Black", Arial, sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+    }
+
+    .placeholder-box {
+      background-color: #c4c4c4;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu {
+      opacity: 0;
+      visibility: hidden;
+      clip-path: inset(0 0 100% 0);
+      transform: translate(-50%, -10px);
+      transition: opacity 0.4s ease, transform 0.4s ease, clip-path 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .group:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      clip-path: inset(0 0 0 0);
+      transform: translate(-50%, 0);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Global typography scale */
+    #top-nav .grid,
+    #bottom-nav .grid {
+      font-size: clamp(12px, 0.8vw, 15px) !important;
+      line-height: 1.1 !important;
+    }
+
+    #common-header p {
+      font-size: clamp(13px, 0.9vw, 17px) !important;
+      line-height: 1.35 !important;
+    }
+
+    #works-section h2 {
+      font-size: clamp(22px, 1.35vw, 30px) !important;
+      line-height: 0.95 !important;
+    }
+
+    #works-section h3 {
+      font-size: clamp(14px, 0.95vw, 19px) !important;
+      line-height: 0.95 !important;
+    }
+
+    #works-section p {
+      font-size: clamp(10.5px, 0.7vw, 14px) !important;
+      line-height: 1.15 !important;
+    }
+
+    #about-section a {
+      font-size: clamp(13px, 0.85vw, 16px) !important;
+    }
+
+    .dropdown-menu span {
+      font-size: 12px !important;
+    }
+
+    .project-detail h1 {
+      font-size: clamp(30px, 1.75vw, 38px) !important;
+      line-height: 0.95 !important;
+    }
+
+    .project-detail p,
+    .project-detail span {
+      font-size: clamp(14px, 0.9vw, 17px) !important;
+      line-height: 1.35 !important;
+    }
+
+    .section-label {
+      font-family: "Arial Black", Arial, sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      font-size: clamp(18px, 1.1vw, 24px);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-frame.aspect-16-9 {
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-frame.aspect-9-16 {
+      aspect-ratio: 9 / 16;
+    }
+
+    .video-frame iframe,
+    .video-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: cover;
+    }
+
+    /* PHOTO DUMP media grid tuning */
+    .gm-media-grid > div:nth-child(-n+6) {
+      min-height: calc(100vh - 120px) !important;
+      padding: clamp(18px, 3vw, 48px) clamp(8px, 1.2vw, 18px) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .gm-media-grid > div:nth-child(-n+6) > div {
+      width: 100% !important;
+      aspect-ratio: 16 / 9 !important;
+    }
+
+    .gm-media-grid > div:nth-child(n+7) {
+      min-height: 60vh !important;
+      padding: clamp(2px, 0.5vw, 8px) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+    }
+
+    .gm-media-grid > div:nth-child(n+7) > div {
+      width: min(90%, 520px) !important;
+      max-width: 520px !important;
+      aspect-ratio: 9 / 16 !important;
+    }
+
+    .gm-media-grid > div:nth-child(n+7) iframe {
+      transform: scale(1.88);
+      transform-origin: center center;
+    }
+
+    @media (max-width: 768px) {
+      #top-nav .grid,
+      #bottom-nav .grid {
+        font-size: 11px !important;
+      }
+
+      #common-header p {
+        font-size: 13px !important;
+        width: 100% !important;
+      }
+
+      #works-section h2 {
+        font-size: 22px !important;
+      }
+
+      #works-section h3 {
+        font-size: 14px !important;
+      }
+
+      #works-section p {
+        font-size: 10.5px !important;
+      }
+
+      .dropdown-menu span {
+        font-size: 10.5px !important;
+      }
+
+      .project-detail h1 {
+        font-size: 24px !important;
+      }
+
+      .project-detail p,
+      .project-detail span {
+        font-size: 13px !important;
+        line-height: 1.35 !important;
+      }
+
+      .gm-media-grid > div:nth-child(-n+6) {
+        min-height: auto !important;
+        padding: 24px 8px !important;
+      }
+
+      .gm-media-grid > div:nth-child(n+7) {
+        min-height: 58vh !important;
+        padding: 4px !important;
+      }
+
+      .gm-media-grid > div:nth-child(n+7) > div {
+        width: min(96%, 480px) !important;
+      }
+
+      .gm-media-grid > div:nth-child(n+7) iframe {
+        transform: scale(1.65);
+      }
+    }
+  </style>
+</head>
+<body class="text-black bg-white">
+  <div class="w-full max-w-[2000px] mx-auto px-4 pt-1 md:px-6 md:pt-2 pb-4">
+    <nav id="top-nav" class="w-full mb-8 md:mb-10 sticky top-0 bg-white z-[100] pt-2 pb-2 transition-all duration-500 ease-in-out">
+      <div class="grid grid-cols-4 font-bold text-[10px] uppercase tracking-wide">
+        <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" data-view="about">HARRY WU</button>
+
+        <div id="works-nav-group" class="relative group cursor-pointer flex justify-start w-max">
+          <button type="button" class="relative z-10 transition-opacity duration-300 group-hover:opacity-0 text-left" data-view="works">WORKS</button>
+
+          <div class="dropdown-menu absolute top-[-12px] left-[50%] bg-black text-white flex flex-col items-center py-5 px-3 w-[130px] z-50 cursor-default">
+            <button type="button" class="mb-6 font-bold cursor-pointer hover:text-gray-300 transition-colors" data-view="works">WORKS</button>
+            <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" data-project="artificial-atmosphere">ARTIFICIAL ATMOSPHERE</button>
+            <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">SUN AND LIGHT</button>
+            <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" data-project="photo-dump">PHOTO DUMP</button>
+            <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">EGOCYBEROSIS</button>
+            <button type="button" class="mb-1.5 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">RAIN SIMULATOR</button>
+            <button id="more-dots" type="button" class="text-base font-bold leading-none mt-0 mb-1 cursor-pointer hover:text-gray-400 transition-colors">. . .</button>
+            <div id="extra-projects" class="flex flex-col items-center w-full overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              <button type="button" class="mt-2.5 mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">ONE HIT</button>
+              <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">CLAY ARCHIVE</button>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" data-view="visual">VISUAL WORKS</button>
+        <div></div>
+      </div>
+    </nav>
+
+    <main class="min-h-[60vh]">
+      <div id="common-header" class="mb-10 md:mb-12">
+        <p class="font-bold w-full md:w-[65%] leading-relaxed mb-6 text-pretty">
+          Harry Xingsheng Wu is a multidisciplinary designer working across video, generative media, graphic design, and digital environments. He integrates AI-driven workflows into real-world production, creating scalable visual content across moving image, print, and interactive formats.
+        </p>
+        <hr class="border-t border-black" />
+      </div>
+
+      <section id="works-section">
+        <div class="mb-16 md:mb-20">
+          <h2 class="font-black-custom mb-4 md:mb-5 tracking-tight">FEATURED WORKS</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+            <button type="button" data-project="artificial-atmosphere" class="relative h-full min-h-[300px] cursor-pointer overflow-hidden bg-[#c4c4c4] group text-left">
+              <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="absolute bottom-1 left-1.5 md:bottom-1.5 md:left-2 text-black pr-4 z-10">
+                <h3 class="font-black-custom leading-none tracking-tight">ARTIFICIAL ATMOSPHERE</h3>
+                <p class="font-bold mt-[2px]">AI Moving Image / Visual Direction / World Building</p>
+              </div>
+            </button>
+
+            <div class="grid grid-cols-2 gap-4 md:gap-5">
+              <div class="placeholder-box aspect-[16/10] cursor-pointer">
+                <div class="absolute bottom-0.5 left-1 md:bottom-1 md:left-1.5 text-black pr-2">
+                  <h3 class="font-black-custom leading-none tracking-tight">ZNTR</h3>
+                  <p class="font-bold mt-[2px]">Web Design / Visual Identity</p>
+                </div>
+              </div>
+              <div class="placeholder-box aspect-[16/10] cursor-pointer">
+                <div class="absolute bottom-0.5 left-1 md:bottom-1 md:left-1.5 text-black pr-2">
+                  <h3 class="font-black-custom leading-none tracking-tight">SUN AND LIGHT</h3>
+                  <p class="font-bold mt-[2px]">Interactive Installation</p>
+                </div>
+              </div>
+              <button type="button" data-project="photo-dump" class="placeholder-box aspect-[16/10] cursor-pointer text-left">
+                <div class="absolute bottom-0.5 left-1 md:bottom-1 md:left-1.5 text-black pr-2">
+                  <h3 class="font-black-custom leading-none tracking-tight">PHOTO DUMP</h3>
+                  <p class="font-bold mt-[2px]">Web Interaction / UX / Experimental Interface</p>
+                </div>
+              </button>
+              <div class="hidden md:block"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-20">
+          <h2 class="font-black-custom mb-4 md:mb-5 tracking-tight">SELECTED PROJECTS / ARCHIVE</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            <div class="placeholder-box aspect-[16/10]"><div class="absolute bottom-0.5 left-1 text-black pr-2"><h3 class="font-black-custom leading-none tracking-tight">EGOCYBEROSIS</h3><p class="font-bold mt-[2px]">AI FILM / Speculative Narrative</p></div></div>
+            <div class="placeholder-box aspect-[16/10]"><div class="absolute bottom-0.5 left-1 text-black pr-2"><h3 class="font-black-custom leading-none tracking-tight">RAIN SIMULATOR</h3><p class="font-bold mt-[2px]">Interactive play</p></div></div>
+            <div class="placeholder-box aspect-[16/10]"><div class="absolute bottom-0.5 left-1 text-black pr-2"><h3 class="font-black-custom leading-none tracking-tight">ONE HIT</h3><p class="font-bold mt-[2px]">AI FILM</p></div></div>
+            <div class="placeholder-box aspect-[16/10]"><div class="absolute bottom-0.5 left-1 text-black pr-2"><h3 class="font-black-custom leading-none tracking-tight">CLAY ARCHIVE</h3><p class="font-bold mt-[2px]">Web Archive Documentation</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about-section" class="hidden">
+        <div class="mt-8 flex flex-col gap-6 font-bold uppercase text-[11px] tracking-wide">
+          <a href="HARRY_WU_RESUME.pdf" target="_blank" class="hover:text-gray-500 w-max">RESUME</a>
+          <a href="#" target="_blank" class="hover:text-gray-500 w-max">LINKEDIN</a>
+          <a href="#" target="_blank" class="hover:text-gray-500 w-max">INSTAGRAM</a>
+          <a href="mailto:HARRY.WU313@GMAIL.COM" class="hover:text-gray-500 w-max">HARRY.WU313@GMAIL.COM</a>
+        </div>
+      </section>
+
+      <section id="visual-section" class="hidden">
+        <div class="flex flex-wrap gap-4 md:gap-5 items-start">
+          <div class="placeholder-box h-40 md:h-56 aspect-video bg-[#c4c4c4]"></div>
+          <div class="placeholder-box h-40 md:h-56 aspect-square bg-[#c4c4c4]"></div>
+          <div class="placeholder-box h-40 md:h-56 aspect-video bg-[#c4c4c4]"></div>
+          <div class="placeholder-box h-40 md:h-56 aspect-[9/16] bg-[#c4c4c4]"></div>
+          <div class="placeholder-box h-40 md:h-56 aspect-video bg-[#c4c4c4]"></div>
+        </div>
+      </section>
+
+      <section id="project-artificial-atmosphere" class="project-detail hidden fade-in mt-4 md:mt-8">
+        <div class="mb-10 md:mb-12">
+          <div class="flex justify-between items-end mb-6 uppercase">
+            <h1 class="font-black-custom tracking-tight leading-none">ARTIFICIAL ATMOSPHERE</h1>
+            <span class="font-bold text-black uppercase tracking-wide leading-relaxed">2026</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 md:gap-0">
+            <div class="w-full md:w-[65%]">
+              <p class="font-bold leading-relaxed text-pretty">Artificial Atmosphere explores how generative AI translates weather into cinematic atmosphere rather than physical reality. Through moving image, print, and installation, the project examines rain, fog, and spatial distortion as visual systems for AI-driven worldbuilding.</p>
+            </div>
+            <div class="w-full md:w-[30%] md:text-right">
+              <p class="font-bold text-black uppercase tracking-wide leading-relaxed">AI Moving Image / Visual Direction / World Building</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col w-full">
+          <img src="images/ARTIFICIAL ATMOSPHERE/AAhero.png" alt="Hero View" class="w-full h-auto object-cover bg-[#c4c4c4] mb-10 md:mb-12" />
+          <div class="w-full md:w-[65%] mb-1.5 md:mb-2"><p class="font-bold leading-relaxed text-pretty">ARTIFICIAL ATMOSPHERE: LA RAIN transforms real footage through generative AI, using rain as both a meteorological and emotional layer. The film observes how algorithmic exaggeration of light, haze, and texture dissolves everyday spaces into unstable cinematic environments.</p></div>
+          <div class="video-frame aspect-16-9 mb-10 md:mb-12 vimeo-scroll-player"><iframe src="https://player.vimeo.com/video/1149379087?title=0&byline=0&portrait=0&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="w-full md:w-[65%] mb-1.5 md:mb-2"><p class="font-bold leading-relaxed text-pretty">These visual studies document the generative process behind LA RAIN, analyzing how source footage mutates across different AI models, text prompts, and simulated atmospheric conditions.</p></div>
+          <div class="video-frame aspect-16-9 pointer-events-none mb-4 md:mb-5"><iframe src="https://player.vimeo.com/video/1192745726?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="video-frame aspect-16-9 pointer-events-none mb-10 md:mb-12"><iframe src="https://player.vimeo.com/video/1192745725?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="w-full md:w-[65%] mb-1.5 md:mb-2"><p class="font-bold leading-relaxed text-pretty">ARTIFICIAL ATMOSPHERE: FOG continues this weather-based worldbuilding, utilizing generative AI’s structural misreadings of space and logic as part of the film’s visual language. Through fog, these algorithmic distortions become a medium to explore spatial uncertainty and dreamlike perception.</p></div>
+          <div class="video-frame aspect-16-9 mb-10 md:mb-12 vimeo-scroll-player"><iframe src="https://player.vimeo.com/video/1182815311?title=0&byline=0&portrait=0&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <img src="images/ARTIFICIAL ATMOSPHERE/AAFOGDIAGRAM.png" alt="Fog Diagram" class="w-full h-auto object-contain bg-[#c4c4c4] mb-10 md:mb-12" />
+          <div class="w-full md:w-[65%] mb-1.5 md:mb-2"><p class="font-bold leading-relaxed text-pretty">The DVD objects re-materialize LA RAIN and FOG as physical artifacts, extending the AI-generated videos beyond the screen. Through format, surface, and display, these prints explore how physical design can amplify the atmosphere of algorithmic image-making.</p></div>
+          <img src="images/ARTIFICIAL ATMOSPHERE/AACD1.webp" alt="Print CD 1" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5" />
+          <img src="images/ARTIFICIAL ATMOSPHERE/AACD2.webp" alt="Print CD 2" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5" />
+          <img src="images/ARTIFICIAL ATMOSPHERE/AACD3.webp" alt="Print CD 3" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5" />
+          <img src="images/ARTIFICIAL ATMOSPHERE/AACD4.webp" alt="Print CD 4" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5" />
+          <img src="images/ARTIFICIAL ATMOSPHERE/AACD5.webp" alt="Print CD 5" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5" />
+          <img src="images/ARTIFICIAL ATMOSPHERE/AACD6.webp" alt="Print CD 6" class="w-full h-auto object-cover bg-[#c4c4c4] mb-10 md:mb-12" />
+          <div class="w-full md:w-[65%] mb-1.5 md:mb-2"><p class="font-bold leading-relaxed text-pretty">The installation translates the project into a spatial experience, contrasting the immersive depth of VR exploration with the nostalgic, physical presence of CRT monitors.</p></div>
+          <div class="video-frame aspect-16-9 pointer-events-none mb-4 md:mb-5"><iframe src="https://player.vimeo.com/video/1192687071?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <img src="images/ARTIFICIAL ATMOSPHERE/AAhero2.png" alt="Installation Display" class="w-full h-auto object-cover bg-[#c4c4c4]" />
+        </div>
+      </section>
+
+      <section id="project-photo-dump" class="project-detail hidden fade-in mt-4 md:mt-8">
+        <div class="mb-10 md:mb-12">
+          <div class="flex justify-between items-end mb-6 uppercase">
+            <h1 class="font-black-custom tracking-tight leading-none">PHOTO DUMP</h1>
+            <span class="font-bold text-black uppercase tracking-wide leading-relaxed">2026</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 md:gap-0">
+            <div class="w-full md:w-[65%]">
+              <p class="font-bold leading-relaxed text-pretty">PhotoDump is an interactive glitch platform where users search, upload, shake, and save images as corrupted visual artifacts. The project turns digital failure into a playful image-making system, transforming familiar images into unstable graphic outputs.</p>
+            </div>
+            <div class="w-full md:w-[30%] md:text-right">
+              <p class="font-bold text-black uppercase tracking-wide leading-relaxed">Web Interaction / UX / Experimental Interface</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col w-full">
+          <div class="video-frame aspect-16-9 pointer-events-none mb-10 md:mb-12"><iframe src="https://player.vimeo.com/video/1194551541?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="w-full md:w-[65%] mb-1.5 md:mb-2"><p class="font-bold leading-relaxed text-pretty">The campaign film shows the core interaction of PhotoDump: shake the phone, break the image, and save the glitch. What begins as a personal mobile gesture becomes a corrupted visual output that can be collected, shared, and displayed.</p></div>
+          <div class="video-frame aspect-16-9 mb-10 md:mb-12 vimeo-scroll-player"><iframe src="https://player.vimeo.com/video/1194569678?title=0&byline=0&portrait=0&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-10 md:mb-12">
+            <img src="images/GLITCH MOMENT/GMdiagram.webp" alt="GM Diagram" class="w-full h-auto object-contain bg-black" />
+            <div class="hidden md:block"></div>
+          </div>
+
+          <div class="w-full md:w-[65%] mb-1.5 md:mb-2"><p class="font-bold leading-relaxed text-pretty uppercase">Development Process</p></div>
+          <div class="video-frame aspect-16-9 pointer-events-none mb-10 md:mb-12"><iframe src="https://player.vimeo.com/video/1194551610?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-10 md:mb-12 gm-media-grid">
+            <div class="w-full bg-black"><div class="video-frame aspect-16-9 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551781?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-16-9 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551794?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-16-9 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551538?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-16-9 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551674?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-16-9 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551775?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-16-9 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551623?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-9-16 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551537?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-9-16 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551583?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="w-full bg-black"><div class="video-frame aspect-9-16 pointer-events-none"><iframe src="https://player.vimeo.com/video/1194551607?background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div>
+            <div class="hidden md:block"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="bottom-nav" class="w-full pt-3 pb-2 mt-16 md:mt-20 border-t border-black fade-in-up">
+      <div class="grid grid-cols-4 font-bold text-[10px] uppercase tracking-wide items-center">
+        <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" data-view="about">HARRY WU</button>
+        <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" data-view="works">WORKS</button>
+        <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" data-view="visual">VISUAL WORKS</button>
+        <div class="flex justify-end items-center">
+          <button type="button" id="bottom-next-project" class="hidden cursor-pointer hover:text-gray-600 w-max" data-project="photo-dump">NEXT PROJECT</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function byId(id) {
+        return document.getElementById(id);
+      }
+
+      function hideElement(id) {
+        var element = byId(id);
+        if (element) element.classList.add('hidden');
+      }
+
+      function showElement(id) {
+        var element = byId(id);
+        if (element) element.classList.remove('hidden');
+      }
+
+      function hideAllProjectDetails() {
+        document.querySelectorAll('.project-detail').forEach(function (section) {
+          section.classList.add('hidden');
+        });
+      }
+
+      function setBottomNextVisible(isVisible) {
+        var next = byId('bottom-next-project');
+        if (!next) return;
+        next.classList.toggle('hidden', !isVisible);
+        next.classList.toggle('block', isVisible);
+      }
+
+      function switchView(viewName) {
+        hideElement('works-section');
+        hideElement('about-section');
+        hideElement('visual-section');
+        hideAllProjectDetails();
+
+        var commonHeader = byId('common-header');
+        if (commonHeader) {
+          commonHeader.classList.toggle('hidden', !(viewName === 'works' || viewName === 'about'));
+        }
+
+        showElement(viewName + '-section');
+        setBottomNextVisible(false);
+
+        var bottomNav = byId('bottom-nav');
+        if (bottomNav) bottomNav.classList.toggle('hidden', viewName === 'about');
+      }
+
+      function openProject(projectId) {
+        hideElement('works-section');
+        hideElement('about-section');
+        hideElement('visual-section');
+        hideElement('common-header');
+        hideAllProjectDetails();
+
+        var targetSection = byId('project-' + projectId);
+        if (targetSection) targetSection.classList.remove('hidden');
+
+        setBottomNextVisible(true);
+        showElement('bottom-nav');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(function () {
+          if (!targetSection) return;
+          targetSection.querySelectorAll('iframe').forEach(function (iframe) {
+            if (iframe.src && iframe.src.indexOf('background=1') !== -1) {
+              var currentSrc = iframe.src;
+              iframe.src = '';
+              iframe.src = currentSrc;
+            }
+          });
+        }, 50);
+      }
+
+      function expandProjects(event) {
+        if (event) event.stopPropagation();
+        var extraContainer = byId('extra-projects');
+        var dotsBtn = byId('more-dots');
+        if (extraContainer) {
+          extraContainer.style.maxHeight = '150px';
+          extraContainer.style.opacity = '1';
+        }
+        if (dotsBtn) dotsBtn.style.display = 'none';
+      }
+
+      function setupNavigationHandlers() {
+        document.querySelectorAll('[data-view]').forEach(function (button) {
+          button.addEventListener('click', function () {
+            switchView(button.getAttribute('data-view'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        });
+
+        document.querySelectorAll('[data-project]').forEach(function (button) {
+          button.addEventListener('click', function () {
+            openProject(button.getAttribute('data-project'));
+          });
+        });
+
+        var dots = byId('more-dots');
+        if (dots) dots.addEventListener('click', expandProjects);
+      }
+
+      function setupDropdownReset() {
+        var worksNavGroup = byId('works-nav-group');
+        if (!worksNavGroup) return;
+        worksNavGroup.addEventListener('mouseleave', function () {
+          var extraContainer = byId('extra-projects');
+          var dotsBtn = byId('more-dots');
+          setTimeout(function () {
+            if (extraContainer) {
+              extraContainer.style.maxHeight = '0';
+              extraContainer.style.opacity = '0';
+            }
+            if (dotsBtn) dotsBtn.style.display = 'block';
+          }, 400);
+        });
+      }
+
+      function setupBottomNavObserver() {
+        var bottomNav = byId('bottom-nav');
+        var topNav = byId('top-nav');
+        if (!bottomNav || !topNav || typeof IntersectionObserver === 'undefined') return;
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              bottomNav.classList.add('visible');
+              topNav.style.transform = 'translateY(-100%)';
+              topNav.style.opacity = '0';
+              topNav.style.pointerEvents = 'none';
+            } else {
+              bottomNav.classList.remove('visible');
+              topNav.style.transform = 'translateY(0)';
+              topNav.style.opacity = '1';
+              topNav.style.pointerEvents = 'auto';
+            }
+          });
+        }, { threshold: 0.05 });
+
+        observer.observe(bottomNav);
+      }
+
+      function setupVimeoScrollPlayers() {
+        if (!window.Vimeo || !window.Vimeo.Player || typeof IntersectionObserver === 'undefined') return;
+
+        var vimeoPlayers = document.querySelectorAll('.vimeo-scroll-player iframe');
+        var videoObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var player = new window.Vimeo.Player(entry.target);
+            if (entry.isIntersecting) {
+              player.play().catch(function () {});
+            } else {
+              player.pause().catch(function () {});
+            }
+          });
+        }, { threshold: 0.5 });
+
+        vimeoPlayers.forEach(function (iframe) {
+          videoObserver.observe(iframe);
+        });
+      }
+
+      function runTests() {
+        console.assert(typeof window.openProject === 'function', 'openProject should be globally available');
+        console.assert(typeof window.switchView === 'function', 'switchView should be globally available');
+        console.assert(Boolean(byId('works-section')), 'works-section should exist');
+        console.assert(Boolean(byId('project-photo-dump')), 'project-photo-dump should exist');
+        console.assert(Boolean(byId('project-artificial-atmosphere')), 'project-artificial-atmosphere should exist');
+      }
+
+      window.switchView = switchView;
+      window.openProject = openProject;
+      window.expandProjects = expandProjects;
+
+      document.addEventListener('DOMContentLoaded', function () {
+        setupNavigationHandlers();
+        setupDropdownReset();
+        setupBottomNavObserver();
+        setupVimeoScrollPlayers();
+        switchView('works');
+        runTests();
+      });
+    })();
+  </script>
+</body>
+</html>

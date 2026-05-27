@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTIFICIAL ATMOSPHERE | Harry Wu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.2;
+            overflow-y: scroll;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button {
+            background: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+            color: inherit;
+            text-align: inherit;
+            text-transform: inherit;
+        }
+
+        .font-black-custom {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        #top-nav {
+            transition:
+                opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            clip-path: inset(0 0 100% 0);
+            transform: translate(-50%, -12px);
+            transition:
+                opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            clip-path: inset(0 0 0 0);
+            transform: translate(-50%, 0);
+        }
+
+        #top-nav .grid,
+        #bottom-nav .grid,
+        #common-header p,
+        main p,
+        main span {
+            font-size: clamp(13px, 0.9vw, 17px) !important;
+            line-height: 1.35 !important;
+        }
+
+        main h1 {
+            font-size: clamp(30px, 1.75vw, 38px) !important;
+            line-height: 0.95 !important;
+        }
+
+        #works-section h2 {
+            font-size: clamp(22px, 1.35vw, 30px) !important;
+            line-height: 0.95 !important;
+        }
+
+        #works-section h3 {
+            font-size: clamp(14px, 0.95vw, 19px) !important;
+            line-height: 0.95 !important;
+        }
+
+        #works-section p {
+            font-size: clamp(10.5px, 0.7vw, 14px) !important;
+            line-height: 1.15 !important;
+        }
+
+        .dropdown-menu span,
+        .dropdown-menu button {
+            font-size: clamp(11px, 0.72vw, 14px) !important;
+            line-height: 1.08 !important;
+        }
+
+        .dropdown-menu .dropdown-title {
+            font-size: clamp(13px, 0.9vw, 17px) !important;
+            line-height: 1.35 !important;
+        }
+
+        #top-nav.no-dropdown .dropdown-menu {
+            display: none !important;
+        }
+
+        #top-nav.no-dropdown #works-nav-group > span,
+        #top-nav.no-dropdown #works-nav-group > button {
+            opacity: 1 !important;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        #bottom-nav {
+            opacity: 0;
+            transform: translateY(18px);
+            pointer-events: none;
+            transition:
+                opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        #bottom-nav.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .aa-hero-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: clamp(34px, 3.1vw, 58px);
+            overflow: hidden;
+            background: #b6b6b6;
+            color: #000000;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .aa-hero-banner-track {
+            display: flex;
+            width: max-content;
+            min-width: 200%;
+            height: 100%;
+            align-items: center;
+            gap: clamp(22px, 2.8vw, 52px);
+            padding: 0 clamp(12px, 1.5vw, 28px);
+            animation: aaBannerScroll 18s linear infinite;
+            will-change: transform;
+        }
+
+        .aa-hero-banner-track span {
+            flex: 0 0 auto;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            font-size: clamp(14px, 1.2vw, 24px) !important;
+            line-height: 1 !important;
+            white-space: nowrap;
+        }
+
+        .aa-hero-banner-track sup {
+            font-size: 0.48em;
+            line-height: 0;
+            vertical-align: super;
+            margin-left: 0.12em;
+        }
+
+        @keyframes aaBannerScroll {
+            from {
+                transform: translateX(-50%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #top-nav .grid,
+            #bottom-nav .grid,
+            #common-header p,
+            main p,
+            main span {
+                font-size: 13px !important;
+                line-height: 1.35 !important;
+            }
+
+            main h1 {
+                font-size: 24px !important;
+            }
+
+            .dropdown-menu span,
+            .dropdown-menu button {
+                font-size: 11.5px !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-black bg-white">
+    <div class="w-full max-w-[2000px] mx-auto px-4 pt-1 md:px-6 md:pt-2 pb-4">
+        
+        <nav id="top-nav" class="w-full mb-8 md:mb-10 sticky top-0 bg-white z-[100] pt-2 pb-2 transition-all duration-500">
+            <div class="grid grid-cols-4 font-bold uppercase tracking-wide">
+                <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=about'">HARRY WU</button>
+                <div id="works-nav-group" class="relative group cursor-pointer flex justify-start w-max">
+                    <button type="button" class="relative z-10 transition-opacity duration-300 group-hover:opacity-0 text-left" onclick="window.location.href='index.html?tab=works'">WORKS</button>
+                    <div class="dropdown-menu absolute top-[-12px] left-[50%] bg-black text-white flex flex-col items-center py-5 px-3 w-[150px] z-50 cursor-default">
+                        <button type="button" class="dropdown-title mb-6 font-bold cursor-pointer hover:text-gray-300 transition-colors" onclick="window.location.href='index.html?tab=works'">WORKS</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='artificial-atmosphere.html'">ARTIFICIAL ATMOSPHERE</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='zntr.html'">ZNTR</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='sun-and-light.html'">SUN AND LIGHT</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='photo-dump.html'">PHOTO DUMP</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='egocyberosis.html'">EGOCYBEROSIS</button>
+                        <button type="button" class="mb-1.5 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='rain-simulator.html'">RAIN SIMULATOR</button>
+                        <button id="more-dots" type="button" class="text-base font-bold leading-none mt-0 mb-1 cursor-pointer hover:text-gray-400 transition-colors" onclick="expandProjects(event)">. . .</button>
+                        <div id="extra-projects" class="flex flex-col items-center w-full overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                            <button type="button" class="mt-2.5 mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='one-hit.html'">ONE HIT</button>
+                            <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='clay-archive.html'">CLAY ARCHIVE</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=visual'">VISUAL WORKS</button>
+                <div class="flex justify-end items-center"><button type="button" class="cursor-pointer hover:text-gray-600 w-max text-right" onclick="window.location.href='zntr.html'">NEXT PROJECT</button></div>
+            </div>
+        </nav>
+
+        <main class="min-h-[60vh]">
+            <section class="fade-in mt-4 md:mt-8">
+                <div class="mb-10 md:mb-12">
+                    <div class="flex justify-between items-end mb-6 uppercase">
+                        <h1 class="font-black-custom text-[18px] md:text-[20px] tracking-tight leading-none">ARTIFICIAL ATMOSPHERE</h1>
+                        <span class="text-[11px] md:text-[12px] font-bold text-black uppercase tracking-wide leading-relaxed">2026</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 md:gap-0">
+                        <div class="w-full md:w-[60%]">
+                            <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
+                                Artificial Atmosphere is a moving image and immersive experience design project that explores how generative AI translates weather into cinematic atmosphere rather than physical reality. Through a series of atmospheric short films, VR experiences, prints, and installation formats, the project examines rain, fog, and spatial distortion as visual systems for AI-driven worldbuilding.
+                            </p>
+                        </div>
+                        <div class="w-full md:w-[36%] md:text-right">
+                            <p class="text-[4px] md:text-[5.5px] font-bold text-black uppercase tracking-wide leading-tight md:whitespace-nowrap">
+                                AI Moving Image / Visual Direction / Immersive Installation
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col w-full">
+                    <div class="relative w-full overflow-hidden mb-10 md:mb-12">
+                        <img src="images/ARTIFICIAL ATMOSPHERE/AAhero.png" alt="Hero View" class="w-full h-auto object-cover bg-[#c4c4c4]">
+                        <div class="aa-hero-banner">
+                            <div class="aa-hero-banner-track" aria-hidden="true">
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                                <span>ARTIFICIAL ATMOSPHERE<sup>TM</sup></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-[65%] mb-1.5 md:mb-2">
+                        <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
+                            ARTIFICIAL ATMOSPHERE: LA RAIN transforms real footage through generative AI, using rain as both a meteorological and emotional layer. The film observes how algorithmic exaggeration of light, haze, and texture dissolves everyday spaces into unstable cinematic environments.
+                        </p>
+                    </div>
+                    <div class="relative w-full overflow-hidden bg-black mb-10 md:mb-12 vimeo-scroll-player" style="padding-bottom: 56.25%;">
+                        <iframe src="https://player.vimeo.com/video/1149379087?title=0&byline=0&portrait=0&loop=1&muted=0&autopause=0" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="w-full md:w-[65%] mb-1.5 md:mb-2">
+                        <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
+                            These visual studies document the generative process behind LA RAIN, analyzing how source footage mutates across different AI models, text prompts, and simulated atmospheric conditions.
+                        </p>
+                    </div>
+                    <div class="relative w-full overflow-hidden bg-black mb-4 md:mb-5 pointer-events-none" style="padding-bottom: 56.25%;">
+                        <iframe src="https://player.vimeo.com/video/1192745726?background=1&autoplay=1&loop=1&muted=1&autopause=0" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="relative w-full overflow-hidden bg-black mb-10 md:mb-12 pointer-events-none" style="padding-bottom: 56.25%;">
+                        <iframe src="https://player.vimeo.com/video/1192745725?background=1&autoplay=1&loop=1&muted=1&autopause=0" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="w-full md:w-[65%] mb-1.5 md:mb-2">
+                        <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
+                            ARTIFICIAL ATMOSPHERE: FOG continues this weather-based worldbuilding, utilizing generative AI’s structural misreadings of space and logic as part of the film’s visual language. Through fog, these algorithmic distortions become a medium to explore spatial uncertainty and dreamlike perception.
+                        </p>
+                    </div>
+                    <div class="relative w-full overflow-hidden bg-black mb-10 md:mb-12 vimeo-scroll-player" style="padding-bottom: 56.25%;">
+                        <iframe src="https://player.vimeo.com/video/1182815311?title=0&byline=0&portrait=0&loop=1&muted=0&autopause=0" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AAFOGDIAGRAM.png" alt="Fog Diagram" class="w-full h-auto object-contain bg-[#c4c4c4] mb-10 md:mb-12">
+                    
+                    <div class="w-full md:w-[65%] mb-1.5 md:mb-2">
+                        <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
+                            The DVD objects re-materialize LA RAIN and FOG as physical artifacts, extending the AI-generated videos beyond the screen. Through format, surface, and display, these prints explore how physical design can amplify the atmosphere of algorithmic <span class="whitespace-nowrap">image-making.</span>
+                        </p>
+                    </div>
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AACD1.webp" alt="Print CD 1" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5">
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AACD2.webp" alt="Print CD 2" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5">
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AACD3.webp" alt="Print CD 3" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5">
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AACD4.webp" alt="Print CD 4" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5">
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AACD5.webp" alt="Print CD 5" class="w-full h-auto object-cover bg-[#c4c4c4] mb-4 md:mb-5">
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AACD6.webp" alt="Print CD 6" class="w-full h-auto object-cover bg-[#c4c4c4] mb-10 md:mb-12">
+
+                    <div class="w-full md:w-[65%] mb-1.5 md:mb-2">
+                        <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
+                            The installation translates the project into a spatial experience, contrasting the immersive depth of VR exploration with the nostalgic, physical presence of CRT monitors.
+                        </p>
+                    </div>
+                    <div class="relative w-full overflow-hidden bg-black mb-4 md:mb-5 pointer-events-none" style="padding-bottom: 56.25%;">
+                        <iframe src="https://player.vimeo.com/video/1192687071?background=1&autoplay=1&loop=1&muted=1&autopause=0" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <img src="images/ARTIFICIAL ATMOSPHERE/AAhero2.png" alt="Installation Display" class="w-full h-auto object-cover bg-[#c4c4c4]">
+                </div>
+            </section>
+        
+            <div id="bottom-trigger" class="w-full h-[1px] mt-8"></div>
+        </main>
+
+        <footer id="bottom-nav" class="w-full pt-3 pb-2 mt-4 border-t border-black">
+            <div class="grid grid-cols-4 font-bold uppercase tracking-wide items-center">
+                <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=about'">HARRY WU</button>
+                <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=works'">WORKS</button>
+                <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=visual'">VISUAL WORKS</button>
+                <div class="flex justify-end items-center"><button type="button" class="cursor-pointer hover:text-gray-600 w-max text-right" onclick="window.location.href='zntr.html'">NEXT PROJECT</button></div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function expandProjects(event) {
+            if (event) event.stopPropagation();
+
+            const extraContainer = document.getElementById('extra-projects');
+            const dotsBtn = document.getElementById('more-dots');
+
+            if (extraContainer) {
+                extraContainer.style.maxHeight = '150px';
+                extraContainer.style.opacity = '1';
+            }
+
+            if (dotsBtn) {
+                dotsBtn.style.display = 'none';
+            }
+        }
+
+        function switchView(viewName) {
+            const worksSection = document.getElementById('works-section');
+            const aboutSection = document.getElementById('about-section');
+            const visualSection = document.getElementById('visual-section');
+            const commonHeader = document.getElementById('common-header');
+            const topNav = document.getElementById('top-nav');
+
+            if (!worksSection || !aboutSection || !visualSection) return;
+
+            worksSection.classList.add('hidden');
+            aboutSection.classList.add('hidden');
+            visualSection.classList.add('hidden');
+
+            if (commonHeader) {
+                if (viewName === 'works' || viewName === 'about') {
+                    commonHeader.classList.remove('hidden');
+                } else {
+                    commonHeader.classList.add('hidden');
+                }
+            }
+
+            if (topNav) {
+                topNav.classList.toggle('no-dropdown', viewName === 'about');
+            }
+
+            const target = document.getElementById(viewName + '-section');
+            if (target) target.classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const image = document.getElementById('lightbox-img');
+
+            if (!lightbox || !image) return;
+
+            image.src = src;
+            lightbox.classList.remove('hidden');
+
+            requestAnimationFrame(() => {
+                lightbox.classList.remove('opacity-0');
+                image.classList.remove('scale-95');
+                image.classList.add('scale-100');
+            });
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const image = document.getElementById('lightbox-img');
+
+            if (!lightbox || !image) return;
+
+            lightbox.classList.add('opacity-0');
+            image.classList.remove('scale-100');
+            image.classList.add('scale-95');
+
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+            }, 300);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+
+            if (document.getElementById('works-section')) {
+                if (tab === 'visual') switchView('visual');
+                else if (tab === 'about') switchView('about');
+                else switchView('works');
+            }
+
+            const worksNavGroup = document.getElementById('works-nav-group');
+
+            if (worksNavGroup) {
+                worksNavGroup.addEventListener('mouseleave', () => {
+                    const extraContainer = document.getElementById('extra-projects');
+                    const dotsBtn = document.getElementById('more-dots');
+
+                    setTimeout(() => {
+                        if (extraContainer) {
+                            extraContainer.style.maxHeight = '0';
+                            extraContainer.style.opacity = '0';
+                        }
+
+                        if (dotsBtn) {
+                            dotsBtn.style.display = 'block';
+                        }
+                    }, 400);
+                });
+            }
+
+            const bottomNav = document.getElementById('bottom-nav');
+            const topNav = document.getElementById('top-nav');
+            const trigger = document.getElementById('bottom-trigger');
+
+            if (trigger && bottomNav && topNav && typeof IntersectionObserver !== 'undefined') {
+                const menuObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            topNav.style.transform = 'translateY(-100%)';
+                            topNav.style.opacity = '0';
+                            topNav.style.pointerEvents = 'none';
+                            bottomNav.classList.add('visible');
+                        } else {
+                            topNav.style.transform = 'translateY(0)';
+                            topNav.style.opacity = '1';
+                            topNav.style.pointerEvents = 'auto';
+                            bottomNav.classList.remove('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                menuObserver.observe(trigger);
+            }
+
+            if (window.Vimeo && window.Vimeo.Player && typeof IntersectionObserver !== 'undefined') {
+                const vimeoPlayers = document.querySelectorAll('.vimeo-scroll-player iframe');
+                const playerMap = new Map();
+
+                vimeoPlayers.forEach(iframe => {
+                    playerMap.set(iframe, new Vimeo.Player(iframe));
+                });
+
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const player = playerMap.get(entry.target);
+                        if (!player) return;
+
+                        if (entry.isIntersecting) {
+                            player.setMuted(false).catch(() => {});
+                            player.play().catch(() => {});
+                        } else {
+                            player.pause().catch(() => {});
+                        }
+                    });
+                }, { threshold: 0.25 });
+
+                vimeoPlayers.forEach(iframe => videoObserver.observe(iframe));
+            }
+
+            let isDown = false;
+            let startX = 0;
+            let scrollLeft = 0;
+            let isDragging = false;
+
+            document.querySelectorAll('.drag-scroll').forEach(slider => {
+                slider.addEventListener('mousedown', (event) => {
+                    isDown = true;
+                    isDragging = false;
+                    slider.classList.add('cursor-grabbing');
+                    slider.classList.remove('cursor-grab');
+                    startX = event.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('cursor-grabbing');
+                    slider.classList.add('cursor-grab');
+                });
+
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('cursor-grabbing');
+                    slider.classList.add('cursor-grab');
+                });
+
+                slider.addEventListener('mousemove', (event) => {
+                    if (!isDown) return;
+
+                    event.preventDefault();
+
+                    const x = event.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 1.8;
+
+                    if (Math.abs(walk) > 5) isDragging = true;
+
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+
+                slider.querySelectorAll('img').forEach(image => {
+                    image.addEventListener('click', (event) => {
+                        if (isDragging) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        } else {
+                            openLightbox(image.src);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
