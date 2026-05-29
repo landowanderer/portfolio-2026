@@ -583,16 +583,86 @@
             }
         }
         @media (max-width: 768px) {
-            #works-nav-group .dropdown-menu {
+            #top-nav #works-nav-group {
+                position: relative !important;
+                width: auto !important;
+                justify-self: start !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: left !important;
+            }
+
+            #top-nav #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                right: auto !important;
+                width: 190px !important;
+                max-width: calc(100vw - 32px) !important;
+                transform: translate(-50%, -12px) !important;
                 align-items: center !important;
             }
 
-            #works-nav-group .dropdown-menu button {
+            #top-nav .group:hover .dropdown-menu,
+            #top-nav #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+
+            #top-nav #works-nav-group .dropdown-menu button {
                 width: 100% !important;
+                max-width: 100% !important;
                 text-align: center !important;
                 justify-content: center !important;
                 white-space: normal !important;
+                overflow-wrap: normal !important;
+                line-height: 1.08 !important;
             }
+        }
+        /* mobile works dropdown alignment */
+        @media (max-width: 768px) {
+            #top-nav #works-nav-group {
+                position: relative !important;
+                width: max-content !important;
+            }
+
+            #top-nav #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                right: auto !important;
+                transform: translate(-50%, -12px) !important;
+                width: 180px !important;
+                min-width: 180px !important;
+                max-width: 72vw !important;
+                padding-left: 14px !important;
+                padding-right: 14px !important;
+                align-items: center !important;
+                overflow: visible !important;
+                box-sizing: border-box !important;
+            }
+
+            #top-nav .group:hover .dropdown-menu,
+            #top-nav #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+
+            #top-nav #works-nav-group .dropdown-menu .dropdown-title,
+            #top-nav #works-nav-group .dropdown-menu button {
+                width: 100% !important;
+                max-width: 100% !important;
+                text-align: center !important;
+                justify-content: center !important;
+                white-space: normal !important;
+                overflow: visible !important;
+                text-overflow: clip !important;
+                overflow-wrap: normal !important;
+                word-break: normal !important;
+                line-height: 1.12 !important;
+            }
+        }
+        /* keep first dropdown project on one line */
+        #top-nav #works-nav-group .dropdown-menu .dropdown-title + button {
+            white-space: nowrap !important;
+            font-size: 10px !important;
+            letter-spacing: 0 !important;
         }</style>
 </head>
 <body class="text-black bg-white">
