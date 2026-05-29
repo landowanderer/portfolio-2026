@@ -66,8 +66,17 @@
             clip-path: inset(0 0 0 0);
             transform: translate(-50%, 0);
         }
+        #works-nav-group.dropdown-open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            clip-path: inset(0 0 0 0);
+            transform: translate(-50%, 0);
+        }
 
-        #top-nav .grid,
+        #works-nav-group.dropdown-open > button {
+            opacity: 0;
+        }
+#top-nav .grid,
         #bottom-nav .grid,
         #common-header p,
         main p,
@@ -142,6 +151,78 @@
         }
 
         @media (max-width: 768px) {
+            html,
+            body {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            #top-nav .grid,
+            #bottom-nav .grid {
+                column-gap: 0.75rem;
+                width: 100%;
+            }
+
+            #top-nav button,
+            #bottom-nav button,
+            #top-nav #works-nav-group,
+            #bottom-nav .flex {
+                width: 100% !important;
+                max-width: 100%;
+                min-width: 0;
+            }
+
+            #top-nav button,
+            #bottom-nav button {
+                white-space: normal;
+                line-height: 1.1 !important;
+            }
+            #top-nav .grid > *,
+            #bottom-nav .grid > * {
+                justify-self: center !important;
+                text-align: center !important;
+            }
+
+            #top-nav .grid > :first-child,
+            #bottom-nav .grid > :first-child,
+            #top-nav .grid > :first-child button,
+            #bottom-nav .grid > :first-child button {
+                justify-self: start !important;
+                text-align: left !important;
+            }
+
+            #top-nav .grid > :last-child,
+            #bottom-nav .grid > :last-child,
+            #top-nav .grid > :last-child button,
+            #bottom-nav .grid > :last-child button {
+                justify-self: end !important;
+                text-align: right !important;
+            }
+
+            #top-nav #works-nav-group {
+                justify-content: center !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: center !important;
+            }
+
+            #bottom-nav .flex {
+                justify-content: flex-end !important;
+            }
+
+            #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                transform: translate(-50%, -12px) !important;
+                width: min(46vw, 170px) !important;
+            }
+
+            .group:hover .dropdown-menu,
+            #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+
             #top-nav .grid,
             #bottom-nav .grid,
             #common-header p,
@@ -160,7 +241,307 @@
                 font-size: 11.5px !important;
             }
         }
-    </style>
+        @media (max-width: 768px) {
+            #top-nav .grid,
+            #bottom-nav .grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                column-gap: 0 !important;
+                width: 100% !important;
+            }
+
+            #top-nav .grid.grid-cols-4,
+            #bottom-nav .grid.grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+
+            #top-nav .grid > *,
+            #bottom-nav .grid > * {
+                justify-self: start !important;
+                text-align: left !important;
+                width: auto !important;
+                min-width: 0 !important;
+            }
+
+            #top-nav button,
+            #bottom-nav button,
+            #top-nav #works-nav-group,
+            #bottom-nav .flex {
+                width: auto !important;
+                max-width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: left !important;
+            }
+
+            #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                transform: translate(-50%, -12px) !important;
+                width: min(46vw, 170px) !important;
+            }
+
+            .group:hover .dropdown-menu,
+            #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #top-nav .grid,
+            #bottom-nav .grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                column-gap: 0 !important;
+                width: 100% !important;
+            }
+
+            #top-nav .grid.grid-cols-4,
+            #bottom-nav .grid.grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+
+            #top-nav .grid > *,
+            #bottom-nav .grid > * {
+                justify-self: start !important;
+                text-align: left !important;
+                width: auto !important;
+                min-width: 0 !important;
+            }
+
+            #top-nav button,
+            #bottom-nav button,
+            #top-nav #works-nav-group,
+            #bottom-nav .flex {
+                width: auto !important;
+                max-width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: left !important;
+            }
+
+            #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                transform: translate(-50%, -12px) !important;
+                width: min(46vw, 170px) !important;
+            }
+
+            .group:hover .dropdown-menu,
+            #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+        } 
+        @media (max-width: 768px) {
+            #top-nav .grid,
+            #bottom-nav .grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                column-gap: 0 !important;
+                width: 100% !important;
+            }
+
+            #top-nav .grid.grid-cols-4,
+            #bottom-nav .grid.grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+
+            #top-nav .grid > *,
+            #bottom-nav .grid > * {
+                justify-self: start !important;
+                text-align: left !important;
+                width: auto !important;
+                min-width: 0 !important;
+            }
+
+            #top-nav button,
+            #bottom-nav button,
+            #top-nav #works-nav-group,
+            #bottom-nav .flex {
+                width: auto !important;
+                max-width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: left !important;
+            }
+
+            #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                transform: translate(-50%, -12px) !important;
+                width: min(46vw, 170px) !important;
+            }
+
+            .group:hover .dropdown-menu,
+            #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+        } 
+        @media (max-width: 768px) {
+            #top-nav .grid,
+            #bottom-nav .grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                column-gap: 0 !important;
+                width: 100% !important;
+            }
+
+            #top-nav .grid.grid-cols-4,
+            #bottom-nav .grid.grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+
+            #top-nav .grid > *,
+            #bottom-nav .grid > * {
+                justify-self: start !important;
+                text-align: left !important;
+                width: auto !important;
+                min-width: 0 !important;
+            }
+
+            #top-nav button,
+            #bottom-nav button,
+            #top-nav #works-nav-group,
+            #bottom-nav .flex {
+                width: auto !important;
+                max-width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: left !important;
+            }
+
+            #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                transform: translate(-50%, -12px) !important;
+                width: min(46vw, 170px) !important;
+            }
+
+            .group:hover .dropdown-menu,
+            #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+        } 
+        @media (max-width: 768px) {
+            #top-nav .grid,
+            #bottom-nav .grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                column-gap: 0 !important;
+                width: 100% !important;
+            }
+
+            #top-nav .grid.grid-cols-4,
+            #bottom-nav .grid.grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+
+            #top-nav .grid > *,
+            #bottom-nav .grid > * {
+                justify-self: start !important;
+                text-align: left !important;
+                width: auto !important;
+                min-width: 0 !important;
+            }
+
+            #top-nav button,
+            #bottom-nav button,
+            #top-nav #works-nav-group,
+            #bottom-nav .flex {
+                width: auto !important;
+                max-width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: left !important;
+            }
+
+            #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                transform: translate(-50%, -12px) !important;
+                width: min(46vw, 170px) !important;
+            }
+
+            .group:hover .dropdown-menu,
+            #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+        } 
+        @media (max-width: 768px) {
+            #top-nav .grid,
+            #bottom-nav .grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                column-gap: 0 !important;
+                width: 100% !important;
+            }
+
+            #top-nav .grid.grid-cols-4,
+            #bottom-nav .grid.grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            }
+
+            #top-nav .grid > *,
+            #bottom-nav .grid > * {
+                justify-self: start !important;
+                text-align: left !important;
+                width: auto !important;
+                min-width: 0 !important;
+            }
+
+            #top-nav button,
+            #bottom-nav button,
+            #top-nav #works-nav-group,
+            #bottom-nav .flex {
+                width: auto !important;
+                max-width: 100% !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+            }
+
+            #top-nav #works-nav-group > button {
+                width: auto !important;
+                text-align: left !important;
+            }
+
+            #works-nav-group .dropdown-menu {
+                left: 50% !important;
+                transform: translate(-50%, -12px) !important;
+                width: min(46vw, 170px) !important;
+            }
+
+            .group:hover .dropdown-menu,
+            #works-nav-group.dropdown-open .dropdown-menu {
+                transform: translate(-50%, 0) !important;
+            }
+        }
+        @media (max-width: 768px) {
+            #works-nav-group .dropdown-menu {
+                align-items: center !important;
+            }
+
+            #works-nav-group .dropdown-menu button {
+                width: 100% !important;
+                text-align: center !important;
+                justify-content: center !important;
+                white-space: normal !important;
+            }
+        }</style>
 </head>
 <body class="text-black bg-white">
     <div class="w-full max-w-[2000px] mx-auto px-4 pt-1 md:px-6 md:pt-2 pb-4">
@@ -231,7 +612,25 @@
         </footer>
     </div>
     <script>
-        function expandProjects(event) {
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const worksNavGroup = document.getElementById('works-nav-group');
+            const worksNavButton = worksNavGroup ? worksNavGroup.querySelector(':scope > button') : null;
+            if (!worksNavGroup || !worksNavButton) return;
+
+            worksNavButton.addEventListener('click', (event) => {
+                if (!window.matchMedia('(max-width: 768px)').matches) return;
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                worksNavGroup.classList.toggle('dropdown-open');
+            }, true);
+
+            document.addEventListener('click', (event) => {
+                if (!worksNavGroup.contains(event.target)) {
+                    worksNavGroup.classList.remove('dropdown-open');
+                }
+            });
+        });        function expandProjects(event) {
             if (event) event.stopPropagation();
 
             const extraContainer = document.getElementById('extra-projects');
