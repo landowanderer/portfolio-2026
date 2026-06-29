@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -658,8 +658,8 @@
                 line-height: 1.12 !important;
             }
         }
-        /* keep first dropdown project on one line */
-        #top-nav #works-nav-group .dropdown-menu .dropdown-title + button {
+        /* keep long dropdown project names on one line */
+        #top-nav #works-nav-group .dropdown-menu .dropdown-long-title {
             white-space: nowrap !important;
             font-size: 10px !important;
             letter-spacing: 0 !important;
@@ -675,10 +675,11 @@
                     <button type="button" class="relative z-10 transition-opacity duration-300 group-hover:opacity-0 text-left" onclick="window.location.href='index.html?tab=works'">WORKS</button>
                     <div class="dropdown-menu absolute top-[-12px] left-[50%] bg-black text-white flex flex-col items-center py-5 px-3 w-[150px] z-50 cursor-default">
                         <button type="button" class="dropdown-title mb-6 font-bold cursor-pointer hover:text-gray-300 transition-colors" onclick="window.location.href='index.html?tab=works'">WORKS</button>
-                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='artificial-atmosphere.html'">ARTIFICIAL ATMOSPHERE</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='field-brief.html'">FIELD BRIEF</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='zntr.html'">ZNTR</button>
-                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='sun-and-light.html'">SUN AND LIGHT</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='photo-dump.html'">PHOTO DUMP</button>
+                        <button type="button" class="dropdown-long-title mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='artificial-atmosphere.html'">ARTIFICIAL ATMOSPHERE</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='sun-and-light.html'">SUN AND LIGHT</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='egocyberosis.html'">EGOCYBEROSIS</button>
                         <button type="button" class="mb-1.5 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='rain-simulator.html'">RAIN SIMULATOR</button>
                         <button id="more-dots" type="button" class="text-base font-bold leading-none mt-0 mb-1 cursor-pointer hover:text-gray-400 transition-colors" onclick="expandProjects(event)">. . .</button>
@@ -689,7 +690,7 @@
                     </div>
                 </div>
                 <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=visual'">VISUAL WORKS</button>
-                <div class="flex justify-end items-center"><button type="button" class="cursor-pointer hover:text-gray-600 w-max text-right" onclick="window.location.href='zntr.html'">NEXT PROJECT</button></div>
+                <div class="flex justify-end items-center"><button type="button" class="cursor-pointer hover:text-gray-600 w-max text-right" onclick="window.location.href='sun-and-light.html'">NEXT PROJECT</button></div>
             </div>
         </nav>
 
@@ -703,12 +704,12 @@
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 md:gap-0">
                         <div class="w-full md:w-[60%]">
                             <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
-                                Artificial Atmosphere is a moving image and immersive experience design project that explores how generative AI translates weather into cinematic atmosphere rather than physical reality. Through a series of atmospheric short films, VR experiences, prints, and installation formats, the project examines rain, fog, and spatial distortion as visual systems for AI-driven worldbuilding.
+                                A moving-image installation exploring artificial nature, atmosphere, and machine-generated perception.
                             </p>
                         </div>
                         <div class="w-full md:w-[36%] md:text-right">
                             <p class="text-[4px] md:text-[5.5px] font-bold text-black uppercase tracking-wide leading-tight md:whitespace-nowrap">
-                                AI Moving Image / Visual Direction / Immersive Installation
+                                Art Direction &middot; AI Moving Image &middot; Installation Study
                             </p>
                         </div>
                     </div>
@@ -754,7 +755,7 @@
 
                     <div class="w-full md:w-[65%] mb-1.5 md:mb-2">
                         <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
-                            ARTIFICIAL ATMOSPHERE: FOG continues this weather-based worldbuilding, utilizing generative AI’s structural misreadings of space and logic as part of the film’s visual language. Through fog, these algorithmic distortions become a medium to explore spatial uncertainty and dreamlike perception.
+                            ARTIFICIAL ATMOSPHERE: FOG continues this weather-based worldbuilding, utilizing generative AIâ€™s structural misreadings of space and logic as part of the filmâ€™s visual language. Through fog, these algorithmic distortions become a medium to explore spatial uncertainty and dreamlike perception.
                         </p>
                     </div>
                     <div class="relative w-full overflow-hidden bg-black mb-10 md:mb-12 vimeo-scroll-player" style="padding-bottom: 56.25%;">
@@ -795,7 +796,7 @@
                 <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=about'">HARRY WU</button>
                 <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=works'">WORKS</button>
                 <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="window.location.href='index.html?tab=visual'">VISUAL WORKS</button>
-                <div class="flex justify-end items-center"><button type="button" class="cursor-pointer hover:text-gray-600 w-max text-right" onclick="window.location.href='zntr.html'">NEXT PROJECT</button></div>
+                <div class="flex justify-end items-center"><button type="button" class="cursor-pointer hover:text-gray-600 w-max text-right" onclick="window.location.href='sun-and-light.html'">NEXT PROJECT</button></div>
             </div>
         </footer>
     </div>
