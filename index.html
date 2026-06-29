@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -628,8 +628,8 @@
                 line-height: 1.12 !important;
             }
         }
-        /* keep first dropdown project on one line */
-        #top-nav #works-nav-group .dropdown-menu .dropdown-title + button {
+        /* keep long dropdown project names on one line */
+        #top-nav #works-nav-group .dropdown-menu .dropdown-long-title {
             white-space: nowrap !important;
             font-size: 10px !important;
             letter-spacing: 0 !important;
@@ -650,10 +650,11 @@
                     <button type="button" class="relative z-10 transition-opacity duration-300 group-hover:opacity-0 text-left" onclick="switchView('works')">WORKS</button>
                     <div class="dropdown-menu absolute top-[-12px] left-[50%] bg-black text-white flex flex-col items-center py-5 px-3 w-[150px] z-50 cursor-default">
                         <button type="button" class="dropdown-title mb-6 font-bold cursor-pointer hover:text-gray-300 transition-colors" onclick="switchView('works')">WORKS</button>
-                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='artificial-atmosphere.html'">ARTIFICIAL ATMOSPHERE</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='field-brief.html'">FIELD BRIEF</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='zntr.html'">ZNTR</button>
-                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='sun-and-light.html'">SUN AND LIGHT</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='photo-dump.html'">PHOTO DUMP</button>
+                        <button type="button" class="dropdown-long-title mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='artificial-atmosphere.html'">ARTIFICIAL ATMOSPHERE</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='sun-and-light.html'">SUN AND LIGHT</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='egocyberosis.html'">EGOCYBEROSIS</button>
                         <button type="button" class="mb-1.5 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='rain-simulator.html'">RAIN SIMULATOR</button>
                         <button id="more-dots" type="button" class="text-base font-bold leading-none mt-0 mb-1 cursor-pointer hover:text-gray-400 transition-colors" onclick="expandProjects(event)">. . .</button>
@@ -671,9 +672,8 @@
         <main class="min-h-[60vh]">
             <div id="common-header" class="mb-10 md:mb-12">
                 <p class="text-[16px] md:text-[18px] font-bold w-full max-w-[1200px] leading-relaxed mb-2 text-pretty">
-                    Harry Xingsheng Wu is a multidisciplinary visual and experience designer working across brand systems, generative media, and interactive web experiences.<br class="hidden md:block">
-                    He combines AI-assisted production, motion design, and AI-assisted front-end prototyping<br class="hidden md:block">
-                    to create atmospheric visuals, scalable content systems, and digital experiences for screens, campaigns, and spatial formats.
+                    Harry Wu is a visual and experience designer working across interfaces, web experiences, motion, and AI-assisted media.<br class="hidden md:block">
+                    He creates product concepts, interactive systems, and atmospheric visuals for screens, campaigns, and spatial formats.
                 </p>
                 <hr class="border-t border-black">
             </div>
@@ -682,13 +682,13 @@
                 <div class="mb-16 md:mb-20">
                     <h2 class="font-black-custom text-base md:text-lg mb-2 md:mb-3 tracking-tight">FEATURED WORKS</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                        <div onclick="window.location.href='artificial-atmosphere.html'" class="cursor-pointer">
+                        <div onclick="window.location.href='field-brief.html'" class="cursor-pointer">
                             <div class="relative min-h-[300px] aspect-[16/10] overflow-hidden bg-black">
-                                <img src="images/MAIN PAGE/AA.png" class="absolute inset-0 w-full h-full object-cover">
+                                <img src="images/FIELD BRIEF/ffcover.png" class="absolute inset-0 w-full h-full object-cover">
                             </div>
                             <div class="mt-2 text-black">
-                                <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">ARTIFICIAL ATMOSPHERE</h3>
-                                <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">AI Moving Image / Visual Direction / Immersive Installation</p>
+                                <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">FIELD BRIEF</h3>
+                                <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">UI/UX &middot; Product Research &middot; Interface Motion</p>
                             </div>
                         </div>
 
@@ -699,17 +699,7 @@
                                 </div>
                                 <div class="mt-2 text-black">
                                     <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">ZNTR</h3>
-                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Brand Identity / Web Design / AI Visual System</p>
-                                </div>
-                            </div>
-                            
-                            <div onclick="window.location.href='sun-and-light.html'" class="cursor-pointer">
-                                <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
-                                    <img src="images/MAIN PAGE/snl.png" class="absolute inset-0 w-full h-full object-cover">
-                                </div>
-                                <div class="mt-2 text-black">
-                                    <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">SUN AND LIGHT</h3>
-                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">TouchDesigner / Interactive Installation</p>
+                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Brand System &middot; Web Experience &middot; AI Visual Language</p>
                                 </div>
                             </div>
                             
@@ -719,10 +709,29 @@
                                 </div>
                                 <div class="mt-2 text-black">
                                     <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">PHOTO DUMP</h3>
-                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Interactive Web Design / UX Prototype / Experimental Interface</p>
+                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Web Interaction &middot; Experimental Interface &middot; Digital Archive</p>
                                 </div>
                             </div>
-                            <div class="hidden md:block"></div>
+                            
+                            <div onclick="window.location.href='artificial-atmosphere.html'" class="cursor-pointer">
+                                <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
+                                    <img src="images/MAIN PAGE/AA.png" class="absolute inset-0 w-full h-full object-cover">
+                                </div>
+                                <div class="mt-2 text-black">
+                                    <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">ARTIFICIAL ATMOSPHERE</h3>
+                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Art Direction &middot; AI Moving Image &middot; Installation Study</p>
+                                </div>
+                            </div>
+                            
+                            <div onclick="window.location.href='sun-and-light.html'" class="cursor-pointer">
+                                <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
+                                    <img src="images/MAIN PAGE/snl.png" class="absolute inset-0 w-full h-full object-cover">
+                                </div>
+                                <div class="mt-2 text-black">
+                                    <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">SUN AND LIGHT</h3>
+                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Interactive Installation &middot; Light Study &middot; Spatial Experience</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

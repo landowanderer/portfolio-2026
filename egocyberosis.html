@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -606,8 +606,8 @@
                 line-height: 1.12 !important;
             }
         }
-        /* keep first dropdown project on one line */
-        #top-nav #works-nav-group .dropdown-menu .dropdown-title + button {
+        /* keep long dropdown project names on one line */
+        #top-nav #works-nav-group .dropdown-menu .dropdown-long-title {
             white-space: nowrap !important;
             font-size: 10px !important;
             letter-spacing: 0 !important;
@@ -623,10 +623,11 @@
                     <button type="button" class="relative z-10 transition-opacity duration-300 group-hover:opacity-0 text-left" onclick="window.location.href='index.html?tab=works'">WORKS</button>
                     <div class="dropdown-menu absolute top-[-12px] left-[50%] bg-black text-white flex flex-col items-center py-5 px-3 w-[150px] z-50 cursor-default">
                         <button type="button" class="dropdown-title mb-6 font-bold cursor-pointer hover:text-gray-300 transition-colors" onclick="window.location.href='index.html?tab=works'">WORKS</button>
-                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='artificial-atmosphere.html'">ARTIFICIAL ATMOSPHERE</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='field-brief.html'">FIELD BRIEF</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='zntr.html'">ZNTR</button>
-                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='sun-and-light.html'">SUN AND LIGHT</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='photo-dump.html'">PHOTO DUMP</button>
+                        <button type="button" class="dropdown-long-title mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='artificial-atmosphere.html'">ARTIFICIAL ATMOSPHERE</button>
+                        <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='sun-and-light.html'">SUN AND LIGHT</button>
                         <button type="button" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='egocyberosis.html'">EGOCYBEROSIS</button>
                         <button type="button" class="mb-1.5 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer" onclick="window.location.href='rain-simulator.html'">RAIN SIMULATOR</button>
                         <button id="more-dots" type="button" class="text-base font-bold leading-none mt-0 mb-1 cursor-pointer hover:text-gray-400 transition-colors" onclick="expandProjects(event)">. . .</button>
