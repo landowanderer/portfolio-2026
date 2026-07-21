@@ -695,6 +695,10 @@
                 </div>
 
                 <div class="flex flex-col w-full">
+                    <div class="relative w-full overflow-hidden bg-black mb-10 md:mb-12 vimeo-scroll-player" style="padding-bottom: 56.25%;">
+                        <iframe src="https://player.vimeo.com/video/1211554937?title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=0&autopause=0" title="Field Brief product video" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
                     <div class="relative w-full overflow-hidden bg-black mb-10 md:mb-12 pointer-events-none" style="padding-bottom: 56.25%;">
                         <iframe src="https://player.vimeo.com/video/1205163826?background=1&autoplay=1&loop=1&muted=1&autopause=0" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
@@ -891,18 +895,25 @@
 
             if (window.Vimeo && window.Vimeo.Player && typeof IntersectionObserver !== 'undefined') {
                 const vimeoPlayers = document.querySelectorAll('.vimeo-scroll-player iframe');
+                const playerMap = new Map();
+
+                vimeoPlayers.forEach(iframe => {
+                    playerMap.set(iframe, new Vimeo.Player(iframe));
+                });
 
                 const videoObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        const player = new Vimeo.Player(entry.target);
+                        const player = playerMap.get(entry.target);
+                        if (!player) return;
 
                         if (entry.isIntersecting) {
+                            player.setMuted(false).catch(() => {});
                             player.play().catch(() => {});
                         } else {
                             player.pause().catch(() => {});
                         }
                     });
-                }, { threshold: 0.5 });
+                }, { threshold: 0.25 });
 
                 vimeoPlayers.forEach(iframe => videoObserver.observe(iframe));
             }

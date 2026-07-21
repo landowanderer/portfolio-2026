@@ -633,9 +633,208 @@
             white-space: nowrap !important;
             font-size: 10px !important;
             letter-spacing: 0 !important;
-        }</style>
+        }
+
+        /* Homepage featured projects */
+        .lw-featured {
+            --existing-page-padding: 24px;
+            position: relative;
+            width: 100%;
+            isolation: isolate;
+            margin-bottom: 5rem;
+        }
+
+        .lw-featured__slide {
+            position: sticky;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 100svh;
+            overflow: hidden;
+            color: inherit;
+            text-decoration: none;
+            background: #000;
+            z-index: var(--slide-index);
+            cursor: pointer;
+        }
+
+        .lw-featured__slide:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: -8px;
+        }
+
+        .lw-featured__media {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .lw-featured__media img,
+        .lw-featured__media video,
+        .lw-featured__media iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .lw-featured__slide::after {
+            content: "";
+            position: absolute;
+            inset: 45% 0 0;
+            pointer-events: none;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+        }
+
+        .lw-featured__meta {
+            position: absolute;
+            z-index: 2;
+            left: var(--existing-page-padding);
+            right: var(--existing-page-padding);
+            bottom: max(28px, env(safe-area-inset-bottom));
+            color: #fff;
+        }
+
+        .lw-featured__meta h2,
+        .lw-featured__meta p {
+            margin: 0;
+        }
+
+        #works-section .lw-featured__meta h2 {
+            font-size: clamp(28px, 3vw, 52px) !important;
+            line-height: 0.92 !important;
+        }
+
+        #works-section .lw-featured__meta p {
+            margin-top: 5px;
+            font-size: clamp(12px, 1vw, 17px) !important;
+            line-height: 1.12 !important;
+        }
+
+        #common-header .homepage-intro {
+            max-width: 1320px;
+            font-size: clamp(17px, 1.35vw, 24px) !important;
+            line-height: 1.16 !important;
+        }
+
+        .lw-featured__number {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 767px) {
+            body.lw-featured-page {
+                overflow-x: clip !important;
+                overflow-y: visible !important;
+            }
+
+            #works-section:has(> .lw-featured) {
+                overflow-x: clip !important;
+                overflow-y: visible !important;
+            }
+
+            .lw-featured {
+                --existing-page-padding: 16px;
+            }
+
+            .lw-featured__slide {
+                height: 100svh;
+            }
+
+            .lw-featured__meta {
+                bottom: max(20px, env(safe-area-inset-bottom));
+            }
+        }
+
+        .elastic-logo-shell {
+            width: min(72vw, 900px);
+            aspect-ratio: 15 / 7;
+            align-self: flex-start;
+            flex: none;
+        }
+
+        .elastic-logo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            isolation: isolate;
+            contain: layout paint style;
+            cursor: grab;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .elastic-logo:focus-visible {
+            outline: 1px solid #000;
+            outline-offset: 8px;
+        }
+
+        .elastic-logo.is-dragging {
+            cursor: grabbing;
+        }
+
+        .elastic-logo__canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .elastic-logo__source {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .elastic-logo__base {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: min(25.5%, 230px);
+            height: auto;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transform-origin: center;
+            z-index: 3;
+            filter: brightness(0.8) contrast(1.06);
+            transition: opacity 220ms ease;
+        }
+
+        .elastic-logo.is-dragging .elastic-logo__base {
+            opacity: 0.72;
+        }
+
+        @media (max-width: 767px) {
+            .elastic-logo-shell {
+                width: min(88vw, 360px);
+            }
+
+            .elastic-logo__base {
+                width: 40%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .lw-featured__slide {
+                position: relative;
+            }
+
+            .elastic-logo__source,
+            .elastic-logo__canvas {
+                display: none;
+            }
+        }
+    </style>
 </head>
-<body class="text-black bg-white">
+<body class="text-black bg-white lw-featured-page">
 
     <div id="lightbox" class="fixed inset-0 z-[200] bg-white/95 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 cursor-pointer" onclick="closeLightbox()">
         <img id="lightbox-img" src="" class="w-[60vw] md:w-[68vw] min-w-[420px] max-h-[92vh] object-contain transition-transform duration-300 scale-95" alt="Enlarged Visual">
@@ -671,7 +870,7 @@
 
         <main class="min-h-[60vh]">
             <div id="common-header" class="mb-10 md:mb-12">
-                <p class="text-[16px] md:text-[18px] font-bold w-full max-w-[1200px] leading-relaxed mb-2 text-pretty">
+                <p class="homepage-intro text-[16px] md:text-[18px] font-bold w-full max-w-[1200px] leading-relaxed mb-2 text-pretty">
                     Harry Wu is a visual and experience designer working across interfaces, web experiences, motion, and AI-assisted media.<br class="hidden md:block">
                     He creates product concepts, interactive systems, and atmospheric visuals for screens, campaigns, and spatial formats.
                 </p>
@@ -679,62 +878,51 @@
             </div>
 
             <section id="works-section" class="fade-in">
-                <div class="mb-16 md:mb-20">
-                    <h2 class="font-black-custom text-base md:text-lg mb-2 md:mb-3 tracking-tight">FEATURED WORKS</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                        <div onclick="window.location.href='field-brief.html'" class="cursor-pointer">
-                            <div class="relative min-h-[300px] aspect-[16/10] overflow-hidden bg-black">
-                                <img src="images/FIELD BRIEF/ffcover.png" class="absolute inset-0 w-full h-full object-cover">
-                            </div>
-                            <div class="mt-2 text-black">
-                                <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">FIELD BRIEF</h3>
-                                <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">UI/UX &middot; Product Research &middot; Interface Motion</p>
-                            </div>
+                <section class="lw-featured" aria-label="Featured projects">
+                    <article class="lw-featured__slide" role="link" tabindex="0" data-href="field-brief.html" aria-label="Open Field Brief project" style="--slide-index: 1">
+                        <div class="lw-featured__media">
+                            <img src="images/MAIN%20PAGE/fb.jpg" alt="Field Brief product concept">
                         </div>
+                        <div class="lw-featured__meta">
+                            <span class="lw-featured__number">01</span>
+                            <h2 class="font-black-custom tracking-tight">FIELD BRIEF</h2>
+                            <p class="font-bold">PRODUCT DESIGN / UI MOTION</p>
+                        </div>
+                    </article>
 
-                        <div class="grid grid-cols-2 gap-x-4 md:gap-x-5 gap-y-3 md:gap-y-4">
-                            <div onclick="window.location.href='zntr.html'" class="cursor-pointer">
-                                <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
-                                    <img src="images/MAIN PAGE/zntr.png" class="absolute inset-0 w-full h-full object-cover">
-                                </div>
-                                <div class="mt-2 text-black">
-                                    <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">ZNTR</h3>
-                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Brand System &middot; Web Experience &middot; AI Visual Language</p>
-                                </div>
-                            </div>
-                            
-                            <div onclick="window.location.href='photo-dump.html'" class="cursor-pointer">
-                                <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
-                                    <img src="images/MAIN PAGE/pd.png" class="absolute inset-0 w-full h-full object-cover">
-                                </div>
-                                <div class="mt-2 text-black">
-                                    <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">PHOTO DUMP</h3>
-                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Web Interaction &middot; Experimental Interface &middot; Digital Archive</p>
-                                </div>
-                            </div>
-                            
-                            <div onclick="window.location.href='artificial-atmosphere.html'" class="cursor-pointer">
-                                <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
-                                    <img src="images/MAIN PAGE/AA.png" class="absolute inset-0 w-full h-full object-cover">
-                                </div>
-                                <div class="mt-2 text-black">
-                                    <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">ARTIFICIAL ATMOSPHERE</h3>
-                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Art Direction &middot; AI Moving Image &middot; Installation Study</p>
-                                </div>
-                            </div>
-                            
-                            <div onclick="window.location.href='sun-and-light.html'" class="cursor-pointer">
-                                <div class="relative w-full aspect-[16/9] overflow-hidden bg-black">
-                                    <img src="images/MAIN PAGE/snl.png" class="absolute inset-0 w-full h-full object-cover">
-                                </div>
-                                <div class="mt-2 text-black">
-                                    <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">SUN AND LIGHT</h3>
-                                    <p class="text-[11px] md:text-[13px] font-bold mt-[4px] text-black">Interactive Installation &middot; Light Study &middot; Spatial Experience</p>
-                                </div>
-                            </div>
+                    <article class="lw-featured__slide" role="link" tabindex="0" data-href="zntr.html" aria-label="Open ZNTR project" style="--slide-index: 2">
+                        <div class="lw-featured__media">
+                            <img src="images/MAIN%20PAGE/zntr.png" alt="ZNTR brand system">
                         </div>
-                    </div>
-                </div>
+                        <div class="lw-featured__meta">
+                            <span class="lw-featured__number">02</span>
+                            <h2 class="font-black-custom tracking-tight">ZNTR</h2>
+                            <p class="font-bold">BRAND SYSTEM / AI VISUAL LANGUAGE</p>
+                        </div>
+                    </article>
+
+                    <article class="lw-featured__slide" role="link" tabindex="0" data-href="artificial-atmosphere.html" aria-label="Open Artificial Atmosphere project" style="--slide-index: 3">
+                        <div class="lw-featured__media">
+                            <img src="images/MAIN%20PAGE/AA.png" alt="Artificial Atmosphere moving image">
+                        </div>
+                        <div class="lw-featured__meta">
+                            <span class="lw-featured__number">03</span>
+                            <h2 class="font-black-custom tracking-tight">ARTIFICIAL ATMOSPHERE</h2>
+                            <p class="font-bold">AI MOVING IMAGE / VISUAL DIRECTION</p>
+                        </div>
+                    </article>
+
+                    <article class="lw-featured__slide" role="link" tabindex="0" data-href="photo-dump.html" aria-label="Open Photo Dump project" style="--slide-index: 4">
+                        <div class="lw-featured__media">
+                            <img src="images/MAIN%20PAGE/pd.png" alt="Photo Dump interactive web experience">
+                        </div>
+                        <div class="lw-featured__meta">
+                            <span class="lw-featured__number">04</span>
+                            <h2 class="font-black-custom tracking-tight">PHOTO DUMP</h2>
+                            <p class="font-bold">WEB INTERACTION / CREATIVE DEVELOPMENT</p>
+                        </div>
+                    </article>
+                </section>
 
                 <div class="mb-20">
                     <h2 class="font-black-custom text-base md:text-lg mb-2 md:mb-3 tracking-tight">SELECTED PROJECTS / ARCHIVE</h2>
@@ -791,12 +979,11 @@
                         <a href="mailto:HARRY.WU313@GMAIL.COM" class="hover:text-gray-500 w-max">HARRY.WU313@GMAIL.COM</a>
                     </div>
                     <div class="flex justify-start md:justify-center pt-12 md:pt-40">
-                        <div class="w-[180px] md:w-[260px] lg:w-[300px]">
-                            <div class="relative w-full overflow-hidden bg-black pointer-events-none" style="padding-bottom: 100%;">
-                                <iframe src="https://player.vimeo.com/video/1195866318?background=1&autoplay=1&loop=1&muted=1&autopause=0" class="absolute inset-0 h-full w-full border-0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                            <div class="mt-2 text-[11px] md:text-[12px] font-bold leading-tight">
-                                Sticker I made :) :(
+                        <div class="elastic-logo-shell">
+                            <div id="elastic-sticker-logo" class="elastic-logo" role="button" tabindex="0" aria-label="Drag the logo to reveal the sticker video">
+                                <video id="elastic-sticker-video" class="elastic-logo__source" src="images/HARRY/sticker-video-web.mp4" muted loop playsinline preload="auto" aria-hidden="true"></video>
+                                <canvas id="elastic-sticker-canvas" class="elastic-logo__canvas" width="900" height="420" aria-hidden="true"></canvas>
+                                <img class="elastic-logo__base" src="images/MAIN%20PAGE/sticker1.svg" alt="Harry Wu logo">
                             </div>
                         </div>
                     </div>
@@ -913,6 +1100,8 @@
             }
         }
 
+        let elasticLogoController = null;
+
         function switchView(viewName) {
             const worksSection = document.getElementById('works-section');
             const aboutSection = document.getElementById('about-section');
@@ -950,6 +1139,15 @@
             const target = document.getElementById(viewName + '-section');
             if (target) target.classList.remove('hidden');
 
+            if (elasticLogoController) {
+                const isAboutView = viewName === 'about';
+                elasticLogoController.setActive(isAboutView);
+
+                if (isAboutView) {
+                    requestAnimationFrame(() => elasticLogoController.demo());
+                }
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -984,7 +1182,313 @@
             }, 300);
         }
 
+        function initElasticStickerLogo() {
+            const stage = document.getElementById('elastic-sticker-logo');
+            const videoFrame = document.getElementById('elastic-sticker-video');
+            const canvas = document.getElementById('elastic-sticker-canvas');
+
+            if (!stage || !videoFrame || !canvas || !window.Path2D) return null;
+
+            const baseLogo = stage.querySelector('.elastic-logo__base');
+            const context = canvas.getContext('2d');
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const viewBox = { width: 900, height: 420 };
+            const anchor = { x: 450, y: 210 };
+            const trailCount = 7;
+            const logoPath = new Path2D('M88.62,160.06c-19.39,4.96-19.92,8.39-29.86,14.09-1.63.93-2.88,2.3-4.44,2.35-4.69.14-8.47-3.19-11.22-8.81s-2.27-13.07,2.41-17.47h0c2.78-2.62,3.7-8.15,2.28-11.69-1.89-4.69-1.35-7.98-.75-12.79.78-6.31-1.89-11.71-4.38-13.57s-15.13-11.58-12.18-23.09c2.51-9.78,7.1-12.63,9.93-13.44,1.45-.42,2.48-1.69,2.65-3.2.5-4.65,2.32-13.65,8.94-17.87,9.13-5.82,17.37-3.09,19.52-1.48,1.54,1.15,3.33,3.4,4.07,4.73,1.16,2.08,4.05,2.36,5.63.58,4.54-5.12,13.1-12.59,19.57-15.32,10.69-4.51,19.2-5.01,22.82,0,3.88,5.38,1.25,7.94.41,12.42-.53,2.84,1.23,5.59,4.02,6.36,4.6,1.26,10.8,5.53,12.88,19,2.61,16.86-2.66,34.08-5.4,41.52-.8,2.17-.27,4.6,1.38,6.22,3,2.93,7.22,8.47,7.01,16.32-.31,12.12-7.28,16.33-12.9,17.63-13.52,3.11-14.54-9.59-42.38-2.47Z');
+            const state = {
+                targetX: 0,
+                targetY: 0,
+                currentX: 0,
+                currentY: 0,
+                velocityX: 0,
+                velocityY: 0,
+                dragging: false,
+                pointerId: null,
+                startClientX: 0,
+                startClientY: 0,
+                dragOriginX: 0,
+                dragOriginY: 0,
+                sequenceStart: 0,
+                active: false
+            };
+
+            let frameId = 0;
+            let demoShown = false;
+            let demoTimer = 0;
+
+            const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+            function setPlayerPlaying(shouldPlay) {
+                if (shouldPlay) {
+                    videoFrame.play().catch(() => {});
+                } else {
+                    videoFrame.pause();
+                }
+            }
+
+            function resetArtwork() {
+                context.setTransform(1, 0, 0, 1, 0, 0);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            function drawVideoCover(targetContext) {
+                if (videoFrame.readyState < 2 || !videoFrame.videoWidth || !videoFrame.videoHeight) {
+                    targetContext.fillStyle = '#d4d4d4';
+                    targetContext.fillRect(0, 0, 180, 216);
+                    return;
+                }
+
+                const targetAspect = 180 / 216;
+                const sourceAspect = videoFrame.videoWidth / videoFrame.videoHeight;
+                let sourceX = 0;
+                let sourceY = 0;
+                let sourceWidth = videoFrame.videoWidth;
+                let sourceHeight = videoFrame.videoHeight;
+
+                if (sourceAspect > targetAspect) {
+                    sourceWidth = sourceHeight * targetAspect;
+                    sourceX = (videoFrame.videoWidth - sourceWidth) / 2;
+                } else {
+                    sourceHeight = sourceWidth / targetAspect;
+                    sourceY = (videoFrame.videoHeight - sourceHeight) / 2;
+                }
+
+                targetContext.drawImage(
+                    videoFrame,
+                    sourceX,
+                    sourceY,
+                    sourceWidth,
+                    sourceHeight,
+                    0,
+                    0,
+                    180,
+                    216
+                );
+            }
+
+            function render(now) {
+                frameId = 0;
+
+                const stiffness = state.dragging ? 0.26 : 0.1;
+                const damping = state.dragging ? 0.74 : 0.8;
+
+                state.velocityX = (state.velocityX + (state.targetX - state.currentX) * stiffness) * damping;
+                state.velocityY = (state.velocityY + (state.targetY - state.currentY) * stiffness) * damping;
+                state.currentX += state.velocityX;
+                state.currentY += state.velocityY;
+
+                const stageRect = stage.getBoundingClientRect();
+                const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+                const targetWidth = Math.max(1, Math.round(stageRect.width * pixelRatio));
+                const targetHeight = Math.max(1, Math.round(stageRect.height * pixelRatio));
+
+                if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+                    canvas.width = targetWidth;
+                    canvas.height = targetHeight;
+                }
+
+                context.setTransform(canvas.width / viewBox.width, 0, 0, canvas.height / viewBox.height, 0, 0);
+                context.clearRect(0, 0, viewBox.width, viewBox.height);
+
+                const baseRect = baseLogo ? baseLogo.getBoundingClientRect() : { width: stageRect.width * 0.3 };
+                const shapeScale = (baseRect.width * (viewBox.width / stageRect.width)) / 180;
+                const distance = Math.hypot(state.currentX, state.currentY);
+                const masterOpacity = clamp(distance / 18, 0, 1);
+                const isSequencing = state.dragging || stage.classList.contains('is-dragging');
+
+                for (let index = 0; index < trailCount; index += 1) {
+                    const progress = (index + 1) / trailCount;
+                    const centerX = anchor.x + state.currentX * progress;
+                    const centerY = anchor.y + state.currentY * progress;
+                    const distanceReveal = clamp((distance - index * 40 - 8) / 38, 0, 1);
+                    const timeReveal = isSequencing
+                        ? clamp((now - state.sequenceStart - index * 55) / 120, 0, 1)
+                        : 1;
+                    const opacity = masterOpacity * Math.min(distanceReveal, timeReveal);
+
+                    if (opacity <= 0.001) continue;
+
+                    context.save();
+                    context.globalAlpha = opacity;
+                    context.translate(centerX, centerY);
+                    context.scale(shapeScale, shapeScale);
+                    context.translate(-90, -108);
+                    context.clip(logoPath);
+                    drawVideoCover(context);
+                    context.restore();
+                }
+
+                const settled = !state.dragging
+                    && Math.abs(state.targetX) < 0.02
+                    && Math.abs(state.targetY) < 0.02
+                    && Math.abs(state.currentX) < 0.08
+                    && Math.abs(state.currentY) < 0.08
+                    && Math.abs(state.velocityX) < 0.08
+                    && Math.abs(state.velocityY) < 0.08;
+
+                if (settled) {
+                    state.currentX = 0;
+                    state.currentY = 0;
+                    state.velocityX = 0;
+                    state.velocityY = 0;
+                    resetArtwork();
+                    return;
+                }
+
+                frameId = requestAnimationFrame(render);
+            }
+
+            function wakeAnimation() {
+                if (!frameId && !reducedMotion) {
+                    frameId = requestAnimationFrame(render);
+                }
+            }
+
+            function limitTarget(x, y) {
+                const horizontalLimit = 335;
+                const verticalLimit = 145;
+                const normalizedDistance = Math.hypot(x / horizontalLimit, y / verticalLimit);
+
+                if (normalizedDistance > 1) {
+                    return {
+                        x: x / normalizedDistance,
+                        y: y / normalizedDistance
+                    };
+                }
+
+                return { x, y };
+            }
+
+            function beginDrag(event) {
+                if (reducedMotion || event.button > 0) return;
+
+                const rect = stage.getBoundingClientRect();
+                const baseRect = baseLogo ? baseLogo.getBoundingClientRect() : { width: rect.width * 0.3, height: rect.height * 0.7 };
+                const localX = (event.clientX - rect.left) * (viewBox.width / rect.width);
+                const localY = (event.clientY - rect.top) * (viewBox.height / rect.height);
+                const hitRadiusX = baseRect.width * (viewBox.width / rect.width) * 0.48;
+                const hitRadiusY = baseRect.height * (viewBox.height / rect.height) * 0.48;
+                const isOnLogo = Math.hypot((localX - anchor.x) / hitRadiusX, (localY - anchor.y) / hitRadiusY) <= 1;
+
+                if (!isOnLogo) return;
+
+                event.preventDefault();
+                window.clearTimeout(demoTimer);
+                state.dragging = true;
+                state.pointerId = event.pointerId;
+                state.startClientX = event.clientX;
+                state.startClientY = event.clientY;
+                state.dragOriginX = state.currentX;
+                state.dragOriginY = state.currentY;
+                state.sequenceStart = performance.now();
+                stage.classList.add('is-dragging');
+                stage.setPointerCapture(event.pointerId);
+                setPlayerPlaying(true);
+                wakeAnimation();
+            }
+
+            function moveDrag(event) {
+                if (!state.dragging || event.pointerId !== state.pointerId) return;
+
+                event.preventDefault();
+                const rect = stage.getBoundingClientRect();
+                const x = state.dragOriginX + (event.clientX - state.startClientX) * (viewBox.width / rect.width);
+                const y = state.dragOriginY + (event.clientY - state.startClientY) * (viewBox.height / rect.height);
+                const limited = limitTarget(x, y);
+
+                state.targetX = limited.x;
+                state.targetY = limited.y;
+                wakeAnimation();
+            }
+
+            function endDrag(event) {
+                if (!state.dragging || (event && event.pointerId !== state.pointerId)) return;
+
+                if (event && stage.hasPointerCapture(event.pointerId)) {
+                    stage.releasePointerCapture(event.pointerId);
+                }
+
+                state.dragging = false;
+                state.pointerId = null;
+                state.targetX = 0;
+                state.targetY = 0;
+                stage.classList.remove('is-dragging');
+                wakeAnimation();
+            }
+
+            function playNudge(onlyOnce) {
+                if (reducedMotion || !state.active || state.dragging || (onlyOnce && demoShown)) return;
+
+                if (onlyOnce) demoShown = true;
+                window.clearTimeout(demoTimer);
+                state.sequenceStart = performance.now();
+                state.targetX = 330;
+                state.targetY = -18;
+                stage.classList.add('is-dragging');
+                setPlayerPlaying(true);
+                wakeAnimation();
+
+                demoTimer = window.setTimeout(() => {
+                    state.targetX = 0;
+                    state.targetY = 0;
+                    stage.classList.remove('is-dragging');
+                    wakeAnimation();
+                }, 900);
+            }
+
+            stage.addEventListener('pointerdown', beginDrag);
+            stage.addEventListener('pointermove', moveDrag);
+            stage.addEventListener('pointerup', endDrag);
+            stage.addEventListener('pointercancel', endDrag);
+            stage.addEventListener('lostpointercapture', endDrag);
+            stage.addEventListener('keydown', (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                playNudge(false);
+            });
+            videoFrame.muted = true;
+            videoFrame.addEventListener('loadeddata', wakeAnimation);
+
+            resetArtwork();
+
+            return {
+                setActive(isActive) {
+                    state.active = isActive;
+                    setPlayerPlaying(isActive);
+
+                    if (!isActive) {
+                        window.clearTimeout(demoTimer);
+                        state.dragging = false;
+                        state.pointerId = null;
+                        state.targetX = 0;
+                        state.targetY = 0;
+                        stage.classList.remove('is-dragging');
+                        wakeAnimation();
+                    }
+                },
+                demo() {
+                    window.setTimeout(() => playNudge(true), 280);
+                }
+            };
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
+            elasticLogoController = initElasticStickerLogo();
+
+            document.querySelectorAll('.lw-featured__slide[data-href]').forEach(slide => {
+                const openProject = () => {
+                    window.location.href = slide.dataset.href;
+                };
+
+                slide.addEventListener('click', openProject);
+                slide.addEventListener('keydown', event => {
+                    if (event.key !== 'Enter' && event.key !== ' ') return;
+                    event.preventDefault();
+                    openProject();
+                });
+            });
+
             const urlParams = new URLSearchParams(window.location.search);
             const tab = urlParams.get('tab');
 
@@ -1048,24 +1552,6 @@
                 }, { threshold: 0.1 });
 
                 menuObserver.observe(trigger);
-            }
-
-            if (window.Vimeo && window.Vimeo.Player && typeof IntersectionObserver !== 'undefined') {
-                const vimeoPlayers = document.querySelectorAll('.vimeo-scroll-player iframe');
-
-                const videoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const player = new Vimeo.Player(entry.target);
-
-                        if (entry.isIntersecting) {
-                            player.play().catch(() => {});
-                        } else {
-                            player.pause().catch(() => {});
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                vimeoPlayers.forEach(iframe => videoObserver.observe(iframe));
             }
 
             let isDown = false;
