@@ -15,6 +15,10 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        html {
+            scrollbar-gutter: stable;
+        }
+
         button {
             background: none;
             border: 0;
@@ -104,22 +108,154 @@
             line-height: 1.15 !important;
         }
 
-        #visual-section > div > div {
-            padding-top: clamp(32px, 3vw, 48px) !important;
-            padding-bottom: clamp(32px, 3vw, 48px) !important;
+        .visual-series-list {
+            width: 100%;
+            border-top: 1px solid #000;
         }
 
-        #visual-section .drag-scroll {
-            gap: clamp(28px, 2.5vw, 40px) !important;
+        .visual-series {
+            display: grid;
+            grid-template-columns: minmax(190px, 18%) minmax(0, 1fr);
+            gap: clamp(24px, 3vw, 64px);
             align-items: center;
-            padding-bottom: 0 !important;
+            padding: clamp(44px, 4vw, 72px) 0;
+            border-bottom: 1px solid #000;
         }
 
-        #visual-section .drag-scroll img {
-            height: clamp(180px, 15vw, 230px) !important;
-            width: auto;
+        .visual-series__heading {
+            align-self: stretch;
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #visual-section .visual-series__title {
+            max-width: 250px;
+            margin: 0;
+            font-size: clamp(17px, 1.2vw, 23px) !important;
+            line-height: 1.02 !important;
+            overflow-wrap: normal;
+        }
+
+        .visual-series__credit {
+            margin-top: clamp(48px, 8vh, 92px);
+            font-size: clamp(12px, 0.8vw, 15px);
+            line-height: 1.2;
+        }
+
+        .visual-rail-shell {
+            min-width: 0;
+        }
+
+        #visual-section .visual-rail {
+            display: flex;
+            width: 100%;
+            gap: clamp(20px, 1.8vw, 32px);
+            align-items: center;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-padding-inline: 1px;
+            scroll-snap-type: x proximity;
+            padding: 6px 0 14px;
+            cursor: grab;
+            user-select: none;
+        }
+
+        #visual-section .visual-rail.is-dragging {
+            cursor: grabbing;
+            scroll-snap-type: none;
+        }
+
+        .visual-item {
+            --media-scale: 1.06;
+            position: relative;
+            display: grid;
+            flex: 0 0 clamp(300px, 27vw, 500px);
+            width: clamp(300px, 27vw, 500px);
+            height: clamp(250px, 20vw, 360px);
+            margin: 0;
+            place-items: center;
+            overflow: hidden;
+            scroll-snap-align: start;
+            transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .visual-item img {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            transform: none !important;
+            transform: scale(var(--media-scale));
+            cursor: zoom-in;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .visual-item--booklet {
+            --media-scale: 1.1;
+        }
+
+        .visual-progress {
+            position: relative;
+            width: 100%;
+            height: 1px;
+            margin-top: 7px;
+            overflow: hidden;
+            background: #d6d6d6;
+        }
+
+        .visual-progress span {
+            position: absolute;
+            inset: 0;
+            display: block;
+            background: #000;
+            transform: scaleX(var(--visual-progress, 0.12));
+            transform-origin: left center;
+            transition: transform 90ms linear;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .visual-item:hover {
+                transform: translateY(-3px) scale(1.012);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .visual-series {
+                display: block;
+                padding: 30px 0;
+            }
+
+            .visual-series__heading {
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            #visual-section .visual-series__title {
+                max-width: 100%;
+                font-size: 18px !important;
+                line-height: 1 !important;
+            }
+
+            .visual-series__credit {
+                margin-top: 18px;
+                font-size: 11px;
+            }
+
+            #visual-section .visual-rail {
+                gap: 16px;
+                padding-bottom: 10px;
+                scroll-snap-type: x mandatory;
+            }
+
+            .visual-item {
+                flex-basis: 84%;
+                width: 84%;
+                height: clamp(190px, 58vw, 240px);
+            }
         }
 
         .dropdown-menu span,
@@ -635,6 +771,27 @@
             letter-spacing: 0 !important;
         }
 
+        /* Keep the primary navigation at the same three anchors in every view. */
+        #top-nav > .grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            width: 100% !important;
+        }
+
+        #top-nav > .grid > :first-child {
+            justify-self: start !important;
+            text-align: left !important;
+        }
+
+        #top-nav #works-nav-group {
+            justify-self: center !important;
+        }
+
+        #top-nav > .grid > :nth-child(3) {
+            justify-self: end !important;
+            text-align: right !important;
+        }
+
         /* Homepage featured projects */
         .lw-featured {
             --existing-page-padding: 24px;
@@ -724,6 +881,18 @@
             font-weight: 700;
         }
 
+        @media (min-width: 768px) {
+            .lw-featured__media {
+                inset: clamp(48px, 6.5svh, 86px) clamp(54px, 8vw, 164px) auto;
+                height: 74svh;
+            }
+
+            .lw-featured__meta {
+                left: clamp(54px, 8vw, 164px);
+                right: clamp(54px, 8vw, 164px);
+            }
+        }
+
         @media (max-width: 767px) {
             body.lw-featured-page {
                 overflow-x: clip !important;
@@ -737,22 +906,93 @@
 
             .lw-featured {
                 --existing-page-padding: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 3rem;
             }
 
             .lw-featured__slide {
-                height: 100svh;
+                position: relative;
+                top: auto;
+                height: auto;
+                min-height: 0;
+                aspect-ratio: 16 / 9;
             }
 
             .lw-featured__meta {
-                bottom: max(20px, env(safe-area-inset-bottom));
+                bottom: 14px;
             }
+
+            #works-section .lw-featured__meta h2 {
+                font-size: clamp(20px, 6.4vw, 28px) !important;
+                line-height: 0.94 !important;
+            }
+
+            #works-section .lw-featured__meta p {
+                margin-top: 4px;
+                font-size: clamp(10px, 3.2vw, 13px) !important;
+            }
+
+            .lw-featured__number {
+                margin-bottom: 4px;
+                font-size: 11px;
+            }
+
+        }
+
+        body.lw-featured-page.about-active {
+            height: 100dvh;
+            overflow: hidden !important;
+        }
+
+        #about-section {
+            height: var(--about-available-height, 68vh);
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .about-layout {
+            position: relative;
+            display: grid;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            grid-template-rows: minmax(0, 1fr) auto;
+        }
+
+        .about-profile-copy {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #000;
+            font-size: 42px !important;
+            font-weight: 400;
+            line-height: 1.14 !important;
+        }
+
+        .about-contact-list {
+            display: grid;
+            grid-row: 2;
+            width: 100%;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            align-items: end;
+            padding: 14px 0 12px;
+            border-top: 1px solid #000;
+        }
+
+        .about-logo-wrap {
+            display: none;
         }
 
         .elastic-logo-shell {
-            width: min(72vw, 900px);
+            width: min(62vw, 820px);
             aspect-ratio: 15 / 7;
-            align-self: flex-start;
             flex: none;
+            pointer-events: auto;
         }
 
         .elastic-logo {
@@ -783,7 +1023,9 @@
             width: 100%;
             height: 100%;
             z-index: 2;
+            opacity: 0;
             pointer-events: none;
+            transition: opacity 180ms ease;
         }
 
         .elastic-logo__source {
@@ -805,20 +1047,37 @@
             transform-origin: center;
             z-index: 3;
             filter: brightness(0.8) contrast(1.06);
-            transition: opacity 220ms ease;
+            transition: opacity 180ms ease;
         }
 
-        .elastic-logo.is-dragging .elastic-logo__base {
-            opacity: 0.72;
+        .elastic-logo.is-animating .elastic-logo__canvas {
+            opacity: 1;
+        }
+
+        .elastic-logo.is-animating .elastic-logo__base {
+            opacity: 0;
         }
 
         @media (max-width: 767px) {
+            .about-profile-copy {
+                top: 18%;
+                padding-bottom: 8px;
+                font-size: 22px !important;
+                line-height: 1.16 !important;
+            }
+
             .elastic-logo-shell {
-                width: min(88vw, 360px);
+                width: min(86vw, 340px);
             }
 
             .elastic-logo__base {
                 width: 40%;
+            }
+
+            .about-contact-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 28px 16px;
+                padding: 14px 0 10px;
             }
         }
 
@@ -843,7 +1102,7 @@
     <div class="w-full max-w-[2000px] mx-auto px-4 pt-1 md:px-6 md:pt-2 pb-4">
         
         <nav id="top-nav" class="w-full mb-8 md:mb-10 sticky top-0 bg-white z-[100] pt-2 pb-2 transition-all duration-500">
-            <div class="grid grid-cols-3 md:grid-cols-4 font-bold uppercase tracking-wide">
+            <div class="grid grid-cols-3 font-bold uppercase tracking-wide">
                 <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="switchView('about')">HARRY WU</button>
                 <div id="works-nav-group" class="relative group cursor-pointer flex justify-start w-max">
                     <button type="button" class="relative z-10 transition-opacity duration-300 group-hover:opacity-0 text-left" onclick="switchView('works')">WORKS</button>
@@ -864,15 +1123,13 @@
                     </div>
                 </div>
                 <button type="button" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="switchView('visual')">VISUAL WORKS</button>
-                <div class="hidden md:block"></div>
             </div>
         </nav>
 
         <main class="min-h-[60vh]">
             <div id="common-header" class="mb-10 md:mb-12">
-                <p class="homepage-intro text-[16px] md:text-[18px] font-bold w-full max-w-[1200px] leading-relaxed mb-2 text-pretty">
-                    Harry Wu is a visual and experience designer working across interfaces, web experiences, motion, and AI-assisted media.<br class="hidden md:block">
-                    He creates product concepts, interactive systems, and atmospheric visuals for screens, campaigns, and spatial formats.
+                <p class="homepage-intro home-intro-copy text-[16px] md:text-[18px] font-bold w-full max-w-[1200px] leading-relaxed mb-2 text-pretty">
+                    Harry Wu is a visual and experience designer working across interfaces, web experiences, motion, and AI-assisted media. He creates product concepts, interactive systems, and atmospheric visuals for screens, campaigns, and spatial formats.
                 </p>
                 <hr class="border-t border-black">
             </div>
@@ -971,84 +1228,96 @@
             </section>
 
             <section id="about-section" class="hidden fade-in">
-                <div class="mt-8 grid w-full grid-cols-1 gap-10 md:grid-cols-[1fr_auto_1fr] md:min-h-[68vh]">
-                    <div class="flex min-h-[56vh] flex-col justify-between font-bold uppercase text-[14px] md:min-h-[66vh] md:text-[16px] tracking-wide">
+                <div class="about-layout">
+                    <p class="about-profile-copy">
+                        Harry Wu is a visual and experience designer working across interfaces, web experiences, motion, and AI-assisted media. He creates product concepts, interactive systems, and atmospheric visuals for screens, campaigns, and spatial formats.
+                    </p>
+                    <div class="about-contact-list font-bold uppercase text-[14px] md:text-[16px] tracking-wide">
                         <a href="images/HARRY/Harry%20Wu_Resume.pdf" target="_blank" class="hover:text-gray-500 w-max">RESUME</a>
                         <a href="https://www.linkedin.com/in/harry-xingsheng-wu-a9ba96232/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-500 w-max">LINKEDIN</a>
                         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-500 w-max">INSTAGRAM</a>
-                        <a href="mailto:HARRY.WU313@GMAIL.COM" class="hover:text-gray-500 w-max">HARRY.WU313@GMAIL.COM</a>
+                        <a href="mailto:HARRY.WU313@GMAIL.COM" class="hover:text-gray-500 w-max" title="HARRY.WU313@GMAIL.COM">EMAIL</a>
                     </div>
-                    <div class="flex justify-start md:justify-center pt-12 md:pt-40">
+                    <div class="about-logo-wrap hidden" hidden aria-hidden="true">
                         <div class="elastic-logo-shell">
                             <div id="elastic-sticker-logo" class="elastic-logo" role="button" tabindex="0" aria-label="Drag the logo to reveal the sticker video">
-                                <video id="elastic-sticker-video" class="elastic-logo__source" src="images/HARRY/sticker-video-web.mp4" muted loop playsinline preload="auto" aria-hidden="true"></video>
+                                <video id="elastic-sticker-video" class="elastic-logo__source" src="images/HARRY/sticker-video-web.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                                 <canvas id="elastic-sticker-canvas" class="elastic-logo__canvas" width="900" height="420" aria-hidden="true"></canvas>
                                 <img class="elastic-logo__base" src="images/MAIN%20PAGE/sticker1.svg" alt="Harry Wu logo">
                             </div>
                         </div>
                     </div>
-                    <div class="hidden md:block"></div>
                 </div>
             </section>
 
             <section id="visual-section" class="hidden fade-in">
-                <div class="flex flex-col w-full border-t border-black pt-4">
-                    
-                    <div class="flex flex-col md:flex-row border-b border-black py-8 md:py-12">
-                        <div class="w-full md:w-1/4 pr-4 mb-6 md:mb-0 shrink-0">
-                            <h3 class="font-black-custom text-[13px] md:text-[14px] leading-snug">ARTIFICIAL<br>ATMOSPHERE<br>PRINTS</h3>
+                <div class="visual-series-list">
+                    <article class="visual-series">
+                        <div class="visual-series__heading">
+                            <h3 class="visual-series__title font-black-custom">ARTIFICIAL ATMOSPHERE PRINTS</h3>
                         </div>
-                        <div class="drag-scroll cursor-grab w-full md:w-3/4 flex overflow-x-auto hide-scrollbar gap-6 md:gap-10 pb-4 select-none">
-                            <img src="images/VISUAL/aaposter.jpg" onerror="this.src='images/VISUAL/aaposter.png'" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acr.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acr2.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
+                        <div class="visual-rail-shell">
+                            <div class="drag-scroll visual-rail hide-scrollbar">
+                                <figure class="visual-item"><img src="images/VISUAL/aaposter.jpg" onerror="this.src='images/VISUAL/aaposter.png'" alt="Artificial Atmosphere poster" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acr.png" alt="Field Guide to Rain Traces publication" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acr2.png" alt="Rain traces folded publication" loading="lazy" decoding="async" draggable="false"></figure>
+                            </div>
+                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="flex flex-col md:flex-row border-b border-black py-8 md:py-12">
-                        <div class="w-full md:w-1/4 pr-4 mb-6 md:mb-0 shrink-0">
-                            <h3 class="font-black-custom text-[13px] md:text-[14px] leading-snug">A COLLECTION<br>OF<br>RAINS</h3>
+                    <article class="visual-series">
+                        <div class="visual-series__heading">
+                            <h3 class="visual-series__title font-black-custom">A COLLECTION OF RAINS</h3>
                         </div>
-                        <div class="drag-scroll cursor-grab w-full md:w-3/4 flex overflow-x-auto hide-scrollbar gap-6 md:gap-10 pb-4 select-none">
-                            <img src="images/VISUAL/acor.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acor2.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acor3.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acor4.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acor5.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acor6.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/acor7.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
+                        <div class="visual-rail-shell">
+                            <div class="drag-scroll visual-rail hide-scrollbar">
+                                <figure class="visual-item"><img src="images/VISUAL/acor.png" alt="A Collection of Rains cover" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acor2.png" alt="A Collection of Rains spread 1" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acor3.png" alt="A Collection of Rains spread 2" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acor4.png" alt="A Collection of Rains spread 3" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acor5.png" alt="A Collection of Rains spread 4" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acor6.png" alt="A Collection of Rains spread 5" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/acor7.png" alt="A Collection of Rains spread 6" loading="lazy" decoding="async" draggable="false"></figure>
+                            </div>
+                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="flex flex-col md:flex-row border-b border-black py-8 md:py-12">
-                        <div class="w-full md:w-1/4 pr-4 mb-6 md:mb-0 shrink-0">
-                            <h3 class="font-black-custom text-[13px] md:text-[14px] leading-snug">DONALD C<br>TILLMAN<br>WATER<br>RECLAMATION<br>PLANT</h3>
+                    <article class="visual-series">
+                        <div class="visual-series__heading">
+                            <h3 class="visual-series__title font-black-custom">DONALD C TILLMAN WATER RECLAMATION PLANT</h3>
                         </div>
-                        <div class="drag-scroll cursor-grab w-full md:w-3/4 flex overflow-x-auto hide-scrollbar gap-6 md:gap-10 pb-4 select-none">
-                            <img src="images/VISUAL/booklet1.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/booklet2.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/booklet3.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/booklet4.png" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
+                        <div class="visual-rail-shell">
+                            <div class="drag-scroll visual-rail hide-scrollbar">
+                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet1.png" alt="Donald C Tillman publication spread 1" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet2.png" alt="Donald C Tillman publication spread 2" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet3.png" alt="Donald C Tillman publication spread 3" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet4.png" alt="Donald C Tillman publication spread 4" loading="lazy" decoding="async" draggable="false"></figure>
+                            </div>
+                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="flex flex-col md:flex-row border-b border-black py-8 md:py-12">
-                        <div class="w-full md:w-1/4 pr-4 mb-6 md:mb-0 shrink-0">
-                            <h3 class="font-black-custom text-[13px] md:text-[14px] leading-snug">AMERICAN<br>CUT PIECES</h3>
-                            <div class="font-black-custom mt-12 md:mt-20 text-[13px] md:text-[14px] leading-snug">
+                    <article class="visual-series">
+                        <div class="visual-series__heading">
+                            <h3 class="visual-series__title font-black-custom">AMERICAN CUT PIECES</h3>
+                            <div class="visual-series__credit font-black-custom">
                                 ROLE: Editorial Design<br>
                                 PHOTOGRAPHY: WEIJIAN SHI
                             </div>
                         </div>
-                        <div class="drag-scroll cursor-grab w-full md:w-3/4 flex overflow-x-auto hide-scrollbar gap-6 md:gap-10 pb-4 select-none">
-                            <img src="images/VISUAL/A1.jpg" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/A2.jpg" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/A3.jpg" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/A4.jpg" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
-                            <img src="images/VISUAL/A5.jpg" class="h-[180px] md:h-[220px] w-auto object-contain cursor-pointer">
+                        <div class="visual-rail-shell">
+                            <div class="drag-scroll visual-rail hide-scrollbar">
+                                <figure class="visual-item"><img src="images/VISUAL/A1.jpg" alt="American Cut Pieces editorial layout 1" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/A2.jpg" alt="American Cut Pieces editorial layout 2" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/A3.jpg" alt="American Cut Pieces editorial spread 1" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/A4.jpg" alt="American Cut Pieces editorial spread 2" loading="lazy" decoding="async" draggable="false"></figure>
+                                <figure class="visual-item"><img src="images/VISUAL/A5.jpg" alt="American Cut Pieces editorial spread 3" loading="lazy" decoding="async" draggable="false"></figure>
+                            </div>
+                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
-                    </div>
-
+                    </article>
                 </div>
             </section>
         
@@ -1101,6 +1370,22 @@
         }
 
         let elasticLogoController = null;
+        const elasticLogoEnabled = false;
+        let aboutViewportFrame = 0;
+
+        function syncAboutViewport() {
+            const aboutSection = document.getElementById('about-section');
+            if (!aboutSection || aboutSection.classList.contains('hidden')) return;
+
+            const sectionTop = Math.max(0, aboutSection.getBoundingClientRect().top);
+            const availableHeight = Math.max(240, Math.floor(window.innerHeight - sectionTop - 16));
+            document.documentElement.style.setProperty('--about-available-height', `${availableHeight}px`);
+        }
+
+        function scheduleAboutViewportSync() {
+            window.cancelAnimationFrame(aboutViewportFrame);
+            aboutViewportFrame = window.requestAnimationFrame(syncAboutViewport);
+        }
 
         function switchView(viewName) {
             const worksSection = document.getElementById('works-section');
@@ -1112,12 +1397,22 @@
 
             if (!worksSection || !aboutSection || !visualSection) return;
 
+            const isAboutView = viewName === 'about';
+
+            if (isAboutView) {
+                window.scrollTo({ top: 0, behavior: 'auto' });
+            }
+
+            document.body.classList.toggle('about-active', isAboutView);
+
             worksSection.classList.add('hidden');
             aboutSection.classList.add('hidden');
             visualSection.classList.add('hidden');
 
             if (commonHeader) {
-                if (viewName === 'works' || viewName === 'about') {
+                commonHeader.classList.remove('is-about');
+
+                if (viewName === 'works') {
                     commonHeader.classList.remove('hidden');
                 } else {
                     commonHeader.classList.add('hidden');
@@ -1139,8 +1434,13 @@
             const target = document.getElementById(viewName + '-section');
             if (target) target.classList.remove('hidden');
 
+            if (isAboutView) {
+                scheduleAboutViewportSync();
+            } else {
+                document.documentElement.style.removeProperty('--about-available-height');
+            }
+
             if (elasticLogoController) {
-                const isAboutView = viewName === 'about';
                 elasticLogoController.setActive(isAboutView);
 
                 if (isAboutView) {
@@ -1148,8 +1448,16 @@
                 }
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (!isAboutView) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
+
+        window.addEventListener('resize', () => {
+            if (document.body.classList.contains('about-active')) {
+                scheduleAboutViewportSync();
+            }
+        });
 
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
@@ -1194,30 +1502,42 @@
             const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const viewBox = { width: 900, height: 420 };
             const anchor = { x: 450, y: 210 };
-            const trailCount = 7;
+            const trailCount = 5;
+            const frameDelay = 2;
+            const frameBufferSize = trailCount * frameDelay + 1;
+            const layerOpacity = [1, 0.74, 0.54, 0.36, 0.2];
+            const followers = Array.from({ length: trailCount }, () => ({
+                x: 0,
+                y: 0,
+                velocityX: 0,
+                velocityY: 0
+            }));
+            const frameBuffer = Array.from({ length: frameBufferSize }, () => {
+                const frame = document.createElement('canvas');
+                frame.width = 180;
+                frame.height = 216;
+                return frame;
+            });
             const logoPath = new Path2D('M88.62,160.06c-19.39,4.96-19.92,8.39-29.86,14.09-1.63.93-2.88,2.3-4.44,2.35-4.69.14-8.47-3.19-11.22-8.81s-2.27-13.07,2.41-17.47h0c2.78-2.62,3.7-8.15,2.28-11.69-1.89-4.69-1.35-7.98-.75-12.79.78-6.31-1.89-11.71-4.38-13.57s-15.13-11.58-12.18-23.09c2.51-9.78,7.1-12.63,9.93-13.44,1.45-.42,2.48-1.69,2.65-3.2.5-4.65,2.32-13.65,8.94-17.87,9.13-5.82,17.37-3.09,19.52-1.48,1.54,1.15,3.33,3.4,4.07,4.73,1.16,2.08,4.05,2.36,5.63.58,4.54-5.12,13.1-12.59,19.57-15.32,10.69-4.51,19.2-5.01,22.82,0,3.88,5.38,1.25,7.94.41,12.42-.53,2.84,1.23,5.59,4.02,6.36,4.6,1.26,10.8,5.53,12.88,19,2.61,16.86-2.66,34.08-5.4,41.52-.8,2.17-.27,4.6,1.38,6.22,3,2.93,7.22,8.47,7.01,16.32-.31,12.12-7.28,16.33-12.9,17.63-13.52,3.11-14.54-9.59-42.38-2.47Z');
             const state = {
                 targetX: 0,
                 targetY: 0,
-                currentX: 0,
-                currentY: 0,
-                velocityX: 0,
-                velocityY: 0,
                 dragging: false,
                 pointerId: null,
                 startClientX: 0,
                 startClientY: 0,
                 dragOriginX: 0,
                 dragOriginY: 0,
-                sequenceStart: 0,
                 active: false
             };
 
             let frameId = 0;
             let demoShown = false;
             let demoTimer = 0;
-
-            const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+            let artworkResetTimer = 0;
+            let newestFrameIndex = -1;
+            let capturedFrameCount = 0;
+            let lastCapturedTime = -1;
 
             function setPlayerPlaying(shouldPlay) {
                 if (shouldPlay) {
@@ -1254,29 +1574,63 @@
                     sourceY = (videoFrame.videoHeight - sourceHeight) / 2;
                 }
 
-                targetContext.drawImage(
-                    videoFrame,
-                    sourceX,
-                    sourceY,
-                    sourceWidth,
-                    sourceHeight,
-                    0,
-                    0,
-                    180,
-                    216
-                );
+                targetContext.drawImage(videoFrame, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, 180, 216);
             }
 
-            function render(now) {
+            function clearFrameBuffer() {
+                newestFrameIndex = -1;
+                capturedFrameCount = 0;
+                lastCapturedTime = -1;
+            }
+
+            function captureVideoFrame() {
+                if (videoFrame.readyState < 2 || !videoFrame.videoWidth || !videoFrame.videoHeight) return;
+                if (videoFrame.currentTime === lastCapturedTime) return;
+
+                newestFrameIndex = (newestFrameIndex + 1) % frameBufferSize;
+                const frame = frameBuffer[newestFrameIndex];
+                const frameContext = frame.getContext('2d');
+                frameContext.clearRect(0, 0, frame.width, frame.height);
+                drawVideoCover(frameContext);
+                capturedFrameCount = Math.min(capturedFrameCount + 1, frameBufferSize);
+                lastCapturedTime = videoFrame.currentTime;
+            }
+
+            function getDelayedFrame(index) {
+                if (newestFrameIndex < 0 || capturedFrameCount < 1) return null;
+
+                const requestedDelay = index * frameDelay;
+                const availableDelay = Math.min(requestedDelay, capturedFrameCount - 1);
+                const frameIndex = (newestFrameIndex - availableDelay + frameBufferSize) % frameBufferSize;
+                return frameBuffer[frameIndex];
+            }
+
+            function allFollowersSettled() {
+                return followers.every(follower => (
+                    Math.abs(follower.x) < 0.12
+                    && Math.abs(follower.y) < 0.12
+                    && Math.abs(follower.velocityX) < 0.12
+                    && Math.abs(follower.velocityY) < 0.12
+                ));
+            }
+
+            function render() {
                 frameId = 0;
 
-                const stiffness = state.dragging ? 0.26 : 0.1;
-                const damping = state.dragging ? 0.74 : 0.8;
+                if (!stage.classList.contains('is-animating')) {
+                    resetArtwork();
+                    return;
+                }
 
-                state.velocityX = (state.velocityX + (state.targetX - state.currentX) * stiffness) * damping;
-                state.velocityY = (state.velocityY + (state.targetY - state.currentY) * stiffness) * damping;
-                state.currentX += state.velocityX;
-                state.currentY += state.velocityY;
+                followers.forEach((follower, index) => {
+                    const target = index === 0 ? state : followers[index - 1];
+                    const stiffness = state.dragging ? 0.24 - index * 0.018 : 0.16 - index * 0.012;
+                    const damping = 0.74 + index * 0.018;
+                    follower.velocityX = (follower.velocityX + (target.targetX ?? target.x) * stiffness - follower.x * stiffness) * damping;
+                    follower.velocityY = (follower.velocityY + (target.targetY ?? target.y) * stiffness - follower.y * stiffness) * damping;
+                    follower.x += follower.velocityX;
+                    follower.y += follower.velocityY;
+                });
 
                 const stageRect = stage.getBoundingClientRect();
                 const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
@@ -1290,49 +1644,45 @@
 
                 context.setTransform(canvas.width / viewBox.width, 0, 0, canvas.height / viewBox.height, 0, 0);
                 context.clearRect(0, 0, viewBox.width, viewBox.height);
+                captureVideoFrame();
 
                 const baseRect = baseLogo ? baseLogo.getBoundingClientRect() : { width: stageRect.width * 0.3 };
                 const shapeScale = (baseRect.width * (viewBox.width / stageRect.width)) / 180;
-                const distance = Math.hypot(state.currentX, state.currentY);
-                const masterOpacity = clamp(distance / 18, 0, 1);
-                const isSequencing = state.dragging || stage.classList.contains('is-dragging');
 
-                for (let index = 0; index < trailCount; index += 1) {
-                    const progress = (index + 1) / trailCount;
-                    const centerX = anchor.x + state.currentX * progress;
-                    const centerY = anchor.y + state.currentY * progress;
-                    const distanceReveal = clamp((distance - index * 40 - 8) / 38, 0, 1);
-                    const timeReveal = isSequencing
-                        ? clamp((now - state.sequenceStart - index * 55) / 120, 0, 1)
-                        : 1;
-                    const opacity = masterOpacity * Math.min(distanceReveal, timeReveal);
-
-                    if (opacity <= 0.001) continue;
-
+                for (let index = trailCount - 1; index >= 0; index -= 1) {
+                    const follower = followers[index];
                     context.save();
-                    context.globalAlpha = opacity;
-                    context.translate(centerX, centerY);
+                    context.globalAlpha = layerOpacity[index];
+                    context.translate(anchor.x + follower.x, anchor.y + follower.y);
                     context.scale(shapeScale, shapeScale);
                     context.translate(-90, -108);
                     context.clip(logoPath);
-                    drawVideoCover(context);
+                    const delayedFrame = getDelayedFrame(index);
+
+                    if (delayedFrame) {
+                        context.drawImage(delayedFrame, 0, 0, 180, 216);
+                    } else {
+                        drawVideoCover(context);
+                    }
+
                     context.restore();
                 }
 
                 const settled = !state.dragging
                     && Math.abs(state.targetX) < 0.02
                     && Math.abs(state.targetY) < 0.02
-                    && Math.abs(state.currentX) < 0.08
-                    && Math.abs(state.currentY) < 0.08
-                    && Math.abs(state.velocityX) < 0.08
-                    && Math.abs(state.velocityY) < 0.08;
+                    && allFollowersSettled();
 
                 if (settled) {
-                    state.currentX = 0;
-                    state.currentY = 0;
-                    state.velocityX = 0;
-                    state.velocityY = 0;
-                    resetArtwork();
+                    followers.forEach(follower => {
+                        follower.x = 0;
+                        follower.y = 0;
+                        follower.velocityX = 0;
+                        follower.velocityY = 0;
+                    });
+                    stage.classList.remove('is-animating', 'is-dragging');
+                    window.clearTimeout(artworkResetTimer);
+                    artworkResetTimer = window.setTimeout(resetArtwork, 190);
                     return;
                 }
 
@@ -1345,9 +1695,16 @@
                 }
             }
 
+            function activateArtwork() {
+                window.clearTimeout(artworkResetTimer);
+                stage.classList.add('is-animating');
+                setPlayerPlaying(true);
+                wakeAnimation();
+            }
+
             function limitTarget(x, y) {
-                const horizontalLimit = 335;
-                const verticalLimit = 145;
+                const horizontalLimit = 110;
+                const verticalLimit = 45;
                 const normalizedDistance = Math.hypot(x / horizontalLimit, y / verticalLimit);
 
                 if (normalizedDistance > 1) {
@@ -1367,9 +1724,11 @@
                 const baseRect = baseLogo ? baseLogo.getBoundingClientRect() : { width: rect.width * 0.3, height: rect.height * 0.7 };
                 const localX = (event.clientX - rect.left) * (viewBox.width / rect.width);
                 const localY = (event.clientY - rect.top) * (viewBox.height / rect.height);
-                const hitRadiusX = baseRect.width * (viewBox.width / rect.width) * 0.48;
-                const hitRadiusY = baseRect.height * (viewBox.height / rect.height) * 0.48;
-                const isOnLogo = Math.hypot((localX - anchor.x) / hitRadiusX, (localY - anchor.y) / hitRadiusY) <= 1;
+                const hitRadiusX = baseRect.width * (viewBox.width / rect.width) * 0.52;
+                const hitRadiusY = baseRect.height * (viewBox.height / rect.height) * 0.52;
+                const hitCenterX = anchor.x + followers[0].x;
+                const hitCenterY = anchor.y + followers[0].y;
+                const isOnLogo = Math.hypot((localX - hitCenterX) / hitRadiusX, (localY - hitCenterY) / hitRadiusY) <= 1;
 
                 if (!isOnLogo) return;
 
@@ -1379,13 +1738,12 @@
                 state.pointerId = event.pointerId;
                 state.startClientX = event.clientX;
                 state.startClientY = event.clientY;
-                state.dragOriginX = state.currentX;
-                state.dragOriginY = state.currentY;
-                state.sequenceStart = performance.now();
+                state.dragOriginX = followers[0].x;
+                state.dragOriginY = followers[0].y;
+                clearFrameBuffer();
                 stage.classList.add('is-dragging');
+                activateArtwork();
                 stage.setPointerCapture(event.pointerId);
-                setPlayerPlaying(true);
-                wakeAnimation();
             }
 
             function moveDrag(event) {
@@ -1422,19 +1780,16 @@
 
                 if (onlyOnce) demoShown = true;
                 window.clearTimeout(demoTimer);
-                state.sequenceStart = performance.now();
-                state.targetX = 330;
-                state.targetY = -18;
-                stage.classList.add('is-dragging');
-                setPlayerPlaying(true);
-                wakeAnimation();
+                clearFrameBuffer();
+                state.targetX = 90;
+                state.targetY = -6;
+                activateArtwork();
 
                 demoTimer = window.setTimeout(() => {
                     state.targetX = 0;
                     state.targetY = 0;
-                    stage.classList.remove('is-dragging');
                     wakeAnimation();
-                }, 900);
+                }, 520);
             }
 
             stage.addEventListener('pointerdown', beginDrag);
@@ -1442,13 +1797,12 @@
             stage.addEventListener('pointerup', endDrag);
             stage.addEventListener('pointercancel', endDrag);
             stage.addEventListener('lostpointercapture', endDrag);
-            stage.addEventListener('keydown', (event) => {
+            stage.addEventListener('keydown', event => {
                 if (event.key !== 'Enter' && event.key !== ' ') return;
                 event.preventDefault();
                 playNudge(false);
             });
             videoFrame.muted = true;
-            videoFrame.addEventListener('loadeddata', wakeAnimation);
 
             resetArtwork();
 
@@ -1459,12 +1813,20 @@
 
                     if (!isActive) {
                         window.clearTimeout(demoTimer);
+                        window.clearTimeout(artworkResetTimer);
                         state.dragging = false;
                         state.pointerId = null;
                         state.targetX = 0;
                         state.targetY = 0;
-                        stage.classList.remove('is-dragging');
-                        wakeAnimation();
+                        followers.forEach(follower => {
+                            follower.x = 0;
+                            follower.y = 0;
+                            follower.velocityX = 0;
+                            follower.velocityY = 0;
+                        });
+                        clearFrameBuffer();
+                        stage.classList.remove('is-dragging', 'is-animating');
+                        resetArtwork();
                     }
                 },
                 demo() {
@@ -1474,7 +1836,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            elasticLogoController = initElasticStickerLogo();
+            elasticLogoController = elasticLogoEnabled ? initElasticStickerLogo() : null;
 
             document.querySelectorAll('.lw-featured__slide[data-href]').forEach(slide => {
                 const openProject = () => {
