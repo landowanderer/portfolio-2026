@@ -1,5 +1,9 @@
 :root {
   color-scheme: light;
+  --motion-menu-enter: 220ms;
+  --motion-menu-exit: 160ms;
+  --motion-menu-fade: 180ms;
+  --motion-menu-ease: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 html {
@@ -24,6 +28,16 @@ button:focus-visible,
   outline-offset: 4px;
 }
 
+#top-nav a:focus-visible,
+#top-nav button:focus-visible,
+#bottom-nav a:focus-visible,
+#bottom-nav button:focus-visible {
+  outline: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+}
+
 #works-nav-group.dropdown-open > a {
   opacity: 0;
 }
@@ -37,21 +51,127 @@ button:focus-visible,
   text-align: center !important;
 }
 
+#top-nav #works-nav-group .dropdown-menu {
+  width: max-content !important;
+  min-width: 150px;
+  max-width: calc(100vw - 24px);
+}
+
 #top-nav #works-nav-group .dropdown-menu a {
   display: block;
-  width: 100% !important;
-  max-width: 100% !important;
+  width: auto !important;
+  max-width: none !important;
   font-size: 13px !important;
   line-height: 1.12 !important;
   text-align: center !important;
-  white-space: normal !important;
+  white-space: nowrap !important;
   overflow: visible !important;
   overflow-wrap: normal !important;
   word-break: normal !important;
 }
 
-#top-nav #works-nav-group .dropdown-menu .dropdown-long-title {
+#top-nav #works-nav-group .dropdown-menu a.dropdown-long-title {
   white-space: nowrap !important;
+  font-size: 13px !important;
+  letter-spacing: 0.05em !important;
+}
+
+#top-nav #works-nav-group #more-dots {
+  display: none !important;
+}
+
+#top-nav #works-nav-group #extra-projects {
+  max-height: none !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  transition: none !important;
+}
+
+#top-nav #works-nav-group #extra-projects > a:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Keep the large WORKS panel on the compositor. The previous clip-path
+   reveal repainted the full menu on every frame and felt sticky on hover. */
+html body #top-nav #works-nav-group > a {
+  transition: opacity var(--motion-menu-exit) ease-out !important;
+}
+
+html body #top-nav #works-nav-group .dropdown-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  clip-path: none !important;
+  transform: translate3d(-50%, -10px, 0) scale(0.985) !important;
+  transform-origin: 50% 0;
+  backface-visibility: hidden;
+  will-change: opacity, transform;
+  contain: layout paint;
+  transition:
+    opacity 130ms ease-in,
+    transform var(--motion-menu-exit) var(--motion-menu-ease),
+    visibility 0s linear var(--motion-menu-exit) !important;
+}
+
+html body #top-nav #works-nav-group .dropdown-menu > a,
+html body #top-nav #works-nav-group .dropdown-menu > button,
+html body #top-nav #works-nav-group .dropdown-menu #extra-projects > a {
+  opacity: 0;
+  transform: translate3d(0, -4px, 0);
+  transition:
+    color 180ms ease,
+    opacity 100ms ease-in,
+    transform 120ms ease-in !important;
+}
+
+html body #top-nav #works-nav-group.dropdown-open .dropdown-menu,
+html body #top-nav #works-nav-group:focus-within .dropdown-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translate3d(-50%, 0, 0) scale(1) !important;
+  transition:
+    opacity var(--motion-menu-fade) var(--motion-menu-ease),
+    transform var(--motion-menu-enter) var(--motion-menu-ease),
+    visibility 0s linear 0s !important;
+}
+
+html body #top-nav #works-nav-group.dropdown-open .dropdown-menu > a,
+html body #top-nav #works-nav-group.dropdown-open .dropdown-menu > button,
+html body #top-nav #works-nav-group.dropdown-open .dropdown-menu #extra-projects > a,
+html body #top-nav #works-nav-group:focus-within .dropdown-menu > a,
+html body #top-nav #works-nav-group:focus-within .dropdown-menu > button,
+html body #top-nav #works-nav-group:focus-within .dropdown-menu #extra-projects > a {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    color 180ms ease,
+    opacity 180ms var(--motion-menu-ease) 20ms,
+    transform 180ms var(--motion-menu-ease) 20ms !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html body #top-nav #works-nav-group:hover .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translate3d(-50%, 0, 0) scale(1) !important;
+    transition:
+      opacity var(--motion-menu-fade) var(--motion-menu-ease),
+      transform var(--motion-menu-enter) var(--motion-menu-ease),
+      visibility 0s linear 0s !important;
+  }
+
+  html body #top-nav #works-nav-group:hover .dropdown-menu > a,
+  html body #top-nav #works-nav-group:hover .dropdown-menu > button,
+  html body #top-nav #works-nav-group:hover .dropdown-menu #extra-projects > a {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition:
+      color 180ms ease,
+      opacity 180ms var(--motion-menu-ease) 20ms,
+      transform 180ms var(--motion-menu-ease) 20ms !important;
+  }
 }
 
 .site-contact-row {
@@ -88,6 +208,10 @@ button:focus-visible,
     font-size: 11.5px !important;
   }
 
+  #top-nav #works-nav-group .dropdown-menu a.dropdown-long-title {
+    font-size: 11.5px !important;
+  }
+
   .site-contact-links {
     justify-content: flex-start;
   }
@@ -105,5 +229,13 @@ button:focus-visible,
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  html body #top-nav #works-nav-group > a,
+  html body #top-nav #works-nav-group .dropdown-menu,
+  html body #top-nav #works-nav-group .dropdown-menu > a,
+  html body #top-nav #works-nav-group .dropdown-menu > button,
+  html body #top-nav #works-nav-group .dropdown-menu #extra-projects > a {
+    transition: none !important;
   }
 }
