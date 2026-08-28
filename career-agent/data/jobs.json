@@ -1,0 +1,2727 @@
+{
+  "version": 1,
+  "run_date": "2026-07-26",
+  "jobs": [
+    {
+      "job_id": "aninebing-5282740008",
+      "canonical_url": "https://job-boards.greenhouse.io/aninebing/jobs/5282740008",
+      "source_name": "Greenhouse",
+      "source_url": "https://job-boards.greenhouse.io/aninebing/jobs/5282740008",
+      "also_seen_on": [
+        "https://builtin.com/job/associate-graphic-designer/9992911",
+        "https://simplify.jobs/p/e381143f-f57c-4499-9497-0cadc43a00a0/Graphic-Designer-Associate"
+      ],
+      "company": "ANINE BING",
+      "title": "Associate Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Los Angeles, CA",
+      "remote_type": "On-site",
+      "employment_type": "Unknown",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_currency": null,
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "5282740008",
+      "experience_required": "1-2 years of relevant design experience, including internships or freelance work.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "The application asks whether the applicant is authorized to work in the United States; the posting does not state an eligibility policy.",
+      "sponsorship_text": "The application asks whether sponsorship is required now or in the future; the posting does not state whether sponsorship is available.",
+      "role_summary": "Support an LA fashion-house creative team with digital and print assets across web, product pages, email, SMS, social, paid media, and seasonal campaigns.",
+      "responsibilities": [
+        "Design on-brand creative assets for digital and print channels.",
+        "Maintain consistency with brand guidelines and art direction.",
+        "Collaborate with copy, marketing, and merchandising.",
+        "Contribute to seasonal campaign concepts and execution."
+      ],
+      "required_skills": [
+        "Adobe Photoshop",
+        "Adobe Illustrator",
+        "Adobe InDesign",
+        "composition and visual consistency",
+        "brand storytelling",
+        "cross-functional collaboration"
+      ],
+      "preferred_skills": [
+        "fashion or lifestyle brand experience",
+        "Figma",
+        "motion design"
+      ],
+      "portfolio_requirements": "Strong portfolio across e-commerce, marketing, and digital channels.",
+      "fit_score": 89,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 15,
+        "work_quality": 8,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Anaago provides real campaign, social, photo/video, and cross-channel brand-production evidence.",
+        "ZNTR and Artificial Atmosphere demonstrate strong visual systems, typography, art direction, motion, and image-making.",
+        "The 1-2 year range explicitly counts internships and freelance work and is aligned with Harry's early-career level."
+      ],
+      "gaps": [
+        "The public portfolio does not yet foreground e-commerce, email, SMS, or paid-media production as a dedicated case study.",
+        "Salary and the employer's sponsorship policy are not stated; application answers require Harry's confirmation."
+      ],
+      "red_flags": [
+        "Official posting date is unknown.",
+        "On-site expectations are stated only as Los Angeles-based, without a weekly schedule."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "ZNTR",
+        "Artificial Atmosphere",
+        "Anaago (only if public sharing is approved)"
+      ],
+      "status": "shortlisted",
+      "next_action": "Review today; if approved, confirm Anaago visibility and tailor the current baseline toward campaigns, brand consistency, and Adobe craft.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://job-boards.greenhouse.io/aninebing/jobs/5282740008",
+        "employment_type": "Unknown: exact employment type is not labeled in the visible official JD.",
+        "salary": "Unknown: not stated on the official posting.",
+        "date_posted": "Unknown: not stated on the official posting. Third-party discovery sources suggest June 2026, but that is not stored as canonical fact.",
+        "experience": "https://job-boards.greenhouse.io/aninebing/jobs/5282740008",
+        "work_authorization": "https://job-boards.greenhouse.io/aninebing/jobs/5282740008",
+        "sponsorship": "https://job-boards.greenhouse.io/aninebing/jobs/5282740008"
+      },
+      "inferences": [
+        "Likely best aligned to Track A because the core output is brand and campaign design.",
+        "The role appears active because the official application form was present on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "haus-motion-78902CC55A",
+      "canonical_url": "https://madeinhaus.com/careers/78902CC55A",
+      "source_name": "Company career page",
+      "source_url": "https://madeinhaus.com/careers/78902CC55A",
+      "also_seen_on": [
+        "https://builtin.com/job/motion-designer/9259710"
+      ],
+      "company": "Haus",
+      "title": "Motion Designer",
+      "primary_track": "A",
+      "secondary_track": "C",
+      "location": "Los Angeles, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": 75000,
+      "salary_max": 105000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "78902CC55A",
+      "experience_required": "No numeric year requirement stated; a strong motion portfolio is required.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Create motion for campaigns, digital experiences, and brand storytelling at a multidisciplinary Los Angeles digital design studio.",
+      "responsibilities": [
+        "Animate work across social, web, brand, and campaign formats.",
+        "Collaborate with art and creative directors from early concept stages.",
+        "Develop style frames, animatics, and delivery-ready assets.",
+        "Explore emerging procedural and interactive motion techniques."
+      ],
+      "required_skills": [
+        "strong motion design portfolio",
+        "After Effects",
+        "Premiere",
+        "design fundamentals",
+        "Figma collaboration"
+      ],
+      "preferred_skills": [
+        "Cinema 4D or other 3D",
+        "procedural animation",
+        "Cavalry",
+        "Lottie",
+        "Rive"
+      ],
+      "portfolio_requirements": "Strong motion portfolio demonstrating range, craft, timing, and feel.",
+      "fit_score": 88,
+      "confidence_score": 83,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 19,
+        "experience_level": 13,
+        "work_quality": 10,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 18,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Artificial Atmosphere, One Hit, and ZNTR show motion-led visual storytelling across film, brand, and digital formats.",
+        "Harry's resume directly lists After Effects, Premiere, Figma, and end-to-end photo/video and motion production.",
+        "The LA location and the studio's blend of creativity and technology align closely with Harry's strongest positioning."
+      ],
+      "gaps": [
+        "No verified Cinema 4D, Cavalry, Lottie, Rive, or procedural-animation experience is documented.",
+        "The portfolio needs a tightly edited motion reel or clearly sequenced motion samples to meet the stated portfolio bar."
+      ],
+      "red_flags": [
+        "Official posting date is unknown.",
+        "Work-authorization and sponsorship policies are not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "Artificial Atmosphere",
+        "ZNTR",
+        "One Hit"
+      ],
+      "status": "shortlisted",
+      "next_action": "Review today; if approved, audit the motion reel order and lead with After Effects, Premiere, visual systems, and concept-to-finish production.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://madeinhaus.com/careers/78902CC55A",
+        "employment_type": "https://madeinhaus.com/careers/78902CC55A",
+        "salary": "https://madeinhaus.com/careers/78902CC55A",
+        "date_posted": "Unknown: not stated on the official company page.",
+        "experience": "https://madeinhaus.com/careers/78902CC55A",
+        "work_authorization": "Unknown: not stated on the official company page.",
+        "sponsorship": "Unknown: not stated on the official company page."
+      },
+      "inferences": [
+        "Hybrid is inferred from the official page's statement that the team uses a mix of in-person and remote work.",
+        "The role appears active because the official page exposed an Apply now link on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "helpscout-82c4c13c",
+      "canonical_url": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+      "also_seen_on": [
+        "https://builtin.com/job/brand-designer/10272637",
+        "https://startup.jobs/company/helpscout"
+      ],
+      "company": "Help Scout",
+      "title": "Brand Designer",
+      "primary_track": "A",
+      "secondary_track": "B",
+      "location": "Remote - United States or Canada",
+      "remote_type": "Remote",
+      "employment_type": "Full-time",
+      "salary_min": 95000,
+      "salary_max": 105000,
+      "salary_currency": "USD",
+      "date_posted": "2026-07-20",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+      "experience_required": "No numeric years stated; described as a role for a designer honing their craft and hungry to grow.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Teammates must already be authorized to work from their home country.",
+      "sponsorship_text": "Help Scout states that it does not sponsor visas.",
+      "role_summary": "Produce brand work across static, motion, and web surfaces for a fully remote software company, with mentorship from a Principal Brand Designer.",
+      "responsibilities": [
+        "Design ads and social graphics.",
+        "Contribute to editorial hubs and sub-brands.",
+        "Partner with Product Marketing on product content.",
+        "Balance fast-turnaround assets with larger brand projects."
+      ],
+      "required_skills": [
+        "visual design",
+        "composition",
+        "typography",
+        "Figma",
+        "motion design",
+        "web design",
+        "asynchronous communication"
+      ],
+      "preferred_skills": [
+        "AI-assisted productivity",
+        "brand systems",
+        "product marketing collaboration"
+      ],
+      "portfolio_requirements": "No explicit upload requirement was visible in the extracted JD, but the role's craft expectations imply a strong portfolio.",
+      "fit_score": 92,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 15,
+        "work_quality": 9,
+        "location_work_mode": 10,
+        "work_authorization": 3,
+        "freshness": 5,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The role explicitly combines static, motion, web, Figma, and AI-assisted workflows, matching Harry's cross-disciplinary evidence.",
+        "ZNTR, Anaago, and Artificial Atmosphere support brand systems, social content, motion, and visual storytelling.",
+        "The role is framed as a mentored growth position rather than a senior owner role."
+      ],
+      "gaps": [
+        "The employer explicitly does not sponsor visas, so Harry must confirm whether the role is viable under current and future authorization needs.",
+        "The portfolio should make paid-ad, landing-page, and product-marketing outputs easier to find."
+      ],
+      "red_flags": [
+        "No-sponsorship policy requires manual authorization review."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "ZNTR",
+        "Anaago (only if public sharing is approved)",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Confirm work-authorization viability before spending tailoring time; if viable, prioritize this role today.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+        "employment_type": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+        "salary": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/helpscout?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+        "work_authorization": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8",
+        "sponsorship": "https://jobs.ashbyhq.com/helpscout/82c4c13c-0a9e-4afe-a0cb-d925cf7a15b8"
+      },
+      "inferences": [
+        "California residency appears permitted because the role is open across the United States; this should still be confirmed during review.",
+        "The role appears active because the official ATS exposed an application action on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "zip-4d0ef7e9",
+      "canonical_url": "https://jobs.ashbyhq.com/zip/4d0ef7e9-a7aa-458f-b049-4144b9157183",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/zip/4d0ef7e9-a7aa-458f-b049-4144b9157183",
+      "also_seen_on": [
+        "https://designproject.io/jobs/jobs/product-designer-new-grad-at-zip-im6mto",
+        "https://zip.com/careers?departmentId=7d6388ea-1527-49c0-9c5a-89743ccf10f5"
+      ],
+      "company": "Zip",
+      "title": "Product Designer (New Grad)",
+      "primary_track": "B",
+      "secondary_track": null,
+      "location": "San Francisco, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": 120000,
+      "salary_max": 130000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-25",
+      "requisition_id": "4d0ef7e9-a7aa-458f-b049-4144b9157183",
+      "experience_required": "New-grad role; prior product-design internship, apprenticeship, or relevant projects are welcome.",
+      "education_required": "Pursuing a BS or MS in Design, HCI, or a related field with graduation between December 2025 and June 2026.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Join Zip's first 2026 new-grad product-design cohort and contribute to customer-facing enterprise workflows with mentorship from experienced designers.",
+      "responsibilities": [
+        "Contribute to features from concept to launch.",
+        "Design complex workflows with senior guidance.",
+        "Create wireframes, high-fidelity mockups, and interactive prototypes.",
+        "Collaborate with product, engineering, and customer-facing teams."
+      ],
+      "required_skills": [
+        "design fundamentals",
+        "user-centered problem solving",
+        "web or mobile product design",
+        "Figma",
+        "basic prototyping",
+        "communication and collaboration"
+      ],
+      "preferred_skills": [
+        "HTML",
+        "CSS",
+        "JavaScript concepts"
+      ],
+      "portfolio_requirements": "Portfolio demonstrating design fundamentals, problem-solving, and user-centered thinking.",
+      "fit_score": 84,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 18,
+        "experience_level": 15,
+        "work_quality": 10,
+        "location_work_mode": 5,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Harry's 2026 MFA graduation falls inside the explicitly stated December 2025-June 2026 window.",
+        "Field Brief and the Anaago Mini Program support flows, information architecture, high-fidelity prototyping, and product storytelling.",
+        "Figma plus HTML/CSS are verified, and front-end familiarity is only a plus."
+      ],
+      "gaps": [
+        "The current materials do not clearly prove a shipped customer-facing product or formal product-design internship.",
+        "The role requires three days per week in San Francisco, so relocation willingness and timing must be confirmed."
+      ],
+      "red_flags": [
+        "Closed: the official Ashby current-postings API no longer lists this requisition.",
+        "Search-index results are stale and must not be treated as proof that applications are open."
+      ],
+      "recommended_resume": "Product/Experience route - use the current baseline only temporarily until Resume_Product_Experience.pdf is supplied.",
+      "recommended_projects": [
+        "Field Brief",
+        "Anaago WeChat Mini Program",
+        "ZNTR"
+      ],
+      "status": "closed",
+      "next_action": "No action. The exact requisition is absent from Zip's official Ashby current-postings API on 2026-07-25.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.ashbyhq.com/zip/4d0ef7e9-a7aa-458f-b049-4144b9157183",
+        "employment_type": "https://jobs.ashbyhq.com/zip/4d0ef7e9-a7aa-458f-b049-4144b9157183",
+        "salary": "https://jobs.ashbyhq.com/zip/4d0ef7e9-a7aa-458f-b049-4144b9157183",
+        "date_posted": "Unknown: not stated on the official ATS. A third-party discovery source lists 2026-02-11, which is not treated as canonical.",
+        "experience": "https://jobs.ashbyhq.com/zip/4d0ef7e9-a7aa-458f-b049-4144b9157183",
+        "work_authorization": "Unknown: not stated on the official ATS page.",
+        "sponsorship": "Unknown: not stated on the official ATS page."
+      },
+      "inferences": [
+        "The role is treated as closed because the exact requisition is absent from the employer's official current-postings API."
+      ]
+    },
+    {
+      "job_id": "quilt-5186941007",
+      "canonical_url": "https://job-boards.greenhouse.io/quilt/jobs/5186941007",
+      "source_name": "Greenhouse",
+      "source_url": "https://job-boards.greenhouse.io/quilt/jobs/5186941007",
+      "also_seen_on": [],
+      "company": "Quilt",
+      "title": "Visual Designer",
+      "primary_track": "A",
+      "secondary_track": "B",
+      "location": "Redwood City, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": 95000,
+      "salary_max": 115000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "5186941007",
+      "experience_required": "2-5 years of professional design experience; the posting says quality matters more than years.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Help grow a climate-tech brand across social, paid media, digital, print, video, partner materials, campaigns, and brand guidelines.",
+      "responsibilities": [
+        "Support projects from concept to completion across social, paid, digital, print, and video.",
+        "Collaborate with marketing, partner success, UX, and product.",
+        "Review partner co-branded materials.",
+        "Maintain and evolve brand guidelines."
+      ],
+      "required_skills": [
+        "visual design across media",
+        "typography",
+        "layout",
+        "color",
+        "composition",
+        "brand guidelines",
+        "web, email, and social",
+        "print production"
+      ],
+      "preferred_skills": [
+        "photo editing",
+        "video editing"
+      ],
+      "portfolio_requirements": "Portfolio required; quality of work is stated to matter more than years of experience.",
+      "fit_score": 82,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 19,
+        "experience_level": 12,
+        "work_quality": 9,
+        "location_work_mode": 6,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Anaago and the portfolio demonstrate social, campaign, photo/video, motion, print, and multi-channel brand execution.",
+        "ZNTR shows a modular identity system and web expression; Artificial Atmosphere adds rich image-making and physical outputs.",
+        "The employer explicitly says portfolio quality matters more than the stated year count."
+      ],
+      "gaps": [
+        "The 2-5 year requirement is above Harry's clearest full-time professional tenure and makes this a competitive early-career stretch.",
+        "The role requires three days weekly in Redwood City; relocation or a long commute would need confirmation."
+      ],
+      "red_flags": [
+        "Official posting date is unknown.",
+        "Work-authorization and sponsorship policies are not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "ZNTR",
+        "Anaago (only if public sharing is approved)",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Review today; apply only if Redwood City hybrid work is realistic, then foreground cross-channel production and brand-system craft.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://job-boards.greenhouse.io/quilt/jobs/5186941007",
+        "employment_type": "https://job-boards.greenhouse.io/quilt/jobs/5186941007",
+        "salary": "https://job-boards.greenhouse.io/quilt/jobs/5186941007",
+        "date_posted": "Unknown: not stated on the official posting.",
+        "experience": "https://job-boards.greenhouse.io/quilt/jobs/5186941007",
+        "work_authorization": "Unknown: not stated on the official posting.",
+        "sponsorship": "Unknown: not stated on the official posting."
+      },
+      "inferences": [
+        "The role appears active because the official application form was present on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "centerfield-ff72748e",
+      "canonical_url": "https://jobs.lever.co/centerfield/ff72748e-9086-41b1-9559-1d51ad299ac7",
+      "source_name": "Lever",
+      "source_url": "https://jobs.lever.co/centerfield/ff72748e-9086-41b1-9559-1d51ad299ac7",
+      "also_seen_on": [
+        "https://wellfound.com/jobs/3287975-junior-product-designer",
+        "https://designjobs.careers/job/00000000-0000-0000-0000-000000002aaf"
+      ],
+      "company": "Centerfield",
+      "title": "Junior Product Designer",
+      "primary_track": "B",
+      "secondary_track": "A",
+      "location": "Los Angeles, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": 75000,
+      "salary_max": 85000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-25",
+      "requisition_id": "ff72748e-9086-41b1-9559-1d51ad299ac7",
+      "experience_required": "0-2 years in digital, web, graphic, UX/UI, or product design.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Design and iterate performance-oriented digital experiences, promotional layouts, component libraries, and UX/UI work for Centerfield's digital brands.",
+      "responsibilities": [
+        "Support data-driven UX strategies.",
+        "Design layouts and promotional offers.",
+        "Work with A/B testing and site-performance signals.",
+        "Maintain Figma component and asset libraries.",
+        "Collaborate with product, engineering, analytics, and stakeholders."
+      ],
+      "required_skills": [
+        "Figma",
+        "visual design fundamentals",
+        "UX/UI principles",
+        "responsive web",
+        "organization and prioritization",
+        "cross-functional communication"
+      ],
+      "preferred_skills": [
+        "A/B testing",
+        "user-data analysis",
+        "JIRA",
+        "digital advertising agency experience"
+      ],
+      "portfolio_requirements": "A portfolio is implied by the design role but no specific requirement was captured in the official search excerpt.",
+      "fit_score": 85,
+      "confidence_score": 70,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 18,
+        "experience_level": 15,
+        "work_quality": 7,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 4
+      },
+      "confidence_components": {
+        "original_jd_access": 20,
+        "open_status_verified": 20,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The title, 0-2 year range, LA location, and three-day hybrid schedule align unusually well with Harry's level and location.",
+        "Field Brief and the Anaago Mini Program support information architecture, prototyping, interface states, and visual UI.",
+        "Harry's brand and graphic foundation directly matches the role's blended visual, digital, and UX expectations."
+      ],
+      "gaps": [
+        "A/B testing, accessibility, analytics, and JIRA are not clearly evidenced in the current materials.",
+        "Search indexes show the posting has circulated for a long time, and the direct page did not render consistently in this pass."
+      ],
+      "red_flags": [
+        "Closed: the official Lever page returns 404.",
+        "Search-index content is stale and must not be used as proof of an open role."
+      ],
+      "recommended_resume": "Product/Experience route - use the current baseline only temporarily until Resume_Product_Experience.pdf is supplied.",
+      "recommended_projects": [
+        "Field Brief",
+        "Anaago WeChat Mini Program",
+        "ZNTR"
+      ],
+      "status": "closed",
+      "next_action": "No action. The official Lever URL returns 404 on 2026-07-25 even though stale search results still show an Apply action.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.lever.co/centerfield/ff72748e-9086-41b1-9559-1d51ad299ac7",
+        "employment_type": "https://jobs.lever.co/centerfield/ff72748e-9086-41b1-9559-1d51ad299ac7",
+        "salary": "https://jobs.lever.co/centerfield/ff72748e-9086-41b1-9559-1d51ad299ac7",
+        "date_posted": "Unknown: not stated. Search-index age suggests the role may be stale.",
+        "experience": "https://jobs.lever.co/centerfield/ff72748e-9086-41b1-9559-1d51ad299ac7",
+        "work_authorization": "Unknown: not stated in the captured official JD.",
+        "sponsorship": "Unknown: not stated in the captured official JD."
+      },
+      "inferences": [
+        "The role is treated as closed because the canonical employer ATS URL returns 404."
+      ]
+    },
+    {
+      "job_id": "hinge-health-beb00f5c",
+      "canonical_url": "https://jobs.ashbyhq.com/hinge-health/beb00f5c-e9ff-43bc-a9cd-a49ccf2add1e",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/hinge-health/beb00f5c-e9ff-43bc-a9cd-a49ccf2add1e",
+      "also_seen_on": [],
+      "company": "Hinge Health",
+      "title": "Product Designer",
+      "primary_track": "B",
+      "secondary_track": null,
+      "location": "San Francisco, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": 132000,
+      "salary_max": 180000,
+      "salary_currency": "USD",
+      "date_posted": "2026-06-30",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "beb00f5c-e9ff-43bc-a9cd-a49ccf2add1e",
+      "experience_required": "2+ years of product-design experience with product and engineering partners.",
+      "education_required": "Bachelor's degree in a design-related field or equivalent experience.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Own member communication experiences across notifications, preferences, scheduling, and messaging in a healthcare product.",
+      "responsibilities": [
+        "Evolve preference and notification experiences.",
+        "Design member communication and recovery patterns.",
+        "Improve messaging and scheduling experiences.",
+        "Collaborate with growth, product, engineering, data science, and MarTech."
+      ],
+      "required_skills": [
+        "end-to-end product design",
+        "native mobile product work",
+        "interaction and visual design",
+        "prototyping",
+        "basic user research",
+        "design documentation",
+        "user flows and journeys",
+        "cross-functional collaboration"
+      ],
+      "preferred_skills": [
+        "workshops",
+        "complex systems",
+        "AI curiosity",
+        "healthcare or fitness interest"
+      ],
+      "portfolio_requirements": "Polished, current portfolio showing shipped or in-progress product work.",
+      "fit_score": 81,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 16,
+        "experience_level": 10,
+        "work_quality": 10,
+        "location_work_mode": 5,
+        "work_authorization": 5,
+        "freshness": 5,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Field Brief shows complex information prioritization, high-fidelity UI, motion prototypes, and product storytelling.",
+        "The Anaago Mini Program supports flows, information architecture, states, and reusable UI assets.",
+        "The role values AI curiosity and cross-disciplinary visual craft, both visible in Harry's materials."
+      ],
+      "gaps": [
+        "The posting asks for native-mobile product contribution and shipped or in-progress work; the clearest portfolio product is an independent concept.",
+        "The 2+ year product-design requirement and San Francisco three-day hybrid schedule create experience and relocation risk."
+      ],
+      "red_flags": [
+        "Work-authorization and sponsorship policies are not stated."
+      ],
+      "recommended_resume": "Product/Experience route - use the current baseline only temporarily until Resume_Product_Experience.pdf is supplied.",
+      "recommended_projects": [
+        "Field Brief",
+        "Anaago WeChat Mini Program",
+        "Rain Simulator"
+      ],
+      "status": "shortlisted",
+      "next_action": "Consider after the top Track A and new-grad roles; proceed only if relocation and the shipped-product gap feel acceptable.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.ashbyhq.com/hinge-health/beb00f5c-e9ff-43bc-a9cd-a49ccf2add1e",
+        "employment_type": "https://jobs.ashbyhq.com/hinge-health/beb00f5c-e9ff-43bc-a9cd-a49ccf2add1e",
+        "salary": "https://jobs.ashbyhq.com/hinge-health/beb00f5c-e9ff-43bc-a9cd-a49ccf2add1e",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/hinge-health?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/hinge-health/beb00f5c-e9ff-43bc-a9cd-a49ccf2add1e",
+        "work_authorization": "Unknown: not stated on the official ATS.",
+        "sponsorship": "Unknown: not stated on the official ATS."
+      },
+      "inferences": [
+        "The role appears active because the official ATS exposed an application action on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "intro-59e8c47c",
+      "canonical_url": "https://jobs.ashbyhq.com/intro/59e8c47c-e915-4d2c-be81-d915325325a0",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/intro/59e8c47c-e915-4d2c-be81-d915325325a0",
+      "also_seen_on": [
+        "https://jobs.westboundequity.com/companies/intro/jobs/64624530-brand-designer-marketing-contract"
+      ],
+      "company": "Intro",
+      "title": "Brand Designer, Marketing (Contract)",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "United States",
+      "remote_type": "Remote",
+      "employment_type": "Contract",
+      "salary_min": 50,
+      "salary_max": 100,
+      "salary_currency": "USD/hour",
+      "date_posted": "2026-01-06",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "59e8c47c-e915-4d2c-be81-d915325325a0",
+      "experience_required": "5+ years of professional graphic-design experience or equivalent real-world experience.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Execute high-volume paid, social, blog, email, and web assets in a fast-moving, part-time remote contract role.",
+      "responsibilities": [
+        "Design graphic assets across paid, social, blog, email, and web.",
+        "Support performance, brand, and editorial projects.",
+        "Handle parallel assignments with fast turnaround.",
+        "Maintain organized design-asset libraries."
+      ],
+      "required_skills": [
+        "5+ years or equivalent experience",
+        "Figma",
+        "Adobe Creative Suite",
+        "AI-assisted design",
+        "independent contract work",
+        "marketing and consumer psychology"
+      ],
+      "preferred_skills": [
+        "After Effects",
+        "performance marketing",
+        "illustration",
+        "motion graphics"
+      ],
+      "portfolio_requirements": "Strong portfolio showing multiple campaigns and channels.",
+      "fit_score": 71,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 17,
+        "experience_level": 5,
+        "work_quality": 5,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 3
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Harry has real multi-channel brand, social, photo/video, motion, and AI-assisted production experience.",
+        "The remote contract format fits the separate supplemental-income pipeline.",
+        "Figma, Adobe tools, After Effects, and AI-assisted production are all evidenced."
+      ],
+      "gaps": [
+        "The role asks for 5+ years or equivalent experience and independent contract experience, both materially above the clearest evidence.",
+        "It is execution-heavy and performance-marketing oriented, which is lower priority than strategic brand, product, or experience work."
+      ],
+      "red_flags": [
+        "Part-time contract; do not mix with the full-time ranking.",
+        "Work-authorization and contractor classification details are not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "Anaago (only if public sharing is approved)",
+        "ZNTR",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Keep as a secondary contract option; first confirm workload, classification, California eligibility, and whether equivalent project depth can offset years.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.ashbyhq.com/intro/59e8c47c-e915-4d2c-be81-d915325325a0",
+        "employment_type": "https://jobs.ashbyhq.com/intro/59e8c47c-e915-4d2c-be81-d915325325a0",
+        "salary": "https://jobs.ashbyhq.com/intro/59e8c47c-e915-4d2c-be81-d915325325a0",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/intro?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/intro/59e8c47c-e915-4d2c-be81-d915325325a0",
+        "work_authorization": "Unknown: not stated on the official ATS.",
+        "sponsorship": "Unknown: not stated on the official ATS."
+      },
+      "inferences": [
+        "The role appears active because the official ATS exposed an application action on 2026-07-25.",
+        "California residency acceptance requires manual confirmation."
+      ]
+    },
+    {
+      "job_id": "trueshort-9efb1967",
+      "canonical_url": "https://jobs.ashbyhq.com/trueshort/9efb1967-efbb-4e73-873b-530ebe8c623a/",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/trueshort/9efb1967-efbb-4e73-873b-530ebe8c623a/",
+      "also_seen_on": [
+        "https://dailyremote.com/remote-company/true-short"
+      ],
+      "company": "TrueShort",
+      "title": "Creative Technologist",
+      "primary_track": "C",
+      "secondary_track": "A",
+      "location": "United States; remote or hybrid, Los Angeles preferred",
+      "remote_type": "Remote",
+      "employment_type": "Full-time",
+      "salary_min": 120000,
+      "salary_max": 180000,
+      "salary_currency": "USD",
+      "date_posted": "2026-04-21",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "9efb1967-efbb-4e73-873b-530ebe8c623a",
+      "experience_required": "No numeric years stated on the official JD; the role expects independent ownership of advanced generative-AI pipelines.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Design and optimize advanced generative image/video pipelines for an AI-driven mobile streaming studio.",
+      "responsibilities": [
+        "Build repeatable end-to-end image and video generation workflows.",
+        "Integrate ControlNet systems and manage model and LoRA consistency.",
+        "Test new AI tools and present findings.",
+        "Act as a technical resource across creative pods."
+      ],
+      "required_skills": [
+        "ComfyUI",
+        "Python",
+        "latent diffusion and VAE decoding",
+        "ControlNet",
+        "model conditioning",
+        "AI image tools",
+        "AI video tools",
+        "workflow and pipeline design"
+      ],
+      "preferred_skills": [
+        "film, animation, or VFX",
+        "Nuke",
+        "Blender",
+        "Unreal",
+        "color pipelines",
+        "public AI-community presence"
+      ],
+      "portfolio_requirements": "Submit 1-3 workflows, pipelines, or AI-driven projects plus a process and tools overview.",
+      "fit_score": 68,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 20,
+        "portfolio_evidence": 12,
+        "experience_level": 5,
+        "work_quality": 10,
+        "location_work_mode": 10,
+        "work_authorization": 3,
+        "freshness": 3,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Artificial Atmosphere and One Hit demonstrate real AI-directed visual experimentation and filmmaking.",
+        "Harry already uses multiple named image and video generation tools in a creative production workflow.",
+        "The LA preference, film context, and creative-technology direction have unusually high strategic relevance."
+      ],
+      "gaps": [
+        "ComfyUI, Python automation, latent diffusion internals, VAE decoding, ControlNet, LoRA management, and model conditioning are not evidenced.",
+        "The role expects an independent technical pipeline owner, while Harry's strongest evidence is creative direction and AI-assisted production."
+      ],
+      "red_flags": [
+        "Core technical requirements are not optional; this is a true stretch rather than a title match.",
+        "Work-authorization and sponsorship policies are not stated."
+      ],
+      "recommended_resume": "Creative Technology route - do not create this version until Phase 2; current baseline can support only a preliminary review.",
+      "recommended_projects": [
+        "Artificial Atmosphere",
+        "One Hit",
+        "Rain Simulator"
+      ],
+      "status": "shortlisted",
+      "next_action": "Treat as a strategic stretch; only approve if Harry can truthfully demonstrate advanced node-based or technical workflow evidence not currently in the repository.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.ashbyhq.com/trueshort/9efb1967-efbb-4e73-873b-530ebe8c623a/",
+        "employment_type": "https://jobs.ashbyhq.com/trueshort/9efb1967-efbb-4e73-873b-530ebe8c623a/",
+        "salary": "https://jobs.ashbyhq.com/trueshort/9efb1967-efbb-4e73-873b-530ebe8c623a/",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/trueshort?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/trueshort/9efb1967-efbb-4e73-873b-530ebe8c623a/",
+        "work_authorization": "Unknown: not stated on the official ATS.",
+        "sponsorship": "Unknown: not stated on the official ATS."
+      },
+      "inferences": [
+        "The role appears active because the official ATS exposed an application action on 2026-07-25.",
+        "A third-party source categorized it around 2-5 years, but the official JD's capability requirements are more important than that estimate."
+      ]
+    },
+    {
+      "job_id": "dentsu-R1124574",
+      "canonical_url": "https://dentsuaegis.wd3.myworkdayjobs.com/en-US/DAN_GLOBAL/job/Motion-Designer_R1124574",
+      "source_name": "Workday",
+      "source_url": "https://dentsuaegis.wd3.myworkdayjobs.com/en-US/DAN_GLOBAL/job/Motion-Designer_R1124574",
+      "also_seen_on": [
+        "https://builtin.com/job/motion-designer/9688348"
+      ],
+      "company": "Dentsu Creative",
+      "title": "Motion Designer",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Los Angeles, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_currency": null,
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-25",
+      "requisition_id": "R1124574",
+      "experience_required": "3-5 years of professional motion-design experience.",
+      "education_required": "Unknown: not stated in the captured excerpt.",
+      "work_authorization_text": "Unknown: not stated in the captured excerpt.",
+      "sponsorship_text": "Unknown: not stated in the captured excerpt.",
+      "role_summary": "Mid-level motion design across campaigns, brand, and social content for a major agency client.",
+      "responsibilities": [
+        "Own motion projects from concept through final delivery.",
+        "Create campaign, brand, and social motion work.",
+        "Use motion systems to improve team speed."
+      ],
+      "required_skills": [
+        "3-5 years of motion design",
+        "animation principles",
+        "visual storytelling",
+        "PST working hours",
+        "3D literacy"
+      ],
+      "preferred_skills": [
+        "Cinema 4D",
+        "Blender"
+      ],
+      "portfolio_requirements": "A professional motion portfolio is implied.",
+      "fit_score": 81,
+      "confidence_score": 65,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 17,
+        "experience_level": 5,
+        "work_quality": 10,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 4,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 20,
+        "open_status_verified": 10,
+        "jd_completeness": 20,
+        "posting_date_clarity": 5,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Harry's motion, video, campaign, and brand experience is directionally relevant.",
+        "Artificial Atmosphere, ZNTR, and One Hit support visual storytelling and motion craft.",
+        "The Los Angeles hybrid model fits the preferred geography."
+      ],
+      "gaps": [
+        "The role requires 3-5 years and mid-level independent ownership.",
+        "Cinema 4D or Blender literacy is expected and is not evidenced."
+      ],
+      "red_flags": [
+        "Built In reported the job removed during the same verification pass.",
+        "The dynamic official Workday page no longer exposed readable job content, so open status could not be confirmed."
+      ],
+      "recommended_resume": "Visual/Brand route - no tailoring recommended while the role is archived.",
+      "recommended_projects": [
+        "Artificial Atmosphere",
+        "ZNTR",
+        "One Hit"
+      ],
+      "status": "archived",
+      "next_action": "No action. Reconsider only if the official Workday requisition becomes readable and open again.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://dentsuaegis.wd3.myworkdayjobs.com/en-US/DAN_GLOBAL/job/Motion-Designer_R1124574",
+        "employment_type": "https://dentsuaegis.wd3.myworkdayjobs.com/en-US/DAN_GLOBAL/job/Motion-Designer_R1124574",
+        "salary": "Unknown: the official Workday page did not expose compensation during re-verification. A discovery source reported a range, but it is not stored as canonical fact.",
+        "date_posted": "Unknown: the official search excerpt said Posted 6 Days Ago during the 2026-07-25 pass, but no canonical absolute date was shown.",
+        "experience": "https://dentsuaegis.wd3.myworkdayjobs.com/en-US/DAN_GLOBAL/job/Motion-Designer_R1124574",
+        "work_authorization": "Unknown: not stated in the captured official excerpt.",
+        "sponsorship": "Unknown: not stated in the captured official excerpt."
+      },
+      "inferences": [
+        "Archived because the role could not be re-verified as open and a discovery source explicitly reported removal.",
+        "This is not counted in the shortlist."
+      ]
+    },
+    {
+      "job_id": "jacques-marie-mage-121407",
+      "canonical_url": "https://app.trinethire.com/companies/132106-jacques-marie-mage-inc/jobs/121407-junior-graphic-designer",
+      "source_name": "TriNet Hire",
+      "source_url": "https://app.trinethire.com/companies/132106-jacques-marie-mage-inc/jobs/121407-junior-graphic-designer",
+      "also_seen_on": [
+        "https://www.linkedin.com/jobs/view/junior-graphic-designer-at-jacques-marie-mage-4426571081"
+      ],
+      "company": "Jacques Marie Mage",
+      "title": "Junior Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Los Angeles, CA",
+      "remote_type": "On-site",
+      "employment_type": "Full-time",
+      "salary_min": 60000,
+      "salary_max": 65000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "121407",
+      "experience_required": "1-2 years in a deadline-driven graphic-design environment.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Support luxury-fashion brand execution across social, e-commerce, web, packaging, print production, photography, and creative asset systems.",
+      "responsibilities": [
+        "Create digital, social, e-commerce, web, packaging, and print-production assets.",
+        "Maintain high craft across typography, illustration, photography, and retouching.",
+        "Partner with product design and marketing while preserving brand consistency.",
+        "Organize design, photography, and video asset libraries."
+      ],
+      "required_skills": [
+        "Adobe InDesign",
+        "Adobe Illustrator",
+        "Adobe Photoshop",
+        "typography",
+        "packaging",
+        "photography and retouching",
+        "file organization"
+      ],
+      "preferred_skills": [
+        "Figma",
+        "Premiere Pro",
+        "After Effects"
+      ],
+      "portfolio_requirements": "Resume plus portfolio-quality visual-design work.",
+      "fit_score": 88,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 18,
+        "experience_level": 14,
+        "work_quality": 8,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 3,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The LA location, junior title, and 1-2 year requirement align directly with Harry's level and preferred geography.",
+        "Anaago, ZNTR, and Artificial Atmosphere support brand systems, social, photography, retouching, and multi-format visual execution.",
+        "Harry's Adobe, Figma, Premiere, After Effects, image-making, and organized cross-channel production evidence maps closely to the role."
+      ],
+      "gaps": [
+        "The posting emphasizes packaging and print-production technical files; the portfolio should make production-ready print work explicit.",
+        "Work-authorization and sponsorship policies are not stated and require Harry's direct confirmation if asked."
+      ],
+      "red_flags": [
+        "Official posting date is not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "ZNTR",
+        "Anaago (only if public sharing is approved)",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "High priority: tailor the visual resume and lead the portfolio with refined luxury-facing brand, typography, photography, and print examples.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://app.trinethire.com/companies/132106-jacques-marie-mage-inc/jobs/121407-junior-graphic-designer",
+        "employment_type": "https://app.trinethire.com/companies/132106-jacques-marie-mage-inc/jobs/121407-junior-graphic-designer",
+        "salary": "https://app.trinethire.com/companies/132106-jacques-marie-mage-inc/jobs/121407-junior-graphic-designer",
+        "date_posted": "Unknown: not stated on the official TriNet page.",
+        "experience": "https://app.trinethire.com/companies/132106-jacques-marie-mage-inc/jobs/121407-junior-graphic-designer",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": [
+        "The role is open because it appears in the employer's current openings and the official form accepts application materials on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "alpinestars-9d277ad6",
+      "canonical_url": "https://jobs.lever.co/alpinestars/9d277ad6-edde-4b9d-8f1b-d35f778a8f4f",
+      "source_name": "Lever",
+      "source_url": "https://jobs.lever.co/alpinestars/9d277ad6-edde-4b9d-8f1b-d35f778a8f4f",
+      "also_seen_on": [],
+      "company": "Alpinestars",
+      "title": "Junior Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Torrance, CA",
+      "remote_type": "On-site",
+      "employment_type": "Full-time",
+      "salary_min": 70000,
+      "salary_max": 72000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "9d277ad6-edde-4b9d-8f1b-d35f778a8f4f",
+      "experience_required": "1-2 years; internships and freelance work are considered.",
+      "education_required": "Bachelor's degree or equivalent in Graphic Design, Visual Communication, or a related field.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Create brand and campaign assets for a motorsports and lifestyle company across marketing, product launches, athletes, events, photography, print, and digital.",
+      "responsibilities": [
+        "Design ads, social graphics, email campaigns, event assets, and launch materials.",
+        "Translate creative briefs with creative direction, senior designers, and product teams.",
+        "Edit and retouch product and lifestyle photography.",
+        "Prepare accurate files for print and digital production."
+      ],
+      "required_skills": [
+        "Adobe Photoshop",
+        "Adobe Illustrator",
+        "Adobe InDesign",
+        "layout",
+        "typography",
+        "image composition",
+        "photography retouching"
+      ],
+      "preferred_skills": [
+        "After Effects",
+        "Premiere Pro",
+        "photography",
+        "print production",
+        "motorsports interest"
+      ],
+      "portfolio_requirements": "A portfolio is required; resumes without one are not considered.",
+      "fit_score": 86,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 17,
+        "experience_level": 14,
+        "work_quality": 8,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 3,
+        "company_industry_value": 4
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The role explicitly counts internships and freelance work within a 1-2 year junior range.",
+        "Harry's brand, campaign, photography, retouching, motion, and video work maps to the core and desirable skills.",
+        "Torrance is within Southern California and avoids the relocation risk of Bay Area roles."
+      ],
+      "gaps": [
+        "A genuine interest in motorsports culture would strengthen the application but is not evidenced in current materials.",
+        "Print-production knowledge should be demonstrated more explicitly in the portfolio."
+      ],
+      "red_flags": [
+        "On-site in Torrance.",
+        "Work-authorization and sponsorship policies are not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "Anaago (only if public sharing is approved)",
+        "ZNTR",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "High priority: apply with a portfolio sequence that foregrounds campaign systems, photography, retouching, motion, and production accuracy.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.lever.co/alpinestars/9d277ad6-edde-4b9d-8f1b-d35f778a8f4f",
+        "employment_type": "https://jobs.lever.co/alpinestars/9d277ad6-edde-4b9d-8f1b-d35f778a8f4f",
+        "salary": "https://jobs.lever.co/alpinestars/9d277ad6-edde-4b9d-8f1b-d35f778a8f4f",
+        "date_posted": "Unknown: not stated on the official Lever page.",
+        "experience": "https://jobs.lever.co/alpinestars/9d277ad6-edde-4b9d-8f1b-d35f778a8f4f",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": [
+        "The role is open because the official Lever page and application page accept submissions on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "goodr-8467026002",
+      "canonical_url": "https://job-boards.greenhouse.io/goodr/jobs/8467026002",
+      "source_name": "Greenhouse",
+      "source_url": "https://job-boards.greenhouse.io/goodr/jobs/8467026002",
+      "also_seen_on": [],
+      "company": "goodr",
+      "title": "Associate Designer",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Inglewood / Los Angeles, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": 57000,
+      "salary_max": 67000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "8467026002",
+      "experience_required": "1+ years; internships and side projects are explicitly welcomed.",
+      "education_required": "Degree not required.",
+      "work_authorization_text": "Unknown: the posting does not state the current authorization test.",
+      "sponsorship_text": "No visa sponsorship is available for this position.",
+      "role_summary": "Execute expressive digital and print brand assets across social, email, paid advertising, packaging, signage, and product launches.",
+      "responsibilities": [
+        "Create social, email, paid-ad, packaging, print, and signage assets.",
+        "Support visual concepts for product launches.",
+        "Maintain organized digital asset libraries and brand consistency.",
+        "Iterate with cross-functional feedback and prepare technically correct outputs."
+      ],
+      "required_skills": [
+        "Adobe Creative Suite",
+        "Figma",
+        "digital and print design",
+        "typography",
+        "color",
+        "brand execution",
+        "Asana"
+      ],
+      "preferred_skills": [
+        "packaging",
+        "social advertising",
+        "organized file systems"
+      ],
+      "portfolio_requirements": "Resume, cover letter, project links, and an original octopus-fighting-a-pirate drawing.",
+      "fit_score": 85,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 18,
+        "experience_level": 14,
+        "work_quality": 8,
+        "location_work_mode": 10,
+        "work_authorization": 3,
+        "freshness": 3,
+        "company_industry_value": 4
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The 1+ year level, explicit acceptance of internships and side projects, and LA hybrid schedule are unusually well aligned.",
+        "Harry's visual systems, social, packaging-adjacent, motion, photography, and cross-channel work supports the role.",
+        "The brand values expressive typography, color, personality, and clean execution, all visible in Harry's strongest visual projects."
+      ],
+      "gaps": [
+        "The employer states that visa sponsorship is unavailable, so Harry must confirm whether the role is viable under the latest OPT plan.",
+        "The application requires a custom illustration and personality-led cover letter, creating additional preparation work."
+      ],
+      "red_flags": [
+        "No visa sponsorship.",
+        "Hybrid in Inglewood every Tuesday and Thursday.",
+        "Official requisition is closed as of 2026-07-26."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "ZNTR",
+        "Artificial Atmosphere",
+        "Sun and Light"
+      ],
+      "status": "closed",
+      "next_action": "Do not apply: the official Greenhouse requisition redirects to the company job board with error=true and no Associate Designer opening.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://job-boards.greenhouse.io/goodr/jobs/8467026002",
+        "employment_type": "https://job-boards.greenhouse.io/goodr/jobs/8467026002",
+        "salary": "https://job-boards.greenhouse.io/goodr/jobs/8467026002",
+        "date_posted": "Unknown: not stated on the official Greenhouse page.",
+        "experience": "https://job-boards.greenhouse.io/goodr/jobs/8467026002",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "https://job-boards.greenhouse.io/goodr/jobs/8467026002"
+      },
+      "inferences": [
+        "The role is open because the official Greenhouse page exposes a complete submission form on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "directive-57dc2d91",
+      "canonical_url": "https://jobs.ashbyhq.com/directive/57dc2d91-5dfc-42ea-a9f4-1fe14f127276",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/directive/57dc2d91-5dfc-42ea-a9f4-1fe14f127276",
+      "also_seen_on": [],
+      "company": "Directive",
+      "title": "Motion & Graphic Designer (Remote US)",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Remote - United States",
+      "remote_type": "Remote",
+      "employment_type": "Full-time",
+      "salary_min": 70000,
+      "salary_max": 90000,
+      "salary_currency": "USD",
+      "date_posted": "2026-07-24",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "57dc2d91-5dfc-42ea-a9f4-1fe14f127276",
+      "experience_required": "1-3 years in graphic design focused on performance creative and CRO, plus one year in motion graphics.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Candidates must have established and current work authorization and permanently reside in the United States.",
+      "sponsorship_text": "Unknown: sponsorship is not stated.",
+      "role_summary": "Create motion, graphic, ad, and landing-page assets for performance campaigns across major social and video platforms.",
+      "responsibilities": [
+        "Create ad sets and landing-page assets tied to performance goals.",
+        "Support A/B testing and creative optimization.",
+        "Manage multiple projects and cross-functional feedback.",
+        "Use AI and automation to enhance marketing and operations."
+      ],
+      "required_skills": [
+        "1-3 years graphic design",
+        "motion graphics",
+        "Figma",
+        "Adobe Creative Suite",
+        "Premiere Pro",
+        "After Effects",
+        "A/B testing",
+        "CRO"
+      ],
+      "preferred_skills": [
+        "AI-assisted workflows",
+        "performance analytics",
+        "agency collaboration"
+      ],
+      "portfolio_requirements": "A strong design portfolio is required.",
+      "fit_score": 84,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 18,
+        "experience_level": 13,
+        "work_quality": 6,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 4,
+        "company_industry_value": 3
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The official role was published one day before verification and is open to remote work anywhere in the United States.",
+        "Harry has verified After Effects, Premiere, Figma, Adobe, motion, social, and AI-assisted production experience.",
+        "The 1-3 year band fits Harry's early-career positioning better than most remote design roles."
+      ],
+      "gaps": [
+        "Performance marketing, CRO analytics, heatmapping, and formal A/B testing are not clearly evidenced.",
+        "The work may be a high-volume asset-production environment, which is less strategic than Harry's strongest direction."
+      ],
+      "red_flags": [
+        "Current US work authorization is required; sponsorship policy is not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "Anaago (only if public sharing is approved)",
+        "ZNTR",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Apply quickly after tailoring toward motion, paid social, landing pages, fast iteration, and measurable creative testing.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://api.ashbyhq.com/posting-api/job-board/directive?includeCompensation=true",
+        "employment_type": "https://api.ashbyhq.com/posting-api/job-board/directive?includeCompensation=true",
+        "salary": "https://jobs.ashbyhq.com/directive/57dc2d91-5dfc-42ea-a9f4-1fe14f127276",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/directive?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/directive/57dc2d91-5dfc-42ea-a9f4-1fe14f127276",
+        "work_authorization": "https://jobs.ashbyhq.com/directive/57dc2d91-5dfc-42ea-a9f4-1fe14f127276",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "umg-26991",
+      "canonical_url": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991",
+      "source_name": "Workday",
+      "source_url": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991",
+      "also_seen_on": [
+        "https://www.umusiccareers.com/gethired"
+      ],
+      "company": "Universal Music Group",
+      "title": "Junior Motion Designer",
+      "primary_track": "A",
+      "secondary_track": "C",
+      "location": "Philadelphia, PA",
+      "remote_type": "Unknown",
+      "employment_type": "Full-time",
+      "salary_min": 54000,
+      "salary_max": 75000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "UMG-26991",
+      "experience_required": "1-3 years of motion-design experience, including internships.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "UMG states that it participates in E-Verify in Pennsylvania. Harry must confirm how this applies to the latest OPT plan.",
+      "sponsorship_text": "The posting does not promise sponsorship; it separately notes limitations for candidates whose employer must enroll in E-Verify in California and New York.",
+      "role_summary": "Create motion assets for artist campaigns, storefronts, social, CRM, paid media, and digital marketing within music e-commerce.",
+      "responsibilities": [
+        "Animate typography, layouts, and graphic systems.",
+        "Create motion assets across social, CRM, paid media, and storefront touchpoints.",
+        "Adapt campaign concepts into multiple formats and aspect ratios.",
+        "Integrate video, photography, and graphics into polished motion outputs."
+      ],
+      "required_skills": [
+        "After Effects",
+        "Premiere Pro",
+        "typography",
+        "composition",
+        "animation timing",
+        "social and digital motion"
+      ],
+      "preferred_skills": [
+        "music and culture",
+        "emerging motion techniques",
+        "organized delivery workflows"
+      ],
+      "portfolio_requirements": "Motion-design portfolio expected.",
+      "fit_score": 84,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 18,
+        "experience_level": 14,
+        "work_quality": 9,
+        "location_work_mode": 4,
+        "work_authorization": 5,
+        "freshness": 4,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "This is a genuine early-career motion role that explicitly counts internships and focuses on craft growth.",
+        "Harry's After Effects, Premiere, typography, photography, video, and motion-storytelling evidence maps directly to the work.",
+        "The music, culture, campaign, and digital-storytelling context fits Harry's strongest visual interests."
+      ],
+      "gaps": [
+        "The current opening is Philadelphia-based, so relocation and work-mode details must be confirmed.",
+        "The portfolio needs a concise motion reel showing timing, typography, format adaptation, and technically clean delivery."
+      ],
+      "red_flags": [
+        "The older Santa Monica requisition was removed; only the current Philadelphia requisition is retained.",
+        "OPT/E-Verify implications require Harry and the school's DSO to confirm; no legal conclusion is inferred."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "Artificial Atmosphere",
+        "ZNTR",
+        "One Hit"
+      ],
+      "status": "shortlisted",
+      "next_action": "Decide whether Philadelphia is realistic; if yes, prioritize and tailor the reel toward artist campaigns, animated typography, and social formats.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991",
+        "employment_type": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991",
+        "salary": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991",
+        "date_posted": "Unknown: the official page exposes a relative date but not a stable calendar date.",
+        "experience": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991",
+        "work_authorization": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991",
+        "sponsorship": "https://umusic.wd5.myworkdayjobs.com/UMGUS/job/Philadelphia-Pennsylvania/Junior-Motion-Designer_UMG-26991"
+      },
+      "inferences": [
+        "The current employer career page lists requisition UMG-26991 and the official Workday page exposes an Apply action on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "nen-creative-a7c735e1",
+      "canonical_url": "https://jobs.ashbyhq.com/nen-creative/a7c735e1-32c4-4c00-871f-ffecbbb38ae8",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/nen-creative/a7c735e1-32c4-4c00-871f-ffecbbb38ae8",
+      "also_seen_on": [],
+      "company": "Nen Creative",
+      "title": "Brand Designer",
+      "primary_track": "A",
+      "secondary_track": "B",
+      "location": "United States; NYC, Los Angeles, or San Francisco",
+      "remote_type": "Remote",
+      "employment_type": "Full-time",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_currency": null,
+      "date_posted": "2026-05-31",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "a7c735e1-32c4-4c00-871f-ffecbbb38ae8",
+      "experience_required": "2-4 years of brand design; agency or studio experience preferred.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Must be based in the United States.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Create brand identities, websites, decks, and marketing systems for high-growth technology startups.",
+      "responsibilities": [
+        "Develop brand identities and modern startup websites.",
+        "Maintain consistency across brands, decks, and marketing projects.",
+        "Present work and rationale to clients.",
+        "Work independently in a fast-moving studio environment."
+      ],
+      "required_skills": [
+        "brand identity",
+        "website design",
+        "typography",
+        "layout",
+        "Figma",
+        "Adobe Creative Suite",
+        "client communication"
+      ],
+      "preferred_skills": [
+        "Webflow",
+        "motion",
+        "3D",
+        "illustration",
+        "marketing campaigns"
+      ],
+      "portfolio_requirements": "Portfolio must show original brand identities and modern technology/startup website work.",
+      "fit_score": 79,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 17,
+        "experience_level": 10,
+        "work_quality": 10,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 1
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "ZNTR and Harry's portfolio support brand identity, typography, digital expression, and design-system thinking.",
+        "The remote US model explicitly includes Los Angeles as a target hub.",
+        "Motion, 3D, illustration, marketing, and startup web work are bonuses that overlap with Harry's multidisciplinary practice."
+      ],
+      "gaps": [
+        "The 2-4 year requirement and client-facing ownership are above Harry's clearest professional tenure.",
+        "The portfolio must clearly distinguish identities created from scratch from campaign-only or refresh work."
+      ],
+      "red_flags": [
+        "Work-authorization and sponsorship policy are not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "ZNTR",
+        "Field Brief",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Treat as a strong stretch; audit the portfolio for original identity and website case studies before applying.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://api.ashbyhq.com/posting-api/job-board/nen-creative?includeCompensation=true",
+        "employment_type": "https://api.ashbyhq.com/posting-api/job-board/nen-creative?includeCompensation=true",
+        "salary": "Unknown: not stated.",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/nen-creative?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/nen-creative/a7c735e1-32c4-4c00-871f-ffecbbb38ae8",
+        "work_authorization": "https://jobs.ashbyhq.com/nen-creative/a7c735e1-32c4-4c00-871f-ffecbbb38ae8",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "cotton-citizen-hDtw4giwXz",
+      "canonical_url": "https://cottoncitizen.applytojob.com/apply/hDtw4giwXz/Junior-Graphic-Designer",
+      "source_name": "JazzHR",
+      "source_url": "https://cottoncitizen.applytojob.com/apply/hDtw4giwXz/Junior-Graphic-Designer",
+      "also_seen_on": [
+        "https://cottoncitizen.com/pages/careers"
+      ],
+      "company": "Cotton Citizen",
+      "title": "Junior Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Los Angeles, CA",
+      "remote_type": "On-site",
+      "employment_type": "Full-time",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_currency": null,
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "hDtw4giwXz",
+      "experience_required": "Unknown: no numeric year requirement is stated on the official page.",
+      "education_required": "Degree or diploma in Graphic Design, Fashion Design, Textile Design, or a related field is preferred.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Support apparel graphics, textile prints, production-ready artwork, brand systems, digital marketing, and e-commerce imagery.",
+      "responsibilities": [
+        "Create apparel graphics, prints, patterns, and garment mockups.",
+        "Prepare production files and color separations for garment decoration.",
+        "Support mood boards, concept decks, digital marketing, and e-commerce imagery.",
+        "Maintain organized files, libraries, and style guides."
+      ],
+      "required_skills": [
+        "Adobe Illustrator",
+        "Adobe Photoshop",
+        "Adobe InDesign",
+        "typography",
+        "color",
+        "layout",
+        "vector and raster graphics",
+        "textile print production"
+      ],
+      "preferred_skills": [
+        "fashion or textile design",
+        "apparel mockups",
+        "e-commerce"
+      ],
+      "portfolio_requirements": "Portfolio should show apparel graphics, patterns, mockups, and creative process.",
+      "fit_score": 74,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 22,
+        "portfolio_evidence": 15,
+        "experience_level": 12,
+        "work_quality": 6,
+        "location_work_mode": 10,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 3
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The junior title, LA location, and hands-on brand-production work fit Harry's level and geography.",
+        "Harry's Adobe, visual-system, photography, e-commerce-adjacent, and asset-organization experience is directionally relevant.",
+        "The role offers portfolio-building across brand, digital marketing, physical products, and production execution."
+      ],
+      "gaps": [
+        "Textile print development, screen print, embroidery, DTG, sublimation, and color separations are not clearly evidenced.",
+        "The official page labels the role mid-level despite the junior title, so the real experience expectation is ambiguous."
+      ],
+      "red_flags": [
+        "Salary, work authorization, sponsorship, and official posting date are not stated."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "ZNTR",
+        "Anaago (only if public sharing is approved)",
+        "Sun and Light"
+      ],
+      "status": "shortlisted",
+      "next_action": "Consider after the top local roles; apply only if Harry can show apparel, pattern, print-production, or adjacent physical-output evidence.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://cottoncitizen.applytojob.com/apply/hDtw4giwXz/Junior-Graphic-Designer",
+        "employment_type": "https://cottoncitizen.applytojob.com/apply/hDtw4giwXz/Junior-Graphic-Designer",
+        "salary": "Unknown: not stated.",
+        "date_posted": "Unknown: not stated.",
+        "experience": "https://cottoncitizen.applytojob.com/apply/hDtw4giwXz/Junior-Graphic-Designer",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": [
+        "The role is open because it appears in the employer's current openings and its official form accepts submissions on 2026-07-25."
+      ]
+    },
+    {
+      "job_id": "webtoon-6fd68ef9",
+      "canonical_url": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80",
+      "source_name": "Lever",
+      "source_url": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80",
+      "also_seen_on": [],
+      "company": "WEBTOON",
+      "title": "Associate Visual Designer (Freelance)",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "El Segundo, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Freelance",
+      "salary_min": 30,
+      "salary_max": 40,
+      "salary_currency": "USD/hour",
+      "date_posted": null,
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "6fd68ef9-79bd-44e2-b963-d6a51977eb80",
+      "experience_required": "3+ years in visual design for digital platforms.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "The application asks whether the candidate is authorized to work in the United States.",
+      "sponsorship_text": "The application asks whether the candidate will require current or future sponsorship; the posting does not state a policy.",
+      "role_summary": "Create performance-minded visual design across platform, social, paid media, marketing campaigns, OOH, events, and entertainment IP.",
+      "responsibilities": [
+        "Design platform, social, paid-media, and campaign assets.",
+        "Translate entertainment IP into audience-first visual stories.",
+        "Partner with motion, marketing, product, and creative leadership.",
+        "Support launches, events, OOH, and global audience needs."
+      ],
+      "required_skills": [
+        "visual design",
+        "campaign design",
+        "typography",
+        "color",
+        "layout",
+        "Photoshop",
+        "Illustrator",
+        "cross-functional collaboration"
+      ],
+      "preferred_skills": [
+        "After Effects",
+        "Premiere Pro",
+        "entertainment and pop culture"
+      ],
+      "portfolio_requirements": "Portfolio and cover letter are required.",
+      "fit_score": 78,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 18,
+        "experience_level": 8,
+        "work_quality": 10,
+        "location_work_mode": 10,
+        "work_authorization": 4,
+        "freshness": 1,
+        "company_industry_value": 2
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 0,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The El Segundo hybrid schedule and entertainment-storytelling focus align closely with Harry's location and interests.",
+        "Harry has direct evidence across social, campaigns, motion, photography, video, and cross-channel visual systems.",
+        "The application values audience engagement, entertainment, and motion collaboration, which align with Anaago, ZNTR, and Artificial Atmosphere."
+      ],
+      "gaps": [
+        "The 3+ year requirement is above Harry's clearest professional tenure.",
+        "The role is freelance and performance-driven, so classification, hours, OPT treatment, and workload require direct confirmation."
+      ],
+      "red_flags": [
+        "The direct application form is live, but the role is not shown in the employer's general Lever API list; treat it as unlisted/direct-link open.",
+        "Sensitive authorization and sponsorship questions require Harry's direct answers."
+      ],
+      "recommended_resume": "Visual/Brand route - use the current Visual & Digital baseline until Resume_Visual_Brand.pdf is supplied.",
+      "recommended_projects": [
+        "Anaago (only if public sharing is approved)",
+        "Artificial Atmosphere",
+        "ZNTR"
+      ],
+      "status": "shortlisted",
+      "next_action": "Official Lever page and Apply link were confirmed active on 2026-07-26; treat as a freelance application and confirm OPT/DSO and tax details before accepting.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80",
+        "employment_type": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80",
+        "salary": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80",
+        "date_posted": "Unknown: not stated.",
+        "experience": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80",
+        "work_authorization": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80/apply",
+        "sponsorship": "https://jobs.lever.co/wattpad/6fd68ef9-79bd-44e2-b963-d6a51977eb80/apply"
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "handshake-1c09f77c",
+      "canonical_url": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/",
+      "also_seen_on": [],
+      "company": "Handshake",
+      "title": "Graphic Designer - AI Trainer",
+      "primary_track": "C",
+      "secondary_track": "A",
+      "location": "Remote (USA)",
+      "remote_type": "Remote",
+      "employment_type": "Contract",
+      "salary_min": 125,
+      "salary_max": 125,
+      "salary_currency": "USD/hour",
+      "date_posted": "2026-02-24",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "1c09f77c-f51f-43b2-913a-dc58d3aa68d8",
+      "experience_required": "Hands-on vector-design, logo, print, or web-graphics experience; no numeric years stated.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Must reside in the United States. The posting says F-1 students eligible for CPT or OPT may be eligible and directs them to their DSO.",
+      "sponsorship_text": "STEM OPT is not supported.",
+      "role_summary": "Evaluate AI-generated visual content and provide structured feedback using vector-design and graphic-design expertise.",
+      "responsibilities": [
+        "Evaluate AI-generated visual content.",
+        "Provide precise written feedback on visual tasks and workflows.",
+        "Work independently on flexible, asynchronous projects.",
+        "Maintain a current portfolio and complete identity verification."
+      ],
+      "required_skills": [
+        "vector design",
+        "logo design",
+        "print and web graphics",
+        "written communication",
+        "attention to detail",
+        "independent work"
+      ],
+      "preferred_skills": [
+        "Inkscape",
+        "AI evaluation",
+        "structured feedback"
+      ],
+      "portfolio_requirements": "Resume and portfolio are required during onboarding.",
+      "fit_score": 70,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 18,
+        "portfolio_evidence": 12,
+        "experience_level": 12,
+        "work_quality": 5,
+        "location_work_mode": 10,
+        "work_authorization": 8,
+        "freshness": 2,
+        "company_industry_value": 3
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Harry's graphic-design and AI-assisted visual practice is relevant to visual-content evaluation.",
+        "The flexible remote contract can function as a separate supplemental-income pipeline.",
+        "The posting explicitly discusses possible F-1 CPT/OPT participation and directs candidates to confirm eligibility with their DSO."
+      ],
+      "gaps": [
+        "The role specifically emphasizes Inkscape, which is not evidenced in Harry's current materials.",
+        "This is not a traditional design job and project availability is intermittent rather than guaranteed."
+      ],
+      "red_flags": [
+        "Independent contractor, not full-time employment.",
+        "STEM OPT is not supported; Harry must confirm eligibility with the DSO before accepting work."
+      ],
+      "recommended_resume": "Creative Technology route - use a truthful visual/AI baseline and do not imply Inkscape experience unless confirmed.",
+      "recommended_projects": [
+        "ZNTR",
+        "Artificial Atmosphere",
+        "Field Brief"
+      ],
+      "status": "shortlisted",
+      "next_action": "Keep in the supplemental contract pipeline; confirm DSO eligibility and Inkscape proficiency before proceeding.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/",
+        "employment_type": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/",
+        "salary": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/handshake?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/",
+        "work_authorization": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/",
+        "sponsorship": "https://jobs.ashbyhq.com/handshake/1c09f77c-f51f-43b2-913a-dc58d3aa68d8/"
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "triumph-5811befc",
+      "canonical_url": "https://jobs.ashbyhq.com/triumph-arcade/5811befc-f251-40ec-919a-37d76e25e33b/",
+      "source_name": "Ashby",
+      "source_url": "https://jobs.ashbyhq.com/triumph-arcade/5811befc-f251-40ec-919a-37d76e25e33b/",
+      "also_seen_on": [],
+      "company": "Triumph",
+      "title": "Product Designer",
+      "primary_track": "B",
+      "secondary_track": "A",
+      "location": "San Francisco, CA",
+      "remote_type": "On-site",
+      "employment_type": "Full-time",
+      "salary_min": 120000,
+      "salary_max": 160000,
+      "salary_currency": "USD",
+      "date_posted": "2026-03-31",
+      "date_discovered": "2026-07-25",
+      "last_verified": "2026-07-26",
+      "requisition_id": "5811befc-f251-40ec-919a-37d76e25e33b",
+      "experience_required": "1-2+ years designing consumer-facing iOS products.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Design end-to-end mobile and web experiences for a collectibles trading-card product with game-like mechanics.",
+      "responsibilities": [
+        "Own research, flows, prototypes, high-fidelity UI, and production assets.",
+        "Extend an existing design system.",
+        "Create native iOS patterns that scale to web and Android.",
+        "Use motion, illustration, and interaction to add clarity and delight."
+      ],
+      "required_skills": [
+        "consumer iOS product design",
+        "Figma",
+        "user research",
+        "wireframes",
+        "prototyping",
+        "high-fidelity UI",
+        "design systems"
+      ],
+      "preferred_skills": [
+        "gaming",
+        "collectibles",
+        "motion",
+        "illustration"
+      ],
+      "portfolio_requirements": "Portfolio should demonstrate shipped consumer iOS product work and end-to-end ownership.",
+      "fit_score": 72,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 15,
+        "experience_level": 8,
+        "work_quality": 10,
+        "location_work_mode": 3,
+        "work_authorization": 5,
+        "freshness": 2,
+        "company_industry_value": 4
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The 1-2+ year level is within Harry's broad early-career target.",
+        "Field Brief and Anaago support flows, high-fidelity UI, prototyping, visual systems, and product storytelling.",
+        "The role values motion, illustration, and visual delight, which are stronger in Harry's profile than in many product-design candidates."
+      ],
+      "gaps": [
+        "Consumer-facing iOS work and shipped game-like product experience are not clearly evidenced.",
+        "The company expects five days per week in San Francisco, creating a major relocation and work-mode constraint."
+      ],
+      "red_flags": [
+        "On-site five days per week in San Francisco.",
+        "Work-authorization and sponsorship policy are not stated."
+      ],
+      "recommended_resume": "Product/Experience route - use the current baseline only temporarily until Resume_Product_Experience.pdf is supplied.",
+      "recommended_projects": [
+        "Field Brief",
+        "Anaago WeChat Mini Program",
+        "Rain Simulator"
+      ],
+      "status": "shortlisted",
+      "next_action": "Keep as a product-design stretch; proceed only if San Francisco relocation and the iOS portfolio gap are acceptable.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://api.ashbyhq.com/posting-api/job-board/triumph-arcade?includeCompensation=true",
+        "employment_type": "https://api.ashbyhq.com/posting-api/job-board/triumph-arcade?includeCompensation=true",
+        "salary": "https://jobs.ashbyhq.com/triumph-arcade/5811befc-f251-40ec-919a-37d76e25e33b/",
+        "date_posted": "https://api.ashbyhq.com/posting-api/job-board/triumph-arcade?includeCompensation=true",
+        "experience": "https://jobs.ashbyhq.com/triumph-arcade/5811befc-f251-40ec-919a-37d76e25e33b/",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "skims-4430168363",
+      "canonical_url": "https://skims.pinpointhq.com/postings/3a4f8c19-e8d5-4e19-b47c-a5d7e8a56a63",
+      "source_name": "SKIMS Careers",
+      "source_url": "https://skims.pinpointhq.com/postings/3a4f8c19-e8d5-4e19-b47c-a5d7e8a56a63",
+      "also_seen_on": [
+        "https://www.linkedin.com/jobs/view/4430168363/"
+      ],
+      "company": "SKIMS",
+      "title": "Jr Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": "C",
+      "location": "Los Angeles, CA",
+      "remote_type": "On-site, 4 days/week",
+      "employment_type": "Full-time",
+      "salary_min": 55000,
+      "salary_max": 70000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-26",
+      "last_verified": "2026-07-26",
+      "requisition_id": "3a4f8c19-e8d5-4e19-b47c-a5d7e8a56a63",
+      "experience_required": "Recent graduate to 1 year of digital design experience across social, web, and email marketing.",
+      "education_required": "Recent graduates are explicitly invited; a specific degree is not stated.",
+      "work_authorization_text": "The posting says applicants must be eligible to work in the U.S.",
+      "sponsorship_text": "Unknown: the posting does not state whether current or future sponsorship is available.",
+      "role_summary": "Create conversion-focused e-commerce, email, paid social, video, motion, and web assets for SKIMS.",
+      "responsibilities": [
+        "Design website banners, landing pages, emails, and paid-media assets.",
+        "Edit video footage and create motion graphics.",
+        "Use AI creative tools for concepting, variation, and production.",
+        "Partner with performance marketing on creative testing."
+      ],
+      "required_skills": [
+        "Figma",
+        "Photoshop",
+        "Illustrator",
+        "InDesign",
+        "Premiere",
+        "After Effects",
+        "video editing",
+        "digital marketing design"
+      ],
+      "preferred_skills": [
+        "AI creative tools",
+        "fashion or beauty",
+        "performance marketing"
+      ],
+      "portfolio_requirements": "Portfolio should foreground digital campaigns, motion/video, web or email, and strong typography.",
+      "fit_score": 94,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 15,
+        "work_quality": 10,
+        "location_work_mode": 10,
+        "work_authorization": 8,
+        "freshness": 3,
+        "company_industry_value": 3
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The role explicitly targets recent graduates and one year of digital-design experience.",
+        "ZNTR, Artificial Atmosphere, and Anaago support the required mix of visual systems, motion, digital campaigns, and storytelling.",
+        "The AI-tool and motion requirements align unusually well with Harry's creative-technology direction."
+      ],
+      "gaps": [
+        "The portfolio should make email, e-commerce, and paid-performance outcomes easier to find.",
+        "The sponsorship policy is not stated and must be confirmed by Harry."
+      ],
+      "red_flags": [
+        "Four office days per week are required.",
+        "The public LinkedIn listing already shows heavy applicant volume."
+      ],
+      "recommended_resume": "Visual/Brand route with motion, digital campaign, and AI-tool bullets moved upward.",
+      "recommended_projects": [
+        "ZNTR",
+        "Artificial Atmosphere",
+        "Anaago"
+      ],
+      "status": "shortlisted",
+      "next_action": "Apply first; lead with motion-enabled digital campaign work and show real editing and AI-assisted workflows without overstating outcomes.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://skims.pinpointhq.com/postings/3a4f8c19-e8d5-4e19-b47c-a5d7e8a56a63",
+        "employment_type": "https://skims.pinpointhq.com/postings/3a4f8c19-e8d5-4e19-b47c-a5d7e8a56a63",
+        "salary": "https://skims.pinpointhq.com/postings/3a4f8c19-e8d5-4e19-b47c-a5d7e8a56a63",
+        "date_posted": "https://www.linkedin.com/jobs/view/4430168363/",
+        "experience": "https://www.linkedin.com/jobs/view/4430168363/",
+        "work_authorization": "https://www.linkedin.com/jobs/view/4430168363/",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "lagom-4442693326",
+      "canonical_url": "https://www.linkedin.com/jobs/view/4442693326/",
+      "source_name": "LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/view/4442693326/",
+      "also_seen_on": [],
+      "company": "LAGOM",
+      "title": "Junior Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": "C",
+      "location": "Los Angeles, CA",
+      "remote_type": "Unknown",
+      "employment_type": "Contract",
+      "salary_min": 23,
+      "salary_max": 28,
+      "salary_currency": "USD/hour",
+      "date_posted": null,
+      "date_discovered": "2026-07-26",
+      "last_verified": "2026-07-26",
+      "requisition_id": "4442693326",
+      "experience_required": "1–3 years of in-house digital design experience.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Produce fast-moving e-commerce, paid-social, organic-social, packaging, illustration, and motion assets for a consumer brand.",
+      "responsibilities": [
+        "Create digital assets for e-commerce, paid ads, and social channels.",
+        "Contribute to packaging, illustration, and lightweight animation.",
+        "Edit short-form video and iterate creative quickly.",
+        "Use tools such as Gemini and Runway when useful."
+      ],
+      "required_skills": [
+        "Photoshop",
+        "Illustrator",
+        "InDesign",
+        "Figma",
+        "Premiere",
+        "After Effects",
+        "short-form video"
+      ],
+      "preferred_skills": [
+        "Gemini",
+        "Runway",
+        "packaging",
+        "illustration"
+      ],
+      "portfolio_requirements": "Portfolio should show brand consistency, social content, motion/video, and fast production craft.",
+      "fit_score": 92,
+      "confidence_score": 85,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 15,
+        "work_quality": 9,
+        "location_work_mode": 8,
+        "work_authorization": 7,
+        "freshness": 3,
+        "company_industry_value": 5
+      },
+      "confidence_components": {
+        "original_jd_access": 25,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 10,
+        "dedupe_confidence": 5
+      },
+      "fit_reasons": [
+        "The 1–3 year range is aligned with Harry's target level.",
+        "The role combines brand, motion, short-form video, packaging, and AI tools—the strongest overlap in Harry's portfolio.",
+        "Local LA location and direct Apply button make it a high-priority new lead."
+      ],
+      "gaps": [
+        "Employment length and weekly schedule are not clear from the public listing.",
+        "Work-authorization and sponsorship terms are not stated."
+      ],
+      "red_flags": [
+        "Contract role; confirm duration, benefits, classification, and weekly hours before accepting.",
+        "Only the LinkedIn listing was found as a current public source."
+      ],
+      "recommended_resume": "Visual/Brand route emphasizing motion, short-form content, packaging systems, and AI-supported iteration.",
+      "recommended_projects": [
+        "ZNTR",
+        "Artificial Atmosphere",
+        "Anaago"
+      ],
+      "status": "shortlisted",
+      "next_action": "Apply early through LinkedIn; ask about contract duration and work authorization only when the employer requests it.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://www.linkedin.com/jobs/view/4442693326/",
+        "employment_type": "https://www.linkedin.com/jobs/view/4442693326/",
+        "salary": "https://www.linkedin.com/jobs/view/4442693326/",
+        "date_posted": "https://www.linkedin.com/jobs/view/4442693326/",
+        "experience": "https://www.linkedin.com/jobs/view/4442693326/",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "insomniac-4306642171",
+      "canonical_url": "https://www.linkedin.com/jobs/view/4306642171/",
+      "source_name": "LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/view/4306642171/",
+      "also_seen_on": [
+        "https://www.builtinla.com/jobs/search/graphic-designer"
+      ],
+      "company": "Insomniac Events",
+      "title": "Insomniac Clubs — Junior Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": "C",
+      "location": "Los Angeles, CA",
+      "remote_type": "On-site",
+      "employment_type": "Full-time",
+      "salary_min": 20,
+      "salary_max": 26,
+      "salary_currency": "USD/hour",
+      "date_posted": null,
+      "date_discovered": "2026-07-26",
+      "last_verified": "2026-07-26",
+      "requisition_id": "4306642171",
+      "experience_required": "1+ year of graphic-design experience.",
+      "education_required": "Bachelor's degree in graphic design or a similar field.",
+      "work_authorization_text": "Applicants must already possess U.S. work authorization that does not require employer visa sponsorship.",
+      "sponsorship_text": "The posting says the role does not provide visa sponsorship.",
+      "role_summary": "Support digital and print creative for LA club brands, including resizing, production, photo manipulation, and event marketing.",
+      "responsibilities": [
+        "Adapt and produce assets for multiple digital and print formats.",
+        "Retouch and composite imagery.",
+        "Organize files and maintain version control.",
+        "Collaborate with design and marketing teams."
+      ],
+      "required_skills": [
+        "Photoshop",
+        "Illustrator",
+        "layout",
+        "typography",
+        "color theory",
+        "production design"
+      ],
+      "preferred_skills": [
+        "After Effects",
+        "EDM culture",
+        "event design"
+      ],
+      "portfolio_requirements": "Portfolio should show strong graphic craft, photo manipulation, multi-format production, and optional motion.",
+      "fit_score": 87,
+      "confidence_score": 90,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 15,
+        "work_quality": 8,
+        "location_work_mode": 10,
+        "work_authorization": 3,
+        "freshness": 2,
+        "company_industry_value": 4
+      },
+      "confidence_components": {
+        "original_jd_access": 25,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 10,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The 1+ year threshold and junior title fit Harry's target level.",
+        "ZNTR and Artificial Atmosphere provide relevant typography, image-making, motion, and event-like visual storytelling.",
+        "The role offers direct exposure to immersive entertainment branding."
+      ],
+      "gaps": [
+        "EDM and club-brand knowledge should be demonstrated authentically if present.",
+        "The no-sponsorship language requires Harry to confirm that his current work authorization is compatible before investing heavily."
+      ],
+      "red_flags": [
+        "No visa sponsorship is offered.",
+        "Evening, weekend, holiday, travel, and loud-event conditions may be required."
+      ],
+      "recommended_resume": "Visual/Brand route with production design, compositing, typography, and motion evidence near the top.",
+      "recommended_projects": [
+        "ZNTR",
+        "Artificial Atmosphere",
+        "Sun and Light"
+      ],
+      "status": "shortlisted",
+      "next_action": "Only apply after confirming the posting's no-sponsorship condition is compatible with your latest authorization plan.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://www.linkedin.com/jobs/view/4306642171/",
+        "employment_type": "https://www.linkedin.com/jobs/view/4306642171/",
+        "salary": "https://www.linkedin.com/jobs/view/4306642171/",
+        "date_posted": "https://www.linkedin.com/jobs/view/4306642171/",
+        "experience": "https://www.linkedin.com/jobs/view/4306642171/",
+        "work_authorization": "https://www.linkedin.com/jobs/view/4306642171/",
+        "sponsorship": "https://www.linkedin.com/jobs/view/4306642171/"
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "melin-4417018055",
+      "canonical_url": "https://archipelagocos.bamboohr.com/careers/705",
+      "source_name": "melin Careers / BambooHR",
+      "source_url": "https://archipelagocos.bamboohr.com/careers/705",
+      "also_seen_on": [
+        "https://www.linkedin.com/jobs/view/4417018055/",
+        "https://www.indeed.com/viewjob?jk=399f5c5cbd34ff22"
+      ],
+      "company": "melin",
+      "title": "Jr. Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "San Clemente, CA",
+      "remote_type": "Hybrid, 4 days/week on-site",
+      "employment_type": "Full-time",
+      "salary_min": 24,
+      "salary_max": 27,
+      "salary_currency": "USD/hour",
+      "date_posted": null,
+      "date_discovered": "2026-07-26",
+      "last_verified": "2026-07-26",
+      "requisition_id": "705",
+      "experience_required": "1–2 years of experience.",
+      "education_required": "Unknown: not stated.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Support premium-brand digital channels with email, web, paid social, campaign rollouts, GTM toolkits, and asset management.",
+      "responsibilities": [
+        "Design email, website, and paid-social assets.",
+        "Adapt campaign concepts into scalable digital outputs.",
+        "Prepare go-to-market creative toolkits.",
+        "Maintain brand consistency and organized asset libraries."
+      ],
+      "required_skills": [
+        "Figma",
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "digital layout",
+        "asset management"
+      ],
+      "preferred_skills": [
+        "web design",
+        "lifestyle brand",
+        "photo-shoot support"
+      ],
+      "portfolio_requirements": "Portfolio should show refined digital layouts, brand systems, and campaign adaptation.",
+      "fit_score": 86,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 15,
+        "work_quality": 9,
+        "location_work_mode": 5,
+        "work_authorization": 5,
+        "freshness": 3,
+        "company_industry_value": 4
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The 1–2 year requirement matches Harry's target band.",
+        "The digital-brand and campaign-toolkit work aligns with ZNTR, Anaago, and Artificial Atmosphere.",
+        "The employer site and BambooHR application are both live."
+      ],
+      "gaps": [
+        "The commute from Pasadena to San Clemente is substantial for a four-day office schedule.",
+        "Work-authorization and sponsorship terms are not stated."
+      ],
+      "red_flags": [
+        "Four mandatory office days in San Clemente.",
+        "Occasional travel for lifestyle photo shoots."
+      ],
+      "recommended_resume": "Visual/Brand route emphasizing Figma, digital campaigns, systematic asset production, and refined typography.",
+      "recommended_projects": [
+        "ZNTR",
+        "Anaago",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Apply if the San Clemente commute or relocation is realistic; otherwise keep below the LA-local roles.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://archipelagocos.bamboohr.com/careers/705",
+        "employment_type": "https://www.indeed.com/viewjob?jk=399f5c5cbd34ff22",
+        "salary": "https://www.indeed.com/viewjob?jk=399f5c5cbd34ff22",
+        "date_posted": "https://www.linkedin.com/jobs/view/4417018055/",
+        "experience": "https://www.indeed.com/viewjob?jk=399f5c5cbd34ff22",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "la28-6564235003",
+      "canonical_url": "https://job-boards.greenhouse.io/la2028/jobs/6564235003?gh_src=bbc9c8a03us",
+      "source_name": "LA28 Greenhouse",
+      "source_url": "https://job-boards.greenhouse.io/la2028/jobs/6564235003?gh_src=bbc9c8a03us",
+      "also_seen_on": [
+        "https://www.linkedin.com/jobs/view/4435270292/"
+      ],
+      "company": "LA28 Olympic & Paralympic Games",
+      "title": "Associate, Brand Guidelines",
+      "primary_track": "A",
+      "secondary_track": null,
+      "location": "Los Angeles, CA",
+      "remote_type": "On-site",
+      "employment_type": "Full-time",
+      "salary_min": 69000,
+      "salary_max": 75000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-26",
+      "last_verified": "2026-07-26",
+      "requisition_id": "6564235003",
+      "experience_required": "Minimum 3+ years of in-house or agency experience.",
+      "education_required": "Bachelor's degree in graphic design, art, design, a related field, or equivalent experience.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Produce, govern, version, and distribute the official LA28 visual identity, brand assets, guidelines, and Games documents.",
+      "responsibilities": [
+        "Prepare final digital and print design files.",
+        "Maintain brand guidelines, templates, and asset versions.",
+        "Support milestone-specific Games identity systems.",
+        "Partner with brand and digital-asset teams."
+      ],
+      "required_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "Figma",
+        "typography",
+        "editorial design",
+        "brand systems"
+      ],
+      "preferred_skills": [
+        "sports branding",
+        "governance",
+        "production art"
+      ],
+      "portfolio_requirements": "Portfolio must show current print and digital work, color systems, editorial principles, and meticulous production quality.",
+      "fit_score": 83,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 8,
+        "work_quality": 10,
+        "location_work_mode": 10,
+        "work_authorization": 6,
+        "freshness": 2,
+        "company_industry_value": 2
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "Harry's strongest work shows visual systems, typography, editorial sensibility, and cross-format brand language.",
+        "The role is local and offers unusually strong portfolio value.",
+        "The official Greenhouse application and LinkedIn Apply entry are both active."
+      ],
+      "gaps": [
+        "The stated 3+ year minimum is above Harry's current target band.",
+        "The portfolio must demonstrate production accuracy and governance, not only concept strength."
+      ],
+      "red_flags": [
+        "This is a stretch application because of the experience minimum.",
+        "Evenings, weekends, and holidays may be required during peak periods."
+      ],
+      "recommended_resume": "Visual/Brand route emphasizing systems, guideline maintenance, editorial layout, production files, and cross-functional collaboration.",
+      "recommended_projects": [
+        "ZNTR",
+        "Field Brief",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Apply as a selective stretch; frame school, freelance, and internship work honestly as cumulative systems and production experience.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://job-boards.greenhouse.io/la2028/jobs/6564235003?gh_src=bbc9c8a03us",
+        "employment_type": "https://www.linkedin.com/jobs/view/4435270292/",
+        "salary": "https://job-boards.greenhouse.io/la2028/jobs/6564235003?gh_src=bbc9c8a03us",
+        "date_posted": "https://www.linkedin.com/jobs/view/4435270292/",
+        "experience": "https://job-boards.greenhouse.io/la2028/jobs/6564235003?gh_src=bbc9c8a03us",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "hybe-4443070657",
+      "canonical_url": "https://www.linkedin.com/jobs/view/4443070657/",
+      "source_name": "LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/view/4443070657/",
+      "also_seen_on": [
+        "https://www.linkedin.com/company/hybe-america"
+      ],
+      "company": "HYBE AMERICA",
+      "title": "Product Designer (Temporary)",
+      "primary_track": "A",
+      "secondary_track": "C",
+      "location": "Santa Monica, CA",
+      "remote_type": "Hybrid, 3 days/week on-site",
+      "employment_type": "Full-time temporary, 6 months",
+      "salary_min": 80000,
+      "salary_max": 90000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-26",
+      "last_verified": "2026-07-26",
+      "requisition_id": "4443070657",
+      "experience_required": "The posting targets candidates currently pursuing a related degree; no professional-year minimum is listed.",
+      "education_required": "Currently pursuing a degree in Graphic Design, Visual Arts, or a related field.",
+      "work_authorization_text": "Applicants must be eligible to work in the U.S.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Support six months of apparel, accessories, packaging, and promotional-merchandise design for entertainment releases and tours.",
+      "responsibilities": [
+        "Design graphics for apparel, accessories, packaging, and promotions.",
+        "Create mockups, tech packs, and presentation decks.",
+        "Maintain production assets and references.",
+        "Contribute to collection brainstorming."
+      ],
+      "required_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "typography",
+        "mockups",
+        "production organization"
+      ],
+      "preferred_skills": [
+        "merchandise",
+        "packaging",
+        "music and entertainment"
+      ],
+      "portfolio_requirements": "Portfolio must show relevant visual design, typography, mockups, packaging, or merchandise applications.",
+      "fit_score": 78,
+      "confidence_score": 90,
+      "score_components": {
+        "track_match": 24,
+        "portfolio_evidence": 20,
+        "experience_level": 10,
+        "work_quality": 8,
+        "location_work_mode": 9,
+        "work_authorization": 3,
+        "freshness": 2,
+        "company_industry_value": 2
+      },
+      "confidence_components": {
+        "original_jd_access": 25,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 10,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The role values visual storytelling in music and entertainment.",
+        "ZNTR, Artificial Atmosphere, and Anaago can support campaign, packaging, and presentation storytelling.",
+        "The temporary structure may be useful for gaining commercial production experience."
+      ],
+      "gaps": [
+        "The posting says currently pursuing a degree; if Harry has already graduated, he may not meet that wording.",
+        "Merchandise tech packs and apparel-production evidence are not prominent in the current portfolio."
+      ],
+      "red_flags": [
+        "Six-month temporary role.",
+        "Eligibility wording and graduation timing must be checked before applying."
+      ],
+      "recommended_resume": "Visual/Brand route emphasizing packaging, mockups, presentation decks, and entertainment storytelling.",
+      "recommended_projects": [
+        "ZNTR",
+        "Artificial Atmosphere",
+        "Anaago"
+      ],
+      "status": "shortlisted",
+      "next_action": "Apply only if you still satisfy the 'currently pursuing a degree' requirement; otherwise skip.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://www.linkedin.com/jobs/view/4443070657/",
+        "employment_type": "https://www.linkedin.com/jobs/view/4443070657/",
+        "salary": "https://www.linkedin.com/jobs/view/4443070657/",
+        "date_posted": "https://www.linkedin.com/jobs/view/4443070657/",
+        "experience": "https://www.linkedin.com/jobs/view/4443070657/",
+        "work_authorization": "https://www.linkedin.com/jobs/view/4443070657/",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    },
+    {
+      "job_id": "fabletics-R8203",
+      "canonical_url": "https://justfab.wd1.myworkdayjobs.com/en-US/fabletics/job/Jr-Graphic-Designer_R8203",
+      "source_name": "Fabletics Workday",
+      "source_url": "https://justfab.wd1.myworkdayjobs.com/en-US/fabletics/job/Jr-Graphic-Designer_R8203",
+      "also_seen_on": [
+        "https://www.linkedin.com/jobs/view/4414665625/"
+      ],
+      "company": "Fabletics",
+      "title": "Graphic Designer",
+      "primary_track": "A",
+      "secondary_track": "C",
+      "location": "El Segundo, CA",
+      "remote_type": "Hybrid",
+      "employment_type": "Full-time",
+      "salary_min": 68500,
+      "salary_max": 80000,
+      "salary_currency": "USD",
+      "date_posted": null,
+      "date_discovered": "2026-07-26",
+      "last_verified": "2026-07-26",
+      "requisition_id": "R8203",
+      "experience_required": "3–5 years of graphic-design experience, preferably in e-commerce, fashion, retail, or a digital-first brand.",
+      "education_required": "Bachelor's degree in Multimedia Design or Web Design, or equivalent experience, preferred.",
+      "work_authorization_text": "Unknown: not stated.",
+      "sponsorship_text": "Unknown: not stated.",
+      "role_summary": "Design high-volume site, email, social, and digital marketing creative for an e-commerce fashion brand while exploring AI-enabled production.",
+      "responsibilities": [
+        "Design site, email, social, and broader marketing assets.",
+        "Maintain and evolve recurring templates.",
+        "Support weekly site updates and landing pages.",
+        "Explore AI tools for creative efficiency and iteration."
+      ],
+      "required_skills": [
+        "Photoshop",
+        "Illustrator",
+        "InDesign",
+        "digital design",
+        "typography",
+        "visual storytelling"
+      ],
+      "preferred_skills": [
+        "Figma",
+        "AI design tools",
+        "fashion e-commerce"
+      ],
+      "portfolio_requirements": "Portfolio or website is required and should show polished multi-channel e-commerce design.",
+      "fit_score": 75,
+      "confidence_score": 100,
+      "score_components": {
+        "track_match": 25,
+        "portfolio_evidence": 20,
+        "experience_level": 6,
+        "work_quality": 8,
+        "location_work_mode": 8,
+        "work_authorization": 5,
+        "freshness": 1,
+        "company_industry_value": 2
+      },
+      "confidence_components": {
+        "original_jd_access": 30,
+        "open_status_verified": 25,
+        "jd_completeness": 20,
+        "posting_date_clarity": 15,
+        "dedupe_confidence": 10
+      },
+      "fit_reasons": [
+        "The channel mix of web, email, social, AI tools, and brand execution closely matches Harry's visual/creative-tech direction.",
+        "The official Workday posting remains active.",
+        "The company explicitly encourages applicants even when they do not meet every qualification."
+      ],
+      "gaps": [
+        "The 3–5 year requirement is above Harry's target range.",
+        "Fashion e-commerce performance work is not yet a dedicated portfolio case study."
+      ],
+      "red_flags": [
+        "Stretch role because of the experience requirement.",
+        "Exact weekly hybrid schedule is not stated."
+      ],
+      "recommended_resume": "Visual/Brand route with web, email, campaign systems, and AI-enabled iteration made explicit.",
+      "recommended_projects": [
+        "ZNTR",
+        "Anaago",
+        "Artificial Atmosphere"
+      ],
+      "status": "shortlisted",
+      "next_action": "Keep as a lower-priority stretch after the 1–2 year roles; apply only with a tightly tailored digital-commerce portfolio sequence.",
+      "staffing_agency": false,
+      "fact_sources": {
+        "location": "https://justfab.wd1.myworkdayjobs.com/en-US/fabletics/job/Jr-Graphic-Designer_R8203",
+        "employment_type": "https://justfab.wd1.myworkdayjobs.com/en-US/fabletics/job/Jr-Graphic-Designer_R8203",
+        "salary": "https://www.linkedin.com/jobs/view/4414665625/",
+        "date_posted": "https://justfab.wd1.myworkdayjobs.com/en-US/fabletics/job/Jr-Graphic-Designer_R8203",
+        "experience": "https://justfab.wd1.myworkdayjobs.com/en-US/fabletics/job/Jr-Graphic-Designer_R8203",
+        "work_authorization": "Unknown: not stated.",
+        "sponsorship": "Unknown: not stated."
+      },
+      "inferences": []
+    }
+  ]
+}

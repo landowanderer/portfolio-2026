@@ -1,0 +1,149 @@
+version: 1
+updated: 2026-07-25
+candidate:
+  location: Pasadena, California
+  levels: [new_grad, entry, junior, associate]
+  experience_years: [0, 3]
+  employment_priority: [full_time, contract_to_hire, contract, paid_internship]
+  freelance_separate: true
+  geography:
+    primary: [Los Angeles, Pasadena, Southern California]
+    focus: [New York City, San Francisco Bay Area, Seattle, Austin]
+    include_remote_us: true
+    verify_california_residency: true
+tracks:
+  A:
+    name: Visual / Brand / Motion
+    titles:
+      - Visual Designer
+      - Junior Visual Designer
+      - Associate Visual Designer
+      - Brand Designer
+      - Junior Brand Designer
+      - Communication Designer
+      - Graphic Designer
+      - Junior Graphic Designer
+      - Digital Designer
+      - Integrated Designer
+      - Marketing Designer
+      - Campaign Designer
+      - Multimedia Designer
+      - Motion Designer
+      - Motion Graphics Designer
+      - Brand Motion Designer
+      - Junior Art Director
+      - Associate Art Director
+      - Visual Content Designer
+      - Social Designer
+      - Creative Designer
+  B:
+    name: Product / Experience / UI/UX
+    titles:
+      - Product Designer
+      - Junior Product Designer
+      - Associate Product Designer
+      - UI/UX Designer
+      - UX/UI Designer
+      - UI Designer
+      - Interaction Designer
+      - Experience Designer
+      - Digital Product Designer
+      - UX Designer
+      - Visual Product Designer
+      - Design Systems Designer
+      - Experience Prototyper
+  C:
+    name: Creative Technology / AI Storytelling
+    titles:
+      - Creative Technologist
+      - Junior Creative Technologist
+      - Design Technologist
+      - Creative Developer
+      - Experience Technologist
+      - Experience Prototyper
+      - AI Designer
+      - AI Creative
+      - Generative Designer
+      - Generative Artist
+      - AI Visual Artist
+      - AI Motion Designer
+      - Emerging Technology Designer
+      - New Media Designer
+      - Immersive Designer
+      - Experiential Designer
+      - Interactive Designer
+      - Creative AI Producer
+      - Innovation Designer
+      - Prototyping Designer
+industry_terms:
+  - design studio
+  - branding agency
+  - creative agency
+  - product studio
+  - AI startup
+  - consumer technology
+  - media and entertainment
+  - advertising
+  - outdoor and travel
+  - maps and navigation
+  - culture and art
+  - fashion and lifestyle
+  - hospitality
+  - experiential
+  - film, motion, and VFX
+downrank:
+  - senior
+  - staff
+  - principal
+  - lead
+  - manager
+  - director
+  - 4+ years
+  - 5+ years
+  - strong shipped-product requirement
+  - heavy front-end coding requirement
+  - pure production-resize work
+  - pure performance-marketing asset factory
+hard_reject:
+  - official page closed
+  - explicit US citizenship or security clearance conflict
+  - unrelated discipline
+  - clear scam
+  - pay-to-work
+  - unpaid full-time
+  - unreasonable unpaid test
+freshness:
+  0_3_days: 5
+  4_7_days: 4
+  8_14_days: 3
+  15_30_days: 2
+  over_30_days_verified_open: 1
+  unknown: 1
+fit_weights:
+  track_match: 25
+  portfolio_evidence: 20
+  experience_level: 15
+  work_quality: 10
+  location_work_mode: 10
+  work_authorization: 10
+  freshness: 5
+  company_industry_value: 5
+confidence_weights:
+  original_jd_access: 30
+  open_status_verified: 25
+  jd_completeness: 20
+  posting_date_clarity: 15
+  dedupe_confidence: 10
+output:
+  shortlist_max: 15
+  apply_today_max: 5
+  strong_consideration_max: 7
+  stretch_max: 3
+  require_three_fit_reasons: true
+  require_two_gaps: true
+safety:
+  auto_apply: false
+  auto_email: false
+  auto_linkedin: false
+  bypass_access_controls: false
+  fill_sensitive_answers: false

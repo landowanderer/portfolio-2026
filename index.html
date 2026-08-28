@@ -6,6 +6,12 @@
     <title>HARRY WU | Visual &amp; Experience Designer</title>
     <meta name="description" content="Harry Wu is a Los Angeles visual and experience designer working across product interfaces, brand systems, motion, creative technology, and AI-assisted production.">
     <meta name="theme-color" content="#ffffff">
+    <script>
+        if (new URLSearchParams(window.location.search).get('tab') === 'visual') {
+            document.documentElement.classList.add('visual-active');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#181818');
+        }
+    </script>
     <link rel="canonical" href="https://landowanderer.com/">
     <link rel="icon" href="images/MAIN%20PAGE/sticker1.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
@@ -28,6 +34,31 @@
             line-height: 1.2;
             overflow-y: scroll;
             -webkit-font-smoothing: antialiased;
+        }
+
+        html.visual-active {
+            color-scheme: dark;
+            background-color: #181818;
+        }
+
+        html.visual-active body {
+            background-color: #181818;
+            color: #f2f2ef;
+        }
+
+        html.visual-active #top-nav {
+            background-color: #181818 !important;
+        }
+
+        html.visual-active #visual-section .visual-series-list,
+        html.visual-active #visual-section .visual-series,
+        html.visual-active #bottom-nav {
+            border-color: #4a4a4a !important;
+        }
+
+        html.visual-active #top-nav a:hover,
+        html.visual-active #bottom-nav a:hover {
+            color: #a8a8a8;
         }
 
         html {
@@ -212,25 +243,6 @@
 
         .visual-item--booklet {
             --media-scale: 1.1;
-        }
-
-        .visual-progress {
-            position: relative;
-            width: 100%;
-            height: 1px;
-            margin-top: 7px;
-            overflow: hidden;
-            background: #d6d6d6;
-        }
-
-        .visual-progress span {
-            position: absolute;
-            inset: 0;
-            display: block;
-            background: #000;
-            transform: scaleX(var(--visual-progress, 0.12));
-            transform-origin: left center;
-            transition: transform 90ms linear;
         }
 
         @media (hover: hover) and (pointer: fine) {
@@ -1289,7 +1301,6 @@
                                 <figure class="visual-item"><img src="images/VISUAL/acr.png" alt="Field Guide to Rain Traces publication" loading="lazy" decoding="async" draggable="false"></figure>
                                 <figure class="visual-item"><img src="images/VISUAL/acr2.png" alt="Rain traces folded publication" loading="lazy" decoding="async" draggable="false"></figure>
                             </div>
-                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
                     </article>
 
@@ -1307,7 +1318,6 @@
                                 <figure class="visual-item"><img src="images/VISUAL/acor6.png" alt="A Collection of Rains spread 5" loading="lazy" decoding="async" draggable="false"></figure>
                                 <figure class="visual-item"><img src="images/VISUAL/acor7.png" alt="A Collection of Rains spread 6" loading="lazy" decoding="async" draggable="false"></figure>
                             </div>
-                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
                     </article>
 
@@ -1322,7 +1332,6 @@
                                 <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet3.png" alt="Donald C Tillman publication spread 3" loading="lazy" decoding="async" draggable="false"></figure>
                                 <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet4.png" alt="Donald C Tillman publication spread 4" loading="lazy" decoding="async" draggable="false"></figure>
                             </div>
-                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
                     </article>
 
@@ -1342,7 +1351,6 @@
                                 <figure class="visual-item"><img src="images/VISUAL/A4.jpg" alt="American Cut Pieces editorial spread 2" loading="lazy" decoding="async" draggable="false"></figure>
                                 <figure class="visual-item"><img src="images/VISUAL/A5.jpg" alt="American Cut Pieces editorial spread 3" loading="lazy" decoding="async" draggable="false"></figure>
                             </div>
-                            <div class="visual-progress" aria-hidden="true"><span></span></div>
                         </div>
                     </article>
                 </div>
@@ -1421,16 +1429,23 @@
             const commonHeader = document.getElementById('common-header');
             const topNav = document.getElementById('top-nav');
             const bottomNav = document.getElementById('bottom-nav');
+            const themeColor = document.querySelector('meta[name="theme-color"]');
 
             if (!worksSection || !aboutSection || !visualSection) return;
 
             const isAboutView = viewName === 'about';
+            const isVisualView = viewName === 'visual';
 
             if (isAboutView) {
                 window.scrollTo({ top: 0, behavior: 'auto' });
             }
 
             document.body.classList.toggle('about-active', isAboutView);
+            document.documentElement.classList.toggle('visual-active', isVisualView);
+
+            if (themeColor) {
+                themeColor.setAttribute('content', isVisualView ? '#181818' : '#ffffff');
+            }
 
             worksSection.classList.add('hidden');
             aboutSection.classList.add('hidden');
@@ -1864,6 +1879,15 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             elasticLogoController = elasticLogoEnabled ? initElasticStickerLogo() : null;
+
+            document.addEventListener('pointerup', (event) => {
+                if (!(event.target instanceof Element)) return;
+
+                const navControl = event.target.closest('#top-nav a, #top-nav button, #bottom-nav a, #bottom-nav button');
+                if (navControl instanceof HTMLElement) {
+                    window.requestAnimationFrame(() => navControl.blur());
+                }
+            });
 
             const urlParams = new URLSearchParams(window.location.search);
             const tab = urlParams.get('tab');

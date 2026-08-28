@@ -1,0 +1,43 @@
+version: 1
+updated: 2026-07-25
+policy: "A company on this list is a watch target, not evidence of an open role."
+companies:
+  design_and_brand_studios:
+    - {name: Haus, location: Los Angeles, priority: high, status: watch}
+    - {name: Buck, location: Los Angeles / New York, priority: high, status: watch}
+    - {name: Instrument, location: Portland / Remote, priority: medium, status: watch}
+    - {name: COLLINS, location: New York / San Francisco, priority: high, status: watch}
+    - {name: Pentagram, location: New York, priority: medium, status: watch}
+    - {name: R/GA, location: United States, priority: medium, status: watch}
+  product_and_experience:
+    - {name: Zip, location: San Francisco, priority: high, status: live_role_verified}
+    - {name: Centerfield, location: Los Angeles, priority: high, status: live_role_verified}
+    - {name: Hinge Health, location: San Francisco, priority: high, status: live_role_verified}
+    - {name: Airbnb, location: San Francisco, priority: medium, status: watch}
+    - {name: Figma, location: San Francisco / New York, priority: high, status: watch}
+    - {name: Mapbox, location: United States, priority: high, status: watch}
+  ai_and_creative_technology:
+    - {name: TrueShort, location: Remote US / Los Angeles preferred, priority: high, status: live_role_verified}
+    - {name: Runway, location: New York, priority: high, status: watch}
+    - {name: Adobe, location: California / United States, priority: high, status: watch}
+    - {name: Midjourney, location: San Francisco, priority: high, status: watch}
+    - {name: OpenAI, location: San Francisco, priority: high, status: watch}
+    - {name: Anthropic, location: San Francisco, priority: medium, status: watch}
+  media_and_entertainment:
+    - {name: Netflix, location: Los Angeles, priority: high, status: watch}
+    - {name: Disney, location: Burbank, priority: high, status: watch}
+    - {name: Hulu, location: Los Angeles, priority: high, status: watch}
+    - {name: Spotify, location: United States, priority: medium, status: watch}
+    - {name: Snap, location: Los Angeles, priority: high, status: watch}
+  consumer_and_lifestyle:
+    - {name: Quilt, location: Redwood City, priority: high, status: live_role_verified}
+    - {name: ANINE BING, location: Los Angeles, priority: high, status: live_role_verified}
+    - {name: Patagonia, location: Ventura, priority: high, status: watch}
+    - {name: Nike, location: Oregon / Los Angeles, priority: medium, status: watch}
+    - {name: Arc'teryx, location: North America, priority: medium, status: watch}
+    - {name: Rivian, location: Irvine, priority: high, status: watch}
+  remote_software:
+    - {name: Help Scout, location: Remote US / Canada, priority: high, status: live_role_verified}
+    - {name: Notion, location: San Francisco / New York, priority: high, status: watch}
+    - {name: Webflow, location: Remote US, priority: high, status: watch}
+    - {name: Framer, location: Remote / Amsterdam, priority: medium, status: watch}

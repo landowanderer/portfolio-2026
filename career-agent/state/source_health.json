@@ -1,0 +1,132 @@
+{
+  "run_date": "2026-07-25",
+  "method": "Read-only public web and search-engine pass; no login, scraping, messaging, or application actions.",
+  "checks": [
+    {
+      "source": "LinkedIn Jobs",
+      "category": "general",
+      "status": "login_required",
+      "last_checked": "2026-07-25",
+      "notes": "Public landing page loaded, but the experience prominently requested sign-in. Used only as a discovery category; no profile or message automation."
+    },
+    {
+      "source": "Indeed",
+      "category": "general",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public search landing page loaded. No Indeed result was treated as canonical."
+    },
+    {
+      "source": "Built In",
+      "category": "general",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public listings and date signals loaded; matching roles were canonicalized to employer or ATS pages."
+    },
+    {
+      "source": "Behance Jobs",
+      "category": "design_vertical",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public job list loaded; no role survived official-source verification and fit filtering in this pass."
+    },
+    {
+      "source": "Dribbble Jobs",
+      "category": "design_vertical",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public job list loaded; no role survived official-source verification and fit filtering in this pass."
+    },
+    {
+      "source": "AIGA Design Careers",
+      "category": "design_vertical",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public site loaded; no shortlisted role from this pass."
+    },
+    {
+      "source": "Motionographer Jobs",
+      "category": "design_vertical",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public motion/VFX board loaded; no shortlisted role from this pass."
+    },
+    {
+      "source": "Wellfound",
+      "category": "startup",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public listings loaded. Centerfield was also seen here but kept under its official Lever URL."
+    },
+    {
+      "source": "YC Work at a Startup",
+      "category": "startup",
+      "status": "limited",
+      "last_checked": "2026-07-25",
+      "notes": "The page returned no readable listing text in this pass. No access control was bypassed."
+    },
+    {
+      "source": "Aquent",
+      "category": "staffing_agency",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public job-search page loaded; no high-quality verified role was retained."
+    },
+    {
+      "source": "Creative Circle",
+      "category": "staffing_agency",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public site loaded; no high-quality verified role was retained."
+    },
+    {
+      "source": "24 Seven Talent",
+      "category": "staffing_agency",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public job-search page loaded; no high-quality verified role was retained."
+    },
+    {
+      "source": "Onward Search",
+      "category": "staffing_agency",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Public job-search page loaded; no high-quality verified role was retained."
+    },
+    {
+      "source": "Greenhouse",
+      "category": "official_ats",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Verified live application pages for Quilt and ANINE BING."
+    },
+    {
+      "source": "Lever",
+      "category": "official_ats",
+      "status": "limited",
+      "last_checked": "2026-07-25",
+      "notes": "Centerfield's official job result exposed a live apply action and full JD through search, but direct page opening was inconsistent; confidence reduced."
+    },
+    {
+      "source": "Ashby",
+      "category": "official_ats",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Verified live job pages for Help Scout, Zip, Hinge Health, TrueShort, and Intro."
+    },
+    {
+      "source": "Workday",
+      "category": "official_ats",
+      "status": "limited",
+      "last_checked": "2026-07-25",
+      "notes": "A Dentsu Motion Designer role was discovered but a later source-health check reported it removed. It is archived, not shortlisted."
+    },
+    {
+      "source": "Workable",
+      "category": "official_ats",
+      "status": "accessible",
+      "last_checked": "2026-07-25",
+      "notes": "Haus's official company page remained live and routed its application to Workable."
+    }
+  ]
+}

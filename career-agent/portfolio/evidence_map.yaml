@@ -1,0 +1,112 @@
+version: 1
+audited: 2026-07-25
+projects:
+  - name: Anaago
+    evidence_source: resume
+    public_page: null
+    truth_label: client_work
+    tracks: [A, B]
+    supports:
+      - end-to-end brand campaign production
+      - original photography and video
+      - editing, motion design, compositing, and AI-assisted refinement
+      - WeChat and Xiaohongshu content planning and publishing
+      - 500+ follower audience growth documented on the resume
+      - WeChat Mini Program user flows, information architecture, interface states, and high-fidelity prototype
+      - cross-functional work with art direction and production
+    do_not_claim:
+      - a public case study exists
+      - the Mini Program shipped unless Harry confirms it
+  - name: Field Brief
+    evidence_source: portfolio_and_resume
+    public_page: ../../field-brief.html
+    truth_label: independent_concept
+    tracks: [B, C]
+    supports:
+      - research synthesis
+      - information architecture
+      - high-fidelity UI
+      - icon systems
+      - motion prototypes
+      - product film
+      - complex information prioritization
+    do_not_claim:
+      - Apple client work
+      - shipped Apple Maps functionality
+  - name: ZNTR
+    evidence_source: portfolio_and_resume
+    public_page: ../../zntr.html
+    truth_label: self_initiated
+    tracks: [A, B, C]
+    supports:
+      - modular brand identity system
+      - editorial layout and typography
+      - motion
+      - AI-generated imagery
+      - cohesive web experience
+      - interface exploration
+    do_not_claim:
+      - commercial launch unless Harry confirms it
+  - name: Artificial Atmosphere
+    evidence_source: portfolio
+    public_page: ../../artificial-atmosphere.html
+    truth_label: self_initiated_installation
+    tracks: [A, C]
+    supports:
+      - art direction
+      - AI filmmaking
+      - prompt and model studies
+      - editing and motion
+      - physical print and media artifacts
+      - VR, CRT, and exhibition presentation
+    do_not_claim:
+      - production ML engineering
+      - custom model training
+  - name: Sun and Light
+    evidence_source: portfolio
+    public_page: ../../sun-and-light.html
+    truth_label: interactive_project
+    tracks: [A, C]
+    supports:
+      - interactive projection
+      - participant testing
+      - embodied real-time experience
+      - visual environment composition
+  - name: Rain Simulator
+    evidence_source: portfolio
+    public_page: ../../rain-simulator.html
+    truth_label: interactive_project
+    tracks: [B, C]
+    supports:
+      - TouchDesigner
+      - Teachable Machine classification
+      - object and gesture interaction
+      - audio-reactive real-time visuals
+      - experience prototyping
+  - name: One Hit
+    evidence_source: portfolio
+    public_page: ../../one-hit.html
+    truth_label: experimental_film
+    tracks: [A, C]
+    supports:
+      - AI-assisted filmmaking
+      - generated imagery
+      - editing and pacing
+      - concise visual storytelling
+  - name: Photo Dump
+    evidence_source: portfolio
+    public_page: ../../photo-dump.html
+    truth_label: interactive_web_project
+    tracks: [A, B, C]
+    supports:
+      - interactive web experience
+      - visual curation
+  - name: Clay Archive
+    evidence_source: portfolio
+    public_page: ../../clay-archive.html
+    truth_label: web_archive
+    tracks: [A, B]
+    supports:
+      - web archive
+      - craft documentation
+      - editorial design
