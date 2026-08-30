@@ -188,10 +188,17 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            opacity: 0;
             pointer-events: none;
-            transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+            transition:
+                opacity 160ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
             -webkit-user-drag: none;
             user-select: none;
+        }
+
+        .archive-media.is-loaded img {
+            opacity: 1;
         }
 
         .archive-media::after {
@@ -306,43 +313,43 @@
                     id: 'atmosphere',
                     title: 'Artificial Atmosphere Prints',
                     images: [
-                        ['images/VISUAL/aaposter.jpg', 'Artificial Atmosphere poster'],
-                        ['images/VISUAL/acr.png', 'Field Guide to Rain Traces publication'],
-                        ['images/VISUAL/acr2.png', 'Rain traces folded publication']
+                        ['images/VISUAL/aaposter.jpg', 'Artificial Atmosphere poster', 2752, 1536],
+                        ['images/VISUAL/acr.png', 'Field Guide to Rain Traces publication', 2092, 1396],
+                        ['images/VISUAL/acr2.png', 'Rain traces folded publication', 2092, 1396]
                     ]
                 },
                 {
                     id: 'rains',
                     title: 'A Collection of Rains',
                     images: [
-                        ['images/VISUAL/acor.png', 'A Collection of Rains cover'],
-                        ['images/VISUAL/acor2.png', 'A Collection of Rains spread 1'],
-                        ['images/VISUAL/acor3.png', 'A Collection of Rains spread 2'],
-                        ['images/VISUAL/acor4.png', 'A Collection of Rains spread 3'],
-                        ['images/VISUAL/acor5.png', 'A Collection of Rains spread 4'],
-                        ['images/VISUAL/acor6.png', 'A Collection of Rains spread 5'],
-                        ['images/VISUAL/acor7.png', 'A Collection of Rains spread 6']
+                        ['images/VISUAL/acor.png', 'A Collection of Rains cover', 1275, 1650],
+                        ['images/VISUAL/acor2.png', 'A Collection of Rains spread 1', 1650, 1275],
+                        ['images/VISUAL/acor3.png', 'A Collection of Rains spread 2', 1650, 1275],
+                        ['images/VISUAL/acor4.png', 'A Collection of Rains spread 3', 1650, 1275],
+                        ['images/VISUAL/acor5.png', 'A Collection of Rains spread 4', 1650, 1275],
+                        ['images/VISUAL/acor6.png', 'A Collection of Rains spread 5', 1650, 1275],
+                        ['images/VISUAL/acor7.png', 'A Collection of Rains spread 6', 1650, 1275]
                     ]
                 },
                 {
                     id: 'tillman',
                     title: 'Donald C Tillman Water Reclamation Plant',
                     images: [
-                        ['images/VISUAL/booklet1.png', 'Donald C Tillman publication spread 1'],
-                        ['images/VISUAL/booklet2.png', 'Donald C Tillman publication spread 2'],
-                        ['images/VISUAL/booklet3.png', 'Donald C Tillman publication spread 3'],
-                        ['images/VISUAL/booklet4.png', 'Donald C Tillman publication spread 4']
+                        ['images/VISUAL/booklet1.png', 'Donald C Tillman publication spread 1', 1314, 930],
+                        ['images/VISUAL/booklet2.png', 'Donald C Tillman publication spread 2', 1314, 930],
+                        ['images/VISUAL/booklet3.png', 'Donald C Tillman publication spread 3', 1314, 930],
+                        ['images/VISUAL/booklet4.png', 'Donald C Tillman publication spread 4', 1314, 930]
                     ]
                 },
                 {
                     id: 'cut-pieces',
                     title: 'American Cut Pieces',
                     images: [
-                        ['images/VISUAL/A1.jpg', 'American Cut Pieces editorial layout 1'],
-                        ['images/VISUAL/A2.jpg', 'American Cut Pieces editorial layout 2'],
-                        ['images/VISUAL/A3.jpg', 'American Cut Pieces editorial spread 1'],
-                        ['images/VISUAL/A4.jpg', 'American Cut Pieces editorial spread 2'],
-                        ['images/VISUAL/A5.jpg', 'American Cut Pieces editorial spread 3']
+                        ['images/VISUAL/A1.jpg', 'American Cut Pieces editorial layout 1', 5304, 5304],
+                        ['images/VISUAL/A2.jpg', 'American Cut Pieces editorial layout 2', 5304, 5304],
+                        ['images/VISUAL/A3.jpg', 'American Cut Pieces editorial spread 1', 6630, 5304],
+                        ['images/VISUAL/A4.jpg', 'American Cut Pieces editorial spread 2', 6630, 5304],
+                        ['images/VISUAL/A5.jpg', 'American Cut Pieces editorial spread 3', 6630, 5304]
                     ]
                 }
             ];
@@ -360,7 +367,7 @@
             let ready = false;
 
             projects.forEach((project, projectIndex) => {
-                project.images.forEach(([src, alt], imageIndex) => {
+                project.images.forEach(([src, alt, imageWidth, imageHeight], imageIndex) => {
                     const button = document.createElement('button');
                     const image = document.createElement('img');
 
@@ -370,9 +377,11 @@
                     button.dataset.image = String(imageIndex);
                     button.setAttribute('aria-label', `${project.title}: ${alt}`);
 
-                    image.src = src;
                     image.alt = alt;
                     image.decoding = 'async';
+                    image.loading = imageIndex === 0 ? 'eager' : 'lazy';
+                    image.width = imageWidth;
+                    image.height = imageHeight;
                     image.draggable = false;
                     button.appendChild(image);
                     stage.appendChild(button);
@@ -383,10 +392,52 @@
                         projectId: project.id,
                         projectIndex,
                         imageIndex,
-                        ratio: 1
+                        src,
+                        ratio: imageWidth / imageHeight,
+                        loadPromise: null
                     });
                 });
             });
+
+            function loadNode(node) {
+                if (node.loadPromise) return node.loadPromise;
+
+                node.loadPromise = new Promise(resolve => {
+                    let settled = false;
+                    const finish = () => {
+                        if (settled) return;
+                        settled = true;
+
+                        if (node.image.naturalWidth && node.image.naturalHeight) {
+                            node.ratio = node.image.naturalWidth / node.image.naturalHeight;
+                            node.element.classList.add('is-loaded');
+                        }
+
+                        resolve();
+                    };
+
+                    node.image.addEventListener('load', finish, { once: true });
+                    node.image.addEventListener('error', finish, { once: true });
+                    node.image.src = node.src;
+
+                    if (node.image.complete) finish();
+                });
+
+                return node.loadPromise;
+            }
+
+            function loadProjectImages(projectId) {
+                mediaNodes
+                    .filter(node => node.projectId === projectId)
+                    .forEach(node => loadNode(node));
+            }
+
+            function revealStage() {
+                if (ready) return;
+                ready = true;
+                applyLayout(getLayout());
+                stage.classList.add('is-ready');
+            }
 
             function fitWithin(ratio, maxWidth, maxHeight) {
                 let width = maxWidth;
@@ -681,6 +732,8 @@
                 app.dataset.open = activeProject ? 'true' : 'false';
                 setPreviewProject(null);
 
+                if (activeProject) loadProjectImages(activeProject);
+
                 titleButtons.forEach(button => {
                     button.setAttribute('aria-pressed', String(button.dataset.project === activeProject));
                 });
@@ -733,29 +786,12 @@
             });
             resizeObserver.observe(stage);
 
-            Promise.all(mediaNodes.map(node => {
-                const settle = () => {
-                    if (node.image.naturalWidth && node.image.naturalHeight) {
-                        node.ratio = node.image.naturalWidth / node.image.naturalHeight;
-                    }
-                };
+            const coverNodes = mediaNodes.filter(node => node.imageIndex === 0);
+            const revealTimer = window.setTimeout(revealStage, 2500);
 
-                if (node.image.complete) {
-                    settle();
-                    return node.image.decode().catch(() => undefined).then(settle);
-                }
-
-                return new Promise(resolve => {
-                    node.image.addEventListener('load', () => {
-                        settle();
-                        resolve();
-                    }, { once: true });
-                    node.image.addEventListener('error', resolve, { once: true });
-                });
-            })).then(() => {
-                ready = true;
-                applyLayout(getLayout());
-                stage.classList.add('is-ready');
+            Promise.all(coverNodes.map(node => loadNode(node))).then(() => {
+                window.clearTimeout(revealTimer);
+                revealStage();
             });
         })();
     </script>
