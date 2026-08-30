@@ -8,8 +8,7 @@
     <meta name="theme-color" content="#ffffff">
     <script>
         if (new URLSearchParams(window.location.search).get('tab') === 'visual') {
-            document.documentElement.classList.add('visual-active');
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#181818');
+            window.location.replace('visual-works.html');
         }
     </script>
     <link rel="canonical" href="https://landowanderer.com/">
@@ -1150,7 +1149,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="index.html?tab=visual" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="switchView('visual'); return false;">VISUAL WORKS</a>
+                <a href="visual-works.html" class="cursor-pointer hover:text-gray-600 w-max text-left">VISUAL WORKS</a>
             </div>
         </nav>
 
@@ -1363,7 +1362,7 @@
             <div class="grid grid-cols-3 md:grid-cols-4 font-bold uppercase tracking-wide items-center">
                 <a href="index.html?tab=about" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="switchView('about'); return false;">HARRY WU</a>
                 <a href="index.html?tab=works" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="switchView('works'); return false;">WORKS</a>
-                <a href="index.html?tab=visual" class="cursor-pointer hover:text-gray-600 w-max text-left" onclick="switchView('visual'); return false;">VISUAL WORKS</a>
+                <a href="visual-works.html" class="cursor-pointer hover:text-gray-600 w-max text-left">VISUAL WORKS</a>
                 <div class="hidden md:block"></div>
             </div>
         </footer>

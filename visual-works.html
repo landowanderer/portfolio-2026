@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#181818">
+    <title>Visual Works — Harry Wu</title>
+    <meta name="description" content="Selected visual and editorial work by Harry Wu.">
+    <link rel="canonical" href="https://landowanderer.com/visual-works.html">
+    <style>
+        :root {
+            color-scheme: dark;
+            background: #181818;
+            color: #f2f2ef;
+            font-family: Arial, Helvetica, sans-serif;
+            font-synthesis: none;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-width: 320px;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: #181818;
+        }
+
+        body {
+            min-height: 100dvh;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: geometricPrecision;
+        }
+
+        button {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            text-align: left;
+        }
+
+        .archive-app {
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            height: 100dvh;
+            padding: max(18px, env(safe-area-inset-top)) clamp(18px, 2vw, 32px) max(16px, env(safe-area-inset-bottom));
+            background: #181818;
+        }
+
+        .archive-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: start;
+            min-height: 74px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #4a4a4a;
+            font-size: clamp(12px, 0.82vw, 15px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .archive-nav a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .archive-nav a:hover,
+        .archive-nav a:focus-visible {
+            color: #a8a8a8;
+        }
+
+        .archive-nav > :nth-child(2) {
+            justify-self: center;
+        }
+
+        .archive-nav > :last-child {
+            justify-self: end;
+        }
+
+        .archive-workspace {
+            position: relative;
+            min-height: 0;
+            padding-top: clamp(22px, 3vh, 42px);
+        }
+
+        .archive-index {
+            position: absolute;
+            z-index: 20;
+            top: clamp(22px, 3vh, 42px);
+            left: 0;
+            display: grid;
+            width: clamp(210px, 20vw, 310px);
+            gap: clamp(12px, 1.6vh, 22px);
+        }
+
+        .archive-title {
+            width: fit-content;
+            max-width: 100%;
+            cursor: pointer;
+            color: #878787;
+            font-size: clamp(14px, 1vw, 19px);
+            font-weight: 900;
+            line-height: 0.98;
+            letter-spacing: -0.025em;
+            text-transform: uppercase;
+            transform-origin: left center;
+            transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+        }
+
+        .archive-title:hover,
+        .archive-title:focus-visible,
+        .archive-title[data-preview="true"],
+        .archive-title[aria-pressed="true"] {
+            color: #f2f2ef;
+        }
+
+        .archive-title:active {
+            transform: scale(0.97);
+        }
+
+        .archive-stage {
+            position: absolute;
+            inset: clamp(22px, 3vh, 42px) 0 18px clamp(235px, 22vw, 340px);
+            min-width: 0;
+            min-height: 0;
+            overflow: hidden;
+            contain: layout paint;
+            touch-action: manipulation;
+        }
+
+        .archive-stage::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background: #333;
+            content: "";
+            pointer-events: none;
+        }
+
+        .archive-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 30;
+            color: #777;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transform: translate(-50%, -50%);
+            transition: opacity 160ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .archive-stage.is-ready .archive-loading {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .archive-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            margin: 0;
+            padding: 0;
+            cursor: default;
+            opacity: 0;
+            pointer-events: none;
+            transform-origin: 0 0;
+            outline: 0;
+        }
+
+        .archive-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+            transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .archive-media::after {
+            position: absolute;
+            inset: -5px;
+            border: 1px solid transparent;
+            content: "";
+            pointer-events: none;
+        }
+
+        .archive-media:focus-visible::after {
+            border-color: #777;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .archive-media[data-interactive="true"] {
+                cursor: pointer;
+            }
+
+            .archive-media[data-interactive="true"]:hover img {
+                transform: translateY(-3px);
+            }
+        }
+
+        .archive-media[data-interactive="true"]:active img {
+            transform: translateY(-1px) scale(0.97);
+        }
+
+        @media (max-width: 760px) {
+            .archive-app {
+                padding-inline: 14px;
+            }
+
+            .archive-nav {
+                min-height: 54px;
+                padding-bottom: 13px;
+                font-size: 10px;
+            }
+
+            .archive-workspace {
+                display: grid;
+                grid-template-rows: auto minmax(0, 1fr);
+                gap: 16px;
+                padding-top: 16px;
+            }
+
+            .archive-index {
+                position: relative;
+                top: auto;
+                left: auto;
+                grid-row: 1;
+                width: min(76vw, 280px);
+                gap: 8px;
+            }
+
+            .archive-title {
+                font-size: 12px;
+                line-height: 0.98;
+            }
+
+            .archive-stage {
+                position: relative;
+                inset: auto;
+                grid-row: 2;
+                width: 100%;
+                height: 100%;
+                min-height: 0;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.001ms !important;
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="archive-app" id="archive-app" data-open="false">
+        <header class="archive-nav" aria-label="Primary navigation">
+            <a href="index.html?tab=about">Harry Wu</a>
+            <a href="index.html?tab=works">Works</a>
+            <span aria-current="page">Visual Works</span>
+        </header>
+
+        <section class="archive-workspace" aria-label="Visual works archive">
+            <nav class="archive-index" aria-label="Visual projects">
+                <button class="archive-title" type="button" data-project="atmosphere" aria-pressed="false">Artificial Atmosphere Prints</button>
+                <button class="archive-title" type="button" data-project="rains" aria-pressed="false">A Collection of Rains</button>
+                <button class="archive-title" type="button" data-project="tillman" aria-pressed="false">Donald C Tillman Water Reclamation Plant</button>
+                <button class="archive-title" type="button" data-project="cut-pieces" aria-pressed="false">American Cut Pieces</button>
+            </nav>
+
+            <div class="archive-stage" id="archive-stage" aria-label="Project image stage">
+                <span class="archive-loading" aria-live="polite">Loading archive</span>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (() => {
+            'use strict';
+
+            const projects = [
+                {
+                    id: 'atmosphere',
+                    title: 'Artificial Atmosphere Prints',
+                    images: [
+                        ['images/VISUAL/aaposter.jpg', 'Artificial Atmosphere poster'],
+                        ['images/VISUAL/acr.png', 'Field Guide to Rain Traces publication'],
+                        ['images/VISUAL/acr2.png', 'Rain traces folded publication']
+                    ]
+                },
+                {
+                    id: 'rains',
+                    title: 'A Collection of Rains',
+                    images: [
+                        ['images/VISUAL/acor.png', 'A Collection of Rains cover'],
+                        ['images/VISUAL/acor2.png', 'A Collection of Rains spread 1'],
+                        ['images/VISUAL/acor3.png', 'A Collection of Rains spread 2'],
+                        ['images/VISUAL/acor4.png', 'A Collection of Rains spread 3'],
+                        ['images/VISUAL/acor5.png', 'A Collection of Rains spread 4'],
+                        ['images/VISUAL/acor6.png', 'A Collection of Rains spread 5'],
+                        ['images/VISUAL/acor7.png', 'A Collection of Rains spread 6']
+                    ]
+                },
+                {
+                    id: 'tillman',
+                    title: 'Donald C Tillman Water Reclamation Plant',
+                    images: [
+                        ['images/VISUAL/booklet1.png', 'Donald C Tillman publication spread 1'],
+                        ['images/VISUAL/booklet2.png', 'Donald C Tillman publication spread 2'],
+                        ['images/VISUAL/booklet3.png', 'Donald C Tillman publication spread 3'],
+                        ['images/VISUAL/booklet4.png', 'Donald C Tillman publication spread 4']
+                    ]
+                },
+                {
+                    id: 'cut-pieces',
+                    title: 'American Cut Pieces',
+                    images: [
+                        ['images/VISUAL/A1.jpg', 'American Cut Pieces editorial layout 1'],
+                        ['images/VISUAL/A2.jpg', 'American Cut Pieces editorial layout 2'],
+                        ['images/VISUAL/A3.jpg', 'American Cut Pieces editorial spread 1'],
+                        ['images/VISUAL/A4.jpg', 'American Cut Pieces editorial spread 2'],
+                        ['images/VISUAL/A5.jpg', 'American Cut Pieces editorial spread 3']
+                    ]
+                }
+            ];
+
+            const app = document.getElementById('archive-app');
+            const workspace = document.querySelector('.archive-workspace');
+            const stage = document.getElementById('archive-stage');
+            const titleButtons = Array.from(document.querySelectorAll('.archive-title'));
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const hoverFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+            const mediaNodes = [];
+            const animations = new Set();
+            let activeProject = null;
+            let resizeFrame = 0;
+            let ready = false;
+
+            projects.forEach((project, projectIndex) => {
+                project.images.forEach(([src, alt], imageIndex) => {
+                    const button = document.createElement('button');
+                    const image = document.createElement('img');
+
+                    button.className = 'archive-media';
+                    button.type = 'button';
+                    button.dataset.project = project.id;
+                    button.dataset.image = String(imageIndex);
+                    button.setAttribute('aria-label', `${project.title}: ${alt}`);
+
+                    image.src = src;
+                    image.alt = alt;
+                    image.decoding = 'async';
+                    image.draggable = false;
+                    button.appendChild(image);
+                    stage.appendChild(button);
+
+                    mediaNodes.push({
+                        element: button,
+                        image,
+                        projectId: project.id,
+                        projectIndex,
+                        imageIndex,
+                        ratio: 1
+                    });
+                });
+            });
+
+            function fitWithin(ratio, maxWidth, maxHeight) {
+                let width = maxWidth;
+                let height = width / ratio;
+                if (height > maxHeight) {
+                    height = maxHeight;
+                    width = height * ratio;
+                }
+                return { width, height };
+            }
+
+            function overviewLayout(width, height) {
+                const covers = projects.map(project => mediaNodes.find(node => node.projectId === project.id && node.imageIndex === 0));
+                const mobile = width < 620;
+                const side = mobile ? 6 : Math.max(8, width * 0.012);
+                const gapX = mobile ? 16 : Math.max(28, Math.min(58, width * 0.045));
+                const gapY = mobile ? 18 : Math.max(24, Math.min(46, height * 0.055));
+                const bottom = mobile ? 8 : 12;
+                const cellWidth = (width - side * 2 - gapX) / 2;
+                const cellHeight = (height - bottom - gapY) / 2;
+                const layout = new Map();
+
+                covers.forEach((node, index) => {
+                    const column = index % 2;
+                    const row = Math.floor(index / 2);
+                    const size = fitWithin(
+                        node.ratio,
+                        cellWidth * (mobile ? 0.98 : 0.97),
+                        cellHeight * (mobile ? 0.94 : 0.96)
+                    );
+                    const cellX = side + column * (cellWidth + gapX);
+                    const cellY = row * (cellHeight + gapY);
+                    layout.set(node, {
+                        x: cellX + (cellWidth - size.width) * 0.5,
+                        y: cellY,
+                        width: size.width,
+                        height: size.height,
+                        opacity: 1,
+                        z: 4,
+                        interactive: true
+                    });
+                });
+
+                mediaNodes.forEach(node => {
+                    if (layout.has(node)) return;
+                    const cover = layout.get(covers[node.projectIndex]);
+                    layout.set(node, {
+                        x: cover.x + cover.width * 0.5,
+                        y: cover.y + cover.height * 0.5,
+                        width: Math.max(2, cover.width * 0.92),
+                        height: Math.max(2, cover.height * 0.92),
+                        opacity: 0,
+                        z: 1,
+                        interactive: false
+                    });
+                });
+
+                return layout;
+            }
+
+            function splitRows(nodes, mobile) {
+                if (nodes.length <= 2) return [nodes];
+
+                const maxPerRow = mobile ? 3 : 4;
+                let rowCount = Math.ceil(nodes.length / maxPerRow);
+
+                if (mobile && nodes.length === 3) rowCount = 2;
+                if (!mobile && nodes.length === 4) rowCount = 2;
+
+                const baseCount = Math.floor(nodes.length / rowCount);
+                const remainder = nodes.length % rowCount;
+                const rows = [];
+                let cursor = 0;
+
+                for (let rowIndex = 0; rowIndex < rowCount; rowIndex += 1) {
+                    const count = baseCount + (rowIndex < remainder ? 1 : 0);
+                    rows.push(nodes.slice(cursor, cursor + count));
+                    cursor += count;
+                }
+
+                return rows;
+            }
+
+            function expandedLayout(width, height, projectId) {
+                const mobile = width < 620;
+                const layout = new Map();
+                const selected = mediaNodes.filter(node => node.projectId === projectId);
+                const unselectedCovers = projects
+                    .filter(project => project.id !== projectId)
+                    .map(project => mediaNodes.find(node => node.projectId === project.id && node.imageIndex === 0));
+                const outer = mobile ? 6 : Math.max(8, width * 0.012);
+                const railHeight = mobile ? Math.max(42, height * 0.1) : Math.max(46, height * 0.09);
+                const railBottom = mobile ? 6 : 8;
+                const railTop = height - railBottom - railHeight;
+                const contentBottom = railTop - (mobile ? 10 : 16);
+                const contentHeight = Math.max(80, contentBottom - outer);
+                const rows = splitRows(selected, mobile);
+                const rowGap = mobile ? 10 : 14;
+                const desiredCenterY = height * (mobile ? 0.48 : 0.47);
+                const centeredHeight = Math.max(
+                    80,
+                    2 * Math.min(desiredCenterY - outer, contentBottom - desiredCenterY)
+                );
+                const maxGridHeight = Math.min(contentHeight, centeredHeight);
+                const gap = mobile ? 8 : Math.max(12, width * 0.012);
+                const rowSpecs = rows.map(row => {
+                    const availableWidth = width - outer * 2 - gap * (row.length - 1);
+                    const ratioSum = row.reduce((sum, node) => sum + node.ratio, 0);
+                    return {
+                        nodes: row,
+                        idealHeight: availableWidth / ratioSum
+                    };
+                });
+                const gapsHeight = rowGap * (rowSpecs.length - 1);
+                const idealItemsHeight = rowSpecs.reduce((sum, row) => sum + row.idealHeight, 0);
+                const scale = Math.min(1, Math.max(0.01, (maxGridHeight - gapsHeight) / idealItemsHeight));
+                const gridHeight = rowSpecs.reduce((sum, row) => sum + row.idealHeight * scale, gapsHeight);
+                let rowTop = Math.max(
+                    outer,
+                    Math.min(desiredCenterY - gridHeight * 0.5, contentBottom - gridHeight)
+                );
+
+                rowSpecs.forEach(row => {
+                    const itemHeight = row.idealHeight * scale;
+                    const widths = row.nodes.map(node => itemHeight * node.ratio);
+                    const totalWidth = widths.reduce((sum, value) => sum + value, 0) + gap * (row.nodes.length - 1);
+                    let cursor = (width - totalWidth) * 0.5;
+
+                    row.nodes.forEach((node, index) => {
+                        layout.set(node, {
+                            x: cursor,
+                            y: rowTop,
+                            width: widths[index],
+                            height: itemHeight,
+                            opacity: 1,
+                            z: 8,
+                            interactive: false
+                        });
+                        cursor += widths[index] + gap;
+                    });
+
+                    rowTop += itemHeight + rowGap;
+                });
+
+                const railGap = mobile ? 10 : 14;
+                const railSizes = unselectedCovers.map(node => fitWithin(node.ratio, railHeight * 1.3, railHeight));
+                const railWidth = railSizes.reduce((sum, size) => sum + size.width, 0) + railGap * (railSizes.length - 1);
+                let railCursor = width - outer - railWidth;
+
+                unselectedCovers.forEach((node, index) => {
+                    const size = railSizes[index];
+                    layout.set(node, {
+                        x: railCursor,
+                        y: railTop + railHeight - size.height,
+                        width: size.width,
+                        height: size.height,
+                        opacity: 0.76,
+                        z: 5,
+                        interactive: true
+                    });
+                    railCursor += size.width + railGap;
+                });
+
+                mediaNodes.forEach(node => {
+                    if (layout.has(node)) return;
+                    const cover = mediaNodes.find(candidate => candidate.projectId === node.projectId && candidate.imageIndex === 0);
+                    const target = layout.get(cover);
+                    layout.set(node, target ? {
+                        x: target.x + target.width * 0.5,
+                        y: target.y + target.height * 0.5,
+                        width: Math.max(2, target.width * 0.86),
+                        height: Math.max(2, target.height * 0.86),
+                        opacity: 0,
+                        z: 1,
+                        interactive: false
+                    } : {
+                        x: width * 0.5,
+                        y: height * 0.5,
+                        width: 2,
+                        height: 2,
+                        opacity: 0,
+                        z: 1,
+                        interactive: false
+                    });
+                });
+
+                return layout;
+            }
+
+            function getLayout() {
+                const rect = stage.getBoundingClientRect();
+                return activeProject
+                    ? expandedLayout(rect.width, rect.height, activeProject)
+                    : overviewLayout(rect.width, rect.height);
+            }
+
+            function captureVisualState() {
+                return new Map(mediaNodes.map(node => {
+                    const rect = node.element.getBoundingClientRect();
+                    const style = getComputedStyle(node.element);
+                    return [node, {
+                        rect,
+                        opacity: Number.parseFloat(style.opacity) || 0
+                    }];
+                }));
+            }
+
+            function stopAnimations() {
+                animations.forEach(animation => animation.cancel());
+                animations.clear();
+            }
+
+            function applyLayout(layout) {
+                mediaNodes.forEach(node => {
+                    const target = layout.get(node);
+                    const element = node.element;
+                    element.style.width = `${target.width}px`;
+                    element.style.height = `${target.height}px`;
+                    element.style.transform = `translate3d(${target.x}px, ${target.y}px, 0)`;
+                    element.style.opacity = String(target.opacity);
+                    element.style.zIndex = String(target.z);
+                    element.dataset.interactive = String(target.interactive);
+                    element.disabled = !target.interactive;
+                    element.tabIndex = target.interactive ? 0 : -1;
+                    element.style.pointerEvents = target.opacity > 0.2 ? 'auto' : 'none';
+                    element.setAttribute('aria-hidden', String(target.opacity <= 0.2));
+                });
+            }
+
+            function setPreviewProject(projectId) {
+                titleButtons.forEach(button => {
+                    button.dataset.preview = String(button.dataset.project === projectId);
+                });
+            }
+
+            function animateToLayout(duration) {
+                if (!ready) return;
+                const before = captureVisualState();
+                stopAnimations();
+                const layout = getLayout();
+                applyLayout(layout);
+
+                if (reducedMotion.matches || duration === 0) return;
+
+                const stageRect = stage.getBoundingClientRect();
+
+                mediaNodes.forEach(node => {
+                    const start = before.get(node);
+                    const target = layout.get(node);
+                    const newRect = node.element.getBoundingClientRect();
+                    const startWidth = Math.max(2, start.rect.width);
+                    const startHeight = Math.max(2, start.rect.height);
+                    const targetWidth = Math.max(2, newRect.width);
+                    const targetHeight = Math.max(2, newRect.height);
+                    const startX = start.rect.left - stageRect.left;
+                    const startY = start.rect.top - stageRect.top;
+                    const scaleX = Math.max(0.04, startWidth / targetWidth);
+                    const scaleY = Math.max(0.04, startHeight / targetHeight);
+                    const element = node.element;
+
+                    element.style.willChange = 'transform, opacity';
+                    const animation = element.animate([
+                        {
+                            transform: `translate3d(${startX}px, ${startY}px, 0) scale(${scaleX}, ${scaleY})`,
+                            opacity: start.opacity
+                        },
+                        {
+                            transform: `translate3d(${target.x}px, ${target.y}px, 0) scale(1, 1)`,
+                            opacity: target.opacity
+                        }
+                    ], {
+                        duration,
+                        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                        fill: 'none'
+                    });
+
+                    animations.add(animation);
+                    animation.addEventListener('finish', () => {
+                        animations.delete(animation);
+                        element.style.willChange = 'auto';
+                    }, { once: true });
+                    animation.addEventListener('cancel', () => {
+                        animations.delete(animation);
+                        element.style.willChange = 'auto';
+                    }, { once: true });
+                });
+            }
+
+            function setActiveProject(projectId, durationOverride) {
+                const isClosing = activeProject === projectId || projectId === null;
+                activeProject = isClosing ? null : projectId;
+                app.dataset.open = activeProject ? 'true' : 'false';
+                setPreviewProject(null);
+
+                titleButtons.forEach(button => {
+                    button.setAttribute('aria-pressed', String(button.dataset.project === activeProject));
+                });
+
+                animateToLayout(durationOverride ?? (activeProject ? 300 : 240));
+            }
+
+            titleButtons.forEach(button => {
+                button.addEventListener('click', event => {
+                    setActiveProject(button.dataset.project, event.detail === 0 ? 0 : undefined);
+                });
+            });
+
+            mediaNodes.forEach(node => {
+                node.element.addEventListener('pointerenter', () => {
+                    if (hoverFine.matches && node.element.dataset.interactive === 'true') {
+                        setPreviewProject(node.projectId);
+                    }
+                });
+                node.element.addEventListener('pointerleave', () => {
+                    if (hoverFine.matches) setPreviewProject(null);
+                });
+                node.element.addEventListener('focus', () => {
+                    if (node.element.dataset.interactive === 'true') setPreviewProject(node.projectId);
+                });
+                node.element.addEventListener('blur', () => setPreviewProject(null));
+                node.element.addEventListener('click', event => {
+                    if (node.element.dataset.interactive !== 'true') return;
+                    setActiveProject(node.projectId, event.detail === 0 ? 0 : undefined);
+                });
+            });
+
+            workspace.addEventListener('click', event => {
+                if (!activeProject || !(event.target instanceof Element)) return;
+                if (event.target.closest('.archive-title, .archive-media')) return;
+                setActiveProject(null);
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape' && activeProject) setActiveProject(null, 0);
+            });
+
+            const resizeObserver = new ResizeObserver(() => {
+                window.cancelAnimationFrame(resizeFrame);
+                resizeFrame = window.requestAnimationFrame(() => {
+                    if (!ready) return;
+                    stopAnimations();
+                    applyLayout(getLayout());
+                });
+            });
+            resizeObserver.observe(stage);
+
+            Promise.all(mediaNodes.map(node => {
+                const settle = () => {
+                    if (node.image.naturalWidth && node.image.naturalHeight) {
+                        node.ratio = node.image.naturalWidth / node.image.naturalHeight;
+                    }
+                };
+
+                if (node.image.complete) {
+                    settle();
+                    return node.image.decode().catch(() => undefined).then(settle);
+                }
+
+                return new Promise(resolve => {
+                    node.image.addEventListener('load', () => {
+                        settle();
+                        resolve();
+                    }, { once: true });
+                    node.image.addEventListener('error', resolve, { once: true });
+                });
+            })).then(() => {
+                ready = true;
+                applyLayout(getLayout());
+                stage.classList.add('is-ready');
+            });
+        })();
+    </script>
+</body>
+</html>
