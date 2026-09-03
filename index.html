@@ -17,14 +17,19 @@
     <meta property="og:title" content="Harry Wu — Visual &amp; Experience Designer">
     <meta property="og:description" content="Product interfaces, brand systems, motion, creative technology, and AI-assisted production.">
     <meta property="og:url" content="https://landowanderer.com/">
-    <meta property="og:image" content="https://landowanderer.com/images/MAIN%20PAGE/fb.jpg">
+    <meta property="og:image" content="https://landowanderer.com/images/OG/fb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Harry Wu — Visual &amp; Experience Designer">
     <meta name="twitter:description" content="Product interfaces, brand systems, motion, creative technology, and AI-assisted production.">
-    <meta name="twitter:image" content="https://landowanderer.com/images/MAIN%20PAGE/fb.jpg">
+    <meta name="twitter:image" content="https://landowanderer.com/images/OG/fb.jpg">
+    <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+    <link rel="dns-prefetch" href="https://f.vimeocdn.com">
+    <script src="js/vimeo-lazy.js" defer></script>
     <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/site-base.css">
-    <link rel="preload" as="image" href="images/MAIN%20PAGE/fb.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/MAIN%20PAGE/fb.webp" type="image/webp"
+          imagesrcset="images/MAIN%20PAGE/fb-480.webp 480w, images/MAIN%20PAGE/fb-960.webp 960w, images/MAIN%20PAGE/fb-1440.webp 1440w, images/MAIN%20PAGE/fb-1920.webp 1920w, images/MAIN%20PAGE/fb-2752.webp 2752w"
+          imagesizes="(max-width: 767px) 88vw, 80vw">
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -33,31 +38,6 @@
             line-height: 1.2;
             overflow-y: scroll;
             -webkit-font-smoothing: antialiased;
-        }
-
-        html.visual-active {
-            color-scheme: dark;
-            background-color: #181818;
-        }
-
-        html.visual-active body {
-            background-color: #181818;
-            color: #f2f2ef;
-        }
-
-        html.visual-active #top-nav {
-            background-color: #181818 !important;
-        }
-
-        html.visual-active #visual-section .visual-series-list,
-        html.visual-active #visual-section .visual-series,
-        html.visual-active #bottom-nav {
-            border-color: #4a4a4a !important;
-        }
-
-        html.visual-active #top-nav a:hover,
-        html.visual-active #bottom-nav a:hover {
-            color: #a8a8a8;
         }
 
         html {
@@ -154,137 +134,6 @@
             line-height: 1.15 !important;
         }
 
-        .visual-series-list {
-            width: 100%;
-            border-top: 1px solid #000;
-        }
-
-        .visual-series {
-            display: grid;
-            grid-template-columns: minmax(190px, 18%) minmax(0, 1fr);
-            gap: clamp(24px, 3vw, 64px);
-            align-items: center;
-            padding: clamp(44px, 4vw, 72px) 0;
-            border-bottom: 1px solid #000;
-        }
-
-        .visual-series__heading {
-            align-self: stretch;
-            display: flex;
-            min-width: 0;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        #visual-section .visual-series__title {
-            max-width: 250px;
-            margin: 0;
-            font-size: clamp(17px, 1.2vw, 23px) !important;
-            line-height: 1.02 !important;
-            overflow-wrap: normal;
-        }
-
-        .visual-series__credit {
-            margin-top: clamp(48px, 8vh, 92px);
-            font-size: clamp(12px, 0.8vw, 15px);
-            line-height: 1.2;
-        }
-
-        .visual-rail-shell {
-            min-width: 0;
-        }
-
-        #visual-section .visual-rail {
-            display: flex;
-            width: 100%;
-            gap: clamp(20px, 1.8vw, 32px);
-            align-items: center;
-            overflow-x: auto;
-            overscroll-behavior-x: contain;
-            scroll-padding-inline: 1px;
-            scroll-snap-type: x proximity;
-            padding: 6px 0 14px;
-            cursor: grab;
-            user-select: none;
-        }
-
-        #visual-section .visual-rail.is-dragging {
-            cursor: grabbing;
-            scroll-snap-type: none;
-        }
-
-        .visual-item {
-            --media-scale: 1.06;
-            position: relative;
-            display: grid;
-            flex: 0 0 clamp(300px, 27vw, 500px);
-            width: clamp(300px, 27vw, 500px);
-            height: clamp(250px, 20vw, 360px);
-            margin: 0;
-            place-items: center;
-            overflow: hidden;
-            scroll-snap-align: start;
-            transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .visual-item img {
-            position: absolute;
-            inset: 0;
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transform: scale(var(--media-scale));
-            cursor: zoom-in;
-            -webkit-user-drag: none;
-            user-select: none;
-        }
-
-        .visual-item--booklet {
-            --media-scale: 1.1;
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .visual-item:hover {
-                transform: translateY(-3px) scale(1.012);
-            }
-        }
-
-        @media (max-width: 767px) {
-            .visual-series {
-                display: block;
-                padding: 30px 0;
-            }
-
-            .visual-series__heading {
-                display: block;
-                margin-bottom: 20px;
-            }
-
-            #visual-section .visual-series__title {
-                max-width: 100%;
-                font-size: 18px !important;
-                line-height: 1 !important;
-            }
-
-            .visual-series__credit {
-                margin-top: 18px;
-                font-size: 11px;
-            }
-
-            #visual-section .visual-rail {
-                gap: 16px;
-                padding-bottom: 10px;
-                scroll-snap-type: x mandatory;
-            }
-
-            .visual-item {
-                flex-basis: 84%;
-                width: 84%;
-                height: clamp(190px, 58vw, 240px);
-            }
-        }
-
         .dropdown-menu span,
         .dropdown-menu button {
             font-size: clamp(11px, 0.72vw, 14px) !important;
@@ -294,15 +143,6 @@
         .dropdown-menu .dropdown-title {
             font-size: clamp(13px, 0.9vw, 17px) !important;
             line-height: 1.35 !important;
-        }
-
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
 
         #bottom-nav {
@@ -1165,7 +1005,7 @@
                 <section class="lw-featured" aria-label="Featured projects">
                     <a class="lw-featured__slide" href="field-brief.html" aria-label="Open Field Brief project" style="--slide-index: 1">
                         <div class="lw-featured__media">
-                            <img src="images/MAIN%20PAGE/fb.webp" alt="Field Brief product concept" fetchpriority="high">
+                            <img src="images/MAIN%20PAGE/fb.webp" alt="Field Brief product concept" fetchpriority="high" decoding="async" width="1440" height="804" srcset="images/MAIN%20PAGE/fb-480.webp 480w, images/MAIN%20PAGE/fb-960.webp 960w, images/MAIN%20PAGE/fb-1440.webp 1440w, images/MAIN%20PAGE/fb-1920.webp 1920w, images/MAIN%20PAGE/fb-2752.webp 2752w" sizes="(max-width: 767px) 88vw, 80vw">
                         </div>
                         <div class="lw-featured__meta">
                             <span class="lw-featured__number">01</span>
@@ -1176,7 +1016,7 @@
 
                     <a class="lw-featured__slide" href="zntr.html" aria-label="Open ZNTR project" style="--slide-index: 2">
                         <div class="lw-featured__media">
-                            <img src="images/MAIN%20PAGE/zntr.webp" alt="ZNTR brand system">
+                            <img src="images/MAIN%20PAGE/zntr.webp" alt="ZNTR brand system" loading="lazy" decoding="async" width="1440" height="810" srcset="images/MAIN%20PAGE/zntr-480.webp 480w, images/MAIN%20PAGE/zntr-960.webp 960w, images/MAIN%20PAGE/zntr-1440.webp 1440w, images/MAIN%20PAGE/zntr-1920.webp 1920w" sizes="(max-width: 767px) 88vw, 80vw">
                         </div>
                         <div class="lw-featured__meta">
                             <span class="lw-featured__number">02</span>
@@ -1187,7 +1027,7 @@
 
                     <a class="lw-featured__slide" href="artificial-atmosphere.html" aria-label="Open Artificial Atmosphere project" style="--slide-index: 3">
                         <div class="lw-featured__media">
-                            <img src="images/MAIN%20PAGE/AA.webp" alt="Artificial Atmosphere moving image">
+                            <img src="images/MAIN%20PAGE/AA.webp" alt="Artificial Atmosphere moving image" loading="lazy" decoding="async" width="1440" height="810" srcset="images/MAIN%20PAGE/AA-480.webp 480w, images/MAIN%20PAGE/AA-960.webp 960w, images/MAIN%20PAGE/AA-1440.webp 1440w, images/MAIN%20PAGE/AA-1920.webp 1920w" sizes="(max-width: 767px) 88vw, 80vw">
                         </div>
                         <div class="lw-featured__meta">
                             <span class="lw-featured__number">03</span>
@@ -1198,7 +1038,7 @@
 
                     <a class="lw-featured__slide" href="photo-dump.html" aria-label="Open Photo Dump project" style="--slide-index: 4">
                         <div class="lw-featured__media">
-                            <img src="images/MAIN%20PAGE/pd.webp" alt="Photo Dump interactive web experience">
+                            <img src="images/MAIN%20PAGE/pd.webp" alt="Photo Dump interactive web experience" loading="lazy" decoding="async" width="1440" height="810" srcset="images/MAIN%20PAGE/pd-480.webp 480w, images/MAIN%20PAGE/pd-960.webp 960w, images/MAIN%20PAGE/pd-1440.webp 1440w, images/MAIN%20PAGE/pd-1672.webp 1672w" sizes="(max-width: 767px) 88vw, 80vw">
                         </div>
                         <div class="lw-featured__meta">
                             <span class="lw-featured__number">04</span>
@@ -1209,7 +1049,7 @@
 
                     <a class="lw-featured__slide" href="sun-and-light.html" aria-label="Open Sun and Light project" style="--slide-index: 5">
                         <div class="lw-featured__media">
-                            <img src="images/MAIN%20PAGE/snl.webp" alt="Sun and Light interactive installation">
+                            <img src="images/MAIN%20PAGE/snl.webp" alt="Sun and Light interactive installation" loading="lazy" decoding="async" width="640" height="360" srcset="images/MAIN%20PAGE/snl-480.webp 480w, images/MAIN%20PAGE/snl-640.webp 640w" sizes="(max-width: 767px) 88vw, 80vw">
                         </div>
                         <div class="lw-featured__meta">
                             <span class="lw-featured__number">05</span>
@@ -1224,7 +1064,7 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
                         <a href="rain-simulator.html" class="cursor-pointer block">
                             <div class="relative w-full aspect-[16/10] overflow-hidden bg-black">
-                                <img src="images/MAIN PAGE/rs.webp" alt="Rain Simulator project preview" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
+                                <img src="images/MAIN PAGE/rs.webp" alt="Rain Simulator project preview" class="absolute inset-0 w-full h-full object-cover" width="640" height="360" loading="lazy" decoding="async">
                             </div>
                             <div class="mt-2 text-black">
                                 <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">RAIN SIMULATOR</h3>
@@ -1234,7 +1074,7 @@
                         
                         <a href="clay-archive.html" class="cursor-pointer block">
                             <div class="relative w-full aspect-[16/10] overflow-hidden bg-black">
-                                <img src="images/MAIN PAGE/ca.webp" alt="Clay Archive project preview" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
+                                <img src="images/MAIN PAGE/ca.webp" alt="Clay Archive project preview" class="absolute inset-0 w-full h-full object-cover" width="640" height="360" loading="lazy" decoding="async">
                             </div>
                             <div class="mt-2 text-black">
                                 <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">CLAY ARCHIVE</h3>
@@ -1244,7 +1084,7 @@
                         
                         <a href="egocyberosis.html" class="cursor-pointer block">
                             <div class="relative w-full aspect-[16/10] overflow-hidden bg-black">
-                                <iframe title="Harry Wu portfolio project video" src="https://player.vimeo.com/video/1195242424?background=1&autoplay=1&loop=1&muted=1" class="absolute inset-0 w-full h-full scale-[1.12] pointer-events-none" allow="autoplay; fullscreen"></iframe>
+                                <div class="vimeo-lazy absolute inset-0 w-full h-full scale-[1.12] pointer-events-none" data-vimeo-src="https://player.vimeo.com/video/1195242424?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1" data-vimeo-title="Harry Wu portfolio project video" data-vimeo-allow="autoplay; fullscreen" aria-hidden="true"></div>
                             </div>
                             <div class="mt-2 text-black">
                                 <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">EGOCYBEROSIS</h3>
@@ -1254,7 +1094,7 @@
                         
                         <a href="one-hit.html" class="cursor-pointer block">
                             <div class="relative w-full aspect-[16/10] overflow-hidden bg-black">
-                                <iframe title="Harry Wu portfolio project video" src="https://player.vimeo.com/video/1195242445?background=1&autoplay=1&loop=1&muted=1" class="absolute inset-0 w-full h-full scale-[1.12] pointer-events-none" allow="autoplay; fullscreen"></iframe>
+                                <div class="vimeo-lazy absolute inset-0 w-full h-full scale-[1.12] pointer-events-none" data-vimeo-src="https://player.vimeo.com/video/1195242445?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1" data-vimeo-title="Harry Wu portfolio project video" data-vimeo-allow="autoplay; fullscreen" aria-hidden="true"></div>
                             </div>
                             <div class="mt-2 text-black">
                                 <h3 class="font-black-custom text-[16px] md:text-[20px] leading-none tracking-tight text-black">ONE HIT</h3>
@@ -1279,7 +1119,7 @@
                     <div class="about-logo-wrap hidden" hidden aria-hidden="true">
                         <div class="elastic-logo-shell">
                             <div id="elastic-sticker-logo" class="elastic-logo" role="button" tabindex="0" aria-label="Drag the logo to reveal the sticker video">
-                                <video id="elastic-sticker-video" class="elastic-logo__source" src="images/HARRY/sticker-video-web.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                                <video id="elastic-sticker-video" class="elastic-logo__source" src="images/HARRY/sticker-video-web-sm.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                                 <canvas id="elastic-sticker-canvas" class="elastic-logo__canvas" width="900" height="420" aria-hidden="true"></canvas>
                                 <img class="elastic-logo__base" src="images/MAIN%20PAGE/sticker1.svg" alt="Harry Wu logo">
                             </div>
@@ -1288,72 +1128,6 @@
                 </div>
             </section>
 
-            <section id="visual-section" class="hidden fade-in">
-                <div class="visual-series-list">
-                    <article class="visual-series">
-                        <div class="visual-series__heading">
-                            <h3 class="visual-series__title font-black-custom">ARTIFICIAL ATMOSPHERE PRINTS</h3>
-                        </div>
-                        <div class="visual-rail-shell">
-                            <div class="drag-scroll visual-rail hide-scrollbar">
-                                <figure class="visual-item"><img src="images/VISUAL/aaposter.jpg" alt="Artificial Atmosphere poster" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acr.png" alt="Field Guide to Rain Traces publication" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acr2.png" alt="Rain traces folded publication" loading="lazy" decoding="async" draggable="false"></figure>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="visual-series">
-                        <div class="visual-series__heading">
-                            <h3 class="visual-series__title font-black-custom">A COLLECTION OF RAINS</h3>
-                        </div>
-                        <div class="visual-rail-shell">
-                            <div class="drag-scroll visual-rail hide-scrollbar">
-                                <figure class="visual-item"><img src="images/VISUAL/acor.png" alt="A Collection of Rains cover" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acor2.png" alt="A Collection of Rains spread 1" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acor3.png" alt="A Collection of Rains spread 2" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acor4.png" alt="A Collection of Rains spread 3" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acor5.png" alt="A Collection of Rains spread 4" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acor6.png" alt="A Collection of Rains spread 5" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/acor7.png" alt="A Collection of Rains spread 6" loading="lazy" decoding="async" draggable="false"></figure>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="visual-series">
-                        <div class="visual-series__heading">
-                            <h3 class="visual-series__title font-black-custom">DONALD C TILLMAN WATER RECLAMATION PLANT</h3>
-                        </div>
-                        <div class="visual-rail-shell">
-                            <div class="drag-scroll visual-rail hide-scrollbar">
-                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet1.png" alt="Donald C Tillman publication spread 1" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet2.png" alt="Donald C Tillman publication spread 2" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet3.png" alt="Donald C Tillman publication spread 3" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item visual-item--booklet"><img src="images/VISUAL/booklet4.png" alt="Donald C Tillman publication spread 4" loading="lazy" decoding="async" draggable="false"></figure>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="visual-series">
-                        <div class="visual-series__heading">
-                            <h3 class="visual-series__title font-black-custom">AMERICAN CUT PIECES</h3>
-                            <div class="visual-series__credit font-black-custom">
-                                ROLE: Editorial Design<br>
-                                PHOTOGRAPHY: WEIJIAN SHI
-                            </div>
-                        </div>
-                        <div class="visual-rail-shell">
-                            <div class="drag-scroll visual-rail hide-scrollbar">
-                                <figure class="visual-item"><img src="images/VISUAL/A1.jpg" alt="American Cut Pieces editorial layout 1" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/A2.jpg" alt="American Cut Pieces editorial layout 2" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/A3.jpg" alt="American Cut Pieces editorial spread 1" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/A4.jpg" alt="American Cut Pieces editorial spread 2" loading="lazy" decoding="async" draggable="false"></figure>
-                                <figure class="visual-item"><img src="images/VISUAL/A5.jpg" alt="American Cut Pieces editorial spread 3" loading="lazy" decoding="async" draggable="false"></figure>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
         
             <div id="bottom-trigger" class="w-full h-[1px] mt-8"></div>
         </main>
@@ -1424,31 +1198,27 @@
         function switchView(viewName) {
             const worksSection = document.getElementById('works-section');
             const aboutSection = document.getElementById('about-section');
-            const visualSection = document.getElementById('visual-section');
             const commonHeader = document.getElementById('common-header');
             const topNav = document.getElementById('top-nav');
             const bottomNav = document.getElementById('bottom-nav');
             const themeColor = document.querySelector('meta[name="theme-color"]');
 
-            if (!worksSection || !aboutSection || !visualSection) return;
+            if (!worksSection || !aboutSection) return;
 
             const isAboutView = viewName === 'about';
-            const isVisualView = viewName === 'visual';
 
             if (isAboutView) {
                 window.scrollTo({ top: 0, behavior: 'auto' });
             }
 
             document.body.classList.toggle('about-active', isAboutView);
-            document.documentElement.classList.toggle('visual-active', isVisualView);
 
             if (themeColor) {
-                themeColor.setAttribute('content', isVisualView ? '#181818' : '#ffffff');
+                themeColor.setAttribute('content', '#ffffff');
             }
 
             worksSection.classList.add('hidden');
             aboutSection.classList.add('hidden');
-            visualSection.classList.add('hidden');
 
             if (commonHeader) {
                 commonHeader.classList.remove('is-about');
@@ -1892,8 +1662,7 @@
             const tab = urlParams.get('tab');
 
             if (document.getElementById('works-section')) {
-                if (tab === 'visual') switchView('visual');
-                else if (tab === 'about') switchView('about');
+                if (tab === 'about') switchView('about');
                 else switchView('works');
             }
 
