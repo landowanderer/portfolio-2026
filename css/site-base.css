@@ -246,6 +246,8 @@ html body #top-nav #works-nav-group:focus-within .dropdown-menu #extra-projects 
 }
 
 .vimeo-lazy__poster,
+video.vimeo-lazy__frame { object-fit: cover; }
+
 .vimeo-lazy__frame {
   position: absolute;
   inset: 0;
