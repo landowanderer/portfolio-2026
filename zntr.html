@@ -15,6 +15,7 @@
     <meta property="og:image" content="https://landowanderer.com/images/OG/zntr.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+    <link rel="preconnect" href="https://i.vimeocdn.com" crossorigin>
     <link rel="dns-prefetch" href="https://f.vimeocdn.com">
     <script src="js/vimeo-lazy.js" defer></script>
     <link rel="stylesheet" href="css/tailwind.css">
@@ -271,7 +272,9 @@
             background: #000;
         }
 
-        .zntr-phone-video iframe {
+        .zntr-phone-video iframe,
+
+        .zntr-phone-video .vimeo-lazy__poster {
             position: absolute;
             inset: 0;
             width: 100%;
@@ -281,7 +284,9 @@
             transform-origin: center center;
         }
 
-        .zntr-scaled-demo iframe {
+        .zntr-scaled-demo iframe,
+
+        .zntr-scaled-demo .vimeo-lazy__poster {
             transform: scale(0.78);
             transform-origin: center center;
         }
@@ -710,12 +715,12 @@
                 <div class="flex flex-col w-full">
                     <div class="w-full bg-black px-2 md:px-3 py-6 md:py-10 mb-10 md:mb-12">
                         <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;">
-                            <div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813662?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div>
+                            <div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813662?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556573-8930277284c7d9e1c7a0adea7c7859a1067982c52ca41cfae8e37bd01b2d934c-d_640" alt="" loading="eager" fetchpriority="high" decoding="async" aria-hidden="true"></div>
                         </div>
                     </div>
                     <div class="w-full bg-black px-2 md:px-3 py-6 md:py-10 mb-10 md:mb-12">
                         <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;">
-                            <div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813681?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div>
+                            <div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813681?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556820-1597ecd09ac343176c3cbcddf5d1d817fc11d9dbc8c95c68e3993ed4d54536db-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div>
                         </div>
                     </div>
 
@@ -727,37 +732,37 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-10 md:mb-12">
                         <div class="w-full bg-black px-2 md:px-3 py-6 md:py-10">
-                            <div class="relative w-full overflow-hidden pointer-events-none zntr-scaled-demo" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813817?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div></div>
+                            <div class="relative w-full overflow-hidden pointer-events-none zntr-scaled-demo" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813817?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556832-f990eb65a7049ae1cd11361b68b927bd13115f824ccc35bd717e2d562e4f985e-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div></div>
                         </div>
                         <div class="w-full bg-black px-2 md:px-3 py-6 md:py-10">
-                            <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813878?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div></div>
+                            <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813878?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556684-4381f0f3a78c7b2fcadf8cffd756998273896d867484ad78d1fea0578237ca9f-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div></div>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-10 md:mb-12">
                         <div class="w-full bg-black px-2 md:px-3 py-6 md:py-10">
-                            <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813922?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div></div>
+                            <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813922?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556984-e7346390b348892f064af065c095723e8e5ec701167ae32609df8c5c21817d32-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div></div>
                         </div>
                         <div class="w-full bg-black px-2 md:px-3 py-6 md:py-10">
-                            <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813968?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div></div>
+                            <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;"><div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813968?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556956-d3f4e6a44ebdd512b76c0085e0fbc17709e644ba9f84d260724f96a9eecbad2f-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div></div>
                         </div>
                     </div>
 
                     <div class="w-full bg-black px-2 md:px-3 py-6 md:py-10 mb-10 md:mb-12">
                         <div class="relative w-full overflow-hidden pointer-events-none" style="padding-bottom: 56.25%;">
-                            <div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813515?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div>
+                            <div class="vimeo-lazy absolute top-0 left-0 w-full h-full border-0" data-vimeo-src="https://player.vimeo.com/video/1194813515?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556301-ebde9077c5b1a0dbb97b1af38a75afe3fd60365a7d0fd206f33a7db0e7f0936a-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div>
                         </div>
                     </div>
 
                     <div class="zntr-phone-grid grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-12">
                         <div class="w-full bg-black">
-                            <div class="zntr-phone-video pointer-events-none"><div class="vimeo-lazy" data-vimeo-src="https://player.vimeo.com/video/1194813512?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div></div>
+                            <div class="zntr-phone-video pointer-events-none"><div class="vimeo-lazy" data-vimeo-src="https://player.vimeo.com/video/1194813512?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556502-5c9a8ecf6b744e1aadbf9cdaa7f7639bb89e3e5d7aee1b33e46f3cbe1e6c6506-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div></div>
                         </div>
                         <div class="w-full bg-black">
-                            <div class="zntr-phone-video pointer-events-none"><div class="vimeo-lazy" data-vimeo-src="https://player.vimeo.com/video/1194813513?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div></div>
+                            <div class="zntr-phone-video pointer-events-none"><div class="vimeo-lazy" data-vimeo-src="https://player.vimeo.com/video/1194813513?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556284-21faecb28f1817f9085957c43f9b585d3226aa91af13069573b06e19d493bf47-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div></div>
                         </div>
                         <div class="w-full bg-black">
-                            <div class="zntr-phone-video pointer-events-none"><div class="vimeo-lazy" data-vimeo-src="https://player.vimeo.com/video/1194813641?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"></div></div>
+                            <div class="zntr-phone-video pointer-events-none"><div class="vimeo-lazy" data-vimeo-src="https://player.vimeo.com/video/1194813641?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0" data-vimeo-title="ZNTR project video" data-vimeo-allow="autoplay; fullscreen; picture-in-picture" data-vimeo-fullscreen aria-hidden="true"><img class="vimeo-lazy__poster" src="https://i.vimeocdn.com/video/2160556327-7cd6635b91ce90c11c04daaa2fc9e7fde791e6e24ced67e964ac7dcca722fbe6-d_640" alt="" loading="lazy" fetchpriority="low" decoding="async" aria-hidden="true"></div></div>
                         </div>
                     </div>
 
