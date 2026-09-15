@@ -1,0 +1,11 @@
+.ll-home-entry { display:block; margin:0 0 40px; padding:clamp(24px,3.2vw,52px); background:#e8e3d9; color:#151515; }
+.ll-home-entry__label, .ll-home-entry__detail { display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:12px; line-height:1.4; }
+.ll-home-entry__label { font-weight:700; letter-spacing:.06em; }
+.ll-home-entry__label span { color:#615b51; }
+.ll-home-entry__title { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:30px 0 24px; font-size:clamp(32px,5.7vw,92px); font-weight:700; letter-spacing:-.045em; line-height:1; }
+.ll-home-entry__title span { font-size:.65em!important; }
+.ll-home-entry__detail span { font-size:12px!important; }
+.ll-home-entry__detail span:last-child { text-decoration:underline; text-underline-offset:4px; }
+.ll-home-entry:hover { background:#dfd9cc; }
+.ll-home-entry:focus-visible { outline:2px solid #151515; outline-offset:5px; }
+@media(max-width:767px) { .ll-home-entry { margin-bottom:24px; } .ll-home-entry__label, .ll-home-entry__label span, .ll-home-entry__detail span { font-size:10px!important; } .ll-home-entry__detail { flex-wrap:wrap; gap:12px; } }

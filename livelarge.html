@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LiveLarge AI — Harry Wu</title>
+  <meta name="description" content="LiveLarge AI: an in-progress website and conversational experience case study by Harry Wu.">
+  <!-- Work in progress: keep out of search until the case-study media is complete. -->
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://landowanderer.com/livelarge.html">
+  <link rel="icon" href="images/MAIN%20PAGE/sticker1.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LiveLarge AI — Harry Wu">
+  <meta property="og:description" content="An ADU website AI assistant: page-aware guidance, recommendations, comparison and follow-up. A work in progress.">
+  <meta property="og:url" content="https://landowanderer.com/livelarge.html">
+  <link rel="stylesheet" href="css/site-base.css">
+  <link rel="stylesheet" href="css/livelarge.css">
+  <script src="js/livelarge.js" defer></script>
+</head>
+<body class="ll-page">
+  <a class="ll-skip" href="#overview">Skip to case study</a>
+  <!-- Same four destinations and typographic language as the existing project pages. -->
+  <header class="ll-site-header">
+    <nav class="ll-site-nav" aria-label="Portfolio">
+      <a href="index.html?tab=about">Harry Wu</a>
+      <a href="index.html?tab=works">Works</a>
+      <a href="visual-works.html">Visual works</a>
+      <a href="field-brief.html">Next project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <header class="ll-hero" id="top">
+      <div class="ll-kicker-row"><p class="ll-eyebrow">Selected work / Product experience</p><span class="ll-status"><i aria-hidden="true"></i> In progress · 2026</span></div>
+      <h1>LiveLarge <span>AI</span></h1>
+      <div class="ll-hero-meta"><p>Website AI assistant / ADU exploration</p><p>UX / UI · Interaction design · Prototyping</p></div>
+      <div class="ll-project-actions" aria-label="Project resources">
+        <a class="ll-action ll-action-primary" href="https://adu-interactive-prototype-v1.landowanderer.chatgpt.site" target="_blank" rel="noopener noreferrer">Explore interactive prototype <span aria-hidden="true">↗</span><span class="ll-sr-only"> (opens in a new tab)</span></a>
+        <a class="ll-action" href="#overview">Read the case study <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="ll-figure ll-hero-figure">
+        <!-- MEDIA SLOT: replace inside this div, or set MEDIA.hero in js/livelarge.js. -->
+        <div class="ll-media ll-media-hero" data-media="hero" data-label="Homepage + AI entry" role="img" aria-label="Placeholder for the homepage and AI entry visual">
+          <span class="ll-media-type">Hero visual</span>
+          <div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Homepage + AI entry</strong><span>Image or motion</span></div>
+          <span class="ll-slot-label">Media placeholder</span>
+        </div>
+        <figcaption><span>LiveLarge AI / Experience preview</span><span>Case study in progress · Visual documentation to follow.</span></figcaption>
+      </figure>
+    </header>
+
+    <!-- Native anchor links work without JavaScript. JS syncs this index to section order. -->
+    <nav class="ll-contents" aria-label="Case study chapters">
+      <div class="ll-contents-inner">
+        <span class="ll-contents-label">Contents</span>
+        <div class="ll-chapter-links" id="chapter-links">
+          <a href="#overview">Overview</a><a href="#highlights">Highlights</a><a href="#context">Context</a><a href="#opportunity">Opportunity</a><a href="#conversation">Conversation</a><a href="#page-aware">Page-aware</a><a href="#comparison">Comparison</a><a href="#follow-up">Follow-up</a><a href="#visual-system">Visual system</a><a href="#iteration">Iteration</a><a href="#final">Final</a>
+        </div>
+        <div class="ll-mobile-contents" hidden><label class="ll-sr-only" for="chapter-select">Jump to a chapter</label><select id="chapter-select"></select></div>
+      </div>
+    </nav>
+
+    <div class="ll-story">
+      <!-- MODULE: statement. Reorder these sections freely; chapter navigation follows. -->
+      <section id="overview" class="ll-section ll-overview" data-chapter="Overview" tabindex="-1" aria-labelledby="overview-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Overview</p><h2 id="overview-title">A more guided way<br>to explore an ADU.</h2></div>
+        <div class="ll-overview-body"><p class="ll-intro">Helping visitors explore LiveLarge’s ADU models, clarify their needs and move toward a more informed next step — within the existing website.</p><p class="ll-draft-note">The current deliverable is an interactive prototype. This case study is being developed alongside the design.</p>
+          <dl class="ll-project-facts"><div><dt>Client</dt><dd>LiveLarge</dd></div><div><dt>Company</dt><dd>VortexNet</dd></div><div><dt>Designer</dt><dd>Harry Wu</dd></div><div><dt>Contribution</dt><dd>Conversation flows, UI, interaction prototyping and motion</dd></div><div><dt>Status</dt><dd>Design in progress</dd></div></dl>
+        </div>
+      </section>
+
+      <!-- MODULE: visual. One large visual + two secondary visuals. -->
+      <section id="highlights" class="ll-section" data-chapter="Highlights" tabindex="-1" aria-labelledby="highlights-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Highlights</p><h2 id="highlights-title">The experience,<br>at a glance.</h2></div>
+        <div class="ll-section-content">
+          <figure class="ll-figure"><div class="ll-media ll-media-wide" data-media="entry" data-label="Homepage + page-aware entry" role="img" aria-label="Placeholder for the homepage and page-aware entry"><span class="ll-media-type">Experience highlight</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Homepage + page-aware entry</strong><span>Image / interaction preview</span></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Page-aware guidance, from the first visit to a specific model.</figcaption></figure>
+          <div class="ll-visual-pair">
+            <figure class="ll-figure"><div class="ll-media" data-media="recommendation" data-label="Recommendation" role="img" aria-label="Recommendation visual placeholder"><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Recommendation</strong></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Finding an option worth exploring.</figcaption></figure>
+            <figure class="ll-figure"><div class="ll-media ll-media-warm" data-media="comparison-preview" data-label="Comparison" role="img" aria-label="Comparison visual placeholder"><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Comparison</strong></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Making the differences easier to see.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="context" class="ll-section" data-chapter="Context" tabindex="-1" aria-labelledby="context-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Context</p><h2 id="context-title">A website to browse.<br>A decision to make.</h2></div>
+        <div class="ll-section-content"><p class="ll-copy">The design sits within LiveLarge’s existing website. Visitors can browse ADU models, ask about differences and use the existing Check My Lot route. The assistant connects those steps while preserving the website’s navigation.</p><figure class="ll-figure"><div class="ll-media ll-media-wide" data-media="website-context" data-label="Existing website / journey" role="img" aria-label="Placeholder for existing website and journey evidence"><span class="ll-media-type">Current experience</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Existing website / journey</strong></div><span class="ll-slot-label">Evidence placeholder</span></div></figure></div>
+      </section>
+
+      <section id="opportunity" class="ll-section ll-section-statement" data-chapter="Opportunity" tabindex="-1" aria-labelledby="opportunity-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Opportunity</p><h2 id="opportunity-title">What would help someone<br>take the next step?</h2></div>
+        <div class="ll-section-content"><p class="ll-copy">The design question: how can an assistant use the current page and a visitor’s stated needs to make the next step clearer?</p><div class="ll-evidence-slots"><div><span>Understand the context</span><p>Start from the page or model the visitor is viewing.</p></div><div><span>Make needs editable</span><p>Show the conditions behind a recommendation and let visitors adjust them.</p></div><div><span>Connect the next step</span><p>Bring comparison and the existing Check My Lot route into one journey.</p></div></div></div>
+      </section>
+
+      <section id="conversation" class="ll-section" data-chapter="Conversation" tabindex="-1" aria-labelledby="conversation-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Designing the conversation</p><h2 id="conversation-title">Start with the question.<br>Clarify what matters.</h2></div>
+        <div class="ll-section-content"><figure class="ll-figure"><div class="ll-media ll-media-wide" data-media="conversation" data-label="Progressive clarification" role="img" aria-label="Progressive clarification visual placeholder"><span class="ll-media-type">Conversation study</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Progressive clarification</strong><span>Sequence / interaction</span></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>One conversation sequence, with the decision behind it.</figcaption></figure><p class="ll-copy ll-copy-compact">Connect recommendations to the visitor’s stated needs. Keep those needs visible and editable, retain the conversation when the panel closes, and reserve <strong>New chat</strong> for an explicit fresh start. Loading, missing context and errors belong within the conversation.</p></div>
+      </section>
+
+      <section id="page-aware" class="ll-section" data-chapter="Page-aware" tabindex="-1" aria-labelledby="page-aware-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Designing for context</p><h2 id="page-aware-title">Guidance that starts<br>where you are.</h2></div>
+        <div class="ll-section-content"><figure class="ll-figure"><div class="ll-media ll-media-wide ll-media-warm" data-media="page-aware" data-label="Page-aware assistant" role="img" aria-label="Page-aware assistant visual placeholder"><span class="ll-media-type">Interface + page context</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Page-aware assistant</strong><span>Desktop / mobile</span></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Show the current page or model. Update suggestions while retaining the conversation and input draft.</figcaption></figure></div>
+      </section>
+
+      <!-- MODULE: decision. Show a specific contrast, not another process slide. -->
+      <section id="comparison" class="ll-section" data-chapter="Comparison" tabindex="-1" aria-labelledby="comparison-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">From answer to decision</p><h2 id="comparison-title">More room to compare.<br>Same conversation.</h2></div>
+        <div class="ll-section-content"><figure class="ll-figure"><div class="ll-media ll-media-wide" data-media="comparison" data-label="Expanded comparison" role="img" aria-label="Expanded comparison visual placeholder"><span class="ll-media-type">Interaction detail</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Expanded comparison</strong><span>Standard / expanded state</span></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Desktop expands for comparison. Mobile keeps the table horizontally scrollable.</figcaption></figure><p class="ll-copy ll-copy-compact">Give comparison more room within the same conversation. Keep the header and composer fixed while the messages scroll. The desktop panel can be moved when it covers website content; on mobile, comparison content can scroll sideways.</p></div>
+      </section>
+
+      <section id="follow-up" class="ll-section" data-chapter="Follow-up" tabindex="-1" aria-labelledby="follow-up-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">When AI is not enough</p><h2 id="follow-up-title">Keep the context.<br>Request a follow-up.</h2></div>
+        <div class="ll-section-content"><figure class="ll-figure"><div class="ll-media ll-media-wide" data-media="follow-up" data-label="Request / consent / contact" role="img" aria-label="Follow-up experience visual placeholder"><span class="ll-media-type">Human follow-up</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Request / consent / contact</strong></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Request a follow-up through the existing lead form. Share relevant conversation context only with explicit consent; no live-agent or response-time promise.</figcaption></figure></div>
+      </section>
+
+      <section id="visual-system" class="ll-section" data-chapter="Visual system" tabindex="-1" aria-labelledby="visual-system-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Visual system</p><h2 id="visual-system-title">One system.<br>Across every state.</h2></div>
+        <div class="ll-section-content"><div class="ll-visual-pair">
+          <figure class="ll-figure"><div class="ll-media" data-media="components" data-label="Components + hierarchy" role="img" aria-label="Component and hierarchy visual placeholder"><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Components + hierarchy</strong></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>One shared glass surface, consistent type and reusable cards. Light communicates greeting and loading states.</figcaption></figure>
+          <figure class="ll-figure"><div class="ll-media ll-media-warm" data-media="responsive" data-label="Responsive states" role="img" aria-label="Responsive states visual placeholder"><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Responsive states</strong></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Preserve the normal panel height on entry and expand the width for comparison.</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section id="iteration" class="ll-section" data-chapter="Iteration" tabindex="-1" aria-labelledby="iteration-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Iteration &amp; validation</p><h2 id="iteration-title">What changed,<br>and why.</h2></div>
+        <div class="ll-section-content"><div class="ll-visual-pair">
+          <figure class="ll-figure"><div class="ll-media" data-media="before" data-label="Earlier version" role="img" aria-label="Earlier version placeholder"><span class="ll-media-type">Before</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Earlier version</strong></div><span class="ll-slot-label">Evidence placeholder</span></div></figure>
+          <figure class="ll-figure"><div class="ll-media ll-media-warm" data-media="after" data-label="Revised version" role="img" aria-label="Revised version placeholder"><span class="ll-media-type">After</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>Revised version</strong></div><span class="ll-slot-label">Evidence placeholder</span></div></figure>
+        </div><p class="ll-copy ll-copy-compact">Recent iterations clarify recommendation hierarchy, use exterior images for recommendations and floor plans for comparison, and group sources with answer feedback. Next, document these decisions with focused recordings and validate whether viewers can explain the recommendation and change their needs.</p></div>
+      </section>
+
+      <section id="final" class="ll-section ll-final" data-chapter="Final" tabindex="-1" aria-labelledby="final-title">
+        <div class="ll-section-heading"><p class="ll-eyebrow">Final experience &amp; reflection</p><h2 id="final-title">The experience,<br>brought together.</h2></div>
+        <div class="ll-section-content"><figure class="ll-figure"><div class="ll-media ll-media-wide ll-media-dark" data-media="final" data-label="End-to-end walkthrough" role="img" aria-label="Placeholder for an end-to-end walkthrough, not yet a published prototype"><span class="ll-media-type">Prototype / product film</span><div class="ll-media-center"><span class="ll-media-mark" aria-hidden="true">+</span><strong>End-to-end walkthrough</strong><span>Video or prototype preview</span></div><span class="ll-slot-label">Media placeholder</span></div><figcaption>Interactive prototype · Visual documentation and validation are ongoing.</figcaption></figure><p class="ll-copy ll-copy-compact">Explore the current interaction, then follow three key moments: understanding the page, adjusting a recommendation and moving from comparison to Check My Lot.</p>
+          <div class="ll-project-actions"><a class="ll-action ll-action-primary" href="https://adu-interactive-prototype-v1.landowanderer.chatgpt.site" target="_blank" rel="noopener noreferrer">Open the prototype <span aria-hidden="true">↗</span><span class="ll-sr-only"> (opens in a new tab)</span></a><a class="ll-action" href="https://www.figma.com/design/ratt6Swzxdr62ht70Zfp2d/LiveLargeTech?node-id=193-234" target="_blank" rel="noopener noreferrer">View design in Figma <span aria-hidden="true">↗</span><span class="ll-sr-only"> (opens in a new tab)</span></a></div></div>
+      </section>
+    </div>
+
+    <aside class="ll-next"><p class="ll-eyebrow">Continue exploring</p><a href="field-brief.html">Field Brief <span aria-hidden="true">↗</span></a><p>Apple Maps / Product concept</p></aside>
+  </main>
+  <footer class="ll-footer"><a href="index.html?tab=works">All work</a><span>Harry Wu / 2026</span><a href="#top">Back to top</a></footer>
+</body>
+</html>
