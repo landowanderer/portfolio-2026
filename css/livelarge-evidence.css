@@ -1,0 +1,40 @@
+/* Source-coordinate evidence: masks scale together with the original pixels. */
+.ll-highlights-edited {grid-template-columns:1fr;align-items:start;gap:36px;}
+.ll-highlights-edited .ll-highlight-wide {grid-column:auto;}
+.ll-highlights-edited .ll-highlight-scene,.ll-highlights-edited .ll-highlight-comparison {height:auto;aspect-ratio:auto;padding:clamp(24px,3vw,44px);display:flex;align-items:center;background:#f4f4f4;background-image:none;}
+.ll-highlights-edited .ll-highlight-comparison img {max-width:800px;margin:auto;}
+.ll-page .ll-audit-copy {margin-top:22px;max-width:580px;}
+.ll-page .ll-audit-copy .ll-fig-tag {display:block;margin-bottom:10px;}
+.ll-page .ll-audit-copy h3 {font-size:22px;line-height:1.3;margin-bottom:12px;}
+.ll-page .ll-audit-copy p {display:block;font-size:16px!important;line-height:1.7;margin:0;color:#555;}
+.ll-page .ll-audit-challenge {max-width:720px;margin-top:48px;padding-top:28px;border-top:1px solid #ddd;}
+.ll-audit-challenge h3 {font-size:24px;line-height:1.3;margin-bottom:16px;}
+.ll-source-evidence {display:block;width:100%;height:auto;max-height:100%;overflow:hidden;border-radius:7px;}
+.ll-context-evidence .ll-evidence-media:has(> .ll-source-evidence) {padding:0;}
+.ll-context-evidence .ll-evidence-media > .ll-source-evidence {width:100%;height:100%;}
+.ll-source-wrap {width:100%;height:100%;max-width:350px;min-width:0;display:flex;align-items:center;}
+.ll-source-wrap .ll-source-evidence {width:100%;height:100%;}
+.ll-source-tradeoff,.ll-source-review {max-width:none;}
+.ll-scroll-evidence {position:absolute;inset:0;overflow:hidden;pointer-events:none;user-select:none;}
+.ll-scroll-evidence video {position:absolute;width:182.857143%;height:auto;max-width:none;left:0;top:-17.142857%;border-radius:0;pointer-events:none;}
+.ll-evolution-panel .ll-evidence-media {padding:24px;}
+.ll-evolution-panel .ll-source-evidence {width:100%;height:100%;}
+.ll-lot-detail {display:block;padding:24px;background:#f4f4f4;}
+.ll-lot-detail .ll-lot-footer {position:static;aspect-ratio:auto;width:100%;max-width:none;border:0;border-radius:6px;background:#faf9f6;overflow:hidden;}
+.ll-lot-footer .ll-source-evidence {width:100%;height:auto;max-height:none;border-radius:0;}
+.ll-footer-transcript {display:none;}
+@media(max-width:1000px){
+ .ll-highlights-edited {grid-template-columns:1fr;}
+ .ll-highlights-edited .ll-highlight-scene,.ll-highlights-edited .ll-highlight-comparison {aspect-ratio:auto;padding:28px;}
+ .ll-highlights-edited .ll-highlight-comparison img {max-width:620px;margin:auto;}
+}
+@media(max-width:767px){
+ .ll-highlights-edited .ll-highlight-scene,.ll-highlights-edited .ll-highlight-comparison {padding:18px;min-height:0;}
+ .ll-page .ll-audit-copy h3 {font-size:20px;}
+ .ll-page .ll-audit-copy p {font-size:15px!important;}
+ .ll-evolution-panel .ll-evidence-media {padding:16px;}
+ .ll-lot-detail {padding:16px 10px;}
+ .ll-lot-footer .ll-source-evidence {display:none;}
+ .ll-page .ll-footer-transcript {display:block;padding:12px;font-size:16px;line-height:1.6;color:#333;}
+ .ll-footer-transcript span {display:block;font-size:12px;color:#777;margin-bottom:8px;}
+}

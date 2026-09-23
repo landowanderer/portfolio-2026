@@ -1,0 +1,46 @@
+/* Media is shown once: poster gives way completely to the playing film. */
+.experiment-media.is-playing>img{opacity:0}
+.experiment-media .motion-preview{background:#101110;object-fit:contain}
+.experiment-media>img{transition:opacity .2s,transform .4s cubic-bezier(.2,.75,.2,1)}
+.sample-enlarged{filter:drop-shadow(0 9px 15px #0002);background:#fff;border-radius:8px;overflow:hidden}
+.sample-enlarged img{max-height:260px;width:100%;object-fit:contain;background:#eeefeb;border-radius:8px 8px 0 0}
+.sample-enlarged small{display:block;color:#686868;padding:8px 10px;font:11px/1.4 Arial,Helvetica,sans-serif;text-align:left}
+.intro-personal{font-size:14px;color:#777;margin-top:14px}
+.experiment-dialog{width:min(980px,calc(100% - 72px))}
+.experiment-dialog::backdrop{background:#101211e8;backdrop-filter:blur(9px)}
+.dialog-media{height:min(66dvh,720px);width:100%;background:#111;border-radius:8px;isolation:isolate}
+.dialog-media>img,.dialog-media>video,.dialog-media>iframe{width:100%;height:100%;max-height:100%;object-fit:contain;border:0}
+.dialog-media>img{background:#f0f0ed}
+.dialog-close{font-size:24px;width:44px;height:44px;margin-bottom:4px;transition:transform .2s}
+.dialog-close:hover{transform:rotate(90deg)}
+.dialog-caption{padding-top:18px;align-items:start;gap:40px}
+.dialog-caption h2{font-size:16px;line-height:1.4;margin-bottom:5px}
+.dialog-caption p:not(.eyebrow){font-size:12px;color:#aaa;max-width:56ch}
+.dialog-actions{flex-direction:row;align-items:center;gap:22px}
+.experiment-project{font-size:11px;color:#c8c8c4;text-decoration:none;border-bottom:1px solid #ffffff45;padding:5px 0}
+.gallery-controls{gap:8px;border-top:1px solid #ffffff36;min-width:154px;justify-content:space-between}
+.gallery-controls button{border:0;border-radius:0;width:44px;height:44px;background:transparent;font-size:22px;transition:transform .2s,color .2s}
+.gallery-prev:hover{transform:translateX(-4px)}.gallery-next:hover{transform:translateX(4px)}
+.gallery-count{font:11px/1.4 Arial,Helvetica,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.07em;color:#aaa}
+.gallery-controls button:focus-visible{outline:1px solid #ccc;outline-offset:-3px}
+.dialog-media.is-changing{pointer-events:none}
+@media(max-width:640px){.experiment-dialog{width:calc(100% - 28px)}.dialog-media{height:52dvh}.dialog-caption{display:block;padding-top:14px}.dialog-actions{margin-top:12px;justify-content:space-between;gap:16px}.intro-personal{font-size:13px}.sample-enlarged img{max-height:190px}.sample-enlarged small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.dialog-close:hover,.gallery-prev:hover,.gallery-next:hover{transform:none}}
+
+/* The cloud sticker stays monochrome in both preview and viewer. */
+[data-experiment="10"] .experiment-media,.dialog-media.is-monochrome{filter:grayscale(1)}
+.dialog-media{touch-action:pan-y}
+.dialog-media>img,.dialog-media>video,.dialog-media>iframe{position:absolute;inset:0;min-width:0;min-height:0}.dialog-shell{overflow-x:hidden}
+.intro-sample>img[src*="specimen-character"]{object-position:50% 24%}.dialog-media{contain:layout paint}
+
+.video-external.has-error{display:inline;font-size:11px}.dialog-media iframe{background:#111}.video-play:disabled{cursor:wait}
+.video-external.is-full-film{display:inline}.experiment-media{isolation:isolate}.intro-sample>img{object-position:center}.experiment-column{gap:20px}
+
+/* Inline imagery is a hover-only visual aside, not a clickable control. */
+.intro-sample{cursor:default}
+.intro-sample .sample-enlarged{display:block!important;visibility:hidden;opacity:0;transform:translate(-50%,6px) scale(.97)!important;transition:opacity .18s,transform .28s cubic-bezier(.2,.8,.2,1),visibility .18s;background:transparent;border:0;padding:0;border-radius:8px;filter:drop-shadow(0 8px 16px #0002);pointer-events:none}
+.intro-sample.sample-open{z-index:5}
+.intro-sample.sample-open .sample-enlarged{visibility:visible;opacity:1;transform:translate(-50%,0) scale(1)!important}
+.intro-sample .sample-enlarged img{border-radius:8px;background:transparent}
+@media(hover:none),(pointer:coarse){.intro-sample .sample-enlarged{display:none!important}.intro-sample:hover>img{transform:none}}
+@media(prefers-reduced-motion:reduce){.intro-sample .sample-enlarged{transition:none}}

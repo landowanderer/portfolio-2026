@@ -678,46 +678,22 @@
             font-size: 10px !important;
             letter-spacing: 0 !important;
         }</style>
-</head>
-<body class="text-black bg-white">
-    <div class="w-full max-w-[2000px] mx-auto px-4 pt-1 md:px-6 md:pt-2 pb-4">
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script></head>
+<body class="text-black bg-white"><header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
+    <div class="portfolio-legacy-shell">
         
-        <nav id="top-nav" class="w-full mb-8 md:mb-10 sticky top-0 bg-white z-[100] pt-2 pb-2 transition-all duration-500">
-            <div class="grid grid-cols-4 font-bold uppercase tracking-wide">
-                <a href="index.html?tab=about" class="cursor-pointer hover:text-gray-600 w-max text-left">HARRY WU</a>
-                <div id="works-nav-group" class="relative group cursor-pointer flex justify-start w-max">
-                    <a href="index.html?tab=works" class="relative z-10 transition-opacity duration-300 group-hover:opacity-0 text-left">WORKS</a>
-                    <div class="dropdown-menu absolute top-[-12px] left-[50%] bg-black text-white flex flex-col items-center py-5 px-3 w-[150px] z-50 cursor-default">
-                        <a href="index.html?tab=works" class="dropdown-title mb-6 font-bold cursor-pointer hover:text-gray-300 transition-colors">WORKS</a>
-                        <a href="field-brief.html" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">FIELD BRIEF</a>
-                        <a href="zntr.html" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">ZNTR</a>
-                        <a href="photo-dump.html" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">PHOTO DUMP</a>
-                        <a href="artificial-atmosphere.html" class="dropdown-long-title mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">ARTIFICIAL ATMOSPHERE</a>
-                        <a href="sun-and-light.html" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">SUN AND LIGHT</a>
-                        <a href="egocyberosis.html" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">EGOCYBEROSIS</a>
-                        <a href="rain-simulator.html" class="mb-1.5 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">RAIN SIMULATOR</a>
-                        <button id="more-dots" type="button" class="text-base font-bold leading-none mt-0 mb-1 cursor-pointer hover:text-gray-400 transition-colors" onclick="expandProjects(event)">. . .</button>
-                        <div id="extra-projects" class="flex flex-col items-center w-full overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                            <a href="one-hit.html" class="mt-2.5 mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">ONE HIT</a>
-                            <a href="clay-archive.html" class="mb-4 font-bold hover:text-gray-300 tracking-wider text-center cursor-pointer">CLAY ARCHIVE</a>
-                        </div>
-                    </div>
-                </div>
-                <a href="index.html?tab=visual" class="cursor-pointer hover:text-gray-600 w-max text-left">VISUAL WORKS</a>
-                <div class="flex justify-end items-center"><a href="sun-and-light.html" class="cursor-pointer hover:text-gray-600 w-max text-right">NEXT PROJECT</a></div>
-            </div>
-        </nav>
+        
 
         <main class="min-h-[60vh]">
             <section class="fade-in mt-4 md:mt-8">
                 <div class="mb-10 md:mb-12">
                     <div class="flex justify-between items-end mb-6 uppercase">
-                        <h1 class="font-black-custom text-[18px] md:text-[20px] tracking-tight leading-none">ARTIFICIAL ATMOSPHERE</h1>
+                        <h1 class="portfolio-project-name font-black-custom text-[18px] md:text-[20px] tracking-tight leading-none">ARTIFICIAL ATMOSPHERE</h1>
                         <span class="text-[11px] md:text-[12px] font-bold text-black uppercase tracking-wide leading-relaxed">2026</span>
                     </div>
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 md:gap-0">
                         <div class="w-full md:w-[65%]">
-                            <p class="text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
+                            <p class="portfolio-project-summary text-[10.5px] md:text-[11px] font-bold leading-relaxed text-pretty">
                                 Artificial Atmosphere is an AI filmmaking and installation project that treats model errors—spatial misreadings, unstable textures, and exaggerated weather—as a visual language. Across LA RAIN and FOG, I directed the transformation of source footage through prompt and model studies, then shaped the results through editing, motion, and atmospheric escalation. Extending the films into prints, DVDs, VR, CRT displays, and exhibition space allowed me to build one visual world across moving image, graphic objects, and installation.
                             </p>
                         </div>
@@ -805,22 +781,7 @@
             <div id="bottom-trigger" class="w-full h-[1px] mt-8"></div>
         </main>
 
-        <footer id="bottom-nav" class="w-full pt-3 pb-2 mt-4 border-t border-black">
-            <div class="grid grid-cols-4 font-bold uppercase tracking-wide items-center">
-                <a href="index.html?tab=about" class="cursor-pointer hover:text-gray-600 w-max text-left">HARRY WU</a>
-                <a href="index.html?tab=works" class="cursor-pointer hover:text-gray-600 w-max text-left">WORKS</a>
-                <a href="index.html?tab=visual" class="cursor-pointer hover:text-gray-600 w-max text-left">VISUAL WORKS</a>
-                <div class="flex justify-end items-center"><a href="sun-and-light.html" class="cursor-pointer hover:text-gray-600 w-max text-right">NEXT PROJECT</a></div>
-            </div>
-            <div class="site-contact-row" aria-label="Contact">
-                <div class="site-contact-links">
-                    <a href="images/HARRY/Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-                    <a href="https://www.linkedin.com/in/harry-xingsheng-wu-a9ba96232/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://www.instagram.com/landowanderer/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="mailto:HARRY.WU313@GMAIL.COM">Email</a>
-                </div>
-            </div>
-        </footer>
+        
     </div>
     <script>
 
@@ -1051,5 +1012,5 @@
             });
         });
     </script>
-</body>
+<footer class="pf-endbar" aria-label="Next project navigation"><nav class="pf-end-links"><a class="pf-end-brand" href="index.html">HARRY WU</a><span class="pf-end-mobile-label" aria-hidden="true">Next project</span><a class="pf-end-work" href="index.html#work-title">WORK</a><a class="pf-end-experiments" href="index.html#experiments-title">EXPERIMENTS</a><a class="pf-end-next" href="sun-and-light.html" aria-label="Next project: Sun and Light">Sun and Light <span aria-hidden="true">↗</span></a></nav></footer></body>
 </html>

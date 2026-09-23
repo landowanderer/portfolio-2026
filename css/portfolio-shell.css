@@ -1,0 +1,27 @@
+/* Shared site furniture. Project artwork keeps its own typography. */
+:root{--pf-edge:40px;--pf-header-height:72px;--pf-line:#aaa}
+.pf-header,.pf-footer,.pf-header *,.pf-footer *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;font-style:normal;letter-spacing:.015em;text-transform:uppercase}
+.pf-header{position:sticky;top:0;z-index:150;height:var(--pf-header-height);padding:0 var(--pf-edge);background:#fffffff5;backdrop-filter:blur(10px);color:#171717;flex-shrink:0}
+.pf-links{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:20px;width:100%;margin:0;padding:0;font-size:14px;font-weight:700;line-height:1.3;min-height:var(--pf-header-height)}
+.pf-links>a{display:block;width:fit-content;max-width:100%;margin:0;padding:8px 0;color:inherit;font:inherit;text-decoration:none;white-space:normal}.pf-links>a:last-child{justify-self:end;text-align:right}
+.pf-header a:hover,.pf-footer a:hover{color:#737373}.pf-header a:focus-visible,.pf-footer a:focus-visible{outline:none;text-decoration:underline;text-underline-offset:5px}
+.pf-footer{margin:32px var(--pf-edge) 0;padding:0 0 22px;color:#171717;background:#fff;border:0;position:relative;font-size:14px;font-weight:700;line-height:1.3}
+.pf-footer .pf-links{min-height:54px;border-top:1px solid var(--pf-line);padding-top:4px}
+.pf-contact{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--pf-line);margin-top:16px;padding-top:10px;font-size:12px;font-weight:700;line-height:1.3}.pf-contact>a{color:inherit;font:inherit;text-decoration:none;padding:6px 0;min-height:28px}
+#portfolio-top{scroll-margin-top:0}#work-title,#experiments-title{scroll-margin-top:100px}
+.ll-page{--ll-nav-h:72px}.fb-rail{top:112px}.ll-page .ll-rail{top:112px}
+.portfolio-legacy-shell{box-sizing:border-box;width:min(1440px,calc(100% - 80px));margin:32px auto 0;padding:0 0 0!important}.portfolio-legacy-shell>.pf-footer{margin-left:0;margin-right:0}.portfolio-legacy-shell main>section>div{margin-bottom:48px}.portfolio-legacy-shell main p{font-family:Arial,Helvetica,sans-serif;font-size:15px!important;line-height:1.65!important;font-weight:400!important}.portfolio-legacy-shell .portfolio-project-name{font-family:Arial,Helvetica,sans-serif;font-size:22px!important;font-weight:700!important;line-height:1.2!important;letter-spacing:-.025em}.portfolio-legacy-shell main p.portfolio-project-summary{font-size:17px!important;line-height:1.65!important;font-weight:400!important}.portfolio-legacy-shell main img,.portfolio-legacy-shell main .vimeo-lazy,.portfolio-legacy-shell main iframe{border-radius:8px}.portfolio-legacy-shell main h2,.portfolio-legacy-shell main h3{font-family:Arial,Helvetica,sans-serif;line-height:1.25}
+.archive-app{grid-template-rows:auto minmax(0,1fr) auto!important;padding-top:0!important}.archive-app>.pf-header{padding-inline:0;background:#181818;color:#f2f2ef;backdrop-filter:none}.archive-app>.pf-footer{margin:14px 0 0;padding-bottom:0;background:#181818;color:#f2f2ef;--pf-line:#555}.archive-app .pf-contact{margin-top:8px}.archive-app .pf-footer .pf-links{min-height:44px}.archive-app .archive-workspace{min-height:0}
+@media(max-width:1179px){.fb-rail{top:72px}}
+@media(max-width:640px){:root{--pf-edge:20px;--pf-header-height:64px}.pf-links{font-size:11px;gap:12px;line-height:1.3}.pf-links>a{min-height:40px;display:flex;align-items:center}.pf-links>a:last-child{justify-content:flex-end}.pf-footer{margin-top:24px;padding-bottom:20px}.pf-footer .pf-links{min-height:54px}.pf-contact{justify-content:flex-start;gap:8px 19px;font-size:11px;margin-top:12px}.pf-contact>a{min-height:36px;display:flex;align-items:center}.portfolio-legacy-shell{width:calc(100% - 40px);margin-top:24px}.portfolio-legacy-shell main>section>div{margin-bottom:30px}.portfolio-legacy-shell main p{font-size:14px!important}.portfolio-legacy-shell main p.portfolio-project-summary{font-size:15px!important}.portfolio-legacy-shell .portfolio-project-name{font-size:20px!important}.ll-page{--ll-nav-h:64px}.fb-rail{top:64px}.ll-page .ll-rail{top:104px}.archive-app>.pf-footer{padding-bottom:0}.archive-app .pf-contact{padding-top:3px;margin-top:3px}.archive-app .pf-footer .pf-links{min-height:40px}}
+@media(prefers-reduced-motion:reduce){.pf-header,.pf-footer,.pf-header a,.pf-footer a{transition:none}}
+
+/* One navigation; the footer no longer repeats it. */
+.pf-header .pf-links{display:flex!important;gap:32px}.pf-header .pf-links>a:first-child{margin-right:auto}.pf-header .pf-links>a:last-child{justify-self:auto;text-align:left}
+.pf-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #dedede;margin-top:28px;padding-top:20px;font-size:12px;font-weight:400;min-height:66px}
+.pf-footer,.pf-footer *{text-transform:none;letter-spacing:0}.pf-signature{color:#777}.pf-footer-actions{display:flex;gap:28px}.pf-footer a{font:inherit;color:inherit;text-decoration:none;padding-block:8px}
+.archive-app>.pf-footer{border-color:#555;padding-top:10px;min-height:46px}
+@media(max-width:640px){.pf-header .pf-links{gap:22px}.pf-footer{gap:15px;font-size:11px;padding-top:12px;min-height:58px}.pf-footer-actions{gap:16px}}
+
+/* Every page reserves the scrollbar's space, so the header sits at exactly the same place on every page. */
+html{scrollbar-gutter:stable}

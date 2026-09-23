@@ -1,0 +1,17 @@
+@view-transition{navigation:auto}
+.pf-header{view-transition-name:portfolio-header}
+::view-transition-group(*){animation-duration:420ms;animation-timing-function:cubic-bezier(.22,.8,.22,1)}
+::view-transition-old(root){animation:pf-out 180ms ease both}
+::view-transition-new(root){animation:pf-in 320ms ease both}
+::view-transition-group(portfolio-header){animation:none}
+::view-transition-old(portfolio-header){animation:none;opacity:0}
+::view-transition-new(portfolio-header){animation:none}
+@keyframes pf-out{to{opacity:0}}
+@keyframes pf-in{from{opacity:0}to{opacity:1}}
+.dialog-media{transform-origin:center;will-change:auto}
+.gallery-count{font-variant-numeric:tabular-nums;min-width:48px;text-align:center}
+.gallery-controls button{transition:background .18s,transform .22s cubic-bezier(.2,.8,.2,1)}
+.gallery-prev:hover{transform:translateX(-3px)}.gallery-next:hover{transform:translateX(3px)}
+.gallery-controls button:active{transform:scale(.9)}
+.cloud{touch-action:pan-y;perspective:650px}.cloud img{backface-visibility:hidden}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-group(*){animation-duration:0s}.gallery-controls button{transition:none;transform:none!important}}

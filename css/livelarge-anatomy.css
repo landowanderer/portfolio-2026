@@ -1,0 +1,16 @@
+/* Approved static A02/A03 studies. Scoped to these two modules. */
+.ll-anatomy-study { scroll-margin-top:calc(var(--ll-nav-h) + 60px); }
+.ll-anatomy-heading { display:flex; align-items:baseline; justify-content:space-between; gap:20px; margin-bottom:24px; }
+.ll-anatomy-heading h3 { font-size:var(--ll-h3); line-height:1.35; }
+.ll-anatomy-heading p { color:var(--ll-muted); font-size:var(--ll-tag); }
+.ll-anatomy-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 28px; padding:28px; background:var(--ll-panel); border-radius:var(--ll-radius); }
+.ll-anatomy-view { min-width:0; display:flex; flex-direction:column; align-items:center; }
+.ll-page .ll-anatomy-view figcaption { display:block; align-self:stretch; margin:0 0 16px; padding:0; color:var(--ll-muted); font-size:13px; line-height:1.5; }
+.ll-anatomy-recommend img { width:303px; }
+.ll-anatomy-compare img { width:553px; }
+.ll-anatomy-grid img { max-width:100%; height:auto; }
+@media(max-width:640px) {
+  .ll-anatomy-heading { display:block; margin-bottom:20px; }
+  .ll-anatomy-heading p { margin-top:8px; }
+  .ll-anatomy-grid { grid-template-columns:1fr; gap:32px; padding:20px 12px; }
+}

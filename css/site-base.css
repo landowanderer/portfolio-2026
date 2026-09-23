@@ -177,7 +177,7 @@ html body #top-nav #works-nav-group:focus-within .dropdown-menu #extra-projects 
 .site-contact-row {
   display: flex;
   justify-content: flex-end;
-  margin-top: clamp(30px, 5vw, 72px);
+  margin-top: 16px;
   padding-top: 12px;
   border-top: 1px solid #000;
   font-size: clamp(11px, 0.78vw, 14px);
@@ -192,7 +192,7 @@ html body #top-nav #works-nav-group:focus-within .dropdown-menu #extra-projects 
   flex-wrap: wrap;
   justify-content: flex-end;
   width: 100%;
-  gap: 8px clamp(14px, 2vw, 30px);
+  gap: 8px clamp(16px, 2vw, 24px);
 }
 
 .site-contact-links a {
