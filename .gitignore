@@ -1,1 +1,8 @@
 node_modules/
+
+# Private working material: kept on this computer, never published with the site.
+career-agent/
+tmp/
+design-references/
+ADU-Prototype-Source/
+tools/
