@@ -1,21 +1,21 @@
 /* Common introduction and ending for selected work; project media stays original. */
-.pf-selected-case{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#171717}
+.pf-selected-case{font-family:Geist,Arial,Helvetica,sans-serif;background:#fff;color:#171717}
 .pf-selected-case .pf-case-intro{box-sizing:border-box;width:min(1200px,calc(100% - 96px));max-width:none;margin:56px auto 72px;padding:0}
-.pf-selected-case .pf-case-label{display:flex;justify-content:space-between;align-items:center;margin:0;font-family:Arial,Helvetica,sans-serif}
+.pf-selected-case .pf-case-label{display:flex;justify-content:space-between;align-items:center;margin:0;font-family:Geist,Arial,Helvetica,sans-serif}
 .pf-selected-case .pf-case-label span{font-size:13px!important;line-height:1.4!important;letter-spacing:.02em;font-weight:600;text-transform:uppercase}
 .pf-selected-case .pf-case-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:72px;margin-top:48px}
-.pf-selected-case .pf-case-intro .pf-case-title{font:500 clamp(30px,3vw,42px)/1.14 Arial,Helvetica,sans-serif!important;letter-spacing:-.035em;text-transform:none;max-width:20ch;margin:0}
-.pf-selected-case .pf-case-copy>p{font:400 16px/1.7 Arial,Helvetica,sans-serif!important;color:#555;margin:0 0 18px}
-.pf-selected-case .pf-case-copy .pf-case-scope,.pf-selected-case .pf-case-copy .fb-scope{font:400 12px/1.6 Arial,Helvetica,sans-serif!important;color:#777;border-top:1px solid #e1e1e1;margin:26px 0 0;padding-top:18px}
+.pf-selected-case .pf-case-intro .pf-case-title{font:500 clamp(30px,3vw,42px)/1.14 Geist,Arial,Helvetica,sans-serif!important;letter-spacing:-.035em;text-transform:none;max-width:20ch;margin:0}
+.pf-selected-case .pf-case-copy>p{font:400 16px/1.7 Geist,Arial,Helvetica,sans-serif!important;color:#555;margin:0 0 18px}
+.pf-selected-case .pf-case-copy .pf-case-scope,.pf-selected-case .pf-case-copy .fb-scope{font:400 12px/1.6 Geist,Arial,Helvetica,sans-serif!important;color:#777;border-top:1px solid #e1e1e1;margin:26px 0 0;padding-top:18px}
 .pf-selected-case .pf-case-copy .ll-facts{margin:26px 0 0;padding-top:18px;border-top:1px solid #e1e1e1;gap:18px 28px}
-.pf-selected-case .ll-facts dt,.pf-selected-case .ll-facts dd{font:400 12px/1.6 Arial,Helvetica,sans-serif}
+.pf-selected-case .ll-facts dt,.pf-selected-case .ll-facts dd{font:400 12px/1.6 Geist,Arial,Helvetica,sans-serif}
 .pf-selected-case .ll-facts dt{color:#777;margin-bottom:3px}
 .pf-selected-case .ll-hero-figure{margin-top:56px}
 .pf-selected-case .portfolio-legacy-shell{width:min(1200px,calc(100% - 96px));margin:0 auto;padding:0}
 .pf-selected-case .portfolio-legacy-shell .pf-case-intro{width:100%}
 .pf-selected-case .portfolio-legacy-shell main>section{margin-top:0}
 .pf-selected-case .pf-next-project{width:min(1200px,calc(100% - 96px));margin:72px auto 0;border-top:1px solid #d8d8d8}
-.pf-selected-case .pf-next-project>a{display:grid;grid-template-columns:1fr auto;gap:9px 24px;padding:28px 0 30px;color:#202020;text-decoration:none;font-family:Arial,Helvetica,sans-serif}
+.pf-selected-case .pf-next-project>a{display:grid;grid-template-columns:1fr auto;gap:9px 24px;padding:28px 0 30px;color:#202020;text-decoration:none;font-family:Geist,Arial,Helvetica,sans-serif}
 .pf-next-label{grid-column:1;font-size:11px;line-height:1.4;color:#777}
 .pf-next-name{grid-column:1;font-size:28px;line-height:1.25;font-weight:400;letter-spacing:-.025em}
 .pf-next-description{grid-column:1;font-size:13px;line-height:1.5;color:#777}

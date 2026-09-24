@@ -10,7 +10,7 @@
 .ll-page .ll-design-caption h3 { font-size:24px; line-height:1.25; max-width:22ch; }
 .ll-page .ll-design-caption p { font-size:16px; line-height:1.7; color:#5b5851; }
 .ll-design-foundations { display:grid; grid-template-columns:1.2fr 1fr; gap:40px; padding:40px 0; margin-top:44px; border-top:1px solid #e3e0da; border-bottom:1px solid #e3e0da; }
-.ll-page .ll-type-sample { font:400 clamp(42px,5vw,64px)/1.1 Barlow,Arial,sans-serif; color:#272621; letter-spacing:-.03em; margin-bottom:16px; }
+.ll-page .ll-type-sample { font:400 clamp(42px,5vw,64px)/1.1 Geist,Arial,sans-serif; color:#272621; letter-spacing:-.03em; margin-bottom:16px; }
 .ll-page .ll-foundation-label { font-size:13px; color:#716c64; }
 .ll-swatches { display:flex; gap:8px; height:60px; margin-bottom:16px; }
 .ll-swatches i { flex:1; border:1px solid #2726210d; border-radius:5px; background:var(--color); }
@@ -50,7 +50,7 @@
 .ll-page .ll-build-intro h3 {font-size:21px; margin-bottom:14px;}
 .ll-page .ll-build-intro p {font-size:16px; line-height:1.7; color:#625d54;}
 .ll-state-principle {display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;}
-.ll-state-principle span {padding:9px 13px; border-radius:6px; border:1px solid #ddd7cd; background:#f4f2ed; font:400 14px/1.4 Barlow,Arial,sans-serif;}
+.ll-state-principle span {padding:9px 13px; border-radius:6px; border:1px solid #ddd7cd; background:#f4f2ed; font:400 14px/1.4 Geist,Arial,sans-serif;}
 .ll-build-example {margin-top:44px; display:grid;grid-template-columns:1fr 1fr;gap:32px;}
 .ll-build-example figure {background:#f1efea; padding:28px; border-radius:16px;}
 .ll-build-example video {width:100%;max-width:390px;margin:auto;border-radius:8px;}
