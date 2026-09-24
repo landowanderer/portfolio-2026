@@ -26,28 +26,45 @@
   cloud.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=cloud.getBoundingClientRect();tx=Math.max(-1,Math.min(1,(e.clientX-r.left)/r.width*2-1));ty=Math.max(-1,Math.min(1,(e.clientY-r.top)/r.height*2-1));runCloud()});
   document.querySelector('.home-intro').addEventListener('pointermove',e=>{if(reduced.matches||e.pointerType==='touch')return;const r=cloud.getBoundingClientRect(),dx=e.clientX-r.left-r.width/2,dy=e.clientY-r.top-r.height/2,reach=Math.max(r.width,180)*1.25,d=Math.hypot(dx,dy);if(d>reach){tx=ty=0}else{const strength=1-d/reach;tx=Math.max(-1,Math.min(1,dx/(r.width/2)))*strength;ty=Math.max(-1,Math.min(1,dy/(r.height/2)))*strength}runCloud()});
   document.querySelector('.home-intro').addEventListener('pointerleave',()=>{tx=ty=0;release()});
-  function press(){ts=.73;cloud.classList.add('is-pressed');runCloud();startRain()}function release(){ts=1;cloud.classList.remove('is-pressed');runCloud();stopRain()}
+  let held=false;function press(){if(held)return;held=true;ts=.73;cloud.classList.add('is-pressed');runCloud();startRain()}function release(){if(!held)return;held=false;ts=1;cloud.classList.remove('is-pressed');runCloud();stopRain()}
   cloud.addEventListener('pointerdown',press);addEventListener('pointerup',release);cloud.addEventListener('pointercancel',release);cloud.addEventListener('pointerleave',()=>{tx=ty=0;release()});cloud.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repeat){e.preventDefault();press()}});cloud.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')release()});cloud.addEventListener('blur',()=>{tx=ty=0;release()});
 
-  // Holding the cloud makes it rain over the introduction. Rain builds while held, leans with the cloud's tilt,
-  // and breaks on the lines of text it meets. A tap still gives a short shower; nothing runs once the drops are gone.
+  // Holding the cloud makes it rain over the introduction. Rain has a level that builds while held, eases away once let go (a tap still gives
+  // a short shower), leans with the cloud's tilt and breaks on the lines of text it meets. The face stays sad until the last drop lands.
   const intro=document.querySelector('.home-intro'),sky=document.createElement('canvas');sky.className='intro-rain';sky.setAttribute('aria-hidden','true');intro.append(sky);const sctx=sky.getContext('2d');
-  let sw=0,sh=0,drops=[],splashes=[],lines=[],raining=false,rainFrom=0,rainUntil=0,rainFrame=0,rainLast=0,spawn=0;
+  let sw=0,sh=0,drops=[],splashes=[],lines=[],level=0,goal=0,burst=0,shower=0,lastWet=0,rainFrame=0,rainLast=0,spawn=0;
   function sizeSky(){const r=intro.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);sw=r.width;sh=r.height;sky.width=Math.round(sw*d);sky.height=Math.round(sh*d);sctx.setTransform(d,0,0,d,0,0)}
   function measureLines(){const base=intro.getBoundingClientRect(),walk=document.createTreeWalker(intro,NodeFilter.SHOW_TEXT),range=document.createRange();lines=[];let node;while((node=walk.nextNode())){if(!node.textContent.trim()||node.parentElement.closest('.cloud,.sample-enlarged'))continue;range.selectNodeContents(node);for(const r of range.getClientRects()){if(r.width<3)continue;const top=r.top-base.top+r.height*.3,left=r.left-base.left,right=r.right-base.left,line=lines.find(l=>Math.abs(l.top-top)<5);if(line){line.left=Math.min(line.left,left);line.right=Math.max(line.right,right)}else lines.push({top,left,right})}}}
   new ResizeObserver(()=>{if(rainFrame){sizeSky();measureLines()}}).observe(intro);
+  // The opening shower: the cloud gathers, rain moves out from under it across the text, holds, then clears the same way.
+  const SHOWER={gather:500,peak:1500,hold:2700,end:3800,top:.6},ease=t=>t<.5?2*t*t:1-(-2*t+2)**2/2;
+  function showerAt(t){const k=(a,b)=>ease(Math.max(0,Math.min(1,(t-a)/(b-a))));return{level:t<SHOWER.gather?.04:t<SHOWER.hold?.04+(SHOWER.top-.04)*k(SHOWER.gather,SHOWER.peak):SHOWER.top*(1-k(SHOWER.hold,SHOWER.end)),lo:1-k(0,SHOWER.peak),hi:1-k(SHOWER.hold,SHOWER.end)}}
   function rainTick(now){
-    const dt=rainLast?Math.min(40,now-rainLast)/16.67:1,on=raining||now<rainUntil;rainLast=now;cloud.classList.toggle('is-raining',on);
-    if(on){const held=Math.min(1,(now-rainFrom)/1600),wind=Math.max(-.45,Math.min(.45,cx*.4))+.06;spawn+=(.5+held*5.5)*dt;while(spawn>=1&&drops.length<420){spawn--;const vy=10+Math.random()*6,reach=sh*Math.abs(wind);drops.push({x:Math.random()*(sw+reach)-(wind>0?reach:0),y:-20-Math.random()*40,vy,vx:vy*wind,len:10+Math.random()*12,a:.16+Math.random()*.3})}}
-    sctx.clearRect(0,0,sw,sh);sctx.lineWidth=1;sctx.lineCap='round';
-    drops=drops.filter(d=>{const py=d.y;d.x+=d.vx*dt;d.y+=d.vy*dt;for(const l of lines){if(py<l.top&&d.y>=l.top&&d.x>=l.left&&d.x<=l.right&&Math.random()<.72){for(let i=0,n=2+(Math.random()*2|0);i<n;i++)splashes.push({x:d.x,y:l.top,vx:(Math.random()-.5)*2.6+d.vx*.15,vy:-1.2-Math.random()*1.8,life:1});return false}}if(d.y-d.len>sh)return false;sctx.strokeStyle=`rgba(32,32,32,${d.a*Math.max(0,Math.min(1,(sh-d.y)/70))})`;sctx.beginPath();sctx.moveTo(d.x,d.y);sctx.lineTo(d.x-d.vx/d.vy*d.len,d.y-d.len);sctx.stroke();return true});
+    const dt=rainLast?Math.min(40,now-rainLast)/16.67:1;rainLast=now;let lo=0,hi=1;
+    if(shower){const t=now-shower;if(t>=SHOWER.end){shower=0;level=0}else{const s=showerAt(t);level=s.level;lo=s.lo;hi=s.hi;const squash=t<SHOWER.hold?.86:1;if(!held&&ts!==squash){ts=squash;runCloud()}}}
+    else{const aim=goal||now<burst?1:0,step=dt*16.67/(aim>level?1600:900);level=aim>level?Math.min(aim,level+step):Math.max(aim,level-step)}
+    if(level>.005){const wind=Math.max(-.45,Math.min(.45,cx*.4))+.06,reach=sh*Math.abs(wind),x0=sw*lo,x1=sw*hi;spawn+=level*6*Math.max(.45,Math.min(1,sw/900))*(.35+.65*(hi-lo))*dt;while(spawn>=1&&drops.length<420){spawn--;const z=Math.random(),vy=8+z*9;drops.push({x:x0+Math.random()*(x1-x0+reach)-(wind>0?reach:0),y:-20-Math.random()*40,vy,vx:vy*wind,len:8+z*16,w:.6+z*.7,a:.1+z*.34})}}
+    if(level>.005||drops.length)lastWet=now;const sad=lastWet>0&&now-lastWet<320;cloud.classList.toggle('is-raining',sad);
+    sctx.clearRect(0,0,sw,sh);sctx.lineCap='round';
+    drops=drops.filter(d=>{const py=d.y;d.x+=d.vx*dt;d.y+=d.vy*dt;for(const l of lines){if(py<l.top&&d.y>=l.top&&d.x>=l.left&&d.x<=l.right&&Math.random()<.72){for(let i=0,n=2+(Math.random()*2|0);i<n;i++)splashes.push({x:d.x,y:l.top,vx:(Math.random()-.5)*2.6+d.vx*.15,vy:-1.2-Math.random()*1.8,life:1});return false}}if(d.y-d.len>sh)return false;sctx.strokeStyle=`rgba(32,32,32,${d.a*Math.max(0,Math.min(1,(sh-d.y)/70))})`;sctx.lineWidth=d.w;sctx.beginPath();sctx.moveTo(d.x,d.y);sctx.lineTo(d.x-d.vx/d.vy*d.len,d.y-d.len);sctx.stroke();return true});
     sctx.fillStyle='#202020';splashes=splashes.filter(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.22*dt;p.life-=.055*dt;if(p.life<=0)return false;sctx.globalAlpha=p.life*.55;sctx.fillRect(p.x-.6,p.y-.6,1.3,1.3);return true});sctx.globalAlpha=1;
-    if(on||drops.length||splashes.length)rainFrame=requestAnimationFrame(rainTick);else{rainFrame=0;rainLast=0;spawn=0}
+    if(level>.005||goal>0||shower||drops.length||splashes.length||sad)rainFrame=requestAnimationFrame(rainTick);else{rainFrame=0;rainLast=0;spawn=0;lastWet=0}
   }
-  function startRain(){if(reduced.matches)return;raining=true;rainFrom=performance.now();rainUntil=0;sizeSky();measureLines();if(!rainFrame)rainFrame=requestAnimationFrame(rainTick)}
-  function stopRain(){if(!raining)return;raining=false;rainUntil=rainFrom+900}
+  function wake(){sizeSky();measureLines();if(!rainFrame)rainFrame=requestAnimationFrame(rainTick)}
+  function startRain(){if(reduced.matches)return;markShower();shower=0;goal=1;burst=performance.now()+700;wake()}
+  function stopRain(){goal=0}
 
-  reduced.addEventListener('change',()=>{if(reduced.matches){cancelAnimationFrame(cloudFrame);cloudFrame=0;cx=cy=tx=ty=v=0;s=ts=1;mark.style.transform='none';raining=false;rainUntil=0;drops=[];splashes=[]}});
+  // Once per visit the cloud rains by itself, a few seconds and no more: after the page has loaded, while the introduction
+  // is in view and the tab is showing. Scrolling away lets it clear early; pressing the cloud takes it over without a restart.
+  let showerDone=(()=>{try{return !!sessionStorage.getItem('cloud-shower')}catch{return false}})(),armed=false,introSeen=false,showerTimer=0;
+  function markShower(){showerDone=true;clearTimeout(showerTimer);try{sessionStorage.setItem('cloud-shower','1')}catch{}}
+  function queueShower(){clearTimeout(showerTimer);if(showerDone||!armed||!introSeen||document.hidden||reduced.matches)return;showerTimer=setTimeout(()=>{if(held||rainFrame||!introSeen||document.hidden)return;markShower();shower=performance.now();wake()},700)}
+  function endShower(){if(!shower)return;shower=0;goal=held?1:0;if(!held){ts=1;runCloud()}}
+  new IntersectionObserver(entries=>{introSeen=entries[entries.length-1].intersectionRatio>=.35;if(!introSeen)endShower();queueShower()},{threshold:[0,.35]}).observe(intro);
+  document.addEventListener('visibilitychange',queueShower);
+  Promise.all([document.readyState==='complete'||new Promise(r=>addEventListener('load',r,{once:true})),document.fonts&&document.fonts.ready]).then(()=>{armed=true;queueShower()});
+
+  reduced.addEventListener('change',()=>{if(reduced.matches){cancelAnimationFrame(cloudFrame);cloudFrame=0;cx=cy=tx=ty=v=0;s=ts=1;mark.style.transform='none';clearTimeout(showerTimer);shower=0;level=goal=0;drops=[];splashes=[]}});
 
   // A cover with a recording (ZNTR) plays it while in view and pauses out of view.
   // The still remains underneath until playback starts; reduced motion keeps the still.
