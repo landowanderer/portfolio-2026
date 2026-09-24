@@ -12,8 +12,10 @@
 .pf-header .pf-links>a[href*="#"]{background:linear-gradient(currentColor,currentColor) 0 calc(100% - 3px) / 0 1.5px no-repeat;transition:background-size .35s cubic-bezier(.2,.8,.2,1),color .2s}
 .pf-header .pf-links>a[aria-current=location]{background-size:100% 1.5px}
 
-/* Experiments / Archives sits one grid column in from each edge, giving the gallery more air. */
+/* Experiments / Archives sits in from the page edges, giving the gallery more air: one grid column on smaller
+   desktops, and a seventh of the content width on each side once the cards can stay a comfortable size. */
 @media(min-width:1001px){.experiments>.page-width{padding-inline:calc((100% - 220px) / 12 + 20px)}}
+@media(min-width:1280px){.experiments>.page-width{padding-inline:calc(min(1440px,100vw - 80px) * .14)}}
 
 /* Resume and Email read as the page's two actions. */
 .intro-links{font-size:17px;font-weight:700;gap:30px;margin-top:28px}
@@ -43,18 +45,23 @@
    above the text its rain falls on. */
 @media(min-width:641px){.home-intro>.cloud{align-self:start}}
 .cloud .cloud-mark{position:relative;display:block;top:auto;left:auto;right:auto;opacity:1;width:164px;margin:auto;pointer-events:none;user-select:none}
-.cloud .cloud-mark img{display:block;width:100%;height:auto;margin:0;filter:none;transition:opacity .25s}
-.cloud-mark .cloud-rain{position:absolute;inset:0;opacity:0}
-.cloud.is-pressed .cloud-rain,.cloud.is-raining .cloud-rain{opacity:1}
-.cloud.is-pressed .cloud-calm,.cloud.is-raining .cloud-calm{opacity:0}
+.cloud .cloud-mark img{display:block;width:100%;height:auto;margin:0;filter:none}
+/* The crying face fades in over the calm one, which stays solid underneath, so the cloud never turns see-through
+   mid-change. The fade follows the press and the release directly. */
+.cloud-mark .cloud-rain{position:absolute;inset:0;opacity:0;transition:opacity .28s cubic-bezier(.4,0,.2,1)}
+.cloud.is-pressed .cloud-rain,.cloud.is-raining .cloud-rain{opacity:1;transition-duration:.2s}
 @media(max-width:1000px){.cloud .cloud-mark{width:150px}}
 @media(max-width:640px){.cloud .cloud-mark{width:72px}}
 
 /* Rain falls over the introduction text; the cloud sits above the weather it makes and darkens while it rains. */
 .home-intro{position:relative}
 .intro-rain{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.cloud{z-index:2;transition:filter .6s}
+.cloud{z-index:2;transition:filter .45s cubic-bezier(.4,0,.2,1)}
 .cloud.is-raining{filter:brightness(.8) contrast(1.08)}
+/* After the cloud has rained once, a mouse resting on it finds a small label; hidden again while it rains. */
+.cloud span.cloud-hint{display:block;position:absolute;top:100%;left:0;right:0;margin-top:6px;text-align:center;font-size:12px;line-height:1.3;letter-spacing:0;color:#777;white-space:nowrap;opacity:0;transform:translateY(-4px);transition:opacity .25s,transform .25s;pointer-events:none}
+@media(hover:hover) and (pointer:fine){.cloud.can-hint:hover:not(.is-pressed,.is-raining) .cloud-hint{opacity:1;transform:none}}
+@media(max-width:640px){.cloud span.cloud-hint{display:none}}
 
 /* The viewer has no close icon: click outside (a Close label follows the pointer there) or press Esc.
    The button stays for keyboard and screen-reader users and only shows when it has keyboard focus. */
@@ -111,3 +118,16 @@
 @media(hover:none),(pointer:coarse){.cursor-label,.index-peek{display:none}}
 
 @media(prefers-reduced-motion:reduce){.experiment-index li{animation:none}.index-row,.index-peek img,.cloud,.cloud .cloud-mark img,.cover-motion,.pf-header .pf-links>a{transition:none}.index-peek img{transform:none}}
+
+/* Experiments / Archives rises like a dark sheet over the white page: its rounded top edge arrives slightly narrower
+   and lower, and settles to full width as the section reaches the top of the screen. The motion is bound to scroll
+   position and only moves the sheet (transform), so the browser composites it without repainting; browsers without
+   scroll-driven animation simply show the sheet in place. */
+.experiments{border-radius:28px 28px 0 0}
+@media(max-width:640px){.experiments{border-radius:18px 18px 0 0}}
+@supports (animation-timeline:view()){
+  @media(prefers-reduced-motion:no-preference){
+    .experiments{transform-origin:50% 0;animation:sheet-rise linear both;animation-timeline:view();animation-range:entry 0% contain 0%}
+    @keyframes sheet-rise{from{transform:translateY(36px) scale(.965)}to{transform:none}}
+  }
+}

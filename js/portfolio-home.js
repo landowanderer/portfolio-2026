@@ -18,36 +18,75 @@
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSamples()});
   addEventListener('scroll',closeSamples,{passive:true});addEventListener('resize',closeSamples);
 
-  // The mark responds to the visitor; no perpetual idle animation. Its face turns from calm to crying while pressed or raining.
-  const cloud=document.querySelector('.cloud'),mark=cloud.querySelector('.cloud-mark');
-  let cx=0,cy=0,tx=0,ty=0,s=1,ts=1,v=0,cloudFrame=0;
+  // The mark responds to the visitor; no perpetual idle animation. Its face turns from calm to crying while it rains
+  // and smiles again as the rain thins out, darkening and brightening with it.
+  const cloud=document.querySelector('.cloud'),mark=cloud.querySelector('.cloud-mark'),intro=document.querySelector('.home-intro');
+  let cx=0,cy=0,tx=0,ty=0,s=1,ts=1,v=0,cloudFrame=0,near=false,held=false;
   function cloudTick(){cx+=(tx-cx)*.12;cy+=(ty-cy)*.12;v+=(ts-s)*.17;v*=.72;s+=v;mark.style.transform=`translate3d(${cx*12}px,${cy*10}px,0) rotateX(${-cy*16}deg) rotateY(${cx*23}deg) rotate(${cx*5}deg) scale(${1+(1-s)*.55},${s})`;mark.style.filter=`drop-shadow(${-cx*7}px ${14+(1-s)*18}px ${12+(1-s)*15}px #0000001c)`;if(Math.abs(cx-tx)+Math.abs(cy-ty)+Math.abs(s-ts)+Math.abs(v)>.001)cloudFrame=requestAnimationFrame(cloudTick);else cloudFrame=0}
   function runCloud(){if(!reduced.matches&&!cloudFrame)cloudFrame=requestAnimationFrame(cloudTick)}
-  cloud.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=cloud.getBoundingClientRect();tx=Math.max(-1,Math.min(1,(e.clientX-r.left)/r.width*2-1));ty=Math.max(-1,Math.min(1,(e.clientY-r.top)/r.height*2-1));runCloud()});
-  document.querySelector('.home-intro').addEventListener('pointermove',e=>{if(reduced.matches||e.pointerType==='touch')return;const r=cloud.getBoundingClientRect(),dx=e.clientX-r.left-r.width/2,dy=e.clientY-r.top-r.height/2,reach=Math.max(r.width,180)*1.25,d=Math.hypot(dx,dy);if(d>reach){tx=ty=0}else{const strength=1-d/reach;tx=Math.max(-1,Math.min(1,dx/(r.width/2)))*strength;ty=Math.max(-1,Math.min(1,dy/(r.height/2)))*strength}runCloud()});
-  document.querySelector('.home-intro').addEventListener('pointerleave',()=>{tx=ty=0;release()});
-  function press(){ts=.73;cloud.classList.add('is-pressed');runCloud();startRain()}function release(){ts=1;cloud.classList.remove('is-pressed');runCloud();stopRain()}
+  cloud.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=cloud.getBoundingClientRect();near=true;tx=Math.max(-1,Math.min(1,(e.clientX-r.left)/r.width*2-1));ty=Math.max(-1,Math.min(1,(e.clientY-r.top)/r.height*2-1));runCloud()});
+  intro.addEventListener('pointermove',e=>{if(reduced.matches||e.pointerType==='touch')return;const r=cloud.getBoundingClientRect(),dx=e.clientX-r.left-r.width/2,dy=e.clientY-r.top-r.height/2,reach=Math.max(r.width,180)*1.25,d=Math.hypot(dx,dy);near=d<=reach;if(!near){tx=ty=0}else{const strength=1-d/reach;tx=Math.max(-1,Math.min(1,dx/(r.width/2)))*strength;ty=Math.max(-1,Math.min(1,dy/(r.height/2)))*strength}runCloud()});
+  intro.addEventListener('pointerleave',()=>{near=false;tx=ty=0;release()});
+  function press(){if(held)return;ts=.73;cloud.classList.add('is-pressed');runCloud();holdRain()}
+  function release(){if(!held)return;held=false;ts=1;cloud.classList.remove('is-pressed');runCloud()}
   cloud.addEventListener('pointerdown',press);addEventListener('pointerup',release);cloud.addEventListener('pointercancel',release);cloud.addEventListener('pointerleave',()=>{tx=ty=0;release()});cloud.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&!e.repeat){e.preventDefault();press()}});cloud.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter')release()});cloud.addEventListener('blur',()=>{tx=ty=0;release()});
 
-  // Holding the cloud makes it rain over the introduction. Rain builds while held, leans with the cloud's tilt,
-  // and breaks on the lines of text it meets. A tap still gives a short shower; nothing runs once the drops are gone.
-  const intro=document.querySelector('.home-intro'),sky=document.createElement('canvas');sky.className='intro-rain';sky.setAttribute('aria-hidden','true');intro.append(sky);const sctx=sky.getContext('2d');
-  let sw=0,sh=0,drops=[],splashes=[],lines=[],raining=false,rainFrom=0,rainUntil=0,rainFrame=0,rainLast=0,spawn=0;
+  // Rain is one amount from 0 to 1. It rains while the cloud is held and stops when it is let go; drops already
+  // falling still land. Drops lean with the cloud's tilt; nearer drops are longer, darker and faster, and only those
+  // break on the lines of text they meet.
+  const sky=document.createElement('canvas');sky.className='intro-rain';sky.setAttribute('aria-hidden','true');intro.append(sky);const sctx=sky.getContext('2d');
+  let sw=0,sh=0,drops=[],splashes=[],lines=[],stones=[],rainFrame=0,rainLast=0,spawn=0,level=0,lo=0,hi=0,auto=null;
   function sizeSky(){const r=intro.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);sw=r.width;sh=r.height;sky.width=Math.round(sw*d);sky.height=Math.round(sh*d);sctx.setTransform(d,0,0,d,0,0)}
-  function measureLines(){const base=intro.getBoundingClientRect(),walk=document.createTreeWalker(intro,NodeFilter.SHOW_TEXT),range=document.createRange();lines=[];let node;while((node=walk.nextNode())){if(!node.textContent.trim()||node.parentElement.closest('.cloud,.sample-enlarged'))continue;range.selectNodeContents(node);for(const r of range.getClientRects()){if(r.width<3)continue;const top=r.top-base.top+r.height*.3,left=r.left-base.left,right=r.right-base.left,line=lines.find(l=>Math.abs(l.top-top)<5);if(line){line.left=Math.min(line.left,left);line.right=Math.max(line.right,right)}else lines.push({top,left,right})}}}
+  function measureLines(){const base=intro.getBoundingClientRect();stones=[...intro.querySelectorAll('.intro-sample>img')].map(img=>{const r=img.getBoundingClientRect();return {top:r.top-base.top,bottom:r.bottom-base.top,left:r.left-base.left,right:r.right-base.left}}).filter(b=>b.right>b.left);const walk=document.createTreeWalker(intro,NodeFilter.SHOW_TEXT),range=document.createRange();lines=[];let node;while((node=walk.nextNode())){if(!node.textContent.trim()||node.parentElement.closest('.cloud,.sample-enlarged'))continue;range.selectNodeContents(node);for(const r of range.getClientRects()){if(r.width<3)continue;const top=r.top-base.top+r.height*.3,left=r.left-base.left,right=r.right-base.left,line=lines.find(l=>Math.abs(l.top-top)<5);if(line){line.left=Math.min(line.left,left);line.right=Math.max(line.right,right)}else lines.push({top,left,right})}}}
   new ResizeObserver(()=>{if(rainFrame){sizeSky();measureLines()}}).observe(intro);
-  function rainTick(now){
-    const dt=rainLast?Math.min(40,now-rainLast)/16.67:1,on=raining||now<rainUntil;rainLast=now;cloud.classList.toggle('is-raining',on);
-    if(on){const held=Math.min(1,(now-rainFrom)/1600),wind=Math.max(-.45,Math.min(.45,cx*.4))+.06;spawn+=(.5+held*5.5)*dt;while(spawn>=1&&drops.length<420){spawn--;const vy=10+Math.random()*6,reach=sh*Math.abs(wind);drops.push({x:Math.random()*(sw+reach)-(wind>0?reach:0),y:-20-Math.random()*40,vy,vx:vy*wind,len:10+Math.random()*12,a:.16+Math.random()*.3})}}
-    sctx.clearRect(0,0,sw,sh);sctx.lineWidth=1;sctx.lineCap='round';
-    drops=drops.filter(d=>{const py=d.y;d.x+=d.vx*dt;d.y+=d.vy*dt;for(const l of lines){if(py<l.top&&d.y>=l.top&&d.x>=l.left&&d.x<=l.right&&Math.random()<.72){for(let i=0,n=2+(Math.random()*2|0);i<n;i++)splashes.push({x:d.x,y:l.top,vx:(Math.random()-.5)*2.6+d.vx*.15,vy:-1.2-Math.random()*1.8,life:1});return false}}if(d.y-d.len>sh)return false;sctx.strokeStyle=`rgba(32,32,32,${d.a*Math.max(0,Math.min(1,(sh-d.y)/70))})`;sctx.beginPath();sctx.moveTo(d.x,d.y);sctx.lineTo(d.x-d.vx/d.vy*d.len,d.y-d.len);sctx.stroke();return true});
-    sctx.fillStyle='#202020';splashes=splashes.filter(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.22*dt;p.life-=.055*dt;if(p.life<=0)return false;sctx.globalAlpha=p.life*.55;sctx.fillRect(p.x-.6,p.y-.6,1.3,1.3);return true});sctx.globalAlpha=1;
-    if(on||drops.length||splashes.length)rainFrame=requestAnimationFrame(rainTick);else{rainFrame=0;rainLast=0;spawn=0}
-  }
-  function startRain(){if(reduced.matches)return;raining=true;rainFrom=performance.now();rainUntil=0;sizeSky();measureLines();if(!rainFrame)rainFrame=requestAnimationFrame(rainTick)}
-  function stopRain(){if(!raining)return;raining=false;rainUntil=rainFrom+900}
+  const ease=p=>p<=0?0:p>=1?1:p<.5?2*p*p:1-(-2*p+2)**2/2;
+  function stored(k){try{return sessionStorage.getItem(k)==='1'}catch{return false}}
+  function store(k){try{sessionStorage.setItem(k,'1')}catch{}}
 
-  reduced.addEventListener('change',()=>{if(reduced.matches){cancelAnimationFrame(cloudFrame);cloudFrame=0;cx=cy=tx=ty=v=0;s=ts=1;mark.style.transform='none';raining=false;rainUntil=0;drops=[];splashes=[]}});
+  // Once per visit the cloud rains by itself, like weather passing: still for a beat, it gathers (squashes, darkens,
+  // turns sad, lets a few drops go), the rain spreads leftward from under it across the text, peaks at 60% of a held
+  // rain, then thins out from right to left. A hold takes the rain over; scrolling away ends the shower early.
+  // The cloud's shape is eased, never stepped: it sinks into the squash, breathes and sways a little while it rains,
+  // then lifts back out, so the spring only ever follows a moving target.
+  function autoStep(dt){
+    const a=auto,t=a.t+=dt*16.67;
+    if(a.end===null&&t>=3400)endAuto();
+    if(a.end!==null){const e=t-a.end,p=Math.min(1,e/1100);level=a.from*(1-ease(p));lo=0;hi=sw*(1-ease(p));if(!held){ts=a.sq+(1-a.sq)*ease(Math.min(1,e/800));runCloud()}if(p>=1){auto=null;level=0;if(!stored('cloud-held'))cloud.classList.add('can-hint')}return false}
+    if(t<800)return false;
+    a.gathered=true;
+    const sway=t>1700?Math.sin((t-1700)/420)*ease((t-1700)/900):0;
+    ts=a.sq=1-.12*ease((t-800)/550)+sway*.012;if(!near){tx=sway*.13;ty=0}runCloud();
+    if(t<1200){level=.02;lo=a.lo;hi=sw;return true}
+    if(t<2200){const p=ease((t-1200)/1000);level=.02+.58*p;lo=a.lo*(1-p);hi=sw;return true}
+    level=.6;lo=0;hi=sw;return true}
+  function endAuto(){if(!auto||auto.end!==null)return;if(!auto.gathered){auto=null;return}auto.end=auto.t;auto.from=level;if(!near)tx=ty=0;runCloud()}
+  function rainTick(now){
+    const dt=rainLast?Math.min(40,now-rainLast)/16.67:1;rainLast=now;
+    let storm;
+    if(auto)storm=autoStep(dt);
+    else{storm=held;level+=((storm?1:0)-level)*(storm?.07:.35)*dt;if(!storm&&level<.01)level=0;lo=0;hi=sw}
+    cloud.classList.toggle('is-raining',auto?storm||level>.2:held);
+    if(level>0){const wind=Math.max(-.45,Math.min(.45,cx*.4))+.06,reach=sh*Math.abs(wind),span=Math.max(0,hi-lo);spawn+=level*6*dt;while(spawn>=1&&drops.length<420){spawn--;const z=Math.random(),vy=8+z*8+Math.random()*2;drops.push({x:lo+Math.random()*(span+reach)-(wind>0?reach:0),y:-20-Math.random()*40,vy,vx:vy*wind,len:6+z*16+Math.random()*4,a:.08+z*.32,w:.7+z*.6,z})}}
+    sctx.clearRect(0,0,sw,sh);sctx.lineCap='round';
+    const drips=[];drops=drops.filter(d=>{if(d.wait>0){d.wait-=dt*16.67;return true}const py=d.y;if(d.g)d.vy+=d.g*dt;d.x+=d.vx*dt;d.y+=d.vy*dt;
+      for(const b of stones){if(d.x>=b.left&&d.x<=b.right&&d.y>=b.top&&d.y<=b.bottom&&!(py>=b.top&&d.drip)){const top=py<b.top,y=top?b.top:d.y;for(let i=0,n=top?3+(Math.random()*2|0):1;i<n;i++)splashes.push({x:d.x,y,vx:top?(Math.random()-.5)*3+d.vx*.15:-Math.sign(d.vx||1)*(.6+Math.random()),vy:top?-1.5-Math.random()*2:-.4,life:1});if(top&&!d.drip&&Math.random()<.18&&drops.length<440)drips.push({x:b.left+3+Math.random()*(b.right-b.left-6),y:b.bottom+1,vy:.4,vx:0,g:.35,len:3,a:.4,w:1.1,z:1,drip:true,wait:280+Math.random()*700});return false}}
+      if(d.z>.4)for(const l of lines){if(py<l.top&&d.y>=l.top&&d.x>=l.left&&d.x<=l.right&&Math.random()<.72){for(let i=0,n=2+(Math.random()*2|0);i<n;i++)splashes.push({x:d.x,y:l.top,vx:(Math.random()-.5)*2.6+d.vx*.15,vy:-1.2-Math.random()*1.8,life:1});return false}}if(d.y-d.len>sh)return false;sctx.lineWidth=d.w;sctx.strokeStyle=`rgba(32,32,32,${d.a*Math.max(0,Math.min(1,(sh-d.y)/70))})`;sctx.beginPath();sctx.moveTo(d.x,d.y);const len=d.drip?Math.min(14,2+d.vy*1.4):d.len;sctx.lineTo(d.x-d.vx/d.vy*len,d.y-len);sctx.stroke();return true});drops.push(...drips);
+    sctx.fillStyle='#202020';splashes=splashes.filter(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.22*dt;p.life-=.055*dt;if(p.life<=0)return false;sctx.globalAlpha=p.life*.55;sctx.fillRect(p.x-.6,p.y-.6,1.3,1.3);return true});sctx.globalAlpha=1;
+    if(auto||storm||level||drops.length||splashes.length)rainFrame=requestAnimationFrame(rainTick);else{rainFrame=0;rainLast=0;spawn=0}
+  }
+  function startLoop(){if(!rainFrame){sizeSky();measureLines();rainFrame=requestAnimationFrame(rainTick)}}
+  function holdRain(){held=true;if(reduced.matches)return;auto=null;autoArmed=false;store('cloud-rained');store('cloud-held');cloud.classList.remove('can-hint');startLoop()}
+
+  // The shower waits for the type and the intro thumbnails (drops break on the text lines), a visible tab and the
+  // intro on screen. Afterwards a small "Hold to rain" label appears when a mouse rests on the cloud.
+  let autoArmed=!stored('cloud-rained'),ready=false,introSeen=false;
+  if(!autoArmed&&!stored('cloud-held'))cloud.classList.add('can-hint');
+  function tryAuto(){if(!autoArmed||!ready||!introSeen||document.hidden||held||reduced.matches)return;autoArmed=false;store('cloud-rained');const a=cloud.getBoundingClientRect(),b=intro.getBoundingClientRect();auto={t:0,end:null,from:0,sq:1,gathered:false,lo:Math.max(0,a.left-b.left+a.width*.15)};startLoop()}
+  new IntersectionObserver(([e])=>{const seen=e.intersectionRect.height;introSeen=e.intersectionRatio>=.5||seen>=innerHeight*.5;if(auto&&e.intersectionRatio<.25&&seen<innerHeight*.25)endAuto();tryAuto()},{threshold:[0,.25,.5,.75,1]}).observe(intro);
+  document.addEventListener('visibilitychange',tryAuto);
+  Promise.race([Promise.all([document.fonts.ready,...[...intro.querySelectorAll('img')].map(img=>img.decode().catch(()=>{}))]),new Promise(r=>setTimeout(r,3000))]).then(()=>{ready=true;tryAuto()});
+
+  reduced.addEventListener('change',()=>{if(reduced.matches){cancelAnimationFrame(cloudFrame);cloudFrame=0;cx=cy=tx=ty=v=0;s=ts=1;mark.style.transform='none';auto=null;autoArmed=false;level=0;drops=[];splashes=[];cloud.classList.remove('is-raining')}});
 
   // A cover with a recording (ZNTR) plays it while in view and pauses out of view.
   // The still remains underneath until playback starts; reduced motion keeps the still.
@@ -193,7 +232,7 @@
   // In the grid, a small label names the piece beside the pointer (or the focused card); in the index,
   // the hovered row's image floats beside the pointer. Both follow with a slight lag and stay off touch screens.
   const label=document.createElement('div'),peek=document.createElement('div'),peekImg=new Image();label.className='cursor-label';peek.className='index-peek';peekImg.alt='';peek.append(peekImg);
-  [label,peek].forEach(el=>{el.setAttribute('aria-hidden','true');lab.append(el)});
+  [label,peek].forEach(el=>{el.setAttribute('aria-hidden','true');document.body.append(el)});
   function follower(el,tilt){let x=0,y=0,tx=0,ty=0,r=0,frame=0;const tick=()=>{const k=reduced.matches?1:.26,px=x;x+=(tx-x)*k;y+=(ty-y)*k;r+=((tilt&&!reduced.matches?Math.max(-6,Math.min(6,(x-px)*.35)):0)-r)*.18;el.style.transform=`translate3d(${x}px,${y}px,0) rotate(${r}deg)`;frame=Math.abs(tx-x)+Math.abs(ty-y)+Math.abs(r)>.15?requestAnimationFrame(tick):0};return {to(nx,ny,jump){tx=nx;ty=ny;if(jump){x=nx;y=ny;r=0}if(!frame)frame=requestAnimationFrame(tick)}}}
   // Scrolling makes the browser repeat a pointermove at the same spot; only real movement should take over from keyboard focus.
   let labelFocus=null,pointerX=-1,pointerY=-1;const labelMove=follower(label,false),peekMove=follower(peek,true),mouse=e=>{if(!hover.matches||e.pointerType!=='mouse'||(e.clientX===pointerX&&e.clientY===pointerY))return false;pointerX=e.clientX;pointerY=e.clientY;return true};
