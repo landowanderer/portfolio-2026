@@ -28,8 +28,41 @@
 /* The skip link was sitting under the glass header when focused; it now appears above it. */
 .skip-link{z-index:200;border-radius:4px;box-shadow:0 6px 20px #0002}
 
-/* LiveLarge: a sharp still of the assistant comparing three models (the recordings are too low in frame rate to loop). */
-.project-cover.cover-adu>img{object-fit:cover;object-position:50% 100%}
+/* LiveLarge: the assistant itself is the cover (greet, ask, compare) on the site's own greeting light.
+   Panels are the real high-res captures, cropped a few px inside their baked-in borders so only one clean edge shows.
+   Motion quotes the product instead of inventing one (see case study 5.1 / 5.2):
+   - the background light is presentation only: it drifts slowly and rests behind each step of the conversation;
+   - the edge light is the product's "forming an answer" cue, so it runs once around each reply panel, then fades.
+     The greeting never gets it (the greeting's signal is colour, not motion). One 12s cycle. */
+@property --ai-a{syntax:"<angle>";inherits:false;initial-value:0deg}
+.cover-ai{background:linear-gradient(100deg,#faf8f5 40%,#ebdcc2 100%)}
+.cover-ai::before{content:"";position:absolute;inset:-15%;z-index:0;background:radial-gradient(ellipse 45% 60% at 32% 48%,#b6dafa 0,#dfeefa 40%,#faf8f500 75%),radial-gradient(ellipse 40% 55% at 82% 62%,#ebdcc2 0,#ebdcc200 70%);animation:ai-drift 26s ease-in-out infinite alternate}
+.cover-ai::after{content:"";position:absolute;top:-10%;bottom:-10%;left:0;width:70%;z-index:0;background:radial-gradient(closest-side,#b6dafa 0,#dfeefaaa 45%,#faf8f500 100%);opacity:0;animation:ai-pass 12s ease-in-out infinite}
+@keyframes ai-drift{from{transform:translate(-5%,2%) scale(1)}to{transform:translate(5%,-2%) scale(1.06)}}
+/* rests behind greet (0–3s), ask (4.4–6.6s), compare (8–10.3s); centres at 23% / 50% / 77% of the cover */
+@keyframes ai-pass{0%{transform:translateX(-17%);opacity:0}6%{opacity:.8}25%{transform:translateX(-17%)}37%{transform:translateX(21.4%)}55%{transform:translateX(21.4%)}67%{transform:translateX(60%)}86%{transform:translateX(60%);opacity:.8}96%{transform:translateX(60%);opacity:0}100%{transform:translateX(-17%);opacity:0}}
+.ai-stage{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;gap:6.5%;transition:transform .45s cubic-bezier(.2,.75,.2,1)}
+.ai-panel{--r:clamp(6px,.95vw,13px);position:relative;height:70%;border-radius:var(--r);box-shadow:0 1.2vw 2.8vw #4a55601a,0 .15vw .5vw #4a55600d}
+.ai-panel.is-greet{aspect-ratio:688 / 1476}
+.ai-panel.is-ask{aspect-ratio:1034 / 2228}
+.ai-panel.is-compare{aspect-ratio:1080 / 2228}
+.ai-crop{position:absolute;inset:0;z-index:1;border-radius:inherit;overflow:hidden;background:#f6f4f0}
+.cover-ai .ai-crop img{position:absolute;inset:auto;max-width:none;object-fit:fill;transform:none!important}
+/* source px: greeting 700×1488 (6px border trimmed); phone captures 1170×2532, panel at x45–1079/1125, y246–2474 */
+.cover-ai .is-greet img{left:-.872%;top:-.407%;width:101.744%;height:100.813%}
+.cover-ai .is-ask img{left:-4.352%;top:-11.041%;width:113.153%;height:113.645%}
+.cover-ai .is-compare img{left:-4.167%;top:-11.041%;width:108.333%;height:113.645%}
+.ai-crop::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #0000000f;pointer-events:none}
+.ai-panel::before{content:"";position:absolute;inset:-2.5px;border-radius:calc(var(--r) + 2.5px);background:conic-gradient(from var(--ai-a),#0000 0deg,#b6dafa 40deg,#faf8f5 75deg,#ead8ba 110deg,#0000 160deg);opacity:0;animation:ai-edge 12s linear infinite}
+.ai-panel::after{content:"";position:absolute;inset:-18px;z-index:-1;border-radius:calc(var(--r) + 18px);background:conic-gradient(from var(--ai-a),#0000 0deg,#b6dafa 40deg,#b6dafa 70deg,#ead8ba 115deg,#0000 165deg);filter:blur(18px);opacity:0;animation:ai-edge 12s linear infinite}
+.ai-panel.is-greet::before,.ai-panel.is-greet::after{content:none}
+.ai-panel.is-ask::before,.ai-panel.is-ask::after{animation-delay:4.2s}
+.ai-panel.is-compare::before,.ai-panel.is-compare::after{animation-delay:8s}
+/* one lap in ~1.9s, then gone for the rest of the cycle */
+@keyframes ai-edge{0%{--ai-a:0deg;opacity:0}2.5%{opacity:1}12%{opacity:1}16%{--ai-a:360deg;opacity:0}100%{--ai-a:360deg;opacity:0}}
+@media(hover:hover) and (pointer:fine){.project a:hover .cover-ai .ai-stage{transform:scale(1.012)}}
+@media(max-width:640px){.ai-panel{height:76%}.ai-stage{gap:5%}.ai-panel::after{inset:-10px;filter:blur(10px)}}
+@media(prefers-reduced-motion:reduce){.ai-panel::before,.ai-panel::after,.cover-ai::after{animation:none;opacity:0}.cover-ai::before{animation:none}}
 
 /* ZNTR plays its web-experience recording while in view. */
 .cover-motion{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover;pointer-events:none;opacity:0;transition:opacity .45s,transform .45s cubic-bezier(.2,.75,.2,1)}

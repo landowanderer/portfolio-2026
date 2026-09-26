@@ -29,7 +29,7 @@
   <script>document.documentElement.classList.add('ll-js');</script>
   <script src="js/livelarge.js?v=media-refresh-2" defer></script>
 <link rel="stylesheet" href="css/portfolio-case-system.css">
-<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script></head>
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=7"><script src="js/livelarge-revision.js?v=7" defer></script></head>
 <body class="ll-page pf-selected-case"><header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
   <a class="ll-skip" href="#overview">Skip to case study</a>
 
@@ -88,13 +88,13 @@
               <h2 id="overview-title">A focused window into LiveLarge.</h2>
             </div>
             <div class="ll-highlights ll-highlights-edited ll-reveal">
-              <figure class="ll-highlight-wide">
-                <div class="ll-highlight-scene"><img src="images/LIVELARGE/ll-lot-review-r4.webp" width="1440" height="900" loading="lazy" decoding="async" alt="The website, ongoing conversation and lot review share one workspace."></div>
-                <figcaption>One conversation, alongside the site.</figcaption>
+              <figure class="ll-highlight-wide ll-hl" data-hl data-cues="0,7.81,9.05">
+                <div class="ll-highlight-scene"><div class="ll-hl-frame"><video muted playsinline loop preload="none" width="1920" height="1200" poster="images/LIVELARGE/ll-lot-open-r6.webp" aria-label="Recorded prototype: the visitor adds L-500 to the comparison, requests a lot review, and LiveLarge’s own lot check opens beside the conversation, which stays in place."><source data-src="images/LIVELARGE/ll-lot-open-r6.mp4" type="video/mp4"></video></div></div>
+                <figcaption>One conversation, alongside the site.<ol class="ll-hl-steps" aria-hidden="true"><li>Add a model to the comparison</li><li>Open the lot review from the chat</li><li>The chat stays; the form doesn’t send it</li></ol></figcaption>
               </figure>
-              <figure>
-                <div class="ll-highlight-comparison"><img src="images/LIVELARGE/anatomy/compare-original-3x.png" width="553" height="404" loading="lazy" decoding="async" alt="L-500 and L-520 N cards align floor plans, specifications, prices and model links."></div>
-                <figcaption>A shared structure makes options comparable.</figcaption>
+              <figure class="ll-hl" data-hl data-cues="0,1.33,3.55">
+                <div class="ll-highlight-comparison"><div class="ll-chatclip ll-hl-chat" data-track='[[0,348],[1.726,359],[1.74,408],[1.771,459],[1.787,499],[1.803,529],[1.818,550],[1.835,565],[1.85,576],[1.867,583],[1.883,589],[1.899,592],[1.915,594],[1.93,596],[1.947,597],[1.978,598],[3.547,598]]'><div class="ll-chatclip-window"><video muted playsinline loop preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-compare-one-r6.webp" aria-label="Recorded prototype: from a one-bedroom recommendation, the visitor asks to compare one-bedroom options; L-500 and L-520 N appear side by side with aligned floor plans, space requirements and prices."><source data-src="images/LIVELARGE/ll-compare-one-r6.mp4" type="video/mp4"></video></div></div></div>
+                <figcaption>A shared structure makes options comparable.<ol class="ll-hl-steps" aria-hidden="true"><li>Start from one recommendation</li><li>Ask to compare one-bedroom options</li><li>Floor plans, space and price line up</li></ol></figcaption>
               </figure>
             </div>
           </section>
@@ -130,10 +130,10 @@
               <div class="ll-change-before">
                 <p class="ll-change-label">Before <span>The visitor connects the information.</span></p>
                 <ol class="ll-change-steps">
-                  <li><span>Browse</span><strong>Home / Models</strong></li>
-                  <li><span>Explore</span><strong>Model details</strong></li>
-                  <li><span>Compare</span><strong>Specifications / FAQ</strong></li>
-                  <li><span>Next step</span><strong>Lot check / Consultation</strong></li>
+                  <li><span>Browse</span><strong>Home / Models</strong><em class="ll-need-cell"><span class="ll-need">2 bed · Budget</span></em></li>
+                  <li><span>Explore</span><strong>Model details</strong><em class="ll-need-cell"><span class="ll-need is-lost"><s>2 bed · Budget</s></span><span class="ll-need-note">Re-explain</span></em></li>
+                  <li><span>Compare</span><strong>Specifications / FAQ</strong><em class="ll-need-cell"><span class="ll-need is-lost"><s>2 bed · Budget</s></span><span class="ll-need-note">Re-explain</span></em></li>
+                  <li><span>Next step</span><strong>Lot check / Consultation</strong><em class="ll-need-cell"><span class="ll-need is-lost">? · ?</span><span class="ll-need-note">Starts from zero</span></em></li>
                 </ol>
               </div>
               <div class="ll-change-after">
@@ -144,6 +144,7 @@
                   <li><span>Compare</span><strong>Compare trade-offs</strong></li>
                   <li><span>Next step</span><strong>Guide property review</strong></li>
                 </ol>
+                <div class="ll-change-carry"><div><span class="ll-carry-k">Kept across every step</span><span>2 bed · Budget</span><span class="ll-carry-end"><span aria-hidden="true">→</span> lot review</span></div></div>
                 <div class="ll-change-outcomes"><span>Continue exploring</span><span>Property-specific question <b aria-hidden="true">→</b> Lot review / Consultation</span></div>
               </div>
             </figure>
@@ -189,32 +190,51 @@
             </div>
             <div class="ll-text ll-reveal"><p>A rental goal leaves several decisions open: upfront cost, living space and what can fit on the property. I made clarification depend on what is missing from the conversation. In this path, the assistant asks for a priority, then the bedroom count, before comparing relevant models.</p></div>
             
-            <figure class="ll-figure ll-motion ll-reveal ll-reveal-media" data-motion>
-              <div class="ll-stage ll-stage-video">
-                <div class="ll-video">
-                  <video muted playsinline preload="none" width="1440" height="900" poster="images/LIVELARGE/ll-jordan-r5.webp" aria-describedby="rec-caption">
-                    <source data-src="images/LIVELARGE/ll-jordan-r5.mp4" type="video/mp4">
-                  </video>
-                  <div class="ll-video-controls" hidden>
-                    <button type="button" class="ll-expand" aria-label="Open the recording larger"><span aria-hidden="true">⤢</span></button>
+            <!-- Pinned stage: the real prototype recording plays each step's segment while "what the assistant knows" updates in step with it. -->
+            <div class="ll-clarify" data-clarify>
+              <div class="ll-stage ll-clarify-stage" role="group" aria-label="Working prototype recording of the rental conversation, with what the assistant knows at each step">
+                <div class="ll-knows" aria-live="polite">
+                  <div class="ll-knows-card">
+                    <p class="ll-knows-h">What the assistant knows</p>
+                    <dl class="ll-knows-list">
+                      <div data-k="goal"><dt>Goal</dt><dd>Not yet</dd></div>
+                      <div data-k="priority"><dt>Priority</dt><dd>Not yet</dd></div>
+                      <div data-k="beds"><dt>Bedrooms</dt><dd>Not yet</dd></div>
+                      <div data-k="open" hidden><dt>Still open</dt><dd>Installation, property fit</dd></div>
+                    </dl>
+                  </div>
+                  <div class="ll-knows-card">
+                    <p class="ll-knows-h">Shortlist <span data-k="count">4 models</span></p>
+                    <ul class="ll-shortlist">
+                      <li data-beds="1"><span>L-500</span><em>1 bed</em><b>$170k</b></li>
+                      <li data-beds="1"><span>L-520 N</span><em>1 bed</em><b>$180k</b></li>
+                      <li data-beds="2"><span>L-795</span><em>2 bed</em><b>$245k</b></li>
+                      <li data-beds="2"><span>L-800</span><em>2 bed</em><b>$265k</b></li>
+                    </ul>
+                    <p class="ll-shortlist-note" hidden>L-795 starts $20k lower</p>
                   </div>
                 </div>
+                <div class="ll-chatclip" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div>
               </div>
-              <figcaption id="rec-caption"><span class="ll-fig-tag">3.1 · 26 s</span><span>Rental goal, one priority, bedroom count, comparison, then LiveLarge’s own lot check.</span></figcaption>
-            </figure>
-            <ol class="ll-decision-rows ll-reveal" aria-label="Recommendation design decisions"><li><div class="ll-evidence-media"><div class="ll-source-wrap ll-source-choice"><svg class="ll-source-evidence" viewBox="70 620 640 700" role="img" aria-label="The rental question, full response and all three priority choices." xmlns="http://www.w3.org/2000/svg"><image href="images/LIVELARGE/ll-panel-1-goal-2x.webp" width="780" height="1568"/></svg></div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">3.2</span><h3>Ask what matters before choosing a model.</h3><p>“Rental income” can mean keeping the initial cost down or making room for more people. I surfaced those priorities as a small choice, instead of treating the goal as enough to recommend a home.</p></div></li><li><div class="ll-evidence-media"><div class="ll-source-wrap ll-source-bedrooms"><svg class="ll-source-evidence" viewBox="70 780 640 530" role="img" aria-label="The cost priority, bedroom question and all three choices." xmlns="http://www.w3.org/2000/svg"><image href="images/LIVELARGE/ll-panel-2-bedrooms-2x.webp" width="780" height="1568"/></svg></div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">3.3</span><h3>Ask the question that changes the shortlist.</h3><p>After “Lower upfront cost,” bedroom count is still missing. I ask for it here because it changes which models belong in the comparison. A known preference should not be asked again.</p></div></li><li><div class="ll-evidence-media"><div class="ll-source-wrap ll-source-tradeoff"><svg class="ll-source-evidence" viewBox="70 175 1140 975" role="img" aria-label="The price trade-off and both complete model cards, including their prices and links." xmlns="http://www.w3.org/2000/svg"><image href="images/LIVELARGE/ll-panel-3-tradeoff-2x.webp" width="1280" height="1568"/></svg><div class="ll-mobile-tradeoff"><p>Let’s keep two bedrooms in the mix! <strong>L-795 starts $20k below L-800,</strong> with two bedrooms and two bathrooms in both. Their layouts and listed space requirements differ, so the lower model price is only one part of the choice.</p>
-<svg class="ll-source-evidence" viewBox="78 322 550 810" role="img" aria-label="Complete L-795 card: two bedrooms, two bathrooms, from $245k plus installation." xmlns="http://www.w3.org/2000/svg"><image href="images/LIVELARGE/ll-panel-3-tradeoff-2x.webp" width="1280" height="1568"/></svg>
-<svg class="ll-source-evidence" viewBox="652 322 550 810" role="img" aria-label="Complete L-800 card: two bedrooms, two bathrooms, from $265k plus installation." xmlns="http://www.w3.org/2000/svg"><image href="images/LIVELARGE/ll-panel-3-tradeoff-2x.webp" width="1280" height="1568"/></svg></div></div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">3.4</span><h3>Lead with a concrete trade-off.</h3><p>L-795 starts $20k below L-800 while keeping two bedrooms. I put that difference before the cards, then align floor plans and space requirements so price has context.</p></div></li><li><div class="ll-evidence-media"><div class="ll-transcript-card ll-limit-excerpt" aria-label="Conversation excerpt from the working prototype">
-<p>L-795 is worth exploring for your cost priority while keeping two bedrooms.</p>
-<p><strong>Starting prices exclude installation.</strong> A lot review is needed to confirm property fit and the complete project budget.</p>
-<div class="ll-transcript-actions"><span>Request a lot review</span><span>What does the starting price include?</span></div>
-<p class="ll-excerpt-sources">Sources · L-795 · L-800 · All model specs</p></div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">3.5</span><h3>Make the limit part of the recommendation.</h3><p>The starting price excludes installation, and property fit still needs review. I placed that qualification beside the lot-review action so the next step follows the unanswered question.</p></div></li></ol>
+              <ol class="ll-clarify-steps" aria-label="Clarification and recommendation decisions">
+                <li class="ll-clarify-step" data-seg="0,5.35"><span class="ll-evidence-number">3.2</span><h3>Ask what matters before choosing a model.</h3><p>“Rental income” can mean keeping the initial cost down or making room for more people. I surfaced those priorities as a small choice, instead of treating the goal as enough to recommend a home.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Rental income <i></i> <b>Asking</b> Priority</p></li>
+                <li class="ll-clarify-step" data-seg="5.35,9"><span class="ll-evidence-number">3.3</span><h3>Ask the question that changes the shortlist.</h3><p>After “Lower upfront cost,” bedroom count is still missing. I ask for it here because it changes which models belong in the comparison. A known preference should not be asked again.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Rental income, lower upfront cost <i></i> <b>Asking</b> Bedrooms</p></li>
+                <li class="ll-clarify-step" data-seg="9,15.4"><span class="ll-evidence-number">3.4</span><h3>Lead with a concrete trade-off.</h3><p>L-795 starts $20k below L-800 while keeping two bedrooms. I put that difference before the cards, then align floor plans and space requirements so price has context.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Two bedrooms <i></i> <b>Shortlist</b> L-795, L-800</p></li>
+                <li class="ll-clarify-step" data-seg="15.4,15.4"><span class="ll-evidence-number">3.5</span><h3>Make the limit part of the recommendation.</h3><p>The starting price excludes installation, and property fit still needs review. I placed that qualification beside the lot-review action so the next step follows the unanswered question.</p><div class="ll-chatclip is-inline is-limit" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Still open</b> Installation cost, property fit</p></li>
+              </ol>
+            </div>
+            <p class="ll-full-flow"><button type="button" class="ll-full-flow-btn" data-full-flow="images/LIVELARGE/ll-jordan-r5.mp4" data-poster="images/LIVELARGE/ll-jordan-r5.webp" data-ratio="1.6"><span>Watch the full flow</span><span class="ll-full-flow-time">26 s</span></button></p>
             <figure class="ll-figure ll-evolution ll-reveal">
               <div class="ll-evolution-heading"><span class="ll-fig-tag">3.6 · A decision I revised</span><h3>A candidate to explore, with room for uncertainty.</h3><p>My tone research shaped this revision: reassurance needed to come from useful guidance and clear limits. I softened “matches” because bedroom count alone cannot confirm property fit or the complete budget. I also removed the separate Edit needs control so visitors could revise their needs by replying.</p></div>
               <div class="ll-evolution-pair">
-                <div class="ll-evolution-panel"><p>Earlier · 14 September</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="92 224 660 500" role="img" aria-label="Earlier wording" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-earlier"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-earlier" maskUnits="userSpaceOnUse" x="92" y="224" width="660" height="500" style="mask-type:luminance"><rect x="92" y="224" width="660" height="500" fill="white"/><g filter="url(#soft-earlier)"><rect x="102" y="469" width="633" height="80" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-before-844.webp" width="844" height="1632"/><rect x="92" y="224" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-earlier)"/></svg></div><p class="ll-evolution-note">“Matches” leads with a single known requirement.</p></div>
-                <div class="ll-evolution-panel is-after"><p>Revised · Working prototype</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="60 320 660 500" role="img" aria-label="Revised recommendation with property and budget limits" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-revised"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-revised" maskUnits="userSpaceOnUse" x="60" y="320" width="660" height="500" style="mask-type:luminance"><rect x="60" y="320" width="660" height="500" fill="white"/><g filter="url(#soft-revised)"><rect x="72" y="432" width="621" height="115" rx="4" fill="black"/><rect x="71" y="604" width="634" height="117" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-after-780.webp" width="780" height="1568"/><rect x="60" y="320" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-revised)"/></svg></div><p class="ll-evolution-note">The recommendation now states what is supported and what remains open.</p></div>
+                <div class="ll-evolution-panel"><p>Earlier · 14 September</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="92 224 660 500" role="img" aria-label="Earlier wording" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-earlier"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-earlier" maskUnits="userSpaceOnUse" x="92" y="224" width="660" height="500" style="mask-type:luminance"><rect x="92" y="224" width="660" height="500" fill="white"/><g filter="url(#soft-earlier)"><rect x="102" y="469" width="633" height="80" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-before-844.webp" width="844" height="1632"/><rect x="92" y="224" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-earlier)"/><line class="ll-evo-strike" x1="184" y1="492" x2="637" y2="492"/><line class="ll-evo-strike" x1="564" y1="397" x2="720" y2="397"/><g class="ll-evo-pin"><circle cx="637" cy="462" r="13"/><text x="637" y="462">1</text></g><g class="ll-evo-pin"><circle cx="737" cy="397" r="13"/><text x="737" y="397">3</text></g></svg></div></div>
+                <div class="ll-evolution-panel is-after"><p>Revised · Working prototype</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="60 320 660 500" role="img" aria-label="Revised recommendation with property and budget limits" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-revised"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-revised" maskUnits="userSpaceOnUse" x="60" y="320" width="660" height="500" style="mask-type:luminance"><rect x="60" y="320" width="660" height="500" fill="white"/><g filter="url(#soft-revised)"><rect x="72" y="432" width="621" height="115" rx="4" fill="black"/><rect x="71" y="604" width="634" height="117" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-after-780.webp" width="780" height="1568"/><rect x="60" y="320" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-revised)"/><rect class="ll-evo-mark" x="174" y="451" width="406" height="15" fill="#b6dafa"/><rect class="ll-evo-mark" x="172" y="663" width="520" height="15" fill="#ead8ba"/><rect class="ll-evo-mark" x="78" y="700" width="72" height="14" fill="#ead8ba"/><g class="ll-evo-pin"><circle cx="592" cy="428" r="13"/><text x="592" y="428">1</text></g><g class="ll-evo-pin"><circle cx="170" cy="706" r="13"/><text x="170" y="706">2</text></g></svg></div></div>
               </div>
+              <ol class="ll-evo-notes">
+                <li><span>1</span><div><b>From verdict to candidate</b><p>Bedroom count is one requirement. It cannot confirm the home is right.</p></div></li>
+                <li><span>2</span><div><b>Name what is still unknown</b><p>Reassurance comes from clear limits: property fit and the complete budget.</p></div></li>
+                <li><span>3</span><div><b>Edit needs by replying</b><p>A separate control added friction. Visitors already correct themselves in the chat.</p></div></li>
+              </ol>
             </figure>
           </section>
 
@@ -249,11 +269,10 @@
               <div class="ll-visual-scene">
                 <img src="images/LIVELARGE/ll-hero-welcome.webp" width="1440" height="900" loading="lazy" decoding="async" alt="The assistant appears on LiveLarge’s home page, keeping the home visible beside it.">
               </div>
-              <div class="ll-effects-pair" aria-label="The same greeting with and without AI effects">
-                <div><h3>Base interface</h3><div class="ll-effects-crop"><img src="images/LIVELARGE/ll-effects-base-r2.webp" width="700" height="1488" loading="lazy" alt="The greeting without color and light effects."></div></div>
-                <div><h3>With AI effects</h3><div class="ll-effects-crop"><img src="images/LIVELARGE/ll-effects-on-r2.webp" width="700" height="1488" loading="lazy" alt="The same greeting with a restrained blue and warm light treatment."></div></div>
+              <div class="ll-effects-pair ll-effects-wipe" role="img" aria-label="The same greeting, alternating between the base interface and the version with a restrained blue and warm light treatment">
+                                <div class="ll-effects-crop ll-wipe-frame"><img src="images/LIVELARGE/ll-effects-base-r2.webp" width="700" height="1488" loading="lazy" alt=""><img class="is-fx" src="images/LIVELARGE/ll-effects-on-r2.webp" width="700" height="1488" loading="lazy" alt=""><span class="ll-wipe-line" aria-hidden="true"></span></div>
               </div>
-              <figcaption><span class="ll-fig-tag">5.1</span><span>The complete assistant remains part of the site; the matched close-ups isolate what light changes in the greeting.</span></figcaption>
+              <figcaption><span class="ll-fig-tag">5.1</span><span>The complete assistant remains part of the site; the close-up moves between the base greeting and the lit one to isolate what light changes.</span></figcaption>
             </figure>
             <div class="ll-design-caption">
               <h3>Give each visual element a job.</h3>
