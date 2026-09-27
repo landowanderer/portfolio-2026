@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LiveLarge AI | Harry Wu</title>
-  <meta name="description" content="LiveLarge AI: turning scattered ADU product information into a more continuous decision flow. A case study by Harry Wu.">
+  <meta name="description" content="LiveLarge AI: helping homeowners compare ADUs before a lot review. A case study by Harry Wu.">
   <!-- Work in progress: keep out of search until the case study is complete. -->
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#ffffff">
@@ -12,7 +12,7 @@
   <link rel="icon" href="images/MAIN%20PAGE/sticker1.svg" type="image/svg+xml">
   <meta property="og:type" content="article">
   <meta property="og:title" content="LiveLarge AI | Harry Wu">
-  <meta property="og:description" content="An AI guide to choosing an ADU.">
+  <meta property="og:description" content="An AI guide to comparing backyard homes (ADUs).">
   <meta property="og:url" content="https://landowanderer.com/livelarge.html">
   <meta property="og:image" content="https://landowanderer.com/images/LIVELARGE/ll-social.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +29,7 @@
   <script>document.documentElement.classList.add('ll-js');</script>
   <script src="js/livelarge.js?v=media-refresh-2" defer></script>
 <link rel="stylesheet" href="css/portfolio-case-system.css">
-<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=7"><script src="js/livelarge-revision.js?v=7" defer></script></head>
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=7"><link rel="stylesheet" href="css/livelarge-process.css?v=1"><script src="js/livelarge-revision.js?v=7" defer></script></head>
 <body class="ll-page pf-selected-case"><header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
   <a class="ll-skip" href="#overview">Skip to case study</a>
 
@@ -45,14 +45,15 @@
       <header class="ll-hero pf-case-intro" id="top">
         <div class="ll-hero-bar pf-case-label"><span class="ll-hero-name">LiveLarge AI</span><span>2026</span></div>
         <div class="ll-hero-grid pf-case-grid">
-          <h1 class="pf-case-title">An AI assistant for finding the right ADU.</h1>
+          <h1 class="pf-case-title">Helping homeowners compare ADUs before a lot review.</h1>
           <div class="ll-hero-side pf-case-copy">
-            <p>Choosing an accessory dwelling unit (ADU) means comparing layouts, understanding costs and checking what a property can accommodate.</p><p>I led the UX and visual design of an assistant for LiveLarge’s website. It helps visitors explain their needs, compare suitable models and move toward a lot review, while keeping their preferences in context as they browse.</p>
+            <p>LiveLarge sells prefabricated ADUs—small, self-contained homes added to an existing residential lot—in California. Before asking LiveLarge to review their property, visitors need to compare models, understand what a starting price leaves out, and know which questions only a lot review can answer.</p><p>Working through VortexNet, I led the design of an assistant for LiveLarge’s website: its conversation flows, interface, motion and interactive prototype. It keeps a visitor’s stated needs as they browse, compares models against those needs, and hands property-specific questions to LiveLarge’s existing lot review.</p>
             <dl class="ll-facts">
-              <div><dt>Client</dt><dd>LiveLarge</dd></div>
-              <div><dt>Partner</dt><dd>VortexNet</dd></div>
-              <div><dt>Role</dt><dd>UX / Product Designer</dd></div>
+              <div><dt>Client</dt><dd>LiveLarge, through VortexNet</dd></div>
+              <div><dt>Role</dt><dd>Design Lead</dd></div>
               <div><dt>Scope</dt><dd>Conversational UX, Visual Design &amp; Prototyping</dd></div>
+              <div><dt>Timeline</dt><dd>May–Sep 2026</dd></div>
+              <div><dt>Status</dt><dd>Design approved · staging build in progress</dd></div>
             </dl>
           </div>
         </div>
@@ -75,7 +76,7 @@
         <nav class="ll-rail" aria-label="Case study chapters">
           <p class="ll-rail-label">Contents</p>
           <ol id="chapter-links">
-            <li><a href="#overview">Highlights</a></li><li><a href="#reframe">Reframe</a></li><li><a href="#context">Context</a></li><li><a href="#recommend">Clarify &amp; recommend</a></li><li><a href="#compare">Compare &amp; verify</a></li><li><a href="#visual">Visual design</a></li><li><a href="#build">Prototyping</a></li><li><a href="#final">Outcome &amp; extension</a></li>
+            <li><a href="#overview">Highlights</a></li><li><a href="#reframe">Reframe</a></li><li><a href="#context">Keeping context</a></li><li><a href="#recommend">Clarify &amp; recommend</a></li><li><a href="#compare">Compare → lot review</a></li><li><a href="#visual">Visual design</a></li><li><a href="#build">Prototyping</a></li><li><a href="#final">Outcome</a></li>
           </ol>
           <div class="ll-rail-select"><label class="ll-sr-only" for="chapter-select">Jump to a chapter</label><select id="chapter-select"></select></div>
         </nav>
@@ -85,16 +86,17 @@
           <section id="overview" class="ll-chapter" data-chapter="Highlights" tabindex="-1" aria-labelledby="overview-title">
             <div class="ll-head ll-reveal">
               <p class="ll-kicker">Highlights</p>
-              <h2 id="overview-title">A focused window into LiveLarge.</h2>
+              <h2 id="overview-title">Compare homes. See what still needs a lot review.</h2>
             </div>
+            <div class="ll-text ll-reveal"><p>Two people run through this case study. <strong>Jordan</strong> wants a rental unit, with upfront cost first. <strong>Maya</strong> wants a one-bedroom home where her aging parent can stay independent.</p></div>
             <div class="ll-highlights ll-highlights-edited ll-reveal">
               <figure class="ll-highlight-wide ll-hl" data-hl data-cues="0,7.81,9.05">
                 <div class="ll-highlight-scene"><div class="ll-hl-frame"><video muted playsinline loop preload="none" width="1920" height="1200" poster="images/LIVELARGE/ll-lot-open-r6.webp" aria-label="Recorded prototype: the visitor adds L-500 to the comparison, requests a lot review, and LiveLarge’s own lot check opens beside the conversation, which stays in place."><source data-src="images/LIVELARGE/ll-lot-open-r6.mp4" type="video/mp4"></video></div></div>
-                <figcaption>One conversation, alongside the site.<ol class="ll-hl-steps" aria-hidden="true"><li>Add a model to the comparison</li><li>Open the lot review from the chat</li><li>The chat stays; the form doesn’t send it</li></ol></figcaption>
+                <figcaption>Jordan · From comparison to a lot review.<ol class="ll-hl-steps" aria-hidden="true"><li>Add a model to the comparison</li><li>Open the lot review from the chat</li><li>The chat stays open; it isn’t sent with the form</li></ol></figcaption>
               </figure>
               <figure class="ll-hl" data-hl data-cues="0,1.33,3.55">
                 <div class="ll-highlight-comparison"><div class="ll-chatclip ll-hl-chat" data-track='[[0,348],[1.726,359],[1.74,408],[1.771,459],[1.787,499],[1.803,529],[1.818,550],[1.835,565],[1.85,576],[1.867,583],[1.883,589],[1.899,592],[1.915,594],[1.93,596],[1.947,597],[1.978,598],[3.547,598]]'><div class="ll-chatclip-window"><video muted playsinline loop preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-compare-one-r6.webp" aria-label="Recorded prototype: from a one-bedroom recommendation, the visitor asks to compare one-bedroom options; L-500 and L-520 N appear side by side with aligned floor plans, space requirements and prices."><source data-src="images/LIVELARGE/ll-compare-one-r6.mp4" type="video/mp4"></video></div></div></div>
-                <figcaption>A shared structure makes options comparable.<ol class="ll-hl-steps" aria-hidden="true"><li>Start from one recommendation</li><li>Ask to compare one-bedroom options</li><li>Floor plans, space and price line up</li></ol></figcaption>
+                <figcaption>Maya · Comparing one-bedroom homes.<ol class="ll-hl-steps" aria-hidden="true"><li>Start from one recommendation</li><li>Ask to compare one-bedroom options</li><li>Floor plans, space and price line up</li></ol></figcaption>
               </figure>
             </div>
           </section>
@@ -103,37 +105,65 @@
           <section id="reframe" class="ll-chapter" data-chapter="Reframe" tabindex="-1" aria-labelledby="reframe-title">
             <div class="ll-head ll-reveal">
               <p class="ll-kicker"><span>01</span> Reframe</p>
-              <h2 id="reframe-title">Help people work through a major decision.</h2>
+              <h2 id="reframe-title">The information was there. Connecting it was left to the visitor.</h2>
             </div>
             <div class="ll-text ll-reveal">
-              <p>An accessory dwelling unit (ADU) brings together questions that the original site answered on separate pages: which home fits, what the project may cost, and what the property allows. I reframed the assistant as a guide through those connected decisions—carrying a visitor’s priorities across the site, making trade-offs legible, and handing property-specific answers to LiveLarge’s team.</p>
+              <p>LiveLarge’s site already answered the big questions—which home, what it costs, what the lot allows—but on separate pages. A visitor had to carry their own needs from page to page, and find what a starting price excludes in an FAQ.</p>
             </div>
 
             <div class="ll-audit-intro">
               <h3>The site I started with</h3>
-              <p>These are LiveLarge’s original pages, before the AI assistant. I reviewed the route from browsing a home to checking a property, looking at what already worked and where a conversation could help connect the details.</p>
+              <p>LiveLarge’s pages before the assistant, from browsing a home to checking a property.</p>
             </div>
             <figure class="ll-figure ll-rail-figure ll-reveal ll-reveal-media" data-rail>
               <div class="ll-rail-track" tabindex="0" aria-label="Official site audit, five captures. Drag or use the arrow keys.">
-                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-home-960.webp" srcset="images/LIVELARGE/ll-site-home-960.webp 960w, images/LIVELARGE/ll-site-home-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="LiveLarge homepage with Check My Lot, Book a Free Consultation and Book a Tour floating at the right edge."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.1 Home</span><h3>Keep the homes in focus.</h3><p>The homepage already gave the homes a strong visual presence, with clear contact options. I wanted the assistant to support questions as they arose while keeping that browsing experience central.</p></div></div>
-                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-specs-960.webp" srcset="images/LIVELARGE/ll-site-specs-960.webp 960w, images/LIVELARGE/ll-site-specs-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="ADU models page: a carousel of specifications per model."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.2 Models</span><h3>Make the differences relevant.</h3><p>The specifications were available, but which differences matter depends on the household. I used stated needs to focus the comparison, while keeping the original details available.</p></div></div>
-                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-category-960.webp" srcset="images/LIVELARGE/ll-site-category-960.webp 960w, images/LIVELARGE/ll-site-category-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="Two Bedrooms, L-800 page: 800 square feet, starting at 265,000 dollars plus installation."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.3 Two bedrooms</span><h3>Carry a reason to compare.</h3><p>A model page offered a closer look at one home. Moving to another changed the reference, but not necessarily the visitor’s priorities. I separated the current page from the needs held in the conversation.</p></div></div>
-                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-faq-960.webp" srcset="images/LIVELARGE/ll-site-faq-960.webp 960w, images/LIVELARGE/ll-site-faq-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="FAQ answering the all-in cost question with a price range and site work costs."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.4 FAQ</span><h3>Put the cost boundary beside the price.</h3><p>The fuller cost explanation lived in the lot-check FAQ. I brought installation and property qualifications into the recommendation so the starting price would be read in context.</p></div></div>
-                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-lot-960.webp" srcset="images/LIVELARGE/ll-site-lot-960.webp 960w, images/LIVELARGE/ll-site-lot-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="Check My Lot page: address search, aerial map, contact form and model picker."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.5 Check My Lot</span><h3>Build on the existing next step.</h3><p>LiveLarge already had a property-check tool. I connected the assistant to that existing step so visitors could move from general guidance to a review of their own lot.</p></div></div>
+                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-home-960.webp" srcset="images/LIVELARGE/ll-site-home-960.webp 960w, images/LIVELARGE/ll-site-home-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="LiveLarge homepage with Check My Lot, Book a Free Consultation and Book a Tour floating at the right edge."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.1 Home</span><h3>The homes lead.</h3><p>The homepage gives the homes a strong presence, with contact options at the edge. An assistant shouldn’t compete with that.</p></div></div>
+                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-specs-960.webp" srcset="images/LIVELARGE/ll-site-specs-960.webp 960w, images/LIVELARGE/ll-site-specs-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="ADU models page: a carousel of specifications per model."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.2 Models</span><h3>The specs are all there.</h3><p>Every model’s specifications are listed. Which differences matter depends on the household, and the page can’t know that.</p></div></div>
+                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-category-960.webp" srcset="images/LIVELARGE/ll-site-category-960.webp 960w, images/LIVELARGE/ll-site-category-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="Two Bedrooms, L-800 page: 800 square feet, starting at 265,000 dollars plus installation."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.3 Two bedrooms</span><h3>The model changes. The needs don’t.</h3><p>Switching models resets the page, but a visitor’s bedroom count and budget stay the same.</p></div></div>
+                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-faq-960.webp" srcset="images/LIVELARGE/ll-site-faq-960.webp 960w, images/LIVELARGE/ll-site-faq-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="FAQ answering the all-in cost question with a price range and site work costs."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.4 FAQ</span><h3>The price and its caveats live apart.</h3><p>Model pages show a starting price. What it excludes—installation and site work—sits in the FAQ.</p></div></div>
+                <div class="ll-card"><div class="ll-card-media"><img src="images/LIVELARGE/ll-site-lot-960.webp" srcset="images/LIVELARGE/ll-site-lot-960.webp 960w, images/LIVELARGE/ll-site-lot-1440.webp 1440w" sizes="(max-width: 767px) 84vw, 520px" width="1440" height="900" loading="lazy" decoding="async" alt="Check My Lot page: address search, aerial map, contact form and model picker."></div><div class="ll-audit-copy"><span class="ll-fig-tag">1.5 Check My Lot</span><h3>The next step already exists.</h3><p>Check My Lot—LiveLarge’s lot review—already collects what the team needs. The assistant should lead here, not replace it.</p></div></div>
               </div>
             </figure>
 
-            <div class="ll-audit-challenge ll-text ll-reveal"><h3>The challenge I took forward</h3><p>My challenge was to help visitors work through questions about models, costs, and property requirements while keeping the homepage’s product content in focus. I designed the conversation to follow their browsing, retaining their needs as they moved into model details and property questions.</p></div>
+            <div class="ll-audit-intro">
+              <h3>Who it’s for</h3>
+              <p>Jordan and Maya are proto-personas built from desk research, not interviews.</p>
+            </div>
+            <div class="ll-build-intro ll-persona-pair">
+              <div><h3>Jordan · San Jose</h3><p>Wants rental income from an unused backyard. He can’t tell what a starting price leaves out, or which answers only a property review can give.</p><div class="ll-state-principle"><span>Rental income</span><span>Upfront cost first</span></div></div>
+              <div><h3>Maya · Altadena</h3><p>Wants a home where her aging parent can stay independent. She needs to see whether daily routines would work in the space.</p><div class="ll-state-principle"><span>Aging parent</span><span>One bedroom</span></div></div>
+            </div>
+
+            <div class="ll-audit-intro ll-competitor-intro">
+              <h3>What two shipping assistants taught me</h3>
+              <p>Before designing, I ran the same kinds of requests through two assistants that already live inside a product: Homes.com’s AI search and Amazon’s Alexa for Shopping. Both kept context well. Where they fell short became rules for LiveLarge.</p>
+            </div>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-competitor-figure">
+              <div class="ll-stage ll-stage-pair ll-competitor-pair">
+                <div class="ll-pair-main"><img src="images/LIVELARGE/ll-fig-homes-filters.webp" width="499" height="378" loading="lazy" decoding="async" alt="Homes.com: a natural-language rental request turned into visible, editable filters."></div>
+                <div class="ll-pair-side"><img src="images/LIVELARGE/ll-fig-alexa-clarify.webp" width="393" height="312" loading="lazy" decoding="async" alt="Alexa for Shopping: a vague request answered with four short questions about use, features and budget."></div>
+              </div>
+              <figcaption><span class="ll-fig-tag">1.6</span><span>Homes.com turns a request into filters people can see and edit. Alexa asks a few questions before it recommends.</span></figcaption>
+            </figure>
+            <ol class="ll-evo-notes ll-competitor-notes">
+              <li><span>1</span><div><b>Keep context, show it</b><p>Homes.com kept location, pets and commute when the rent limit changed. LiveLarge keeps needs across pages.</p></div></li>
+              <li><span>2</span><div><b>Ask only what’s missing</b><p>Alexa asked about use and budget instead of requiring a full prompt. LiveLarge asks for a priority, then bedrooms.</p></div></li>
+              <li><span>3</span><div><b>Define “cheaper”</b><p>“Cheaper and closer” narrowed results without saying how. LiveLarge states the price difference in numbers.</p></div></li>
+              <li><span>4</span><div><b>Keep costs apart</b><p>A rent comparison blurred base rent and fees. LiveLarge keeps “excludes installation” next to every price.</p></div></li>
+              <li><span>5</span><div><b>Don’t stretch the requirement</b><p>“One-bedroom” became “1+ Bed”. LiveLarge labels anything outside the stated need as an alternative.</p></div></li>
+              <li><span>6</span><div><b>Hand off without sending</b><p>Homes.com opened the agent form without submitting anything. LiveLarge opens the lot review beside the chat.</p></div></li>
+            </ol>
+            <blockquote class="ll-takeaway ll-reveal"><p>Reduce what users need to say, without hiding what the system remembers.</p></blockquote>
 
             <figure class="ll-figure ll-journey-change" aria-label="Before and after: the same browsing stages with continuous assistant support">
               <div class="ll-change-intro"><h3>From separate pages to one connected conversation.</h3></div>
               <div class="ll-change-before">
-                <p class="ll-change-label">Before <span>The visitor connects the information.</span></p>
+                <p class="ll-change-label">Before <span>The visitor keeps their needs in their head.</span></p>
                 <ol class="ll-change-steps">
-                  <li><span>Browse</span><strong>Home / Models</strong><em class="ll-need-cell"><span class="ll-need">2 bed · Budget</span></em></li>
-                  <li><span>Explore</span><strong>Model details</strong><em class="ll-need-cell"><span class="ll-need is-lost"><s>2 bed · Budget</s></span><span class="ll-need-note">Re-explain</span></em></li>
-                  <li><span>Compare</span><strong>Specifications / FAQ</strong><em class="ll-need-cell"><span class="ll-need is-lost"><s>2 bed · Budget</s></span><span class="ll-need-note">Re-explain</span></em></li>
-                  <li><span>Next step</span><strong>Lot check / Consultation</strong><em class="ll-need-cell"><span class="ll-need is-lost">? · ?</span><span class="ll-need-note">Starts from zero</span></em></li>
+                  <li><span>Browse</span><strong>Home / Models</strong><em class="ll-need-cell"><span class="ll-need-note">In their head</span></em></li>
+                  <li><span>Explore</span><strong>Model details</strong><em class="ll-need-cell"><span class="ll-need-note">In their head</span></em></li>
+                  <li><span>Compare</span><strong>Specifications / FAQ</strong><em class="ll-need-cell"><span class="ll-need-note">In their head</span></em></li>
+                  <li><span>Next step</span><strong>Lot review / Consultation</strong><em class="ll-need-cell"><span class="ll-need-note">Explained again</span></em></li>
                 </ol>
               </div>
               <div class="ll-change-after">
@@ -148,15 +178,16 @@
                 <div class="ll-change-outcomes"><span>Continue exploring</span><span>Property-specific question <b aria-hidden="true">→</b> Lot review / Consultation</span></div>
               </div>
             </figure>
+            <div class="ll-text ll-reveal"><p>So I framed the assistant as a guide through connected decisions: it carries a visitor’s needs across the site, makes trade-offs visible, and hands property-specific questions to LiveLarge’s team.</p></div>
           </section>
 
           <!-- ===== 02 CONTEXT: one recording + four readable keyframes (demo flow 4) ===== -->
-          <section id="context" class="ll-chapter" data-chapter="Context" tabindex="-1" aria-labelledby="context-title">
+          <section id="context" class="ll-chapter" data-chapter="Keeping context" tabindex="-1" aria-labelledby="context-title">
             <div class="ll-head ll-reveal">
-              <p class="ll-kicker"><span>02</span> Page and conversation context</p>
-              <h2 id="context-title">Keep the conversation while the page changes.</h2>
+              <p class="ll-kicker"><span>02</span> Keeping context</p>
+              <h2 id="context-title">Keep what the visitor said while the page changes.</h2>
             </div>
-            <div class="ll-text ll-reveal"><p>“What about this one?” only makes sense if the assistant knows which home is on screen. The challenge was to follow the page without losing a visitor’s earlier needs. I kept the current model visible beneath the chat title and carried the conversation across pages, so each new view has the right reference and the household’s brief stays available.</p></div>
+            <div class="ll-text ll-reveal"><p><strong>Demo 1 · Jordan, a conversation already in progress.</strong> Already known: two bedrooms, and budget matters. What changes: the model on screen.</p><p>“What about this one?” only works if the assistant knows which home is on screen. I kept two things separate: the page reference, which follows the visitor, and their needs, which stay in the conversation.</p></div>
             <figure class="ll-figure ll-motion ll-context-video is-at-start ll-reveal ll-reveal-media" data-motion>
               <div class="ll-stage ll-stage-video">
                 <div class="ll-video">
@@ -170,25 +201,25 @@
               </div>
               <figcaption id="ctx-caption"><span class="ll-fig-tag">2.1 · 37 s</span><span>A model-page change and a move to How It Works, with one conversation throughout.</span></figcaption>
             </figure>
-            <ol class="ll-context-evidence ll-reveal" aria-label="Page context design decisions"><li><div class="ll-evidence-media"><svg class="ll-source-evidence ll-focus-motion" viewBox="0 100 760 570" role="img" aria-label="The full scene gently zooms toward the page reference, preserving the relationship between the assistant and the home." xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="viewing-detail"><rect x="35" y="130" width="180" height="54" rx="4"/></clipPath></defs><image class="focus-background" href="images/LIVELARGE/ll-context-still-r2.webp" width="1440" height="900"/><g class="focus-detail"><image clip-path="url(#viewing-detail)" href="images/LIVELARGE/ll-context-still-r2.webp" width="1440" height="900"/></g></svg></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.2</span><h3>Make the page reference visible.</h3><p>I placed the model name below the chat title. A visitor can see which home the answer refers to before reading the reply.</p></div></li><li><div class="ll-evidence-media"><div class="ll-scroll-evidence"><video class="ll-loop-video" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" poster="images/LIVELARGE/ll-scroll-r2.webp" aria-label="Real recording: the website scrolls from L-800 to L-795 while the conversation stays in place."><source data-src="images/LIVELARGE/ll-scroll-r2.mp4" type="video/mp4"></video></div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.3</span><h3>Change the reference, keep the brief.</h3><p>I let the viewing label follow the model on screen without rewriting earlier replies. Watch the page scroll to L-795: the reference changes, while the two-bedroom preference and budget question stay in the thread.</p></div></li><li><div class="ll-evidence-media"><div class="ll-transcript-card" aria-label="Conversation excerpt from the working prototype">
+            <ol class="ll-context-evidence ll-reveal" aria-label="Page context design decisions"><li><div class="ll-evidence-media"><svg class="ll-source-evidence ll-focus-motion" viewBox="0 100 760 570" role="img" aria-label="The full scene gently zooms toward the page reference, preserving the relationship between the assistant and the home." xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="viewing-detail"><rect x="35" y="130" width="180" height="54" rx="4"/></clipPath></defs><image class="focus-background" href="images/LIVELARGE/ll-context-still-r2.webp" width="1440" height="900"/><g class="focus-detail"><image clip-path="url(#viewing-detail)" href="images/LIVELARGE/ll-context-still-r2.webp" width="1440" height="900"/></g></svg></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.2</span><h3>Show which home an answer is about.</h3><p>The current model sits under the chat title, so visitors can check the reference before reading the reply.</p></div></li><li><div class="ll-evidence-media"><div class="ll-scroll-evidence"><video class="ll-loop-video" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" poster="images/LIVELARGE/ll-scroll-r2.webp" aria-label="Real recording: the website scrolls from L-800 to L-795 while the conversation stays in place."><source data-src="images/LIVELARGE/ll-scroll-r2.mp4" type="video/mp4"></video></div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.3</span><h3>Change the reference, keep the needs.</h3><p>When the page scrolls to L-795, the label updates. Earlier replies stay as they were, and so do the two-bedroom and budget needs.</p></div></li><li><div class="ll-evidence-media"><div class="ll-transcript-card" aria-label="Conversation excerpt from the working prototype">
 <p class="ll-transcript-user">What about this one?</p>
 <p><strong>You’re now looking at L-795.</strong> It has 5 sq. ft. less area and a listed starting price $20k lower than L-800, before installation.</p>
 <p>It keeps your two-bedroom preference while giving you another price point to consider. The layout and listed space requirement also differ. Compare how you would use the rooms. Property fit and the full project budget still need review.</p>
-</div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.4</span><h3>Let “this one” refer to the page.</h3><p>The next reply names L-795 and compares it with L-800. I made the answer connect the visible model to the earlier bedroom and cost priorities.</p></div></li><li><div class="ll-evidence-media"><div class="ll-transcript-card" aria-label="Conversation excerpt from the working prototype">
+</div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.4</span><h3>Let “this one” mean the page.</h3><p>The reply names L-795 and compares it with L-800, connecting the model on screen to the bedroom and cost needs from earlier.</p></div></li><li><div class="ll-evidence-media"><div class="ll-transcript-card" aria-label="Conversation excerpt from the working prototype">
 <p class="ll-transcript-user">What would happen next?</p>
 <p>You can keep <strong>two-bedroom options open!</strong> LiveLarge’s process starts with an introductory call or virtual assessment, followed by a site visit.</p>
 <p><strong>Since budget matters to you,</strong> ask for a property-specific estimate before choosing a model. A lot review lets you provide the property details the team needs. If you’d rather experience the homes first, you can book a tour.</p>
 <div class="ll-transcript-actions" aria-label="Actions shown in the prototype"><span>Request a lot review</span><span>Book a tour</span></div>
-</div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.5</span><h3>Carry the decision into the next page.</h3><p>On How It Works, the reply still considers two bedrooms and budget. I kept those needs relevant when offering a lot review or a tour.</p></div></li></ol>
+</div></div><div class="ll-evidence-copy"><span class="ll-evidence-number">2.5</span><h3>Carry the needs into the next page.</h3><p>On How It Works, the reply still accounts for two bedrooms and budget when it offers a lot review or a tour.</p></div></li></ol>
           </section>
 
           <!-- ===== 03 CLARIFY & RECOMMEND: recording + keyframes (demo flow 2) + one real evolution ===== -->
           <section id="recommend" class="ll-chapter" data-chapter="Clarify & recommend" tabindex="-1" aria-labelledby="recommend-title">
             <div class="ll-head ll-reveal">
-              <p class="ll-kicker"><span>03</span> Clarify and recommend</p>
+              <p class="ll-kicker"><span>03</span> Clarify &amp; recommend</p>
               <h2 id="recommend-title">Ask only what changes the answer.</h2>
             </div>
-            <div class="ll-text ll-reveal"><p>A rental goal leaves several decisions open: upfront cost, living space and what can fit on the property. I made clarification depend on what is missing from the conversation. In this path, the assistant asks for a priority, then the bedroom count, before comparing relevant models.</p></div>
+            <div class="ll-text ll-reveal"><p><strong>Demo 2 · Jordan, a new conversation.</strong> The previous demo showed how needs are kept. This one shows how they’re gathered.</p><p>A rental goal leaves several things open: upfront cost, living space and what fits on the lot. The assistant asks only for what is still missing—first a priority, then the bedroom count—before it compares models.</p></div>
             
             <!-- Pinned stage: the real prototype recording plays each step's segment while "what the assistant knows" updates in step with it. -->
             <div class="ll-clarify" data-clarify>
@@ -217,44 +248,52 @@
                 <div class="ll-chatclip" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div>
               </div>
               <ol class="ll-clarify-steps" aria-label="Clarification and recommendation decisions">
-                <li class="ll-clarify-step" data-seg="0,5.35"><span class="ll-evidence-number">3.2</span><h3>Ask what matters before choosing a model.</h3><p>“Rental income” can mean keeping the initial cost down or making room for more people. I surfaced those priorities as a small choice, instead of treating the goal as enough to recommend a home.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Rental income <i></i> <b>Asking</b> Priority</p></li>
-                <li class="ll-clarify-step" data-seg="5.35,9"><span class="ll-evidence-number">3.3</span><h3>Ask the question that changes the shortlist.</h3><p>After “Lower upfront cost,” bedroom count is still missing. I ask for it here because it changes which models belong in the comparison. A known preference should not be asked again.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Rental income, lower upfront cost <i></i> <b>Asking</b> Bedrooms</p></li>
-                <li class="ll-clarify-step" data-seg="9,15.4"><span class="ll-evidence-number">3.4</span><h3>Lead with a concrete trade-off.</h3><p>L-795 starts $20k below L-800 while keeping two bedrooms. I put that difference before the cards, then align floor plans and space requirements so price has context.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Two bedrooms <i></i> <b>Shortlist</b> L-795, L-800</p></li>
-                <li class="ll-clarify-step" data-seg="15.4,15.4"><span class="ll-evidence-number">3.5</span><h3>Make the limit part of the recommendation.</h3><p>The starting price excludes installation, and property fit still needs review. I placed that qualification beside the lot-review action so the next step follows the unanswered question.</p><div class="ll-chatclip is-inline is-limit" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Still open</b> Installation cost, property fit</p></li>
+                <li class="ll-clarify-step" data-seg="0,5.35"><span class="ll-evidence-number">3.2</span><h3>Ask what to prioritize first.</h3><p>“Rental income” can mean keeping the upfront cost down or making room for more tenants. I offered both as a small choice instead of recommending from the goal alone.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Rental income <i></i> <b>Asking</b> Priority</p></li>
+                <li class="ll-clarify-step" data-seg="5.35,9"><span class="ll-evidence-number">3.3</span><h3>Ask the question that changes the shortlist.</h3><p>After “Lower upfront cost,” bedroom count still decides which models belong in the comparison, so I asked for it here. A need the visitor has already given is never asked again.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Rental income, lower upfront cost <i></i> <b>Asking</b> Bedrooms</p></li>
+                <li class="ll-clarify-step" data-seg="9,15.4"><span class="ll-evidence-number">3.4</span><h3>Lead with a concrete trade-off.</h3><p>L-795 starts $20k below L-800 while keeping two bedrooms. I put that difference before the cards, then lined up floor plans and space requirements so price has context.</p><div class="ll-chatclip is-inline" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Knows</b> Rental income, lower upfront cost, two bedrooms <i></i> <b>Shortlist</b> L-795, L-800</p></li>
+                <li class="ll-clarify-step" data-seg="15.4,15.4"><span class="ll-evidence-number">3.5</span><h3>Put the limit next to the next step.</h3><p>Starting prices exclude installation, and only a lot review can confirm fit. I put that line beside Request a lot review, so the next step answers the open question.</p><div class="ll-chatclip is-inline is-limit" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Still open</b> Installation cost, property fit</p></li>
               </ol>
             </div>
-            <p class="ll-full-flow"><button type="button" class="ll-full-flow-btn" data-full-flow="images/LIVELARGE/ll-jordan-r5.mp4" data-poster="images/LIVELARGE/ll-jordan-r5.webp" data-ratio="1.6"><span>Watch the full flow</span><span class="ll-full-flow-time">26 s</span></button></p>
-            <figure class="ll-figure ll-evolution ll-reveal">
-              <div class="ll-evolution-heading"><span class="ll-fig-tag">3.6 · A decision I revised</span><h3>A candidate to explore, with room for uncertainty.</h3><p>My tone research shaped this revision: reassurance needed to come from useful guidance and clear limits. I softened “matches” because bedroom count alone cannot confirm property fit or the complete budget. I also removed the separate Edit needs control so visitors could revise their needs by replying.</p></div>
-              <div class="ll-evolution-pair">
-                <div class="ll-evolution-panel"><p>Earlier · 14 September</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="92 224 660 500" role="img" aria-label="Earlier wording" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-earlier"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-earlier" maskUnits="userSpaceOnUse" x="92" y="224" width="660" height="500" style="mask-type:luminance"><rect x="92" y="224" width="660" height="500" fill="white"/><g filter="url(#soft-earlier)"><rect x="102" y="469" width="633" height="80" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-before-844.webp" width="844" height="1632"/><rect x="92" y="224" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-earlier)"/><line class="ll-evo-strike" x1="184" y1="492" x2="637" y2="492"/><line class="ll-evo-strike" x1="564" y1="397" x2="720" y2="397"/><g class="ll-evo-pin"><circle cx="637" cy="462" r="13"/><text x="637" y="462">1</text></g><g class="ll-evo-pin"><circle cx="737" cy="397" r="13"/><text x="737" y="397">3</text></g></svg></div></div>
-                <div class="ll-evolution-panel is-after"><p>Revised · Working prototype</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="60 320 660 500" role="img" aria-label="Revised recommendation with property and budget limits" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-revised"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-revised" maskUnits="userSpaceOnUse" x="60" y="320" width="660" height="500" style="mask-type:luminance"><rect x="60" y="320" width="660" height="500" fill="white"/><g filter="url(#soft-revised)"><rect x="72" y="432" width="621" height="115" rx="4" fill="black"/><rect x="71" y="604" width="634" height="117" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-after-780.webp" width="780" height="1568"/><rect x="60" y="320" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-revised)"/><rect class="ll-evo-mark" x="174" y="451" width="406" height="15" fill="#b6dafa"/><rect class="ll-evo-mark" x="172" y="663" width="520" height="15" fill="#ead8ba"/><rect class="ll-evo-mark" x="78" y="700" width="72" height="14" fill="#ead8ba"/><g class="ll-evo-pin"><circle cx="592" cy="428" r="13"/><text x="592" y="428">1</text></g><g class="ll-evo-pin"><circle cx="170" cy="706" r="13"/><text x="170" y="706">2</text></g></svg></div></div>
+            <p class="ll-full-flow"><button type="button" class="ll-full-flow-btn" data-full-flow="images/LIVELARGE/ll-jordan-r5.mp4" data-poster="images/LIVELARGE/ll-jordan-r5.webp" data-ratio="1.6"><span>3.1 · Watch the full flow</span><span class="ll-full-flow-time">26 s</span></button></p>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-flow-figure">
+              <div class="ll-flow-crops">
+                <img src="images/LIVELARGE/ll-fig-flow-context.webp" width="1698" height="626" loading="lazy" decoding="async" alt="User flow excerpt: after a message, the assistant checks whether it has enough context. Sufficient leads to an answer; partial leads to a partial answer that asks for the missing context; insufficient leads to explaining and asking for context.">
+                <img src="images/LIVELARGE/ll-fig-flow-trust.webp" width="1327" height="612" loading="lazy" decoding="async" alt="User flow excerpt: if evidence is not reliable, the assistant states what is known, unknown and why, then explains whether a specialist can verify it.">
               </div>
-              <ol class="ll-evo-notes">
-                <li><span>1</span><div><b>From verdict to candidate</b><p>Bedroom count is one requirement. It cannot confirm the home is right.</p></div></li>
-                <li><span>2</span><div><b>Name what is still unknown</b><p>Reassurance comes from clear limits: property fit and the complete budget.</p></div></li>
-                <li><span>3</span><div><b>Edit needs by replying</b><p>A separate control added friction. Visitors already correct themselves in the chat.</p></div></li>
+              <figcaption><span class="ll-fig-tag">User flow</span><span>I mapped the logic before any UI. When context is partial, answer what’s known and ask only for what’s missing. When evidence is thin, say what’s unknown and who can verify it.</span></figcaption>
+            </figure>
+            <figure class="ll-figure ll-evolution ll-reveal">
+              <div class="ll-evolution-heading"><span class="ll-fig-tag">3.6 · A decision I revised</span><h3>From a verdict to a candidate.</h3><p>Early replies said a model “matches” because it had the right bedroom count. That one fact can’t confirm fit or the full budget, so I rewrote replies to say what’s supported and what’s still open.</p></div>
+              <div class="ll-evolution-pair">
+                <div class="ll-evolution-panel"><p>Iteration 1</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="92 224 660 500" role="img" aria-label="Earlier wording" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-earlier"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-earlier" maskUnits="userSpaceOnUse" x="92" y="224" width="660" height="500" style="mask-type:luminance"><rect x="92" y="224" width="660" height="500" fill="white"/><g filter="url(#soft-earlier)"><rect x="102" y="469" width="633" height="80" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-before-844.webp" width="844" height="1632"/><rect x="92" y="224" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-earlier)"/><line class="ll-evo-strike" x1="184" y1="492" x2="637" y2="492"/><line class="ll-evo-strike" x1="564" y1="397" x2="720" y2="397"/><g class="ll-evo-pin"><circle cx="637" cy="462" r="13"/><text x="637" y="462">1</text></g><g class="ll-evo-pin"><circle cx="737" cy="397" r="13"/><text x="737" y="397">2</text></g></svg></div></div>
+                <div class="ll-evolution-panel is-after"><p>Final prototype</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="60 320 660 500" role="img" aria-label="Revised recommendation with property and budget limits" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-revised"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-revised" maskUnits="userSpaceOnUse" x="60" y="320" width="660" height="500" style="mask-type:luminance"><rect x="60" y="320" width="660" height="500" fill="white"/><g filter="url(#soft-revised)"><rect x="72" y="432" width="621" height="115" rx="4" fill="black"/><rect x="71" y="604" width="634" height="117" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-after-780.webp" width="780" height="1568"/><rect x="60" y="320" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-revised)"/><rect class="ll-evo-mark" x="174" y="451" width="406" height="15" fill="#b6dafa"/><rect class="ll-evo-mark" x="172" y="663" width="520" height="15" fill="#ead8ba"/><rect class="ll-evo-mark" x="78" y="700" width="72" height="14" fill="#ead8ba"/><g class="ll-evo-pin"><circle cx="592" cy="428" r="13"/><text x="592" y="428">1</text></g><g class="ll-evo-pin"><circle cx="170" cy="706" r="13"/><text x="170" y="706">3</text></g></svg></div></div>
+              </div>
+              <ol class="ll-evo-notes ll-evo-notes-4">
+                <li><span>1</span><div><b>From verdict to candidate</b><p>Bedroom count is one requirement. It can’t confirm the home is right.</p></div></li>
+                <li><span>2</span><div><b>Edit needs by replying</b><p>A separate Edit needs button added friction. Visitors already correct themselves in the chat. The needs summary stays.</p></div></li>
+                <li><span>3</span><div><b>Name what’s still unknown</b><p>Reassurance comes from clear limits: property fit and the full budget.</p></div></li>
+                <li><span>4</span><div><b>A direct next step</b><p>The earlier card had no way to the model page. View L-800 completes the path from recommendation to details.</p></div></li>
               </ol>
             </figure>
           </section>
 
           <!-- ===== 04 COMPARE & VERIFY ===== -->
-          <section id="compare" class="ll-chapter" data-chapter="Compare & verify" tabindex="-1" aria-labelledby="compare-title">
+          <section id="compare" class="ll-chapter" data-chapter="Compare → lot review" tabindex="-1" aria-labelledby="compare-title">
             <div class="ll-head ll-reveal">
-              <p class="ll-kicker"><span>04</span> Compare and verify</p>
-              <h2 id="compare-title">What comes after the shortlist?</h2>
+              <p class="ll-kicker"><span>04</span> Compare → lot review</p>
+              <h2 id="compare-title">From comparison to a lot review.</h2>
             </div>
-            <div class="ll-text ll-reveal"><p>A lower starting price can make a model worth considering, but it cannot tell a visitor whether that home will work on their property. I designed this transition around the questions still unanswered: keep the comparison available, open LiveLarge’s existing lot review alongside the conversation, and make clear that the chat is not sent with the form.</p></div>
+            <div class="ll-text ll-reveal"><p>A lower starting price can make a home worth a closer look, but it can’t say whether it works on the visitor’s lot. So the assistant keeps the comparison open, opens LiveLarge’s existing lot review beside it, and says plainly that the chat isn’t sent with the form.</p></div>
             <figure class="ll-figure ll-reveal ll-reveal-media">
               <div class="ll-stage ll-stage-pair">
                 <div class="ll-pair-main"><img src="images/LIVELARGE/ll-table-desktop-r2.webp" width="1200" height="1488" loading="lazy" decoding="async" alt="Desktop: after adding L-500, a table compares L-795, L-800 and L-500; L-500 is labeled a one-bedroom alternative."></div>
                 <div class="ll-pair-side"><img src="images/LIVELARGE/ll-table-mobile-r2.webp" width="348" height="767" loading="lazy" decoding="async" alt="Phone: the same table scrolls sideways."></div>
               </div>
-              <figcaption><span class="ll-fig-tag">4.1</span><span>Adding L-500 turns the cards into a table; the two-bedroom preference still stands. On phones the table scrolls sideways.</span></figcaption>
+              <figcaption><span class="ll-fig-tag">4.1</span><span>The visitor asks to see a cheaper one-bedroom option too. L-500 joins the table as a one-bedroom alternative; the two-bedroom need still stands. On phones, the table scrolls sideways.</span></figcaption>
             </figure>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-lot-evidence">
               <div class="ll-stage"><img src="images/LIVELARGE/ll-lot-review-r4.webp" width="2880" height="1800" loading="lazy" alt="The existing conversation stays on the left while LiveLarge’s lot-review page opens alongside it."></div>
-              <figcaption><span class="ll-fig-tag">4.2</span><span>The conversation stays in view while visitors open LiveLarge’s lot review.</span></figcaption>
+              <figcaption><span class="ll-fig-tag">4.2</span><span>The lot review opens beside the conversation. Visitors fill it in and submit it right there; after they submit, the conversation is still open.</span></figcaption>
             </figure>
           </section>
 
@@ -264,7 +303,21 @@
               <p class="ll-kicker"><span>05</span> Visual design</p>
               <h2 id="visual-title">An AI presence<br>that feels at home.</h2>
             </div>
-            <div class="ll-text ll-design-intro ll-reveal"><p>LiveLarge wanted the assistant to feel recognizably intelligent within a website led by its homes. I translated that brief into two expressive moments: the first greeting and the wait for a reply. In the working conversation, familiar typography and quiet surfaces let the model, the guidance and the next action take priority.</p></div>
+            <div class="ll-text ll-design-intro ll-reveal"><p>LiveLarge asked for an assistant that reads as AI on a site led by its homes. Visuals can signal that; they can’t make answers better—that’s the job of the interaction above. So light marks only two moments: the first greeting and the wait for a reply. Everywhere else, Barlow and neutral surfaces keep the homes and the answers in front.</p></div>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
+              <div class="ll-stage ll-stage-pair ll-wireframe-pair">
+                <div class="ll-pair-main"><img src="images/LIVELARGE/ll-fig-wf-compare-1100.webp" width="1100" height="1808" loading="lazy" decoding="async" alt="Wireframe: the chat panel widened for a comparison table, with a page label in the header and a fixed input."></div>
+                <div class="ll-pair-side"><img src="images/LIVELARGE/ll-fig-wf-starter-700.webp" width="700" height="1808" loading="lazy" decoding="async" alt="Wireframe: the chat panel with page-aware starter questions."></div>
+              </div>
+              <figcaption><span class="ll-fig-tag">Wireframes</span><span>The structure was settled before any styling: a page label in the header, a fixed input, and a panel that widens for comparisons.</span></figcaption>
+            </figure>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
+              <div class="ll-before-after">
+                <div><p>Before visual refinement · Sep 11</p><img src="images/LIVELARGE/ll-fig-welcome-before-1600.webp" width="1600" height="991" loading="lazy" decoding="async" alt="Earlier greeting: a plain white panel with a one-line introduction."></div>
+                <div><p>Final</p><img src="images/LIVELARGE/ll-hero-welcome.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Final greeting: a larger title in blue and warm light, with the same starting options."></div>
+              </div>
+              <figcaption><span class="ll-fig-tag">Before → after</span><span>The first greeting was a plain panel. The final one gives the first moment presence with type and light, and keeps the same starting options.</span></figcaption>
+            </figure>
             <figure class="ll-art-direction ll-reveal">
               <div class="ll-visual-scene">
                 <img src="images/LIVELARGE/ll-hero-welcome.webp" width="1440" height="900" loading="lazy" decoding="async" alt="The assistant appears on LiveLarge’s home page, keeping the home visible beside it.">
@@ -272,7 +325,7 @@
               <div class="ll-effects-pair ll-effects-wipe" role="img" aria-label="The same greeting, alternating between the base interface and the version with a restrained blue and warm light treatment">
                                 <div class="ll-effects-crop ll-wipe-frame"><img src="images/LIVELARGE/ll-effects-base-r2.webp" width="700" height="1488" loading="lazy" alt=""><img class="is-fx" src="images/LIVELARGE/ll-effects-on-r2.webp" width="700" height="1488" loading="lazy" alt=""><span class="ll-wipe-line" aria-hidden="true"></span></div>
               </div>
-              <figcaption><span class="ll-fig-tag">5.1</span><span>The complete assistant remains part of the site; the close-up moves between the base greeting and the lit one to isolate what light changes.</span></figcaption>
+              <figcaption><span class="ll-fig-tag">5.1</span><span>The same greeting, without and with light. The line sweeps between them to show what the light adds.</span></figcaption>
             </figure>
             <div class="ll-design-caption">
               <h3>Give each visual element a job.</h3>
@@ -285,18 +338,22 @@
             </div>
             <div class="ll-signal-study" data-loops>
               <div class="ll-signal-media"><video class="ll-loop-video" muted playsinline loop preload="none" width="700" height="1488" poster="images/LIVELARGE/ll-response-r5.webp" aria-label="Recorded prototype showing a question being entered, a light moving along the panel edge while the reply is pending, then an answer."><source data-src="images/LIVELARGE/ll-response-r5.mp4" type="video/mp4"></video></div>
-              <div class="ll-signal-copy"><span class="ll-fig-tag">5.2 · Response state</span><h3>Keep motion at the edge.</h3><p>I wanted the assistant to feel responsive while keeping the conversation easy to read. I used a moving light along the panel edge while a reply is being prepared, then let it fade as the answer appears.</p></div>
+              <div class="ll-signal-copy"><span class="ll-fig-tag">5.2 · Response state</span><h3>Keep motion at the edge.</h3><p>The edge light runs while a reply is prepared, then fades as the answer appears.</p></div>
             </div>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
+              <div class="ll-stage ll-directions"><img src="images/LIVELARGE/ll-fig-direction-ab.webp" width="798" height="800" loading="lazy" decoding="async" alt="Two directions for the recommendation card. A: a direct Compare L-800 vs L-500 button. B: the card followed by specific follow-up questions."></div>
+              <figcaption><span class="ll-fig-tag">Directions</span><span>A single compare button, or specific follow-up questions. I kept the recommendation readable and moved the choices into follow-ups (B). These were design explorations, not user-tested.</span></figcaption>
+            </figure>
             <section class="ll-anatomy-study" id="anatomy-recommend" aria-labelledby="anatomy-recommend-title">
-              <div class="ll-anatomy-heading"><h3 id="anatomy-recommend-title">5.3 · Build the card around the decision</h3><p>L-500 · Family · One bedroom</p></div>
-              <p class="ll-anatomy-description">The home leads, followed by specifications. Starting price, installation wording and property qualification stay together.</p>
+              <div class="ll-anatomy-heading"><h3 id="anatomy-recommend-title">5.3 · One card, read top to bottom</h3><p>Maya · L-500</p></div>
+              <p class="ll-anatomy-description">The home comes first, then specs, then the starting price with its installation note and the property caveat together.</p>
               <div class="ll-anatomy-motion ll-spread-stage" data-card-spread aria-label="One card expands into four views: original, spacing, groups and structure.">
                 <div class="ll-card-spread"><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/recommend-original-3x.png" loading="eager" width="908" height="1020" draggable="false" alt="Original card of the recommendation card."></div><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/recommend-pixels-3x.png" loading="eager" width="908" height="1020" draggable="false" alt="Spacing grid of the recommendation card."></div><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/recommend-areas-3x.png" loading="eager" width="908" height="1020" draggable="false" alt="Information groups of the recommendation card."></div><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/recommend-structure-3x.png" loading="eager" width="908" height="1020" draggable="false" alt="Reading order of the recommendation card."></div></div>
               </div>
             </section>
             <section class="ll-anatomy-study" id="anatomy-compare" aria-labelledby="anatomy-compare-title">
-              <div class="ll-anatomy-heading"><h3 id="anatomy-compare-title">5.4 · Keep the same reading order</h3><p>L-500 + L-520 N · One bedroom</p></div>
-              <p class="ll-anatomy-description">I aligned the same information across both models: floor plan, specifications, starting price and link. This study isolates the card layout used in the one-bedroom comparison.</p>
+              <div class="ll-anatomy-heading"><h3 id="anatomy-compare-title">5.4 · Two cards, read side by side</h3><p>Maya · L-500 vs L-520 N</p></div>
+              <p class="ll-anatomy-description">Each field sits at the same height in both cards, so visitors compare plan to plan and price to price.</p>
               <div class="ll-anatomy-motion ll-spread-stage is-comparison" data-card-spread aria-label="One card expands into four views: original, spacing, groups and structure.">
                 <div class="ll-card-spread"><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/compare-original-3x.png" loading="eager" width="1658" height="1211" draggable="false" alt="Original card of the comparison card."></div><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/compare-pixels-3x.png" loading="eager" width="1658" height="1211" draggable="false" alt="Spacing grid of the comparison card."></div><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/compare-areas-3x.png" loading="eager" width="1658" height="1211" draggable="false" alt="Information groups of the comparison card."></div><div class="ll-spread-view"><img src="images/LIVELARGE/anatomy/compare-structure-3x.png" loading="eager" width="1658" height="1211" draggable="false" alt="Reading order of the comparison card."></div></div>
               </div>
@@ -305,14 +362,14 @@
 
           <!-- ===== 06 PROTOTYPING: explicit design decisions and concrete review evidence ===== -->
           <section id="build" class="ll-chapter" data-chapter="Prototyping" tabindex="-1" aria-labelledby="build-title">
-            <div class="ll-head ll-reveal"><p class="ll-kicker"><span>06</span> From design to working behavior</p><h2 id="build-title">Make the design rules<br>visible in the prototype.</h2></div>
-            <div class="ll-text ll-reveal"><p>I translated the interaction design into briefs for coding agents, then checked the working prototype against the design. I used screenshots and recorded walkthroughs to inspect page context, conversation state and comparison layouts across desktop and mobile. These checks made the behavior concrete: what a new conversation clears, what minimizing preserves, and how much space a comparison needs.</p></div>
+            <div class="ll-head ll-reveal"><p class="ll-kicker"><span>06</span> Prototyping</p><h2 id="build-title">Turning design rules into<br>checks for a working build.</h2></div>
+            <div class="ll-text ll-reveal"><p>I wrote the interaction design as briefs for coding agents, then checked the working prototype against them with screenshots and recorded walkthroughs on desktop and mobile.</p><p><strong>One check, start to finish.</strong> The rule: the panel keeps its size as visitors move between pages. What the build did: going from Home to ADU models, the empty panel shrank from 744 px to 374 px. How I caught it: walking the flow, then checking the height calculation. What changed: the open panel now keeps its height across page changes.</p></div>
             <div class="ll-build-intro">
               <div><h3>A new conversation is still on the same page.</h3><p>I explicitly separated conversation state from page context. Starting over clears the visitor’s previous messages and needs, but the assistant should still recognize the model currently on screen.</p><div class="ll-state-principle"><span>Conversation starts fresh</span><span>Current page stays in context</span></div></div>
               <div><h3>Hiding the window should preserve the work.</h3><p>I specified that minimize only changes visibility. Reopening restores the thread, while comparison gets enough width to keep its content readable. These became concrete checks for the working build.</p><div class="ll-state-principle"><span>Minimize preserves the thread</span><span>Comparison gets more space</span></div></div>
             </div>
             <div class="ll-build-example" data-loops>
-              <figure><div class="ll-build-film"><video class="ll-loop-video" muted playsinline loop preload="none" width="1600" height="900" poster="images/LIVELARGE/ll-newchat-scene-r4.webp" aria-label="Recorded prototype: starting a new conversation retains the ADU page context."><source data-src="images/LIVELARGE/ll-newchat-scene-r4.mp4" type="video/mp4"></video></div><figcaption><strong>6.1 · Start fresh, stay in context.</strong>The visitor starts a new conversation from Chat options. Earlier messages clear, while the ADU page stays visible and the greeting remains ready for a new question.</figcaption></figure>
+              <figure><div class="ll-build-film"><video class="ll-loop-video" muted playsinline loop preload="none" width="1600" height="900" poster="images/LIVELARGE/ll-newchat-scene-r4.webp" aria-label="Recorded prototype: starting a new conversation retains the ADU page context."><source data-src="images/LIVELARGE/ll-newchat-scene-r4.mp4" type="video/mp4"></video></div><figcaption><strong>6.1 · Start fresh, stay in context.</strong>The visitor starts a new conversation from Chat options. Earlier messages clear; the page stays in context. The first greeting introduces the assistant, so a new chat skips the introduction and goes straight to the task: “Let’s find your ADU.”</figcaption></figure>
               <figure><div class="ll-build-film"><video class="ll-loop-video" muted playsinline loop preload="none" width="1600" height="900" poster="images/LIVELARGE/ll-minimize-scene-r4.webp" aria-label="Recorded prototype: minimize the assistant and reopen the same conversation within the ADU page."><source data-src="images/LIVELARGE/ll-minimize-scene-r4.mp4" type="video/mp4"></video></div><figcaption><strong>6.2 · Return to the same thread.</strong>The visitor can keep browsing with the assistant minimized, then reopen it with the previous messages intact.</figcaption></figure>
             </div>
           </section>
@@ -321,21 +378,24 @@
     </div>
 
     <!-- ===== 07 FINAL: commercial design outcome and proposed rebuilding extension ===== -->
-    <section id="final" class="ll-final" data-chapter="Outcome & extension" tabindex="-1" aria-labelledby="final-title">
+    <section id="final" class="ll-final" data-chapter="Outcome" tabindex="-1" aria-labelledby="final-title">
       <div class="ll-final-inner">
         <div class="ll-head ll-reveal">
-          <p class="ll-kicker"><span>07</span> Outcome and design extension</p>
-          <h2 id="final-title">A connected path<br>from interest to action.</h2>
+          <p class="ll-kicker"><span>07</span> Outcome</p>
+          <h2 id="final-title">Where it stands.</h2>
         </div>
         <div class="ll-commercial-outcome ll-reveal">
-          <span>LiveLarge × VortexNet · Design approved</span>
-          <p>The design received PM approval this sprint, and the team is now building the staging version.</p>
+          <span>September 2026 · Design approved</span>
+          <div>
+            <p>VortexNet is building the staging version.</p>
+            <p class="ll-outcome-detail">I delivered the conversation flows, the assistant’s UI and motion, recommendation and comparison components, and an interactive prototype with behavior checks. After launch, we’ll measure lot reviews requested from the chat, how often conversations reach a comparison, and where visitors leave before a lot review.</p>
+          </div>
         </div>
         <section class="ll-rebuild" aria-labelledby="rebuild-title">
           <div class="ll-extension-intro">
-            <p class="ll-extension-label">Design extension</p>
+            <p class="ll-extension-label">Beyond this project</p>
             <h3 id="rebuild-title">What changes when<br>the goal is rebuilding?</h3>
-            <p>I explored how the same approach could help homeowners in Altadena clarify what they need and prepare for a lot review.</p>
+            <p>After the January 2025 Eaton Fire, LiveLarge also builds replacement homes in Altadena. I sketched how the same approach—keep the needs, name the open questions, hand off to a lot review—could help a homeowner who has to replace their main home first.</p>
           </div>
           <figure class="ll-rebuild-showcase">
             <div class="ll-rebuild-board">

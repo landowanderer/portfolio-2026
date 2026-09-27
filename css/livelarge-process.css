@@ -1,0 +1,65 @@
+/* LiveLarge case study: process evidence (personas, competitor test, user flow, wireframes, directions). */
+
+.ll-page .ll-persona-pair { margin-top: 24px; }
+
+.ll-page .ll-competitor-intro { margin-top: 64px; }
+.ll-page .ll-competitor-figure { margin-top: 28px; }
+.ll-page .ll-competitor-pair { grid-template-columns: 1.27fr 1fr; align-items: center; }
+.ll-page .ll-competitor-pair img { border-radius: 10px; background: #fff; }
+.ll-page .ll-competitor-notes { margin-top: 32px; }
+
+.ll-page .ll-takeaway {
+  margin: 48px 0 0;
+  padding: 0 0 0 20px;
+  border-left: 2px solid #151515;
+  max-width: 720px;
+}
+.ll-page .ll-takeaway p {
+  margin: 0;
+  font: 500 clamp(21px, 2.2vw, 28px)/1.35 Geist, Arial, sans-serif;
+  letter-spacing: -0.015em;
+  color: #151515;
+}
+
+.ll-page .ll-flow-figure { margin-top: 40px; }
+.ll-page .ll-flow-crops {
+  display: grid;
+  gap: 16px;
+  padding: clamp(16px, 3vw, 32px);
+  background: #eaeaea;
+  border-radius: var(--ll-radius, 16px);
+}
+.ll-page .ll-flow-crops img { display: block; width: 100%; height: auto; border-radius: 8px; }
+
+.ll-page .ll-process-figure { margin-top: 40px; }
+.ll-page .ll-wireframe-pair { align-items: end; }
+.ll-page .ll-wireframe-pair img { width: auto; max-width: 100%; max-height: 520px; margin: 0 auto; }
+
+.ll-page .ll-before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 3vw, 32px);
+  padding: clamp(16px, 3vw, 32px);
+  background: #f4f4f4;
+  border-radius: var(--ll-radius, 16px);
+}
+.ll-page .ll-before-after > div { min-width: 0; }
+.ll-page .ll-before-after p { margin: 0 0 10px; font: 500 13px/1.3 Geist, Arial, sans-serif; color: #6b6b6b; }
+.ll-page .ll-before-after img { display: block; width: 100%; height: auto; border-radius: 8px; }
+
+.ll-page .ll-directions { display: flex; justify-content: center; background: #f3f2ee; }
+.ll-page .ll-directions img { display: block; width: min(100%, 560px); height: auto; }
+
+.ll-page .ll-evo-notes-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.ll-page .ll-commercial-outcome p + p { margin-top: 20px; }
+.ll-page .ll-commercial-outcome .ll-outcome-detail { font-size: 17px; line-height: 1.65; color: #bdbdbd; }
+
+@media (max-width: 767px) {
+  .ll-page .ll-competitor-pair { grid-template-columns: 1fr; }
+  .ll-page .ll-before-after { grid-template-columns: 1fr; }
+  .ll-page .ll-evo-notes-4 { grid-template-columns: 1fr; }
+  .ll-page .ll-wireframe-pair img { max-height: 420px; }
+}
+
+.ll-page .ll-text p + p { margin-top: 16px; }
