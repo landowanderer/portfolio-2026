@@ -118,3 +118,81 @@
 .ll-page .ll-carry-line { position: relative; flex: 1; height: 1px; margin-right: 6px; background: #8a8a8a; }
 .ll-page .ll-carry-line::after { content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 1px solid #8a8a8a; border-right: 1px solid #8a8a8a; transform: rotate(45deg); }
 @media (max-width: 767px) { .ll-page .ll-change-carry .ll-carry-k { display: inline; font-size: 12px; } }
+
+/* ---------- Round 3: one canvas for every media sheet ---------- */
+:root { --ll-canvas: #ecebe7; }
+.ll-page .ll-stage,
+.ll-page .ll-visual-scene,
+.ll-page .ll-hl-frame,
+.ll-page .ll-highlight-scene,
+.ll-page .ll-highlight-comparison,
+.ll-page .ll-evidence-media,
+.ll-page .ll-card-media,
+.ll-page .ll-change-before,
+.ll-page .ll-change-after,
+.ll-page .ll-flow-pan,
+.ll-page .ll-steps3,
+.ll-page .ll-wf-row,
+.ll-page .ll-ab,
+.ll-page .ll-anatomy-motion,
+.ll-page .ll-effects-wipe,
+.ll-page .ll-signal-study { background: var(--ll-canvas) !important; color: #151515; }
+
+/* Clarify stage: the "what the assistant knows" cards were white-on-dark */
+.ll-page .ll-knows-card { background: #fff; color: #151515; box-shadow: 0 1px 2px #0000000d; }
+.ll-page .ll-knows-h { color: #8a8a8a; }
+.ll-page .ll-knows-h span { color: #555; }
+.ll-page .ll-knows-list dt { color: #8a8a8a; }
+.ll-page .ll-knows-list dd { color: #151515; }
+.ll-page .ll-knows-list [data-state="empty"] dd { color: #b3b3b3; }
+.ll-page .ll-knows-list [data-state="empty"] dd::before { box-shadow: inset 0 0 0 1px #c9c9c9; }
+.ll-page .ll-knows-list [data-state="asking"] dd { color: #555; }
+.ll-page .ll-knows-list [data-state="asking"] dd::before { background: #9a9a9a; }
+.ll-page .ll-shortlist em { color: #8a8a8a; }
+.ll-page .ll-shortlist b { color: #555; }
+.ll-page .ll-shortlist-note { border-top-color: #e6e6e6; color: #8a6d3b; }
+
+/* Wireframes: panels only, true relative widths */
+.ll-page .ll-wf-row {
+  display: grid;
+  grid-template-columns: 628fr 628fr 1068fr;
+  align-items: end;
+  gap: clamp(16px, 3vw, 40px);
+  padding: clamp(20px, 4vw, 48px);
+  border-radius: var(--ll-radius, 16px);
+}
+.ll-page .ll-wf-row > div { min-width: 0; }
+.ll-page .ll-wf-row img { display: block; width: 100%; height: auto; }
+.ll-page .ll-wf-row p { margin: 14px 0 0; font: 400 14px/1.45 Geist, Arial, sans-serif; color: #3f3f3f; }
+.ll-page .ll-wf-row p b { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 6px; border-radius: 50%; background: #151515; color: #fff; font: 500 11px/1 Geist, Arial, sans-serif; vertical-align: 1px; }
+
+/* User flow: read in place, drag to pan */
+.ll-page .ll-flow-wrap { position: relative; }
+.ll-page .ll-flow-pan {
+  height: min(640px, 72vh);
+  overflow: auto;
+  border-radius: var(--ll-radius, 16px);
+  cursor: grab;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.ll-page .ll-flow-pan.is-dragging { cursor: grabbing; user-select: none; }
+.ll-page .ll-flow-pan img { display: block; width: 3400px; max-width: none; height: auto; pointer-events: none; }
+.ll-page .ll-flow-pan:focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
+.ll-page .ll-pan-hint {
+  position: absolute; left: 16px; top: 16px;
+  padding: 7px 12px; border-radius: 999px;
+  background: #151515d9; color: #fff; font: 500 12px/1 Geist, Arial, sans-serif;
+  pointer-events: none; transition: opacity .3s;
+}
+.ll-page .ll-flow-wrap.is-explored .ll-pan-hint { opacity: 0; }
+
+/* Greeting before/after: clean panels on the canvas */
+.ll-page .ll-ab.is-greet img { border-radius: 0; box-shadow: none; }
+.ll-page .ll-ab.is-greet > div:last-child img { border-radius: 15px; box-shadow: 0 14px 34px #00000014, 0 0 0 1px #0000000a; }
+
+@media (max-width: 767px) {
+  .ll-page .ll-wf-row { gap: 8px; padding: 14px; }
+  .ll-page .ll-wf-row p { font-size: 11px; }
+  .ll-page .ll-flow-pan img { width: 2600px; }
+}

@@ -29,7 +29,7 @@
   <script>document.documentElement.classList.add('ll-js');</script>
   <script src="js/livelarge.js?v=media-refresh-2" defer></script>
 <link rel="stylesheet" href="css/portfolio-case-system.css">
-<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=7"><link rel="stylesheet" href="css/livelarge-process.css?v=3"><script src="js/livelarge-revision.js?v=7" defer></script></head>
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=7"><link rel="stylesheet" href="css/livelarge-process.css?v=4"><script src="js/livelarge-process.js?v=2" defer></script><script src="js/livelarge-revision.js?v=7" defer></script></head>
 <body class="ll-page pf-selected-case"><header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
   <a class="ll-skip" href="#overview">Skip to case study</a>
 
@@ -256,8 +256,13 @@
             </div>
             <p class="ll-full-flow"><button type="button" class="ll-full-flow-btn" data-full-flow="images/LIVELARGE/ll-jordan-r5.mp4" data-poster="images/LIVELARGE/ll-jordan-r5.webp" data-ratio="1.6"><span>3.1 · Watch the full flow</span><span class="ll-full-flow-time">26 s</span></button></p>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-flow-figure">
-              <a class="ll-flow-full" href="images/LIVELARGE/ll-flow-full.webp" target="_blank" rel="noopener" aria-label="Open the full user flow in a new tab"><img src="images/LIVELARGE/ll-flow-1800.webp" width="1800" height="2046" loading="lazy" decoding="async" alt="The assistant’s full user flow: opening the chat, answering, comparing, checking evidence, and requesting a follow-up. Marker 1 sits at the context check; marker 2 at the evidence check."></a>
-              <figcaption><span class="ll-fig-tag">User flow</span><span>I mapped the logic before any UI. <b>1</b> Not enough context: answer what’s known, then ask only for what’s missing. <b>2</b> Weak evidence: say what’s known, what isn’t, and who can check it. <a href="images/LIVELARGE/ll-flow-full.webp" target="_blank" rel="noopener">Open full size ↗</a></span></figcaption>
+              <div class="ll-flow-wrap">
+                <div class="ll-flow-pan" tabindex="0" data-flow-pan data-start="1075,1335" aria-label="The assistant’s user flow. Drag, scroll or use the arrow keys to explore.">
+                  <img src="images/LIVELARGE/ll-flow-full.webp" width="3931" height="4469" draggable="false" loading="lazy" decoding="async" alt="The assistant’s full user flow: opening the chat, answering, comparing, checking evidence, and requesting a follow-up. Marker 1 sits at the context check; marker 2 at the evidence check.">
+                </div>
+                <span class="ll-pan-hint" aria-hidden="true">Drag to explore</span>
+              </div>
+              <figcaption><span class="ll-fig-tag">User flow</span><span>I mapped the logic before any UI. <b>1</b> Not enough context: answer what’s known, then ask only for what’s missing. <b>2</b> Weak evidence: say what’s known, what isn’t, and who can check it.</span></figcaption>
             </figure>
             <figure class="ll-figure ll-evolution ll-reveal">
               <div class="ll-evolution-heading"><span class="ll-fig-tag">3.6 · A decision I revised</span><h3>From a verdict to a candidate.</h3><p>Early replies said a model “matches” because it had the right bedroom count. That one fact can’t confirm fit or the full budget, so I rewrote replies to say what’s supported and what’s still open.</p></div>
@@ -302,17 +307,17 @@
             </div>
             <div class="ll-text ll-design-intro ll-reveal"><p>LiveLarge wanted the assistant to feel like AI on a site led by its homes. Color and light can show that the assistant is there and working, but they can’t make its answers better. So I used them in two moments only: the first greeting and the wait for a reply. Everywhere else, the assistant uses the site’s Barlow type and neutral surfaces.</p></div>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
-              <div class="ll-steps3 is-wire">
-                <div><img src="images/LIVELARGE/ll-wf-1.webp" width="690" height="1085" loading="lazy" decoding="async" alt="Wireframe: the chat panel opens with suggestions for the current page."><p><b>1</b> Suggestions match the page</p></div>
-                <div><img src="images/LIVELARGE/ll-wf-2.webp" width="690" height="1085" loading="lazy" decoding="async" alt="Wireframe: a conversation, with the page label in the header and the input fixed at the bottom."><p><b>2</b> Header and input stay fixed</p></div>
-                <div><img src="images/LIVELARGE/ll-wf-3.webp" width="690" height="1085" loading="lazy" decoding="async" alt="Wireframe: the panel is wider to fit a comparison table."><p><b>3</b> The panel widens for a comparison</p></div>
+              <div class="ll-wf-row">
+                <div><img src="images/LIVELARGE/ll-wf-1.webp" width="628" height="1782" loading="lazy" decoding="async" alt="Wireframe: the chat panel opens with suggestions for the current page."><p><b>1</b> Suggestions match the page</p></div>
+                <div><img src="images/LIVELARGE/ll-wf-2.webp" width="628" height="1782" loading="lazy" decoding="async" alt="Wireframe: a conversation, with the page label in the header and the input fixed at the bottom."><p><b>2</b> Header and input stay fixed</p></div>
+                <div><img src="images/LIVELARGE/ll-wf-3.webp" width="1068" height="1782" loading="lazy" decoding="async" alt="Wireframe: the panel is wider to fit a comparison table."><p><b>3</b> The panel widens for a comparison</p></div>
               </div>
               <figcaption><span class="ll-fig-tag">Wireframes</span><span>The structure came first, before any styling.</span></figcaption>
             </figure>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
               <div class="ll-ab is-greet">
                 <div><p>Before</p><img src="images/LIVELARGE/ll-greet-before.webp" width="820" height="836" loading="lazy" decoding="async" alt="Earlier greeting: one line of text and three plain options."></div>
-                <div><p>After</p><img src="images/LIVELARGE/ll-effects-on-r2.webp" width="700" height="1488" loading="lazy" decoding="async" alt="Final greeting: a large title in blue and warm light, four options and a link to appointments."></div>
+                <div><p>After</p><img src="images/LIVELARGE/ll-greet-after.webp" width="690" height="1478" loading="lazy" decoding="async" alt="Final greeting: a large title in blue and warm light, four options and a link to appointments."></div>
               </div>
               <figcaption><span class="ll-fig-tag">Before → after</span><span>Before, the greeting was one line of text. After, a large title introduces the assistant, light marks the first moment, and the options cover financing and appointments too.</span></figcaption>
             </figure>
