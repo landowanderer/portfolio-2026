@@ -29,7 +29,7 @@
   <script>document.documentElement.classList.add('ll-js');</script>
   <script src="js/livelarge.js?v=media-refresh-2" defer></script>
 <link rel="stylesheet" href="css/portfolio-case-system.css">
-<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=7"><link rel="stylesheet" href="css/livelarge-process.css?v=1"><script src="js/livelarge-revision.js?v=7" defer></script></head>
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=7"><link rel="stylesheet" href="css/livelarge-process.css?v=2"><script src="js/livelarge-revision.js?v=7" defer></script></head>
 <body class="ll-page pf-selected-case"><header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
   <a class="ll-skip" href="#overview">Skip to case study</a>
 
@@ -136,7 +136,7 @@
 
             <div class="ll-audit-intro ll-competitor-intro">
               <h3>What two shipping assistants taught me</h3>
-              <p>Before designing, I ran the same kinds of requests through two assistants that already live inside a product: Homes.com’s AI search and Amazon’s Alexa for Shopping. Both kept context well. Where they fell short became rules for LiveLarge.</p>
+              <p>Before designing, I tested two assistants that already live inside a product: Homes.com’s AI search and Amazon’s Alexa for Shopping. Both kept context well. Where they fell short, I set a rule for LiveLarge.</p>
             </div>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-competitor-figure">
               <div class="ll-stage ll-stage-pair ll-competitor-pair">
@@ -146,12 +146,12 @@
               <figcaption><span class="ll-fig-tag">1.6</span><span>Homes.com turns a request into filters people can see and edit. Alexa asks a few questions before it recommends.</span></figcaption>
             </figure>
             <ol class="ll-evo-notes ll-competitor-notes">
-              <li><span>1</span><div><b>Keep context, show it</b><p>Homes.com kept location, pets and commute when the rent limit changed. LiveLarge keeps needs across pages.</p></div></li>
-              <li><span>2</span><div><b>Ask only what’s missing</b><p>Alexa asked about use and budget instead of requiring a full prompt. LiveLarge asks for a priority, then bedrooms.</p></div></li>
-              <li><span>3</span><div><b>Define “cheaper”</b><p>“Cheaper and closer” narrowed results without saying how. LiveLarge states the price difference in numbers.</p></div></li>
-              <li><span>4</span><div><b>Keep costs apart</b><p>A rent comparison blurred base rent and fees. LiveLarge keeps “excludes installation” next to every price.</p></div></li>
-              <li><span>5</span><div><b>Don’t stretch the requirement</b><p>“One-bedroom” became “1+ Bed”. LiveLarge labels anything outside the stated need as an alternative.</p></div></li>
-              <li><span>6</span><div><b>Hand off without sending</b><p>Homes.com opened the agent form without submitting anything. LiveLarge opens the lot review beside the chat.</p></div></li>
+              <li><span>1</span><div><b>Keep what visitors said</b><p>Homes.com kept location, pets and commute when the rent limit changed.</p></div></li>
+              <li><span>2</span><div><b>Ask only what’s missing</b><p>Alexa asked about use and budget instead of asking for a full prompt.</p></div></li>
+              <li><span>3</span><div><b>Say what “cheaper” means</b><p>Homes.com narrowed results for “cheaper and closer” without saying how. LiveLarge shows the price difference in numbers.</p></div></li>
+              <li><span>4</span><div><b>Keep the price and its limits together</b><p>Homes.com mixed base rent and fees. LiveLarge puts “excludes installation” next to every price.</p></div></li>
+              <li><span>5</span><div><b>Don’t stretch the stated need</b><p>Homes.com read “one-bedroom” as “1+ Bed”. LiveLarge labels anything outside the need as an alternative.</p></div></li>
+              <li><span>6</span><div><b>Open the next step, send nothing</b><p>Homes.com opened the agent form without submitting it. LiveLarge opens the lot review beside the chat.</p></div></li>
             </ol>
             <blockquote class="ll-takeaway ll-reveal"><p>Reduce what users need to say, without hiding what the system remembers.</p></blockquote>
 
@@ -178,7 +178,7 @@
                 <div class="ll-change-outcomes"><span>Continue exploring</span><span>Property-specific question <b aria-hidden="true">→</b> Lot review / Consultation</span></div>
               </div>
             </figure>
-            <div class="ll-text ll-reveal"><p>So I framed the assistant as a guide through connected decisions: it carries a visitor’s needs across the site, makes trade-offs visible, and hands property-specific questions to LiveLarge’s team.</p></div>
+            <div class="ll-text ll-reveal"><p>So the assistant’s job became: carry a visitor’s needs across the site, make trade-offs visible, and hand property questions to LiveLarge’s team.</p></div>
           </section>
 
           <!-- ===== 02 CONTEXT: one recording + four readable keyframes (demo flow 4) ===== -->
@@ -256,11 +256,8 @@
             </div>
             <p class="ll-full-flow"><button type="button" class="ll-full-flow-btn" data-full-flow="images/LIVELARGE/ll-jordan-r5.mp4" data-poster="images/LIVELARGE/ll-jordan-r5.webp" data-ratio="1.6"><span>3.1 · Watch the full flow</span><span class="ll-full-flow-time">26 s</span></button></p>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-flow-figure">
-              <div class="ll-flow-crops">
-                <img src="images/LIVELARGE/ll-fig-flow-context.webp" width="1698" height="626" loading="lazy" decoding="async" alt="User flow excerpt: after a message, the assistant checks whether it has enough context. Sufficient leads to an answer; partial leads to a partial answer that asks for the missing context; insufficient leads to explaining and asking for context.">
-                <img src="images/LIVELARGE/ll-fig-flow-trust.webp" width="1327" height="612" loading="lazy" decoding="async" alt="User flow excerpt: if evidence is not reliable, the assistant states what is known, unknown and why, then explains whether a specialist can verify it.">
-              </div>
-              <figcaption><span class="ll-fig-tag">User flow</span><span>I mapped the logic before any UI. When context is partial, answer what’s known and ask only for what’s missing. When evidence is thin, say what’s unknown and who can verify it.</span></figcaption>
+              <a class="ll-flow-full" href="images/LIVELARGE/ll-flow-full.webp" target="_blank" rel="noopener" aria-label="Open the full user flow in a new tab"><img src="images/LIVELARGE/ll-flow-1800.webp" width="1800" height="2046" loading="lazy" decoding="async" alt="The assistant’s full user flow: opening the chat, answering, comparing, checking evidence, and requesting a follow-up. Marker 1 sits at the context check; marker 2 at the evidence check."></a>
+              <figcaption><span class="ll-fig-tag">User flow</span><span>I mapped the logic before any UI. <b>1</b> Not enough context: answer what’s known, then ask only for what’s missing. <b>2</b> Weak evidence: say what’s known, what isn’t, and who can check it. <a href="images/LIVELARGE/ll-flow-full.webp" target="_blank" rel="noopener">Open full size ↗</a></span></figcaption>
             </figure>
             <figure class="ll-figure ll-evolution ll-reveal">
               <div class="ll-evolution-heading"><span class="ll-fig-tag">3.6 · A decision I revised</span><h3>From a verdict to a candidate.</h3><p>Early replies said a model “matches” because it had the right bedroom count. That one fact can’t confirm fit or the full budget, so I rewrote replies to say what’s supported and what’s still open.</p></div>
@@ -271,7 +268,7 @@
               <ol class="ll-evo-notes ll-evo-notes-4">
                 <li><span>1</span><div><b>From verdict to candidate</b><p>Bedroom count is one requirement. It can’t confirm the home is right.</p></div></li>
                 <li><span>2</span><div><b>Edit needs by replying</b><p>A separate Edit needs button added friction. Visitors already correct themselves in the chat. The needs summary stays.</p></div></li>
-                <li><span>3</span><div><b>Name what’s still unknown</b><p>Reassurance comes from clear limits: property fit and the full budget.</p></div></li>
+                <li><span>3</span><div><b>Name what’s still unknown</b><p>Say plainly what still needs checking: property fit and the full budget.</p></div></li>
                 <li><span>4</span><div><b>A direct next step</b><p>The earlier card had no way to the model page. View L-800 completes the path from recommendation to details.</p></div></li>
               </ol>
             </figure>
@@ -303,20 +300,21 @@
               <p class="ll-kicker"><span>05</span> Visual design</p>
               <h2 id="visual-title">An AI presence<br>that feels at home.</h2>
             </div>
-            <div class="ll-text ll-design-intro ll-reveal"><p>LiveLarge asked for an assistant that reads as AI on a site led by its homes. Visuals can signal that; they can’t make answers better—that’s the job of the interaction above. So light marks only two moments: the first greeting and the wait for a reply. Everywhere else, Barlow and neutral surfaces keep the homes and the answers in front.</p></div>
+            <div class="ll-text ll-design-intro ll-reveal"><p>LiveLarge wanted the assistant to feel like AI on a site led by its homes. Color and light can show that the assistant is there and working, but they can’t make its answers better. So I used them in two moments only: the first greeting and the wait for a reply. Everywhere else, the assistant uses the site’s Barlow type and neutral surfaces.</p></div>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
-              <div class="ll-stage ll-stage-pair ll-wireframe-pair">
-                <div class="ll-pair-main"><img src="images/LIVELARGE/ll-fig-wf-compare-1100.webp" width="1100" height="1808" loading="lazy" decoding="async" alt="Wireframe: the chat panel widened for a comparison table, with a page label in the header and a fixed input."></div>
-                <div class="ll-pair-side"><img src="images/LIVELARGE/ll-fig-wf-starter-700.webp" width="700" height="1808" loading="lazy" decoding="async" alt="Wireframe: the chat panel with page-aware starter questions."></div>
+              <div class="ll-steps3 is-wire">
+                <div><img src="images/LIVELARGE/ll-wf-1.webp" width="690" height="1085" loading="lazy" decoding="async" alt="Wireframe: the chat panel opens with suggestions for the current page."><p><b>1</b> Suggestions match the page</p></div>
+                <div><img src="images/LIVELARGE/ll-wf-2.webp" width="690" height="1085" loading="lazy" decoding="async" alt="Wireframe: a conversation, with the page label in the header and the input fixed at the bottom."><p><b>2</b> Header and input stay fixed</p></div>
+                <div><img src="images/LIVELARGE/ll-wf-3.webp" width="690" height="1085" loading="lazy" decoding="async" alt="Wireframe: the panel is wider to fit a comparison table."><p><b>3</b> The panel widens for a comparison</p></div>
               </div>
-              <figcaption><span class="ll-fig-tag">Wireframes</span><span>The structure was settled before any styling: a page label in the header, a fixed input, and a panel that widens for comparisons.</span></figcaption>
+              <figcaption><span class="ll-fig-tag">Wireframes</span><span>The structure came first, before any styling.</span></figcaption>
             </figure>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
-              <div class="ll-before-after">
-                <div><p>Before visual refinement · Sep 11</p><img src="images/LIVELARGE/ll-fig-welcome-before-1600.webp" width="1600" height="991" loading="lazy" decoding="async" alt="Earlier greeting: a plain white panel with a one-line introduction."></div>
-                <div><p>Final</p><img src="images/LIVELARGE/ll-hero-welcome.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Final greeting: a larger title in blue and warm light, with the same starting options."></div>
+              <div class="ll-ab is-greet">
+                <div><p>Before</p><img src="images/LIVELARGE/ll-greet-before.webp" width="820" height="836" loading="lazy" decoding="async" alt="Earlier greeting: one line of text and three plain options."></div>
+                <div><p>After</p><img src="images/LIVELARGE/ll-effects-on-r2.webp" width="700" height="1488" loading="lazy" decoding="async" alt="Final greeting: a large title in blue and warm light, four options and a link to appointments."></div>
               </div>
-              <figcaption><span class="ll-fig-tag">Before → after</span><span>The first greeting was a plain panel. The final one gives the first moment presence with type and light, and keeps the same starting options.</span></figcaption>
+              <figcaption><span class="ll-fig-tag">Before → after</span><span>Before, the greeting was one line of text. After, a large title introduces the assistant, light marks the first moment, and the options cover financing and appointments too.</span></figcaption>
             </figure>
             <figure class="ll-art-direction ll-reveal">
               <div class="ll-visual-scene">
@@ -329,20 +327,23 @@
             </figure>
             <div class="ll-design-caption">
               <h3>Give each visual element a job.</h3>
-              <p>I kept the assistant in LiveLarge’s Barlow typography and neutral interface language. Color introduces it; a brief edge cue acknowledges a pending response. The message area settles back to a plain reading surface.</p>
+              <p>Color introduces the assistant. A short light on the panel edge shows a reply is coming. Answers sit on a plain surface.</p>
             </div>
             <div class="ll-design-decisions" aria-label="Visual design roles">
-              <div><span class="ll-design-index">01 / Continuity</span><h4>Familiar by default</h4><p>Barlow, restrained controls and neutral surfaces connect the assistant to the website.</p><div class="ll-design-material"><b>Barlow</b><i></i><i></i></div></div>
-              <div><span class="ll-design-index">02 / Introduction</span><h4>Color at the greeting</h4><p>Blue and warm light mark the first encounter; they do not carry long-form answers.</p><div class="ll-design-material ll-design-light"><i></i></div></div>
-              <div><span class="ll-design-index">03 / Response</span><h4>Motion at the edge</h4><p>A short-lived perimeter cue signals that the assistant is forming an answer.</p><div class="ll-design-material ll-design-edge"><i></i></div></div>
+              <div><span class="ll-design-index">01 / Continuity</span><h4>Familiar by default</h4><p>Barlow, simple controls and neutral surfaces tie the assistant to the site.</p><div class="ll-design-material"><b>Barlow</b><i></i><i></i></div></div>
+              <div><span class="ll-design-index">02 / Introduction</span><h4>Color at the greeting</h4><p>Blue and warm light appear at the first greeting only, never behind answers.</p><div class="ll-design-material ll-design-light"><i></i></div></div>
+              <div><span class="ll-design-index">03 / Response</span><h4>Motion at the edge</h4><p>A short light runs along the panel edge while a reply is on its way.</p><div class="ll-design-material ll-design-edge"><i></i></div></div>
             </div>
             <div class="ll-signal-study" data-loops>
               <div class="ll-signal-media"><video class="ll-loop-video" muted playsinline loop preload="none" width="700" height="1488" poster="images/LIVELARGE/ll-response-r5.webp" aria-label="Recorded prototype showing a question being entered, a light moving along the panel edge while the reply is pending, then an answer."><source data-src="images/LIVELARGE/ll-response-r5.mp4" type="video/mp4"></video></div>
               <div class="ll-signal-copy"><span class="ll-fig-tag">5.2 · Response state</span><h3>Keep motion at the edge.</h3><p>The edge light runs while a reply is prepared, then fades as the answer appears.</p></div>
             </div>
             <figure class="ll-figure ll-reveal ll-reveal-media ll-process-figure">
-              <div class="ll-stage ll-directions"><img src="images/LIVELARGE/ll-fig-direction-ab.webp" width="798" height="800" loading="lazy" decoding="async" alt="Two directions for the recommendation card. A: a direct Compare L-800 vs L-500 button. B: the card followed by specific follow-up questions."></div>
-              <figcaption><span class="ll-fig-tag">Directions</span><span>A single compare button, or specific follow-up questions. I kept the recommendation readable and moved the choices into follow-ups (B). These were design explorations, not user-tested.</span></figcaption>
+              <div class="ll-ab is-dir">
+                <div><p>A · One compare button</p><img src="images/LIVELARGE/ll-dir-a.webp" width="844" height="1632" loading="lazy" decoding="async" alt="Direction A: the recommendation card with a Compare L-800 vs L-500 button below it, outlined."></div>
+                <div><p>B · Follow-up questions <span>Chosen</span></p><img src="images/LIVELARGE/ll-dir-b.webp" width="844" height="1632" loading="lazy" decoding="async" alt="Direction B: the recommendation card with three follow-up questions below it, outlined."></div>
+              </div>
+              <figcaption><span class="ll-fig-tag">Directions</span><span>Two ways to offer the next step. A adds one compare button. B offers specific follow-up questions and keeps the card clean, so I chose B. Both were design explorations, not user-tested.</span></figcaption>
             </figure>
             <section class="ll-anatomy-study" id="anatomy-recommend" aria-labelledby="anatomy-recommend-title">
               <div class="ll-anatomy-heading"><h3 id="anatomy-recommend-title">5.3 · One card, read top to bottom</h3><p>Maya · L-500</p></div>
@@ -364,15 +365,24 @@
           <section id="build" class="ll-chapter" data-chapter="Prototyping" tabindex="-1" aria-labelledby="build-title">
             <div class="ll-head ll-reveal"><p class="ll-kicker"><span>06</span> Prototyping</p><h2 id="build-title">Turning design rules into<br>checks for a working build.</h2></div>
             <div class="ll-text ll-reveal"><p>I wrote the interaction design as briefs for coding agents, then checked the working prototype against them with screenshots and recorded walkthroughs on desktop and mobile.</p><p><strong>One check, start to finish.</strong> The rule: the panel keeps its size as visitors move between pages. What the build did: going from Home to ADU models, the empty panel shrank from 744 px to 374 px. How I caught it: walking the flow, then checking the height calculation. What changed: the open panel now keeps its height across page changes.</p></div>
-            <div class="ll-build-intro">
-              <div><h3>A new conversation is still on the same page.</h3><p>I explicitly separated conversation state from page context. Starting over clears the visitor’s previous messages and needs, but the assistant should still recognize the model currently on screen.</p><div class="ll-state-principle"><span>Conversation starts fresh</span><span>Current page stays in context</span></div></div>
-              <div><h3>Hiding the window should preserve the work.</h3><p>I specified that minimize only changes visibility. Reopening restores the thread, while comparison gets enough width to keep its content readable. These became concrete checks for the working build.</p><div class="ll-state-principle"><span>Minimize preserves the thread</span><span>Comparison gets more space</span></div></div>
+            <div class="ll-state-strip">
+              <h3>6.1 · Start fresh, stay on the page.</h3>
+              <div class="ll-steps3">
+                <div><img src="images/LIVELARGE/ll-newchat-step1.webp" width="640" height="757" loading="lazy" decoding="async" alt="A conversation in progress on the ADU models page."><p><b>1</b> A conversation in progress</p></div>
+                <div><img src="images/LIVELARGE/ll-newchat-step2.webp" width="640" height="757" loading="lazy" decoding="async" alt="Chat options menu with Start new conversation."><p><b>2</b> Chat options → Start new conversation</p></div>
+                <div><img src="images/LIVELARGE/ll-newchat-step3.webp" width="640" height="757" loading="lazy" decoding="async" alt="A fresh chat on the same page, labeled Exploring ADU models."><p><b>3</b> Messages clear; the page stays in context</p></div>
+              </div>
+              <p>The first greeting introduces the assistant, so a new chat skips it and goes straight to the task: “Let’s find your ADU.”</p>
             </div>
-            <div class="ll-build-example" data-loops>
-              <figure><div class="ll-build-film"><video class="ll-loop-video" muted playsinline loop preload="none" width="1600" height="900" poster="images/LIVELARGE/ll-newchat-scene-r4.webp" aria-label="Recorded prototype: starting a new conversation retains the ADU page context."><source data-src="images/LIVELARGE/ll-newchat-scene-r4.mp4" type="video/mp4"></video></div><figcaption><strong>6.1 · Start fresh, stay in context.</strong>The visitor starts a new conversation from Chat options. Earlier messages clear; the page stays in context. The first greeting introduces the assistant, so a new chat skips the introduction and goes straight to the task: “Let’s find your ADU.”</figcaption></figure>
-              <figure><div class="ll-build-film"><video class="ll-loop-video" muted playsinline loop preload="none" width="1600" height="900" poster="images/LIVELARGE/ll-minimize-scene-r4.webp" aria-label="Recorded prototype: minimize the assistant and reopen the same conversation within the ADU page."><source data-src="images/LIVELARGE/ll-minimize-scene-r4.mp4" type="video/mp4"></video></div><figcaption><strong>6.2 · Return to the same thread.</strong>The visitor can keep browsing with the assistant minimized, then reopen it with the previous messages intact.</figcaption></figure>
+            <div class="ll-state-strip">
+              <h3>6.2 · Hide the window, keep the work.</h3>
+              <div class="ll-steps3">
+                <div><img src="images/LIVELARGE/ll-minimize-step1.webp" width="640" height="757" loading="lazy" decoding="async" alt="The chat open with a conversation."><p><b>1</b> Chat open</p></div>
+                <div><img src="images/LIVELARGE/ll-minimize-step2.webp" width="640" height="757" loading="lazy" decoding="async" alt="The chat minimized to a small bar while the visitor scrolls the page."><p><b>2</b> Minimized while browsing</p></div>
+                <div><img src="images/LIVELARGE/ll-minimize-step3.webp" width="640" height="757" loading="lazy" decoding="async" alt="The chat reopened with every earlier message in place."><p><b>3</b> Reopened with every message</p></div>
+              </div>
             </div>
-          </section>
+                      </section>
         </div>
       </div>
     </div>
@@ -388,7 +398,7 @@
           <span>September 2026 · Design approved</span>
           <div>
             <p>VortexNet is building the staging version.</p>
-            <p class="ll-outcome-detail">I delivered the conversation flows, the assistant’s UI and motion, recommendation and comparison components, and an interactive prototype with behavior checks. After launch, we’ll measure lot reviews requested from the chat, how often conversations reach a comparison, and where visitors leave before a lot review.</p>
+            <p class="ll-outcome-detail">I delivered the conversation flows, the assistant’s UI and motion, recommendation and comparison components, and an interactive prototype with behavior checks. What I’d measure after launch: lot reviews requested from the chat, how often conversations reach a comparison, and where visitors leave before a lot review.</p>
           </div>
         </div>
         <section class="ll-rebuild" aria-labelledby="rebuild-title">

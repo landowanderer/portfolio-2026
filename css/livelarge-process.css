@@ -63,3 +63,52 @@
 }
 
 .ll-page .ll-text p + p { margin-top: 16px; }
+
+/* Round 2: clearer process figures */
+.ll-page .ll-flow-full { display: block; padding: clamp(12px, 2vw, 24px); background: #eaeaea; border-radius: var(--ll-radius, 16px); }
+.ll-page .ll-flow-full img { display: block; width: 100%; height: auto; }
+.ll-page .ll-flow-figure figcaption b { display: inline-grid; place-items: center; width: 18px; height: 18px; margin: 0 4px 0 2px; border-radius: 50%; background: #2563eb; color: #fff; font: 600 11px/1 Geist, Arial, sans-serif; vertical-align: 1px; }
+.ll-page .ll-flow-figure figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+
+.ll-page .ll-steps3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  padding: clamp(16px, 3vw, 32px);
+  background: #f4f4f4;
+  border-radius: var(--ll-radius, 16px);
+}
+.ll-page .ll-steps3 > div { min-width: 0; }
+.ll-page .ll-steps3 img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px #0000000f; }
+.ll-page .ll-steps3 p { margin: 12px 0 0; font: 400 14px/1.45 Geist, Arial, sans-serif; color: #3f3f3f; }
+.ll-page .ll-steps3 p b { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 6px; border-radius: 50%; background: #151515; color: #fff; font: 500 11px/1 Geist, Arial, sans-serif; vertical-align: 1px; }
+.ll-page .ll-steps3.is-wire { background: #ececec; }
+
+.ll-page .ll-ab {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 360px));
+  justify-content: center;
+  align-items: start;
+  gap: clamp(24px, 6vw, 96px);
+  padding: clamp(24px, 4vw, 56px);
+  background: #f3f2ee;
+  border-radius: var(--ll-radius, 16px);
+}
+.ll-page .ll-ab > div { min-width: 0; }
+.ll-page .ll-ab p { margin: 0 0 14px; font: 500 15px/1.3 Geist, Arial, sans-serif; color: #151515; }
+.ll-page .ll-ab p span { margin-left: 8px; padding: 3px 8px; border-radius: 999px; background: #2563eb; color: #fff; font-size: 12px; font-weight: 500; }
+.ll-page .ll-ab img { display: block; width: 100%; height: auto; }
+.ll-page .ll-ab.is-greet { grid-template-columns: repeat(2, minmax(0, 300px)); }
+.ll-page .ll-ab.is-greet img { border-radius: 14px; box-shadow: 0 12px 30px #0000000d; }
+
+.ll-page .ll-state-strip { margin-top: 48px; }
+.ll-page .ll-state-strip h3 { font-size: 21px; margin: 0 0 16px; }
+.ll-page .ll-state-strip > p { margin: 16px 0 0; max-width: 660px; font-size: 16px; line-height: 1.7; color: #625d54; }
+
+@media (max-width: 767px) {
+  .ll-page .ll-steps3 { grid-template-columns: 1fr; }
+  .ll-page .ll-steps3.is-wire { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 12px; }
+  .ll-page .ll-steps3.is-wire p { font-size: 12px; }
+  .ll-page .ll-ab, .ll-page .ll-ab.is-greet { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px; }
+  .ll-page .ll-ab p { font-size: 13px; }
+}
