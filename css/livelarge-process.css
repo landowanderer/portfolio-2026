@@ -112,3 +112,9 @@
   .ll-page .ll-ab, .ll-page .ll-ab.is-greet { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px; }
   .ll-page .ll-ab p { font-size: 13px; }
 }
+
+/* Before/after diagram: the needs line runs the full width */
+.ll-page .ll-change-carry .ll-carry-k { flex: none; }
+.ll-page .ll-carry-line { position: relative; flex: 1; height: 1px; margin-right: 6px; background: #8a8a8a; }
+.ll-page .ll-carry-line::after { content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 1px solid #8a8a8a; border-right: 1px solid #8a8a8a; transform: rotate(45deg); }
+@media (max-width: 767px) { .ll-page .ll-change-carry .ll-carry-k { display: inline; font-size: 12px; } }
