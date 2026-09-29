@@ -150,3 +150,31 @@
   .ll-clarify-step{transition:none}
   .ll-knows-list [data-state="asking"] dd::before,.ll-knows-list .is-new dd{animation:none}
 }
+
+/* 01 Reframe, reordered: insight → Before/After → the existing site in three moments → three constraints.
+   The audit is three groups instead of a five-card rail, so it reads in one glance. The first group stacks its three
+   pages (home, models, a model page) to show browsing across separate pages; every capture carries a small label so
+   a skimming reader knows it is LiveLarge's site before the assistant, not the design. */
+.ll-audit-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:28px}
+.ll-audit-group{margin:0}
+.ll-audit-media{--p:clamp(12px,1.6vw,18px);position:relative;container-type:inline-size;padding:var(--p);border-radius:var(--ll-radius);background:var(--ll-panel)}
+.ll-audit-media img{display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 0 0 1px rgba(0,0,0,.06);pointer-events:none}
+.ll-audit-media.is-stack::after{content:"";display:block;aspect-ratio:1440/900}
+.ll-audit-media.is-stack img{position:absolute;width:70cqw;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.12)}
+.ll-audit-media.is-stack img:nth-of-type(1){left:var(--p);top:var(--p)}
+.ll-audit-media.is-stack img:nth-of-type(2){left:calc(var(--p) + 15cqw);top:calc(var(--p) + 9.375cqw)}
+.ll-audit-media.is-stack img:nth-of-type(3){left:calc(var(--p) + 30cqw);top:calc(var(--p) + 18.75cqw)}
+.ll-before-tag{position:absolute;z-index:2;bottom:calc(var(--p) + 6px);left:calc(var(--p) + 6px);padding:3px 6px;border-radius:999px;background:rgba(255,255,255,.82);box-shadow:0 0 0 1px rgba(0,0,0,.06);font:500 9.5px/1.1 LLBarlow,Arial,sans-serif;letter-spacing:.01em;color:#4a4a4a;white-space:nowrap}
+.ll-page .ll-audit-group figcaption.ll-audit-copy{display:block;margin-top:16px;max-width:none}
+.ll-page .ll-audit-group .ll-audit-copy .ll-fig-tag{display:block;margin-bottom:8px}
+.ll-page .ll-audit-group .ll-audit-copy h3{font-size:19px;line-height:1.3;margin-bottom:8px}
+.ll-page .ll-audit-group .ll-audit-copy p{font-size:15px!important;line-height:1.6}
+
+.ll-constraints{margin-top:56px;padding-top:28px;border-top:1px solid #ddd}
+.ll-constraints h3{font-size:24px;line-height:1.3;margin-bottom:20px}
+.ll-constraints ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0;padding:0;list-style:none;counter-reset:constraint}
+.ll-constraints li{counter-increment:constraint}
+.ll-constraints li::before{content:counter(constraint,decimal-leading-zero);display:block;margin-bottom:10px;font-size:13px;color:#8a857d;font-variant-numeric:tabular-nums}
+.ll-constraints strong{display:block;font-size:17px;line-height:1.35;font-weight:500;color:#151515;margin-bottom:6px}
+.ll-constraints span{display:block;font-size:15px;line-height:1.6;color:#555}
+@media(max-width:900px){.ll-audit-groups,.ll-constraints ol{grid-template-columns:1fr;gap:28px}.ll-audit-groups{max-width:560px}}

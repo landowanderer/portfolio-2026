@@ -90,14 +90,18 @@
 
   // A cover with a recording (ZNTR) plays it while in view and pauses out of view.
   // The still remains underneath until playback starts; reduced motion keeps the still.
-  const covers=[...document.querySelectorAll('[data-cover-video]')].map(cover=>({cover,slot:cover.querySelector('.cover-panel')||cover,video:null,inView:false}));
+  // A cover marked data-cover-once (LiveLarge) plays once when 40% of it is in view and holds its last frame;
+  // once it has left the view completely it rewinds, so it plays again on the next visit.
+  const covers=[...document.querySelectorAll('[data-cover-video]')].map(cover=>({cover,slot:cover.querySelector('.cover-panel')||cover,video:null,inView:false,ratio:0,once:'coverOnce' in cover.dataset}));
   function syncCovers(){covers.forEach(c=>{
-    const run=c.inView&&!document.hidden&&!reduced.matches;
+    const run=(c.once?c.ratio>=.4:c.inView)&&!document.hidden&&!reduced.matches;
     if(reduced.matches&&c.video){c.video.remove();c.video=null;c.slot.classList.remove('is-moving');return}
-    if(run&&!c.video){const v=document.createElement('video');v.className='cover-motion';v.muted=true;v.loop=true;v.playsInline=true;v.preload='auto';v.tabIndex=-1;v.setAttribute('aria-hidden','true');v.src=c.cover.dataset.coverVideo;v.addEventListener('playing',()=>c.slot.classList.add('is-moving'));c.slot.append(v);c.video=v}
-    if(c.video){if(run)c.video.play().catch(()=>{});else c.video.pause()}
+    if(run&&!c.video){const v=document.createElement('video');v.className='cover-motion';v.muted=true;v.loop=!c.once;v.playsInline=true;v.preload='auto';v.tabIndex=-1;v.setAttribute('aria-hidden','true');v.src=c.cover.dataset.coverVideo;v.addEventListener('playing',()=>c.slot.classList.add('is-moving'));c.slot.append(v);c.video=v}
+    if(!c.video)return;
+    if(c.once&&!c.inView&&c.video.currentTime>0){c.video.pause();c.video.currentTime=0}
+    if(run&&!(c.once&&c.video.ended))c.video.play().catch(()=>{});else if(!run)c.video.pause()
   })}
-  const coverObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{covers.find(c=>c.cover===e.target).inView=e.isIntersecting});syncCovers()},{threshold:.2});
+  const coverObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{const c=covers.find(c=>c.cover===e.target);c.inView=e.isIntersecting;c.ratio=e.isIntersecting?e.intersectionRatio:0});syncCovers()},{threshold:[0,.2,.4]});
   covers.forEach(c=>coverObserver.observe(c.cover));document.addEventListener('visibilitychange',syncCovers);reduced.addEventListener('change',syncCovers);
 
   // The header marks the part of the page being read.
