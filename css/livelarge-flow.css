@@ -1,59 +1,34 @@
-/* LiveLarge: user-flow camera tour and research rules.
-   Motion curves: M3 emphasized decelerate / accelerate for captions (see js/livelarge-flow.js). */
+/* LiveLarge: user-flow cuts and research rules. Timing and references live in js/livelarge-flow.js. */
 
 /* ---------- user flow ---------- */
 .ll-flow-tour { margin-top: 56px; }
 .ll-flow-heading { max-width: 650px; margin-bottom: 28px; }
 .ll-flow-heading h3 { margin: 10px 0 0; font-size: 26px; }
 
-.ll-flow-stage { position: relative; overflow: hidden; border-radius: var(--ll-radius); background: #edebe7; }
-.ll-flow-world { position: relative; container-type: inline-size; width: 100%; }
-.ll-flow-world img { display: block; width: 100%; max-width: none; height: auto; user-select: none; -webkit-user-drag: none; }
-.ll-flow-pin {
-  position: absolute; left: 67.95%; top: 78.45%; width: 2.62%; aspect-ratio: 1;
-  translate: -50% -50%; display: grid; place-items: center; border-radius: 50%;
-  background: #2563eb; color: #fff; font: 600 1.6cqw/1 Geist, Arial, sans-serif;
+/* Default (no JS, reduced motion): the three frames as a list. */
+.ll-flow-shots { display: grid; gap: 40px; margin: 0; padding: 0; list-style: none; }
+.ll-flow-shot img {
+  display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--ll-radius); background: #edebe7; user-select: none; -webkit-user-drag: none;
 }
-
-/* Live mode: the stage is a fixed frame and the diagram is the camera's world. */
-.ll-js .ll-flow-tour:not(.is-static) .ll-flow-stage { aspect-ratio: 4 / 3; }
-.ll-js .ll-flow-tour:not(.is-static) .ll-flow-world { position: absolute; left: 0; top: 0; width: 3931px; height: 4469px; transform-origin: 0 0; }
-
-.ll-flow-bar { display: none; }
-.ll-js .ll-flow-tour:not(.is-static) .ll-flow-bar {
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
-  min-height: 60px; margin-top: 20px;
-}
-.ll-flow-caption {
-  display: flex; align-items: flex-start; gap: 12px; max-width: 640px; margin: 0;
-  font-size: 16px; line-height: 1.5; color: #111;
-  transition: opacity 400ms cubic-bezier(.05, .7, .1, 1), transform 400ms cubic-bezier(.05, .7, .1, 1);
-}
-.ll-flow-caption.is-out {
-  opacity: 0; transform: translateY(-4px);
-  transition-duration: 200ms; transition-timing-function: cubic-bezier(.3, 0, .8, .15);
-}
-.ll-flow-caption.is-pre { opacity: 0; transform: translateY(8px); transition: none; }
+.ll-flow-shot p { display: flex; align-items: flex-start; gap: 12px; max-width: 640px; margin: 20px 0 0; font-size: 16px; line-height: 1.5; color: #111; }
 .ll-flow-num {
   flex: none; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%;
-  background: #2563eb; color: #fff; font: 600 12px/22px Geist, Arial, sans-serif; text-align: center;
+  background: #2463eb; color: #fff; font: 600 12px/22px Geist, Arial, sans-serif; text-align: center;
 }
-.ll-flow-num:empty { display: none; }
-.ll-flow-progress { display: flex; gap: 6px; padding-top: 11px; }
-.ll-flow-progress i { width: 28px; height: 2px; background: #d8d5cf; transition: background-color 300ms cubic-bezier(.2, 0, 0, 1); }
-.ll-flow-progress i.is-on { background: #111; }
+.ll-flow-progress { display: none; }
 
-/* The same three lines, for screen readers, reduced motion and no-JS. */
-.ll-flow-notes { margin: 20px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.ll-flow-notes li { font-size: 15px; line-height: 1.6; color: #555; }
-.ll-flow-notes li[data-n="0"] { grid-column: 1 / -1; color: #111; }
-.ll-flow-notes li:not([data-n="0"])::before {
-  content: attr(data-n); display: grid; place-items: center; width: 22px; height: 22px; margin-bottom: 10px;
-  border-radius: 50%; background: #2563eb; color: #fff; font: 600 12px/1 Geist, Arial, sans-serif;
+/* Live: one frame at a time, straight cuts (no transitions on purpose). */
+.ll-flow-tour.is-live .ll-flow-progress { display: flex; gap: 6px; margin-bottom: 14px; }
+.ll-flow-progress i { position: relative; flex: 1; height: 2px; overflow: hidden; background: #dcd9d3; }
+.ll-flow-progress i::after {
+  content: ""; position: absolute; inset: 0; background: #111;
+  transform: scaleX(var(--p, 0)); transform-origin: 0 50%;
 }
-.ll-js .ll-flow-tour:not(.is-static) .ll-flow-notes {
-  position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
-}
+.ll-flow-tour.is-live .ll-flow-shots { gap: 0; }
+.ll-flow-tour.is-live .ll-flow-shot { grid-area: 1 / 1; }
+.ll-flow-tour.is-live .ll-flow-shot:not(.is-on) { visibility: hidden; }
+.ll-flow-tour.is-live .ll-flow-shot.is-quiet p { opacity: 0; }
 
 /* ---------- research ---------- */
 .ll-research { margin-top: 56px; padding-top: 28px; border-top: 1px solid #ddd; }
@@ -73,13 +48,11 @@
 .ll-research-rules em { display: block; margin-bottom: 10px; font-size: 13px; font-style: normal; color: #8a857d; font-variant-numeric: tabular-nums; }
 
 @media (max-width: 900px) {
-  .ll-research-rules, .ll-flow-notes { grid-template-columns: 1fr; gap: 28px; }
+  .ll-research-rules { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (max-width: 767px) {
   .ll-flow-tour { margin-top: 40px; }
-  .ll-js .ll-flow-tour:not(.is-static) .ll-flow-stage { aspect-ratio: 1 / 1; }
+  /* Phones: a taller frame on each shot's key nodes; the caption carries the meaning. */
+  .ll-flow-tour.is-live .ll-flow-shot img { aspect-ratio: 1 / 1; object-position: var(--focus, 50% 50%); }
   .ll-research-shots { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ll-flow-caption, .ll-flow-progress i { transition: none; }
 }
