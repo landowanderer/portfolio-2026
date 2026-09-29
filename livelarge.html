@@ -29,7 +29,7 @@
   <script>document.documentElement.classList.add('ll-js');</script>
   <script src="js/livelarge.js?v=media-refresh-2" defer></script>
 <link rel="stylesheet" href="css/portfolio-case-system.css">
-<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=8"><script src="js/livelarge-revision.js?v=7" defer></script></head>
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-revision.css?v=8"><link rel="stylesheet" href="css/livelarge-flow.css?v=1"><script src="js/livelarge-revision.js?v=7" defer></script><script src="js/livelarge-flow.js?v=1" defer></script></head>
 <body class="ll-page pf-selected-case"><header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
   <a class="ll-skip" href="#overview">Skip to case study</a>
 
@@ -47,7 +47,7 @@
         <div class="ll-hero-grid pf-case-grid">
           <h1 class="pf-case-title">An AI assistant for finding the right ADU.</h1>
           <div class="ll-hero-side pf-case-copy">
-            <p>Choosing an accessory dwelling unit (ADU) means comparing layouts, understanding costs and checking what a property can accommodate.</p><p>I designed the conversational UX and visual system for an assistant on LiveLarge’s website. It helps visitors explain their needs, compare suitable models and move toward a lot review, while keeping their preferences in context as they browse.</p>
+            <p>LiveLarge’s site had the answers, but on separate pages. Visitors had to carry their own needs from page to page.</p><p>I designed an assistant that keeps those needs in context as people browse, compares models against them, and hands property questions to LiveLarge’s lot review: conversation flows, interface, motion and a working prototype.</p><p>The design is approved, and VortexNet is building the staging version.</p>
             <dl class="ll-facts">
               <div><dt>Client</dt><dd>LiveLarge</dd></div>
               <div><dt>Partner</dt><dd>VortexNet</dd></div>
@@ -159,6 +159,26 @@
                 <li><strong>Hand property-specific questions to the team.</strong><span>Lot fit and complete pricing still need LiveLarge’s review.</span></li>
               </ol>
             </div>
+
+            <div class="ll-research ll-reveal">
+              <h3>What two shipping assistants taught me.</h3>
+              <p class="ll-research-lead">Before designing, I tested two assistants that already live inside a product: Homes.com’s AI search and Amazon’s Alexa for Shopping. Both kept context well. Where they fell short, I set a rule for LiveLarge.</p>
+              <div class="ll-research-shots">
+                <figure>
+                  <img src="images/LIVELARGE/ll-fig-homes-filters.webp" width="499" height="378" loading="lazy" decoding="async" alt="Homes.com: a natural-language rental request turned into visible, editable filters.">
+                  <figcaption><b>Homes.com</b>Turns a request into filters people can see and edit.</figcaption>
+                </figure>
+                <figure>
+                  <img src="images/LIVELARGE/ll-fig-alexa-clarify.webp" width="393" height="312" loading="lazy" decoding="async" alt="Alexa for Shopping: a vague request answered with four short questions about use, features and budget.">
+                  <figcaption><b>Alexa for Shopping</b>Asks a few short questions before it recommends.</figcaption>
+                </figure>
+              </div>
+              <ol class="ll-research-rules">
+                <li><em>Used in 3.5</em><strong>Keep the price and its limits together.</strong><span>Homes.com mixed base rent and fees. LiveLarge puts “excludes installation” next to every price.</span></li>
+                <li><em>Used in 3.6</em><strong>Don’t stretch the stated need.</strong><span>Homes.com read “one-bedroom” as “1+ Bed”. LiveLarge labels anything outside the need as an alternative.</span></li>
+                <li><em>Used in 4.2</em><strong>Open the next step, send nothing.</strong><span>Homes.com opened the agent form without submitting it. LiveLarge opens the lot review beside the chat.</span></li>
+              </ol>
+            </div>
           </section>
 
           <!-- ===== 02 CONTEXT: one recording + four readable keyframes (demo flow 4) ===== -->
@@ -234,9 +254,24 @@
                 <li class="ll-clarify-step" data-seg="15.4,15.4"><span class="ll-evidence-number">3.5</span><h3>Make the limit part of the recommendation.</h3><p>The starting price excludes installation, and property fit still needs review. I placed that qualification beside the lot-review action so the next step follows the unanswered question.</p><div class="ll-chatclip is-inline is-limit" data-track='[[0,348],[2.267,348],[3.468,348],[5.868,348],[7.068,348],[9.435,388],[9.451,442],[9.468,487],[9.499,518],[9.516,542],[9.532,560],[9.547,572],[9.563,581],[9.579,587],[9.595,591],[9.612,594],[9.707,598],[11.243,598]]'><div class="ll-chatclip-window"><video muted playsinline preload="none" width="1196" height="1484" poster="images/LIVELARGE/ll-clarify-r6.webp" aria-hidden="true" tabindex="-1"><source data-src="images/LIVELARGE/ll-clarify-r6.mp4" type="video/mp4"></video><span class="ll-chatclip-focus" aria-hidden="true"></span></div></div><p class="ll-knows-line"><b>Still open</b> Installation cost, property fit</p></li>
               </ol>
             </div>
-            <p class="ll-full-flow"><button type="button" class="ll-full-flow-btn" data-full-flow="images/LIVELARGE/ll-jordan-r5.mp4" data-poster="images/LIVELARGE/ll-jordan-r5.webp" data-ratio="1.6"><span>Watch the full flow</span><span class="ll-full-flow-time">26 s</span></button></p>
+            <figure class="ll-figure ll-flow-tour ll-reveal" data-flow-tour>
+              <div class="ll-flow-heading"><span class="ll-fig-tag">User flow</span><h3>I mapped the logic before any UI.</h3></div>
+              <div class="ll-flow-stage" role="img" aria-label="The assistant’s full user flow, from opening the chat to a follow-up request. Three stops are described below.">
+                <div class="ll-flow-world"><img src="images/LIVELARGE/ll-flow-full.webp" width="3931" height="4469" loading="lazy" decoding="async" draggable="false" alt=""><span class="ll-flow-pin" aria-hidden="true">3</span></div>
+              </div>
+              <div class="ll-flow-bar" aria-hidden="true">
+                <p class="ll-flow-caption"><span class="ll-flow-num"></span><span class="ll-flow-text"></span></p>
+                <div class="ll-flow-progress"><i></i><i></i><i></i></div>
+              </div>
+              <ol class="ll-flow-notes">
+                <li data-n="0">From opening the chat to a follow-up request.</li>
+                <li data-n="1">Missing context: answer what’s known, ask only for the rest.</li>
+                <li data-n="2">Weak evidence: say what’s known, what isn’t, and who can check.</li>
+                <li data-n="3">Property questions go to LiveLarge’s team through its existing form.</li>
+              </ol>
+            </figure>
             <figure class="ll-figure ll-evolution ll-reveal">
-              <div class="ll-evolution-heading"><span class="ll-fig-tag">3.6 · A decision I revised</span><h3>A candidate to explore, with room for uncertainty.</h3><p>My tone research shaped this revision: reassurance needed to come from useful guidance and clear limits. I softened “matches” because bedroom count alone cannot confirm property fit or the complete budget. I also removed the separate Edit needs control so visitors could revise their needs by replying.</p></div>
+              <div class="ll-evolution-heading"><span class="ll-fig-tag">3.6 · A decision I revised</span><h3>A candidate to explore, with room for uncertainty.</h3><p>The research rule “don’t stretch the stated need” shaped this revision: reassurance needed to come from useful guidance and clear limits. I softened “matches” because bedroom count alone cannot confirm property fit or the complete budget. I also removed the separate Edit needs control so visitors could revise their needs by replying.</p></div>
               <div class="ll-evolution-pair">
                 <div class="ll-evolution-panel"><p>Earlier · 14 September</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="92 224 660 500" role="img" aria-label="Earlier wording" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-earlier"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-earlier" maskUnits="userSpaceOnUse" x="92" y="224" width="660" height="500" style="mask-type:luminance"><rect x="92" y="224" width="660" height="500" fill="white"/><g filter="url(#soft-earlier)"><rect x="102" y="469" width="633" height="80" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-before-844.webp" width="844" height="1632"/><rect x="92" y="224" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-earlier)"/><line class="ll-evo-strike" x1="184" y1="492" x2="637" y2="492"/><line class="ll-evo-strike" x1="564" y1="397" x2="720" y2="397"/><g class="ll-evo-pin"><circle cx="637" cy="462" r="13"/><text x="637" y="462">1</text></g><g class="ll-evo-pin"><circle cx="737" cy="397" r="13"/><text x="737" y="397">3</text></g></svg></div></div>
                 <div class="ll-evolution-panel is-after"><p>Revised · Working prototype</p><div class="ll-evidence-media"><svg class="ll-source-evidence" viewBox="60 320 660 500" role="img" aria-label="Revised recommendation with property and budget limits" xmlns="http://www.w3.org/2000/svg"><defs><filter id="soft-revised"><feGaussianBlur stdDeviation="2"/></filter><mask id="focus-revised" maskUnits="userSpaceOnUse" x="60" y="320" width="660" height="500" style="mask-type:luminance"><rect x="60" y="320" width="660" height="500" fill="white"/><g filter="url(#soft-revised)"><rect x="72" y="432" width="621" height="115" rx="4" fill="black"/><rect x="71" y="604" width="634" height="117" rx="4" fill="black"/></g></mask></defs><image href="images/LIVELARGE/ll-fig-rec-after-780.webp" width="780" height="1568"/><rect x="60" y="320" width="660" height="500" fill="white" opacity="0.12" mask="url(#focus-revised)"/><rect class="ll-evo-mark" x="174" y="451" width="406" height="15" fill="#b6dafa"/><rect class="ll-evo-mark" x="172" y="663" width="520" height="15" fill="#ead8ba"/><rect class="ll-evo-mark" x="78" y="700" width="72" height="14" fill="#ead8ba"/><g class="ll-evo-pin"><circle cx="592" cy="428" r="13"/><text x="592" y="428">1</text></g><g class="ll-evo-pin"><circle cx="170" cy="706" r="13"/><text x="170" y="706">2</text></g></svg></div></div>
@@ -340,7 +375,7 @@
         </div>
         <div class="ll-commercial-outcome ll-reveal">
           <span>LiveLarge × VortexNet · Design approved</span>
-          <p>The design received PM approval this sprint, and the team is now building the staging version.</p>
+          <p>The design received PM approval in September 2026, and the team is now building the staging version.</p>
         </div>
         <section class="ll-rebuild" aria-labelledby="rebuild-title">
           <div class="ll-extension-intro">
