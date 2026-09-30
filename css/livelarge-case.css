@@ -1,0 +1,471 @@
+/* LiveLarge case study: loads after the shared portfolio styles; the type and colour system lives here. */
+
+/* ===== from livelarge-revision.css ===== */
+/* LiveLarge case study — revision pass.
+   Refines three existing figures in the page's own palette; no new accent colours.
+   AI light (from 5.1 / 5.2): #b6dafa blue · #faf8f5 cream · #ead8ba sand. */
+
+/* ---------- 1. From separate pages to one connected conversation ---------- */
+/* Before: the same needs, dropped and re-entered at every step. */
+/* each need sits inside its own step, so it stays with the step when the steps stack on phones */
+.ll-page .ll-change-before .ll-need-cell{grid-column:1/-1;grid-row:3;display:block;margin-top:18px;font-style:normal}
+@media(min-width:768px){
+  /* every cell is the same height (the note hangs below), so the step arrowheads can be lifted by a fixed amount */
+  .ll-page .ll-change-before .ll-need-cell{position:relative;height:28px}
+  .ll-page .ll-change-before .ll-need-note{position:absolute;left:0;top:100%}
+  .ll-page .ll-change-before .ll-change-steps{padding-bottom:22px}
+  .ll-page .ll-change-before .ll-change-steps li:not(:last-child)::before{bottom:64px}
+}
+.ll-need{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:#fff;border:1px dashed #e5e5e5;color:#6e6e73;font:400 var(--t-label)/1 Geist, Arial, sans-serif;white-space:nowrap}
+.ll-need.is-lost{color:#86868b;border-color:#e5e5e5}
+.ll-need s{text-decoration-color:#9c9c98;text-decoration-thickness:1px}
+.ll-need-note{display:block;margin:7px 0 0 13px;font:400 var(--t-label)/1.3 Geist, Arial, sans-serif;color:#6e6e73}
+/* After: one band carries the same needs across all four steps, drawn with the 5.2 edge light. */
+.ll-change-carry{margin-top:22px;padding:1.5px;border-radius:999px;background:linear-gradient(105deg,#b6dafa,#faf8f5 42%,#ead8ba 82%,#b6dafa)}
+.ll-change-carry>div{display:flex;align-items:center;gap:12px;height:38px;padding:0 16px;border-radius:999px;background:#edebe7;font:400 var(--t-callout)/1 Geist, Arial, sans-serif;color:#1d1d1f}
+.ll-carry-k{color:#6e6e73;font-size:var(--t-label)}
+.ll-carry-end{margin-left:auto;color:#6e6e73}
+.ll-js .ll-journey-change .ll-change-carry{clip-path:inset(0 100% 0 0 round 999px);transition:clip-path 1.6s cubic-bezier(.4,0,.2,1) .3s}
+.ll-js .ll-journey-change.is-playing .ll-change-carry{clip-path:inset(0 0 0 0 round 999px)}
+.ll-js .ll-journey-change .ll-need.is-lost{transition:color .6s,border-color .6s}
+.ll-js .ll-journey-change:not(.is-playing) .ll-need.is-lost{color:#6e6e73;border-color:#e5e5e5}
+.ll-js .ll-journey-change .ll-change-steps li:nth-child(2) .ll-need{transition-delay:.5s}
+.ll-js .ll-journey-change .ll-change-steps li:nth-child(3) .ll-need{transition-delay:1s}
+.ll-js .ll-journey-change .ll-change-steps li:nth-child(4) .ll-need{transition-delay:1.5s}
+@media(max-width:767px){
+  .ll-page .ll-change-before .ll-need-cell{display:flex;align-items:center;gap:10px;margin:8px 0 0}
+  .ll-page .ll-change-before .ll-need-note{margin:0}
+}
+
+/* ---------- 2. 3.6 · A decision I revised ---------- */
+/* Marks sit on the real screenshots: a quiet grey strike for removed wording,
+   blue and sand highlighter (the AI light colours) for what replaced it, numbered to the notes below. */
+.ll-evo-strike{stroke:#74736f;stroke-width:2.5;stroke-linecap:round}
+.ll-evo-mark{mix-blend-mode:multiply}
+.ll-evo-pin circle{fill:#151515}
+.ll-evo-pin text{fill:#fff;font:500 var(--t-callout) Geist,Arial,sans-serif;text-anchor:middle;dominant-baseline:central}
+.ll-evo-notes{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.ll-evo-notes li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
+.ll-evo-notes li>span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#111;color:#fff;font:500 var(--t-label)/1 Geist,Arial,sans-serif;margin-top:1px}
+.ll-evo-notes b{display:block;font-weight:500;font-size:var(--t-callout);color:#1d1d1f;margin-bottom:4px}
+.ll-evo-notes p{margin:0;font-size:var(--t-callout);line-height:1.55;color:#424245}
+@media(max-width:767px){.ll-evo-notes{grid-template-columns:1fr;gap:16px}}
+
+/* ---------- 3. 5.1 · the greeting, with and without light ---------- */
+/* One greeting in the page's light evidence panel; the dividing line sweeps across by itself, rests on each side,
+   and is hidden while resting. No labels: the caption and the sweep carry the comparison. */
+.ll-page .ll-effects-pair.ll-effects-wipe{display:block;max-width:none;margin:24px 0 0;padding:clamp(24px,5vw,56px);background:#edebe7;border-radius:16px}
+.ll-page .ll-effects-wipe>.ll-wipe-frame{display:block;width:min(100%,440px);margin:auto}
+.ll-wipe-frame{--cut:50%}
+/* ll-effects-*-r2 are 700px wide with a ~5px baked border: crop 6px inside it so the corners stay clean */
+.ll-page .ll-effects-wipe .ll-wipe-frame img{position:absolute;top:-.872%;left:-.872%;width:101.744%;max-width:none;height:auto;border:0;border-radius:0;box-shadow:none}
+.ll-page .ll-effects-wipe .ll-wipe-frame img.is-fx{clip-path:inset(0 0 0 var(--cut))}
+.ll-wipe-line{position:absolute;top:0;bottom:0;left:var(--cut);width:1px;margin-left:-.5px;background:#ffffffd9;box-shadow:0 0 10px #b6dafa;pointer-events:none;transition:opacity .3s}
+.ll-effects-wipe:not([data-moving="1"]) .ll-wipe-line{opacity:0}
+
+/* ---------- 4. Recorded prototype clips (shared) ---------- */
+/* Clips are captured at 2x from the working prototype's own scripted flows. Chat-only clips are cropped to the
+   window at its widest (598 x 742 CSS px, 1px inside the 12px-radius edge); the window here follows the recorded
+   width frame by frame (JS sets --w from the capture log), so it widens exactly when the product does.
+   --s scales the recording to its slot. */
+.ll-chatclip{--s:.86;--w:348;display:flex;justify-content:center}
+.ll-chatclip-window{position:relative;flex:none;width:calc(var(--w) * var(--s) * 1px);height:calc(742 * var(--s) * 1px);border-radius:calc(11px * var(--s));overflow:hidden;background:#edebe7;transform:translateZ(0)}
+.ll-page .ll-chatclip video{position:absolute;left:0;top:0;display:block;width:calc(598 * var(--s) * 1px);height:calc(742 * var(--s) * 1px);max-width:none;border-radius:0;box-shadow:none}
+
+/* ---------- 5. 03 · Clarify and recommend: pinned stage, scrolling decisions ---------- */
+/* Layout and scroll follow the approved prototype: the stage stays while 3.2–3.5 scroll past; each step plays its
+   segment of the recording and holds on the last frame. The logic bar is presentation, so it uses the page's Geist;
+   the recording is the product, in its own Barlow. Stage = the page's dark stage token. */
+.ll-clarify{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,320px);gap:clamp(32px,4vw,56px);align-items:start;margin-top:clamp(28px,4vw,44px)}
+.ll-page .ll-clarify-stage{position:sticky;top:var(--ll-sticky-top,88px);padding:20px;display:flex;flex-direction:column;gap:16px}
+.ll-knows{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ll-knows-card{border-radius:8px;padding:14px 16px 12px;background:#ffffff0d;color:#fff;font:400 var(--t-label)/1.35 Geist,Arial,sans-serif}
+.ll-page .ll-knows-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 10px;font-size:var(--t-label);font-weight:500;letter-spacing:normal;text-transform:none;color:rgba(255,255,255,.56)}
+.ll-page .ll-knows-h span{font-size:var(--t-label);font-weight:400;letter-spacing:normal;text-transform:none;color:rgba(255,255,255,.72);transition:color .42s}
+.ll-knows-list{display:grid;gap:7px;margin:0}
+.ll-knows-list>div{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:center}
+/* rows and notes that arrive later keep their space from the start, so nothing on the stage shifts */
+.ll-knows-list>div[hidden]{display:grid;visibility:hidden}
+.ll-knows-list dt{color:rgba(255,255,255,.56)}
+.ll-knows-list dd{margin:0;display:flex;align-items:center;gap:8px;min-width:0;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ll-knows-list dd::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:#b6dafa;transition:background .42s,box-shadow .42s}
+.ll-knows-list [data-state="empty"] dd{color:rgba(255,255,255,.56)}
+.ll-knows-list [data-state="empty"] dd::before{background:none;box-shadow:inset 0 0 0 1px #ffffff40}
+.ll-knows-list [data-state="asking"] dd{color:rgba(255,255,255,.72)}
+.ll-knows-list [data-state="asking"] dd::before{background:#ffffffb3;animation:ll-ask 1.4s ease-in-out infinite}
+.ll-knows-list [data-k="open"] dd::before{background:none;box-shadow:inset 0 0 0 1px #ead8ba}
+.ll-knows-list .is-new dd,.ll-knows-list>div:not([hidden])[data-k="open"] dd{animation:ll-settle .42s cubic-bezier(.22,.8,.22,1)}
+@keyframes ll-ask{50%{opacity:.25}}
+@keyframes ll-settle{from{opacity:0;transform:translateY(3px)}}
+.ll-shortlist{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.ll-shortlist li{display:grid;grid-template-columns:1fr auto 44px;gap:10px;align-items:baseline;transition:opacity .42s cubic-bezier(.22,.8,.22,1)}
+.ll-shortlist span{display:flex;align-items:center;gap:7px}
+.ll-shortlist span::before{content:"";width:6px;height:6px;border-radius:50%;background:transparent;transition:background .42s}
+.ll-shortlist em{font-style:normal;font-size:var(--t-label);color:rgba(255,255,255,.56)}
+.ll-shortlist b{font-weight:400;text-align:right;color:rgba(255,255,255,.72);font-variant-numeric:tabular-nums}
+.ll-shortlist .is-out{opacity:.28}
+.ll-shortlist .is-hot span::before{background:linear-gradient(90deg,#b6dafa,#ead8ba)}
+.ll-page .ll-shortlist-note{margin:9px 0 0;padding-top:8px;border-top:1px solid #ffffff14;font:400 var(--t-label)/1.3 Geist,Arial,sans-serif;color:#ead8ba;animation:ll-settle .42s cubic-bezier(.22,.8,.22,1)}
+.ll-page .ll-shortlist-note[hidden]{display:block;visibility:hidden;animation:none}
+/* 3.5: the limit and the action it leads to, in focus (the page's 3.6 evidence treatment: fade the rest) —
+   window CSS px of the held frame: limit line y502–531, actions y553–588 */
+.ll-chatclip-focus{position:absolute;left:calc(10px * var(--s));top:calc(492px * var(--s));width:calc(578px * var(--s));height:calc(106px * var(--s));border-radius:calc(10px * var(--s));box-shadow:0 0 0 1px #ead8ba,0 0 0 9999px #faf8f5b8;opacity:0;pointer-events:none;transition:opacity .42s cubic-bezier(.22,.8,.22,1)}
+.ll-clarify.is-limit .ll-clarify-stage .ll-chatclip-focus,.ll-chatclip.is-limit .ll-chatclip-focus{opacity:1;transition-delay:.12s}
+.ll-clarify-stage .ll-chatclip-window{box-shadow:0 0 0 1px #ffffff14,0 18px 44px #00000080}
+.ll-clarify-steps{list-style:none;margin:0;padding:0}
+.ll-clarify-step{min-height:74vh;padding-top:24vh;opacity:.32;cursor:pointer;transition:opacity .42s cubic-bezier(.22,.8,.22,1)}
+.ll-clarify-step:first-child{padding-top:8px}
+.ll-clarify-step:last-child{min-height:62vh}
+.ll-clarify-step.is-active{opacity:1;cursor:default}
+.ll-page .ll-clarify-step h3{margin:10px 0 12px;font-size:var(--t-heading);line-height:1.22;font-weight:500;letter-spacing:normal;color:#1d1d1f}
+.ll-page .ll-clarify-step p{margin:0;font-size:var(--t-body);line-height:1.7;color:#424245}
+.ll-clarify-step .ll-chatclip.is-inline,.ll-knows-line{display:none}
+.ll-full-flow{margin:20px 0 0}
+.ll-full-flow-btn{display:inline-flex;align-items:center;gap:10px;height:36px;padding:0 16px 0 12px;border:1px solid #e5e5e5;border-radius:999px;background:#fff;color:#1d1d1f;font:500 var(--t-label)/1 Geist,Arial,sans-serif;cursor:pointer;transition:border-color .22s,transform .22s cubic-bezier(.22,.8,.22,1)}
+.ll-full-flow-btn::before{content:"";width:0;height:0;border-left:7px solid currentColor;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent;margin-left:4px}
+.ll-full-flow-btn:hover{border-color:#111}
+.ll-full-flow-btn:active{transform:scale(.97)}
+.ll-full-flow-time{color:#6e6e73;font-weight:400}
+@media(max-width:900px){
+  .ll-clarify{display:block}
+  .ll-page .ll-clarify-stage{display:none}
+  .ll-clarify-step,.ll-clarify-step:first-child,.ll-clarify-step:last-child{min-height:0;padding:0 0 48px;opacity:1;cursor:default}
+  .ll-clarify-step .ll-chatclip.is-inline{display:flex;margin:18px 0 12px;padding:16px;border-radius:16px;background:#111}
+  .ll-clarify-step .ll-chatclip.is-inline .ll-chatclip-window{box-shadow:0 0 0 1px #ffffff14}
+  .ll-knows-line{display:block;margin:0 !important;font-size:var(--t-label) !important;line-height:1.5 !important;color:#6e6e73 !important}
+  .ll-knows-line b{font-weight:500;color:#1d1d1f}
+  .ll-knows-line i{display:inline-block;width:3px;height:3px;margin:0 8px;border-radius:50%;background:#b3b3b3;vertical-align:middle}
+}
+
+/* ---------- 6. Highlights: the interaction itself, recorded ---------- */
+/* Apple-style feature loops: one action, its result, one caption per step, lit in time with the recording. */
+.ll-hl-frame{position:relative;width:100%;aspect-ratio:1920/1200;border-radius:8px;overflow:hidden;background:#111;box-shadow:0 12px 30px #2726211c}
+.ll-page .ll-hl-frame video{display:block;width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
+.ll-hl-chat .ll-chatclip-window{box-shadow:0 0 0 1px #0000000d,0 12px 30px #2726211c}
+.ll-hl-steps{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 22px;counter-reset:step}
+.ll-hl-steps li{counter-increment:step;font-size:var(--t-label);color:#86868b;transition:color .42s cubic-bezier(.22,.8,.22,1)}
+.ll-hl-steps li::before{content:counter(step);display:inline-grid;place-items:center;width:17px;height:17px;margin-right:7px;border-radius:50%;border:1px solid currentColor;font-size:var(--t-label);vertical-align:1px}
+.ll-hl-steps li.is-on{color:#1d1d1f}
+
+@media(prefers-reduced-motion:reduce){
+  .ll-hl-steps li{color:#424245}
+  .ll-clarify-step{transition:none}
+  .ll-knows-list [data-state="asking"] dd::before,.ll-knows-list .is-new dd{animation:none}
+}
+
+/* 01 Reframe, reordered: insight → Before/After → the existing site in three moments → three constraints.
+   The audit is three groups instead of a five-card rail, so it reads in one glance. The first group stacks its three
+   pages (home, models, a model page) to show browsing across separate pages; every capture carries a small label so
+   a skimming reader knows it is LiveLarge's site before the assistant, not the design. */
+.ll-audit-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:28px}
+.ll-audit-group{margin:0}
+.ll-audit-media{--p:clamp(12px,1.6vw,18px);position:relative;container-type:inline-size;padding:var(--p);border-radius:var(--ll-radius);background:var(--ll-panel)}
+.ll-audit-media img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 0 0 1px rgba(0,0,0,.06);pointer-events:none}
+.ll-audit-media.is-stack::after{content:"";display:block;aspect-ratio:1440/900}
+.ll-audit-media.is-stack img{position:absolute;width:70cqw;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.12)}
+.ll-audit-media.is-stack img:nth-of-type(1){left:var(--p);top:var(--p)}
+.ll-audit-media.is-stack img:nth-of-type(2){left:calc(var(--p) + 15cqw);top:calc(var(--p) + 9.375cqw)}
+.ll-audit-media.is-stack img:nth-of-type(3){left:calc(var(--p) + 30cqw);top:calc(var(--p) + 18.75cqw)}
+.ll-before-tag{position:absolute;z-index:2;bottom:calc(var(--p) + 6px);left:calc(var(--p) + 6px);padding:3px 6px;border-radius:999px;background:rgba(255,255,255,.82);box-shadow:0 0 0 1px rgba(0,0,0,.06);font:500 var(--t-label)/1.1 Geist, Arial, sans-serif;letter-spacing:normal;color:#424245;white-space:nowrap}
+.ll-page .ll-audit-group figcaption.ll-audit-copy{display:block;margin-top:16px;max-width:none}
+.ll-page .ll-audit-group .ll-audit-copy .ll-fig-tag{display:block;margin-bottom:8px}
+.ll-page .ll-audit-group .ll-audit-copy h3{font-size:var(--t-body);line-height:1.3;margin-bottom:8px}
+.ll-page .ll-audit-group .ll-audit-copy p{font-size:var(--t-callout) !important;line-height:1.6}
+
+.ll-constraints{margin-top:56px;padding-top:28px;border-top:1px solid #e5e5e5}
+.ll-constraints h3{font-size:var(--t-heading);line-height:1.3;margin-bottom:20px}
+.ll-constraints ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0;padding:0;list-style:none;counter-reset:constraint}
+.ll-constraints li{counter-increment:constraint}
+.ll-constraints li::before{content:counter(constraint,decimal-leading-zero);display:block;margin-bottom:10px;font-size:var(--t-label);color:#86868b;font-variant-numeric:tabular-nums}
+.ll-constraints strong{display:block;font-size:var(--t-body);line-height:1.35;font-weight:500;color:#1d1d1f;margin-bottom:6px}
+.ll-constraints span{display:block;font-size:var(--t-callout);line-height:1.6;color:#424245}
+@media(max-width:900px){.ll-audit-groups,.ll-constraints ol{grid-template-columns:1fr;gap:28px}.ll-audit-groups{max-width:560px}}
+
+/* ===== from livelarge-flow.css ===== */
+/* LiveLarge: research rules, user-flow camera tour and design samples. Tour timing and references live in js/livelarge-flow.js. */
+
+/* ---------- user flow (end of chapter 01) ---------- */
+.ll-flow-tour { margin-top: 56px; padding-top: 28px; border-top: 1px solid #e5e5e5; }
+.ll-flow-heading { max-width: 650px; margin-bottom: 28px; }
+.ll-flow-heading h3 { margin: 10px 0 0; font-size: var(--t-heading); line-height: 1.3; }
+
+/* Live: the whole diagram is the camera's world; js/livelarge-flow.js moves the view. */
+.ll-flow-stage, .ll-flow-caption { display: none; }
+.ll-flow-tour.is-live .ll-flow-stage {
+  display: block; position: relative; overflow: hidden; aspect-ratio: 3 / 2;
+  border-radius: var(--ll-radius); background: #edebe7;
+}
+.ll-flow-world { position: absolute; left: 0; top: 0; width: 3931px; height: 4469px; transform-origin: 0 0; }
+.ll-flow-world img { display: block; width: 100%; height: 100%; max-width: none; user-select: none; -webkit-user-drag: none; }
+.ll-flow-marks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.ll-flow-tour.is-live .ll-flow-caption {
+  display: flex; align-items: flex-start; gap: 12px; max-width: 640px; min-height: 48px; margin: 20px 0 0;
+  font-size: var(--t-body); line-height: 1.5; color: #1d1d1f; opacity: 0;
+}
+.ll-flow-tour.is-live .ll-flow-shots { display: none; }
+
+/* No JS or reduced motion: the three moments as a list. */
+.ll-flow-shots { display: grid; gap: 40px; margin: 0; padding: 0; list-style: none; }
+.ll-flow-frame { position: relative; overflow: hidden; border-radius: var(--ll-radius); }
+.ll-flow-shot img {
+  display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--ll-radius); background: #edebe7; user-select: none; -webkit-user-drag: none;
+}
+/* Fades the nodes a shot isn't about, so the caption's path is the part that reads. */
+.ll-flow-dim { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.ll-flow-shot p { display: flex; align-items: flex-start; gap: 12px; max-width: 640px; margin: 20px 0 0; font-size: var(--t-body); line-height: 1.5; color: #1d1d1f; }
+.ll-flow-num {
+  flex: none; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%;
+  background: #2463eb; color: #fff; font: 500 var(--t-label)/22px Geist, Arial, sans-serif; text-align: center;
+}
+
+/* ---------- before / after: separate pages vs one connected path ---------- */
+/* Before: each page is its own card, with gaps and no arrows. After: the same four steps joined into one bar. */
+.ll-page .ll-journey-change .ll-change-steps li { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.ll-page .ll-journey-change .ll-change-steps li::before,
+.ll-page .ll-journey-change .ll-change-steps li::after { display: none; }
+.ll-page .ll-journey-change .ll-change-steps li > span { margin: 0 0 4px; font-size: var(--t-label); line-height: 1.3; }
+.ll-page .ll-journey-change .ll-change-steps strong {
+  display: block; width: auto; max-width: 100%; padding: 0; border: 0; border-radius: 0;
+  background: none; box-shadow: none; font-size: var(--t-body); line-height: 1.3;
+}
+.ll-page .ll-change-before .ll-change-steps { gap: 16px; padding-bottom: 0; }
+.ll-page .ll-change-before .ll-change-steps li { padding: 16px 18px 18px; border: 1px solid #e5e5e5; border-radius: 8px; background: #fff; }
+.ll-page .ll-change-before .ll-change-steps li > span { color: #86868b; }
+.ll-page .ll-change-before .ll-change-steps strong { color: #1d1d1f; }
+.ll-page .ll-change-before .ll-need-cell { position: static; display: block; height: auto; margin: 14px 0 0; }
+.ll-page .ll-change-before .ll-need-note { position: static; margin: 6px 0 0 2px; }
+.ll-page .ll-change-after .ll-change-steps { gap: 0; overflow: hidden; border-radius: 8px; background: #111; }
+.ll-page .ll-change-after .ll-change-steps li { padding: 16px 18px 18px; }
+.ll-page .ll-change-after .ll-change-steps li + li { border-left: 1px solid rgba(255, 255, 255, .16); }
+.ll-page .ll-change-after .ll-change-steps li > span { color: rgba(255,255,255,.56); }
+.ll-page .ll-change-after .ll-change-steps strong { color: #fff; }
+
+/* ---------- research ---------- */
+.ll-research { margin-top: 56px; padding-top: 28px; border-top: 1px solid #e5e5e5; }
+.ll-research h3 { font-size: var(--t-heading); line-height: 1.3; margin-bottom: 12px; }
+.ll-research-lead { max-width: 650px; margin-bottom: 28px; font-size: var(--t-body); line-height: 1.6; color: #424245; }
+.ll-research-shots {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px);
+  padding: clamp(16px, 2.4vw, 32px); border-radius: var(--ll-radius); background: var(--ll-panel);
+}
+.ll-research-shots figure { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.ll-research-shots figcaption { order: -1; font-size: var(--t-label); line-height: 1.5; color: #6e6e73; }
+.ll-research-shots figcaption b { display: block; margin-bottom: 2px; font-weight: 500; color: #1d1d1f; }
+.ll-research-shots img { display: block; width: auto; max-width: 100%; height: auto; border-radius: 8px; background: #fff; }
+.ll-research-rules { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 32px 0 0; padding: 0; list-style: none; }
+.ll-research-rules strong { display: block; margin-bottom: 6px; font-size: var(--t-body); line-height: 1.35; font-weight: 500; color: #1d1d1f; }
+.ll-research-rules span { display: block; font-size: var(--t-callout); line-height: 1.6; color: #424245; }
+
+/* ---------- hero and 5.1 ---------- */
+.ll-stage-hero .ll-hero-still { display: block; width: 100%; height: auto; }
+/* 5.1: the lit capture underneath; the unlit one shows only inside the panel (x 24, y 122, 350 x 744 of the
+   1440 x 900 capture), left of the line, so nothing outside the panel can change. Without JS: lit. */
+.ll-scene-wipe { --cut: 1.667%; position: relative; display: block; }
+.ll-page .ll-scene-wipe img { display: block; width: 100%; height: auto; }
+.ll-page .ll-scene-wipe img.is-base { position: absolute; top: 0; left: 0; clip-path: inset(13.556% calc(100% - var(--cut)) 3.778% 1.667%); }
+/* .ll-visual-scene span styles a label chip; the line needs none of it. */
+.ll-page .ll-scene-wipe .ll-wipe-line {
+  top: 13.556%; bottom: 3.778%; left: var(--cut); width: 1px; margin-left: -.5px; padding: 0; border-radius: 0;
+  background: #ffffffd9; box-shadow: 0 0 10px #b6dafa; backdrop-filter: none;
+}
+.ll-scene-wipe:not([data-moving="1"]) .ll-wipe-line { opacity: 0; }
+
+/* ---------- design samples (chapter 05): wireframes, greeting before/after, directions ---------- */
+/* The captures carry the flow diagram's canvas (#edebe7), so these sheets use it too. */
+.ll-process-figure { margin-top: 40px; }
+.ll-wf-row, .ll-ab { border-radius: var(--ll-radius); background: #edebe7; }
+.ll-wf-row > div, .ll-ab > div { min-width: 0; }
+.ll-wf-row img, .ll-ab img { display: block; width: 100%; height: auto; }
+/* Wireframes at their true relative widths. */
+.ll-wf-row {
+  display: grid; grid-template-columns: 628fr 628fr 1068fr; align-items: end;
+  gap: clamp(16px, 3vw, 40px); padding: clamp(20px, 4vw, 48px);
+}
+.ll-wf-row p { margin: 14px 0 0; font-size: var(--t-callout); line-height: 1.45; color: #424245; }
+.ll-wf-row p b {
+  display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 6px; border-radius: 50%;
+  background: #111; color: #fff; font-size: var(--t-label); font-weight: 500; vertical-align: 1px;
+}
+.ll-ab {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); justify-content: center; align-items: start;
+  gap: clamp(24px, 6vw, 96px); padding: clamp(24px, 4vw, 56px);
+}
+/* Before and after at the same scale: columns follow the two captures' widths (820 : 690). */
+.ll-ab.is-greet { grid-template-columns: minmax(0, 330px) minmax(0, 278px); align-items: center; }
+.ll-ab.is-greet > div:last-child img { border-radius: 16px; box-shadow: 0 14px 34px #00000014, 0 0 0 1px #0000000a; }
+/* The earlier capture keeps 50px of canvas around its panel (820 px wide): the label starts at the panel edge instead. */
+.ll-ab.is-greet > div:first-child p { margin-bottom: 0; padding-left: 6.1%; }
+.ll-ab p { margin: 0 0 14px; font-size: var(--t-callout); line-height: 1.3; font-weight: 500; color: #1d1d1f; }
+.ll-ab p span { margin-left: 8px; padding: 3px 8px; border-radius: 999px; background: #2463eb; color: #fff; font-size: var(--t-label); font-weight: 500; }
+
+@media (max-width: 1100px) {
+  .ll-research-rules { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
+}
+@media (max-width: 767px) {
+  .ll-page .ll-journey-change .ll-change-steps { grid-template-columns: 1fr; }
+  .ll-page .ll-change-before .ll-change-steps { gap: 10px; }
+  .ll-page .ll-change-before .ll-need-cell { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+  .ll-page .ll-change-before .ll-need-note { margin: 0; }
+  .ll-page .ll-change-after .ll-change-steps li + li { border-left: 0; border-top: 1px solid rgba(255, 255, 255, .16); }
+  .ll-flow-tour { margin-top: 40px; }
+  /* Phones: a square frame; each stop shows its key nodes (framed by --fx on the list items). */
+  .ll-flow-tour.is-live .ll-flow-stage { aspect-ratio: 1 / 1; }
+  .ll-research-shots { grid-template-columns: 1fr; }
+  .ll-wf-row { gap: 8px; padding: 14px; }
+  .ll-wf-row p { font-size: var(--t-label); }
+  .ll-ab { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px; }
+  .ll-ab.is-greet { grid-template-columns: minmax(0, 820fr) minmax(0, 690fr); }
+  .ll-ab p { font-size: var(--t-label); }
+}
+@media (max-width: 600px) {
+  .ll-research-rules { grid-template-columns: 1fr; }
+}
+
+/* ===================================================================================================
+   Type, colour and layout system (loads last).
+   Type:    six roles that grow with the window: label 13–14 · callout 15–16 · body 16–19 · heading 20–26 · title 28–46 · display 30–56.
+            Headings semibold (600), text 400, emphasis 500. No uppercase.
+   Greys:   ink #1d1d1f · reading #424245 · secondary #6e6e73 · tertiary #86868b · hairline #e5e5e5
+   Colour:  LiveLarge's own light marks what the assistant does: one blue #88c4ec → champagne #d8b67f gradient for markers,
+            outlines, focus rings and state dots (numbers on it are ink). Surfaces stay neutral: page #fff, sheet #edebe7, stage #111.
+   Layout:  hero and chapters share one centred column (max 1220); from 1400 px the contents rail sits in the left margin.
+   =================================================================================================== */
+.ll-page {
+  --t-label: clamp(13px, .66vw, 14px); --t-callout: clamp(15px, .76vw, 16px); --t-body: clamp(16px, 1.1vw, 19px);
+  --t-heading: clamp(20px, 1.4vw, 26px); --t-title: clamp(28px, 2.5vw, 46px); --t-display: clamp(30px, 3vw, 56px);
+  --ink: #1d1d1f; --ink-read: #424245; --ink-2: #6e6e73; --ink-3: #86868b; --hairline: #e5e5e5;
+  --sheet: #edebe7; --stage: #111;
+  --ll-light: linear-gradient(135deg, #a9d6f2 0%, #88c4ec 40%, #d8b67f 100%);
+  --ll-blue: #88c4ec; --ll-blue-soft: #b6dafa; --ll-warm: #d8b67f; --ll-warm-soft: #ead8ba;
+  --ll-ink: var(--ink); --ll-muted: var(--ink-2); --ll-rule: var(--hairline); --ll-panel: var(--sheet); --ll-stage: var(--stage);
+  --ll-on-dark: #f5f5f7; --ll-on-dark-muted: rgba(255, 255, 255, .72);
+  color: var(--ink);
+}
+.ll-page select, .ll-page button, .ll-page input { font-family: inherit; }
+
+/* ---------- one centred column for hero and chapters ----------
+   The content column sits in the middle of the page; from 1400 px the contents rail lives in the left margin
+   (the layout grid is rail · content · an empty rail-wide column, so the content stays centred). Below 1400 px
+   the rail is the sticky chapter menu. */
+.pf-selected-case.ll-page .ll-hero.pf-case-intro { width: calc(100% - 2 * var(--ll-pad)) !important; }
+.ll-final-inner { max-width: none; padding-inline: var(--ll-pad); padding-bottom: clamp(96px, 9vw, 160px); }
+@media (min-width: 768px) and (max-width: 1399px) { .ll-page { --ll-pad: 48px; } }
+@media (min-width: 1400px) {
+  .ll-page { --ll-rail-gap: clamp(40px, 3vw, 72px); --ll-content: min(1220px, calc(100% - 2 * (var(--ll-rail) + var(--ll-rail-gap) + 32px))); }
+  .ll-page .ll-layout {
+    width: calc(var(--ll-content) + 2 * (var(--ll-rail) + var(--ll-rail-gap))); max-width: none; padding: 0;
+    grid-template-columns: var(--ll-rail) minmax(0, 1fr) var(--ll-rail);
+  }
+  .pf-selected-case.ll-page .ll-hero.pf-case-intro { width: var(--ll-content) !important; padding-left: 0 !important; }
+  .ll-page .ll-rail { transform: none; }
+  .ll-final-inner { width: var(--ll-content); margin-inline: auto; padding-inline: 0; }
+}
+
+/* ---------- type ---------- */
+.ll-page :is(h2, h3, h4) { font-weight: 600 !important; }
+.ll-page h2 { letter-spacing: -.02em; }
+.ll-page :is(h3, h4) { letter-spacing: -.01em; }
+.pf-selected-case.ll-page .pf-case-intro .pf-case-title { font-size: var(--t-display) !important; font-weight: 600 !important; letter-spacing: -.025em; }
+.pf-selected-case.ll-page .pf-case-copy > p { font: 400 var(--t-body)/1.6 Geist, Arial, sans-serif !important; color: var(--ink-read); }
+.pf-selected-case.ll-page .pf-case-label span { font-size: var(--t-label) !important; font-weight: 500; letter-spacing: normal; text-transform: none; color: var(--ink-3); }
+.ll-page .ll-facts dt { font-size: var(--t-label); font-weight: 500; color: var(--ink-3); }
+.ll-page .ll-facts dd { font-size: var(--t-callout); color: var(--ink); }
+.ll-page .ll-rail-label { font-size: var(--t-label) !important; color: var(--ink-3); }
+.ll-page .ll-rail a { font-size: var(--t-callout); color: var(--ink-3); }
+.ll-page .ll-rail a:hover, .ll-page .ll-rail a[aria-current="location"] { font-weight: 500; color: var(--ink); }
+.ll-page .ll-clarify-step .ll-evidence-number { font-size: var(--t-label); font-weight: 500; color: var(--ink-3); }
+.ll-page b, .ll-page strong { font-weight: 500; }
+.ll-page .ll-design-material b { font: 500 30px/1 LLBarlow, sans-serif; letter-spacing: -.01em; }
+
+/* ---------- markers: the same light as the state dots ---------- */
+.ll-page .ll-hl-steps li::before,
+.ll-page .ll-wf-row p b,
+.ll-page .ll-evo-notes li > span,
+.ll-page .ll-flow-num {
+  display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
+  font: 600 12px/1 Geist, Arial, sans-serif; letter-spacing: normal;
+}
+.ll-page .ll-wf-row p b, .ll-page .ll-evo-notes li > span, .ll-page .ll-flow-num { background: var(--ll-light); color: var(--ink); border: 0; }
+.ll-page .ll-hl-steps li::before { margin-right: 8px; border: 1px solid var(--hairline); background: #fff; color: var(--ink-3); vertical-align: 0; transition: background .42s, color .42s, border-color .42s; }
+.ll-page .ll-hl-steps li.is-on::before { border-color: transparent; background: var(--ll-light); color: var(--ink); }
+.ll-page .ll-ab p span { background: var(--ll-light); color: var(--ink); font-weight: 500; }
+.ll-evo-pin circle { fill: url(#ll-light); }
+.ll-evo-pin text { fill: var(--ink); }
+
+/* ---------- 03 · what the assistant knows: state in LiveLarge's light ---------- */
+.ll-knows-card { transition: box-shadow .6s cubic-bezier(.22, .8, .22, 1); }
+.ll-knows-card:has([data-state="asking"]), .ll-knows-card:has(.is-hot) {
+  box-shadow: inset 0 0 0 1px rgba(182, 218, 250, .22), 0 0 32px -10px rgba(136, 196, 236, .55);
+}
+.ll-knows-list dd::before, .ll-shortlist span::before { width: 8px; height: 8px; }
+.ll-knows-list dd { overflow: visible; }   /* the halo must not be clipped to a square */
+.ll-knows-list [data-state="set"] dd::before {
+  background: linear-gradient(135deg, #a9d6f2 0%, var(--ll-blue) 40%, var(--ll-warm) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 0 8px 2px rgba(136, 196, 236, .55), 0 0 18px 4px rgba(216, 182, 127, .32);
+}
+.ll-knows-list [data-state="asking"] dd::before { background: var(--ll-blue-soft); animation: ll-ask-light 1.6s ease-in-out infinite; }
+.ll-knows-list [data-state="asking"] dd {
+  color: transparent;
+  background: linear-gradient(90deg, rgba(255, 255, 255, .5) 0%, #fff 30%, var(--ll-blue-soft) 45%, var(--ll-warm-soft) 60%, rgba(255, 255, 255, .5) 80%) 0 0 / 250% 100%;
+  -webkit-background-clip: text; background-clip: text; animation: ll-shimmer 2.2s linear infinite;
+}
+.ll-shortlist .is-hot span { color: #fff; }
+.ll-shortlist .is-hot span::before {
+  background: linear-gradient(135deg, #a9d6f2 0%, var(--ll-blue) 40%, var(--ll-warm) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 0 8px 2px rgba(136, 196, 236, .55), 0 0 18px 4px rgba(216, 182, 127, .32);
+}
+.ll-shortlist .is-hot b { color: var(--ll-warm-soft); }
+@keyframes ll-ask-light {
+  0%, 100% { background: var(--ll-blue-soft); box-shadow: 0 0 0 0 rgba(136, 196, 236, 0), 0 0 6px 1px rgba(136, 196, 236, .6); }
+  50% { background: var(--ll-warm-soft); box-shadow: 0 0 0 4px rgba(216, 182, 127, .16), 0 0 12px 2px rgba(216, 182, 127, .55); }
+}
+@keyframes ll-shimmer { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .ll-knows-list [data-state="asking"] dd::before, .ll-knows-list [data-state="asking"] dd { animation: none; }
+  .ll-knows-list [data-state="asking"] dd { color: rgba(255, 255, 255, .72); background: none; }
+}
+
+/* ---------- 05 · wireframes: tops aligned ---------- */
+.ll-page .ll-wf-row { align-items: start; }
+
+/* 04 · 4.2: a detail of the seam between the chat and the lot review, not the whole screen again (highlight 1 shows it) */
+.ll-lot-evidence .ll-stage.ll-lot-detail > img { border-radius: 8px; clip-path: inset(0 round 8px); }
+
+/* ---------- AI light: only on surfaces where the assistant is on screen ----------
+   LiveLarge's own rule, applied to the case study: colour appears when the assistant greets or answers.
+   Lit: hero, highlights, 2.1–2.5, the 03 stage, 4.1–4.2, 5.1–5.2, 6.x. Neutral: the old site, research, flow,
+   wireframes, before/after, directions, 3.6 and the 5.3/5.4 card breakdowns (process material). */
+.ll-page {
+  --ll-lit-light:
+    radial-gradient(46% 65% at 14% 22%, rgba(136, 196, 236, .62), transparent 70%),
+    radial-gradient(44% 60% at 90% 86%, rgba(216, 182, 127, .62), transparent 70%),
+    radial-gradient(34% 45% at 74% 12%, rgba(182, 218, 250, .42), transparent 70%),
+    radial-gradient(32% 42% at 28% 94%, rgba(234, 216, 186, .5), transparent 70%),
+    #eeebe6;
+  --ll-lit-dark:
+    radial-gradient(42% 60% at 22% 30%, rgba(136, 196, 236, .3), transparent 70%),
+    radial-gradient(40% 55% at 82% 78%, rgba(216, 182, 127, .26), transparent 70%),
+    radial-gradient(120% 90% at 50% 0%, #17181b, #0c0d10 72%);
+}
+.ll-page #overview .ll-highlight-scene,
+.ll-page .ll-context-evidence .ll-evidence-media:not(:has(.ll-transcript-card)),
+.ll-page #visual .ll-signal-study,
+.ll-page #build figure { background: var(--ll-lit-light) !important; }
+.ll-page .ll-stage-hero,
+.ll-page #context .ll-stage-video,
+.ll-page .ll-context-evidence .ll-evidence-media:has(.ll-transcript-card),
+.ll-page .ll-clarify-stage,
+.ll-page .ll-chatclip.is-inline,
+.ll-page .ll-stage-pair,
+.ll-page .ll-lot-evidence .ll-stage.ll-lot-detail,
+.ll-page .ll-visual-scene { background: var(--ll-lit-dark) !important; }
+
+/* 3.5 focus: a ring in the markers' light around the qualification; the rest of the answer fades back */
+.ll-chatclip-focus { box-shadow: 0 0 0 9999px #faf8f5b8; }
+.ll-chatclip-focus::before {
+  content: ""; position: absolute; inset: calc(-1.5px * var(--s, 1)); border-radius: inherit; padding: 1.5px;
+  background: linear-gradient(115deg, #88c4ec, #b6dafa 35%, #d8b67f 70%, #88c4ec);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  box-shadow: 0 0 14px rgba(136, 196, 236, .35);
+}

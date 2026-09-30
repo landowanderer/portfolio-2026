@@ -215,11 +215,12 @@
     });
   } else if (fullBtn) fullBtn.parentElement.hidden = true;
 
-  /* ---------- 6. 5.1 effects wipe ---------- */
-  const frame = document.querySelector('.ll-wipe-frame');
+  /* ---------- 6. 5.1 effects wipe: the line travels across the panel only (data-lo / data-hi, % of the frame) ---------- */
+  const frame = document.querySelector('[data-wipe]');
   if (!frame || reduce) return;
-  const wipe = frame.closest('.ll-effects-wipe');
-  const LO = 0, HI = 100, HOLD = 1.6, MOVE = 2.6, CYCLE = 2 * (HOLD + MOVE);
+  const wipe = frame;
+  const LO = parseFloat(frame.dataset.lo) || 0, HI = parseFloat(frame.dataset.hi) || 100;
+  const HOLD = 1.6, MOVE = 2.6, CYCLE = 2 * (HOLD + MOVE);
   const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
   let visible = false, t = 0, last = null;
   new IntersectionObserver(es => { visible = es[0].isIntersecting; last = null; }, { threshold: .2 }).observe(frame);
