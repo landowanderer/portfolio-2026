@@ -192,7 +192,7 @@
 /* Live: the whole diagram is the camera's world; js/livelarge-flow.js moves the view. */
 .ll-flow-stage, .ll-flow-caption { display: none; }
 .ll-flow-tour.is-live .ll-flow-stage {
-  display: block; position: relative; overflow: hidden; aspect-ratio: 3 / 2;
+  display: block; position: relative; overflow: hidden; aspect-ratio: 16 / 9;
   border-radius: var(--ll-radius); background: #edebe7;
 }
 .ll-flow-world { position: absolute; left: 0; top: 0; width: 3931px; height: 4469px; transform-origin: 0 0; }
@@ -329,7 +329,7 @@
    Greys:   ink #1d1d1f · reading #424245 · secondary #6e6e73 · tertiary #86868b · hairline #e5e5e5
    Colour:  LiveLarge's own light marks what the assistant does: one blue #88c4ec → champagne #d8b67f gradient for markers,
             outlines, focus rings and state dots (numbers on it are ink). Surfaces stay neutral: page #fff, sheet #edebe7, stage #111.
-   Layout:  hero and chapters share one centred column (max 1220); from 1400 px the contents rail sits in the left margin.
+   Layout:  hero and chapters share one centred column (max 1360); from 1400 px the contents rail sits at the header's left edge.
    =================================================================================================== */
 .ll-page {
   --t-label: clamp(13px, .66vw, 14px); --t-callout: clamp(15px, .76vw, 16px); --t-body: clamp(16px, 1.1vw, 19px);
@@ -352,15 +352,23 @@
 .ll-final-inner { max-width: none; padding-inline: var(--ll-pad); padding-bottom: clamp(96px, 9vw, 160px); }
 @media (min-width: 768px) and (max-width: 1399px) { .ll-page { --ll-pad: 48px; } }
 @media (min-width: 1400px) {
-  .ll-page { --ll-rail-gap: clamp(40px, 3vw, 72px); --ll-content: min(1220px, calc(100% - 2 * (var(--ll-rail) + var(--ll-rail-gap) + 32px))); }
+  /* The rail starts where the header's "HARRY WU" starts (the header's own edge padding); the content column
+     (max 1360) is centred in the page, between the rail and an equal empty column on the right. */
+  .ll-page { --ll-rail-gap: clamp(40px, 3vw, 72px); --ll-edge: var(--pf-edge, 40px);
+    --ll-content: min(1360px, calc(100vw - 2 * (var(--ll-edge) + var(--ll-rail) + var(--ll-rail-gap)) - 16px)); }
   .ll-page .ll-layout {
-    width: calc(var(--ll-content) + 2 * (var(--ll-rail) + var(--ll-rail-gap))); max-width: none; padding: 0;
+    width: 100%; max-width: none; padding: 0 var(--ll-edge);
     grid-template-columns: var(--ll-rail) minmax(0, 1fr) var(--ll-rail);
   }
+  .ll-page .ll-story { width: var(--ll-content); justify-self: center; }
   .pf-selected-case.ll-page .ll-hero.pf-case-intro { width: var(--ll-content) !important; padding-left: 0 !important; }
   .ll-page .ll-rail { transform: none; }
   .ll-final-inner { width: var(--ll-content); margin-inline: auto; padding-inline: 0; }
 }
+/* 07: the next step reads as a second, quieter paragraph */
+.ll-page .ll-commercial-outcome { row-gap: 20px; }
+.ll-page .ll-commercial-outcome .ll-outcome-next { grid-column: 2; font-size: var(--t-body); line-height: 1.6; color: var(--ll-on-dark-muted); }
+@media (max-width: 767px) { .ll-page .ll-commercial-outcome .ll-outcome-next { grid-column: auto; } }
 
 /* ---------- type ---------- */
 .ll-page :is(h2, h3, h4) { font-weight: 600 !important; }
@@ -469,3 +477,230 @@
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
   box-shadow: 0 0 14px rgba(136, 196, 236, .35);
 }
+
+/* ---------- 02 · four key moments, all real prototype captures, one framing ---------- */
+.ll-page .ll-context-evidence .ll-evidence-media.ll-ctx-shot { aspect-ratio: auto; min-height: 0; padding: clamp(16px, 2vw, 28px); }
+.ll-page .ll-ctx-shot img, .ll-page .ll-ctx-shot video {
+  display: block; width: 100%; height: auto; max-height: none; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 12px 32px -12px rgba(0, 0, 0, .18);
+}
+
+/* ---------- 05 · greeting before/after: same scale (1.25× the old sheet), tops aligned, After ends at its last row ---------- */
+.ll-page .ll-ab.is-greet { grid-template-columns: minmax(0, 412px) minmax(0, 347px); align-items: start; gap: clamp(24px, 4vw, 64px); }
+.ll-page .ll-ab.is-greet > div:first-child img { margin-top: calc(-50 / 820 * 100%); }   /* the capture's 50 px of canvas above the panel */
+.ll-page .ll-ab.is-greet > div:first-child p { margin-bottom: 14px; }
+.ll-page .ll-ab.is-greet > div:last-child img {
+  aspect-ratio: 690 / 1094; object-fit: cover; object-position: top;
+  -webkit-mask-image: linear-gradient(#000 84%, transparent); mask-image: linear-gradient(#000 84%, transparent);
+}
+@media (max-width: 767px) { .ll-page .ll-ab.is-greet { grid-template-columns: minmax(0, 820fr) minmax(0, 690fr); } }
+.ll-page .ll-ab.is-greet p { position: relative; z-index: 1; }
+.ll-page .ll-context-evidence .ll-ctx-shot::after { content: none !important; }   /* the old fade was for the earlier captures */
+
+/* Answer evidence: a crop of the actual prototype, with a closer view on phones. */
+.ll-page .ll-answer-detail { display: grid; place-items: center; padding: clamp(20px, 4vw, 64px); background: var(--ll-lit-light); }
+.ll-page .ll-answer-detail picture { display: block; width: min(100%, 820px); }
+.ll-page .ll-answer-detail img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 12px 32px -12px rgba(0, 0, 0, .18); }
+.ll-page .ll-answer-evidence h3 { margin: 0 0 10px; font-size: var(--t-heading); line-height: 1.3; color: var(--ink); }
+.ll-page .ll-answer-evidence figcaption p { max-width: 660px; color: var(--ink-read); }
+.ll-page #visual .ll-signal-copy h3, .ll-page #build figcaption strong { color: #1d1d1f; }
+.ll-page #visual .ll-signal-copy p, .ll-page #build figcaption { color: #424245; }
+.ll-page #visual .ll-signal-copy .ll-fig-tag { color: #6e6e73; }
+.ll-page .ll-evolution-panel .ll-evidence-media { background: #edebe7; }
+@media (max-width: 767px) { .ll-page .ll-answer-detail { padding: 16px; } }
+
+/* 07: an approximate 14-week overview, with overlapping work rather than four full months. */
+.ll-page .ll-project-timeline { background: #111; }
+.ll-page .ll-timeline { margin-top: 52px; }
+.ll-timeline-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding-bottom: 28px; }
+.ll-page .ll-timeline-meta p { margin: 0; font-size: var(--t-callout); line-height: 1.5; color: #a1a1a6; }
+.ll-timeline-axis { display: grid; grid-template-columns: 4fr 4fr 4fr 2fr; padding-bottom: 20px; font-size: var(--t-label); color: #a1a1a6; }
+.ll-timeline-axis span:last-child { text-align: right; }
+.ll-timeline-phases { margin: 0; padding: 0; list-style: none; background: linear-gradient(to right, transparent calc(28.571% - 1px), #ffffff0b 28.571%, transparent calc(28.571% + 1px), transparent calc(57.143% - 1px), #ffffff0b 57.143%, transparent calc(57.143% + 1px), transparent calc(85.714% - 1px), #ffffff0b 85.714%, transparent calc(85.714% + 1px)); }
+.ll-timeline-phase { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); padding-bottom: 34px; }
+.ll-timeline-phase:last-child { padding-bottom: 0; }
+.ll-timeline-track { position: relative; grid-column: var(--phase-start) / var(--phase-end); height: 2px; margin: 4px 4px 18px; background: linear-gradient(90deg, #a9d6f270, #88c4ec90 40%, #d8b67f90); }
+.ll-timeline-track::before, .ll-timeline-track::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: var(--ll-light); }
+.ll-timeline-track::before { left: -4px; }
+.ll-timeline-track::after { right: -4px; }
+.ll-timeline-copy { grid-column: var(--phase-start) / -1; max-width: 440px; padding-right: 20px; }
+.ll-page .ll-timeline-copy h3 { margin: 0 0 10px; font-size: var(--t-heading); line-height: 1.3; color: #f5f5f7; }
+.ll-page .ll-timeline-copy p { margin: 0; font-size: var(--t-callout); line-height: 1.65; color: rgba(255, 255, 255, .72); }
+.ll-page .ll-timeline-outcome { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; margin-top: 48px; padding-top: 24px; border-top: 1px solid #ffffff26; }
+.ll-page .ll-timeline-outcome p { margin: 0; font-size: var(--t-callout); line-height: 1.6; color: rgba(255, 255, 255, .72); }
+.ll-page .ll-timeline-outcome .ll-timeline-approved { color: #f5f5f7; font-weight: 500; }
+.ll-timeline-approved > span { display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--ll-light); }
+@media (max-width: 767px) {
+  .ll-page .ll-timeline { margin-top: 36px; }
+  .ll-timeline-meta { display: block; padding-bottom: 28px; }
+  .ll-page .ll-timeline-meta p { margin-top: 6px; }
+  .ll-timeline-axis { display: none; }
+  .ll-timeline-phases { background: none; }
+  .ll-timeline-phase { display: block; position: relative; padding: 0 0 30px 24px; margin-left: 4px; border-left: 1px solid #ffffff26; }
+  .ll-timeline-phase:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .ll-timeline-track { position: absolute; left: -4.5px; top: 7px; width: 8px; height: 8px; margin: 0; border-radius: 50%; background: var(--ll-light); }
+  .ll-timeline-track::before, .ll-timeline-track::after { content: none; }
+  .ll-timeline-copy { max-width: none; padding: 0; }
+  .ll-page .ll-timeline-outcome { display: block; margin-top: 32px; }
+  .ll-page .ll-timeline-outcome p + p { margin-top: 8px; }
+}
+
+/* Approved copy review: compare the same tasks, keep evidence at a readable scale. */
+.ll-page .ll-journey-compare { padding: clamp(20px, 3vw, 36px); background: #edebe7; border-radius: var(--ll-radius); }
+.ll-page .ll-journey-key { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 0 0 28px; }
+.ll-page .ll-journey-key p { margin: 0; font-size: var(--t-callout); line-height: 1.5; color: #424245; }
+.ll-page .ll-journey-key b, .ll-page .ll-journey-key span { display: block; }
+.ll-page .ll-journey-key b { margin-bottom: 6px; color: #1d1d1f; }
+.ll-page .ll-journey-columns { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); grid-template-rows: auto auto auto auto; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.ll-page .ll-journey-columns > li { min-width: 0; display: grid; grid-template-rows: subgrid; grid-row: 1 / 5; }
+.ll-page .ll-journey-columns h4 { display: flex; flex-direction: column; gap: 10px; margin: 0 0 4px; font-size: var(--t-callout); line-height: 1.4; }
+.ll-page .ll-journey-columns h4 > span { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #fff; font-size: 12px; font-weight: 500; color: #424245; }
+.ll-page .ll-journey-before, .ll-page .ll-journey-after { padding: 16px; border: 1px solid #dedcd8; border-radius: 8px; }
+.ll-page .ll-journey-before { background: #f7f6f3; }
+.ll-page .ll-journey-after { background: var(--ll-lit-light); border-color: transparent; }
+.ll-page .ll-journey-before > span, .ll-page .ll-journey-after > span { display: block; margin-bottom: 12px; font-size: var(--t-label); line-height: 1.4; font-weight: 500; color: #1d1d1f; }
+.ll-page .ll-journey-columns p { margin: 0; font-size: var(--t-callout); line-height: 1.55; color: #424245; }
+.ll-page .ll-journey-note { padding-top: 10px; border-top: 2px solid #b9cdd3; font-size: var(--t-label) !important; }
+.ll-page .ll-journey-columns > li:nth-child(3) .ll-journey-note { border-image: linear-gradient(90deg,#b9cdd3,#d8b67f) 1; }
+.ll-page .ll-journey-columns > li:last-child .ll-journey-note { border-color: #d8b67f; }
+.ll-page .ll-research-shots { width: min(100%, 880px); margin-inline: auto; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+.ll-page .ll-research-shots figure { align-items: center; }
+.ll-page .ll-research-shots figcaption { align-self: stretch; min-height: 74px; }
+.ll-page .ll-research-shots img { width: auto !important; max-width: 100% !important; height: 290px; max-height: 290px; object-fit: contain; background: transparent; border-radius: 6px; }
+.ll-page .ll-research-rules { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.ll-page .ll-evo-strike { stroke: #6e6e73; stroke-width: 1.1; opacity: .7; }
+.ll-page .ll-evo-mark { opacity: .3; mix-blend-mode: multiply; rx: 3; }
+.ll-page .ll-evo-pin circle { stroke: #fff; stroke-width: 2; }
+.ll-page .ll-evo-pin text { font: 500 13px/1 Geist,Arial,sans-serif; }
+.ll-page .ll-evolution-panel .ll-evidence-media { border: 1px solid #e1ded8; border-radius: 10px; overflow: hidden; }
+.ll-page .ll-answer-detail { padding: clamp(18px,2.5vw,32px); }
+.ll-page .ll-answer-detail picture { width: min(100%, 640px); }
+.ll-page .ll-answer-detail img { box-shadow: 0 5px 16px -7px rgba(0,0,0,.16); border-radius: 8px; }
+.ll-page .ll-shortlist-price-note { margin: 12px 0 0; font-size: var(--t-label); line-height: 1.4; color: rgba(255,255,255,.72); }
+.ll-page .ll-shortlist li { grid-template-columns: minmax(0,1fr) auto auto; gap: 8px; }
+.ll-page .ll-shortlist li b { white-space: nowrap; }
+.ll-page .ll-comparison-spec-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; padding: clamp(20px,3vw,40px); background: #edebe7; border-radius: var(--ll-radius); }
+.ll-page .ll-comparison-spec-grid figure { margin: 0; min-width: 0; }
+.ll-page .ll-comparison-spec-grid figcaption { display: block; margin: 0 0 14px; padding: 0; font: 500 var(--t-callout)/1.4 Geist,Arial,sans-serif; color: #424245; }
+.ll-page .ll-comparison-spec-grid img { display: block; width: 100%; height: auto; }
+@media(max-width:767px) {
+ .ll-page .ll-journey-key { grid-template-columns: 1fr; gap: 14px; margin-bottom: 26px; }
+ .ll-page .ll-journey-columns { display: block; }
+ .ll-page .ll-journey-columns > li { display: grid; grid-template-rows: auto auto auto auto; gap: 10px; margin-top: 28px; }
+ .ll-page .ll-journey-columns > li:first-child { margin-top: 0; }
+ .ll-page .ll-journey-columns h4 { flex-direction: row; align-items: baseline; font-size: 17px; }
+ .ll-page .ll-journey-columns h4 > span { flex: 0 0 22px; }
+ .ll-page .ll-journey-columns p { font-size: 16px; }
+ .ll-page .ll-journey-columns > li:nth-child(2) .ll-journey-note, .ll-page .ll-journey-columns > li:nth-child(3) .ll-journey-note { display: none; }
+ .ll-page .ll-research-shots { max-width: 440px; grid-template-columns: 1fr; gap: 28px; }
+ .ll-page .ll-research-shots figcaption { min-height: 0; }
+ .ll-page .ll-research-shots img { width: auto !important; height: auto; max-height: 290px; }
+ .ll-page .ll-research-rules { grid-template-columns: 1fr; }
+ .ll-page .ll-comparison-spec-grid { grid-template-columns: 1fr; padding: 18px; gap: 28px; }
+ .ll-page .ll-answer-detail { padding: 16px; }
+}
+
+/* Final review: preserve model names and let narrow screens inspect both comparison cards. */
+.ll-page .ll-journey-columns h4 > span { background: var(--ll-light); color: #1d1d1f; }
+.ll-page .ll-spec-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #b6b3ad transparent; border-radius: 6px; }
+.ll-page .ll-spec-scroll:focus-visible { outline: 2px solid #88c4ec; outline-offset: 4px; }
+.ll-page .ll-shortlist li > span { white-space: nowrap; }
+@media (min-width: 1001px) and (max-width: 1600px) {
+ .ll-page .ll-shortlist li { grid-template-columns: minmax(0,1fr) auto; grid-template-rows: auto auto; row-gap: 2px; }
+ .ll-page .ll-shortlist li > span { grid-column: 1; grid-row: 1; }
+ .ll-page .ll-shortlist li > em { grid-column: 1; grid-row: 2; padding-left: 14px; }
+ .ll-page .ll-shortlist li > b { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+}
+@media (max-width: 767px) {
+ .ll-page .ll-comparison-spec-grid .ll-spec-scroll img { width: 560px; min-width: 560px; max-width: none; }
+}
+
+/* ---------- 05 · greeting before/after: both panels cropped to their edges, same scale, same frame ----------
+   (the earlier crops carried a baked shadow on Before and a fade on After, which read as the wrong way round) */
+.ll-page .ll-ab.is-greet { grid-template-columns: repeat(2, minmax(0, 350px)); align-items: start; gap: clamp(24px, 4vw, 64px); }
+.ll-page .ll-ab.is-greet > div p { margin: 0 0 14px; padding: 0; }
+.ll-page .ll-ab.is-greet > div img,
+.ll-page .ll-ab.is-greet > div:first-child img,
+.ll-page .ll-ab.is-greet > div:last-child img {
+  margin: 0; aspect-ratio: auto; object-fit: fill; border-radius: 14px;
+  -webkit-mask-image: none; mask-image: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 12px 32px -12px rgba(0, 0, 0, .18);
+}
+@media (max-width: 767px) { .ll-page .ll-ab.is-greet { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+
+/* ---------- 01 · browsing with and without the assistant: two bands, one box per row ----------
+   Same four columns everywhere. The existing-site band is divided between steps (each page starts over);
+   the assistant band runs without dividers, with one thread under it (needs carry through). */
+.ll-page .ll-journey-compare { --jc-pad: 20px; }
+.ll-page .ll-journey-steps,
+.ll-page .ll-journey-band ol,
+.ll-page .ll-journey-thread { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.ll-page .ll-journey-steps { margin: 4px 0 14px; padding-inline: 1px; }
+.ll-page .ll-journey-steps li {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 0 var(--jc-pad);
+  font-size: var(--t-callout); line-height: 1.4; font-weight: 500; color: var(--ink);
+}
+.ll-page .ll-journey-steps li > span {
+  display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--ll-light); color: var(--ink); font: 600 12px/1 Geist, Arial, sans-serif;
+}
+.ll-page .ll-journey-band { border: 1px solid #dedcd8; border-radius: 12px; background: #f7f6f3; }
+.ll-page .ll-journey-band + .ll-journey-band { margin-top: 12px; }
+.ll-page .ll-journey-band.is-after { border-color: transparent; background: var(--ll-lit-light); }
+.ll-page .ll-journey-band-label { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin: 0; padding: 16px var(--jc-pad) 0; font-size: var(--t-callout); line-height: 1.5; }
+.ll-page .ll-journey-band-label b { font-weight: 500; color: var(--ink); }
+.ll-page .ll-journey-band-label span { color: var(--ink-2); }
+.ll-page .ll-journey-band li { padding: 12px var(--jc-pad) 18px; font-size: var(--t-callout); line-height: 1.55; color: var(--ink-read); }
+.ll-page .ll-journey-band.is-before li + li { border-left: 1px solid #dedcd8; }
+.ll-page .ll-journey-band li::before { display: none; }
+.ll-page .ll-journey-thread { margin-top: 14px; padding: 10px 1px 0; border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, #b9cdd3, #88c4ec 45%, #d8b67f) 1; }
+.ll-page .ll-journey-thread span { padding: 0 var(--jc-pad); font-size: var(--t-label); line-height: 1.4; color: var(--ink-2); }
+.ll-page .ll-journey-thread span:first-child { grid-column: 1 / 4; }
+.ll-page .ll-journey-thread span:last-child { grid-column: 4; }
+@media (max-width: 767px) {
+  .ll-page .ll-journey-compare { --jc-pad: 16px; }
+  .ll-page .ll-journey-steps { display: none; }
+  .ll-page .ll-journey-band ol, .ll-page .ll-journey-thread { grid-template-columns: 1fr; }
+  .ll-page .ll-journey-band li { padding-top: 12px; padding-bottom: 14px; }
+  .ll-page .ll-journey-band li::before { content: attr(data-title); display: block; margin-bottom: 4px; font-size: var(--t-label); font-weight: 500; color: var(--ink-3); }
+  .ll-page .ll-journey-band.is-before li + li { border-left: 0; border-top: 1px solid #dedcd8; }
+  .ll-page .ll-journey-thread span:first-child, .ll-page .ll-journey-thread span:last-child { grid-column: auto; }
+}
+
+/* ---------- 02 · 2.2 focus: the page fades back and a ring finds "Viewing L-800" ----------
+   The same focus language as 3.5 and the user-flow stops: no zoom, no blur. One loop, 6 s:
+   0–1.2 s whole shot · 1.2–1.9 s dim (#faf8f5 at 55%) and ring in (104% → 100%), cubic-bezier(.22, 1, .36, 1)
+   · hold to 4.4 s · out by 4.8 s, cubic-bezier(.4, 0, 1, 1) · whole shot to 6 s. Plays only on screen. */
+.ll-page .ll-focus-shot { position: relative; overflow: hidden; border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 12px 32px -12px rgba(0, 0, 0, .18); }
+.ll-page .ll-ctx-shot .ll-focus-shot img { box-shadow: none; border-radius: 0; }
+.ll-page .ll-focus-shot-mark {
+  position: absolute; left: var(--fx); top: var(--fy); width: var(--fw); height: var(--fh); border-radius: 8px;
+  box-shadow: 0 0 0 9999px rgba(250, 248, 245, .55); opacity: 0; transform: scale(1.04); pointer-events: none;
+}
+.ll-page .ll-focus-shot-mark::before {
+  content: ""; position: absolute; inset: -1.5px; border-radius: inherit; padding: 1.5px;
+  background: linear-gradient(115deg, #88c4ec, #b6dafa 35%, #d8b67f 70%, #88c4ec);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  box-shadow: 0 0 14px rgba(136, 196, 236, .35);
+}
+.ll-page .ll-focus-shot.is-running .ll-focus-shot-mark { animation: ll-focus-shot 6s infinite; }
+@keyframes ll-focus-shot {
+  0%, 20% { opacity: 0; transform: scale(1.04); animation-timing-function: cubic-bezier(.22, 1, .36, 1); }
+  31.667%, 73.333% { opacity: 1; transform: scale(1); animation-timing-function: cubic-bezier(.4, 0, 1, 1); }
+  80%, 100% { opacity: 0; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ll-page .ll-focus-shot .ll-focus-shot-mark, .ll-page .ll-focus-shot.is-running .ll-focus-shot-mark { animation: none; opacity: 1; transform: none; }
+}
+
+/* ---------- round: no dividers in the existing-site band; greeting panels whole; wider gaps; hero copy to the edge ---------- */
+.ll-page .ll-journey-band.is-before li + li { border-left: 0; border-top: 0; }
+.ll-page .ll-ab.is-greet { grid-template-columns: repeat(2, minmax(0, 350px)); align-items: center; gap: clamp(32px, 7vw, 120px); padding-block: 56px; }
+.ll-page .ll-ab.is-dir { gap: clamp(32px, 7vw, 120px); }
+.pf-selected-case.ll-page .ll-hero-side > p { max-width: none; }
+@media (max-width: 767px) { .ll-page .ll-ab.is-greet, .ll-page .ll-ab.is-dir { gap: 12px; padding-block: 16px; } }
+/* 05 · directions: the same lit sheet as 5.2; panels cropped to their edges with the page's panel shadow */
+.ll-page .ll-ab.is-dir { background: var(--ll-lit-light) !important; }
+.ll-page .ll-ab.is-dir img { border-radius: 14px; box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 12px 32px -12px rgba(0, 0, 0, .18); }

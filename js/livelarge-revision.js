@@ -114,9 +114,9 @@
       if (changed) { r.classList.remove('is-new'); void r.offsetWidth; r.classList.add('is-new'); }
     };
     const render = t => {
-      setRow('goal', t >= T.goal ? 'set' : 'empty', t >= T.goal ? 'Rental income' : 'Not yet');
-      setRow('priority', t >= T.priority ? 'set' : t >= T.askPriority ? 'asking' : 'empty', t >= T.priority ? 'Lower upfront cost' : t >= T.askPriority ? 'Asking' : 'Not yet');
-      setRow('beds', t >= T.beds ? 'set' : t >= T.askBeds ? 'asking' : 'empty', t >= T.beds ? 'Two bedrooms' : t >= T.askBeds ? 'Asking' : 'Not yet');
+      setRow('goal', t >= T.goal ? 'set' : 'empty', t >= T.goal ? 'Rental income' : 'Not specified');
+      setRow('priority', t >= T.priority ? 'set' : t >= T.askPriority ? 'asking' : 'empty', t >= T.priority ? 'Lower upfront cost' : t >= T.askPriority ? 'Asking' : 'Not specified');
+      setRow('beds', t >= T.beds ? 'set' : t >= T.askBeds ? 'asking' : 'empty', t >= T.beds ? 'Two bedrooms' : t >= T.askBeds ? 'Asking' : 'Not specified');
       const narrowed = t >= T.shortlist;
       models.forEach(li => { li.classList.toggle('is-out', narrowed && li.dataset.beds !== '2'); li.classList.toggle('is-hot', narrowed && li.dataset.beds === '2'); });
       count.textContent = narrowed ? '2 models' : '4 models';

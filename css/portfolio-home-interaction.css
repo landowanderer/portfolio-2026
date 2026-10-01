@@ -129,3 +129,5 @@
     @keyframes sheet-rise{from{transform:translateY(36px) scale(.965)}to{transform:none}}
   }
 }
+/* A little less side space on wide screens (was 1440). */
+.page-width{width:min(1560px,calc(100% - 2 * var(--pf-edge,40px)))}
