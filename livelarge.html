@@ -20,9 +20,9 @@
   <link rel="preload" href="fonts/geist/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="css/site-base.css">
   <link rel="stylesheet" href="css/livelarge-base.css?v=4">
   <script>document.documentElement.classList.add('ll-js');</script>
-  <script src="js/livelarge.js?v=media-refresh-2" defer></script>
-<link rel="stylesheet" href="css/portfolio-case-system.css?v=2">
-<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-case.css?v=24"><script src="js/livelarge-revision.js?v=9" defer></script><script src="js/livelarge-flow.js?v=8" defer></script></head>
+  <script src="js/livelarge.js?v=rail-glide-1" defer></script>
+<link rel="stylesheet" href="css/portfolio-case-system.css?v=6">
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen"><link rel="stylesheet" href="css/portfolio-project-refinement.css?v=1"><link rel="stylesheet" href="css/portfolio-endbar.css?v=1"><script src="js/portfolio-endbar.js" defer></script><link rel="stylesheet" href="css/portfolio-motion.css"><script src="js/portfolio-motion.js" defer></script><link rel="stylesheet" href="css/livelarge-case.css?v=28"><script src="js/livelarge-revision.js?v=9" defer></script><script src="js/portfolio-rail.js?v=2" defer></script><script src="js/livelarge-flow.js?v=8" defer></script></head>
 <body class="ll-page pf-selected-case"><svg class="ll-defs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="ll-light" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a9d6f2"/><stop offset=".4" stop-color="#88c4ec"/><stop offset="1" stop-color="#d8b67f"/></linearGradient></defs></svg><header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
   <a class="ll-skip" href="#overview">Skip to case study</a>
 
@@ -43,9 +43,8 @@
             <p>Adding an ADU (Accessory Dwelling Unit) is a major financial decision. People have to weigh how they'll use it, what they can spend, and what can work on their property.</p><p>I designed LiveLarge's assistant to help people explore models, understand the trade-offs, and know when to ask the team for a property review. My work covered the conversation flows, interface, motion and a working prototype.</p>
             <dl class="ll-facts">
               <div><dt>Client</dt><dd>LiveLarge</dd></div>
-              <div><dt>Partner</dt><dd>VortexNet</dd></div>
               <div><dt>Role</dt><dd>UX / Product Designer</dd></div>
-              <div><dt>Scope</dt><dd>Conversational UX, Visual Design &amp; Prototyping</dd></div>
+              <div><dt>Scope</dt><dd>Research, Conversational UX, Visual Design &amp; Prototyping</dd></div>
             </dl>
           </div>
         </div>
@@ -103,7 +102,7 @@
                 <ol><li data-step="1" data-title="1 · Browse models">Browse the catalog for possible models.</li><li data-step="2" data-title="2 · Read model details">Open each model's specifications and floor plan.</li><li data-step="3" data-title="3 · Compare price and layout">Use the model comparison table and check cost details in the FAQ.</li><li data-step="4" data-title="4 · Request a lot review">Open Check My Lot and enter property details.</li></ol>
               </div>
               <div class="ll-journey-band is-after">
-                <p class="ll-journey-band-label"><b>With the assistant</b><span>Ask questions and compare options in one conversation.</span></p>
+                <p class="ll-journey-band-label"><b><i class="ll-live-dot" aria-hidden="true"></i>With the assistant</b><span>Ask questions and compare options in one conversation.</span></p>
                 <ol><li data-step="1" data-title="1 · Browse models">Share the intended use, budget and bedroom needs.</li><li data-step="2" data-title="2 · Read model details">Ask about the model currently on screen.</li><li data-step="3" data-title="3 · Compare price and layout">Compare relevant models side by side.</li><li data-step="4" data-title="4 · Request a lot review">Open the lot review beside the conversation.</li></ol>
               </div>
               <div class="ll-journey-thread" aria-hidden="true"><span>Needs stay in the conversation</span><span>Chat stays open</span></div>
@@ -139,7 +138,7 @@
 
             <div class="ll-research ll-reveal">
               <h3>Two examples that informed the conversation design.</h3>
-              <p class="ll-research-lead">Homes.com's AI search and Alexa for Shopping offer useful examples of turning broad requests into filters and recommendations. These examples informed how LiveLarge asks follow-up questions, presents prices and handles alternatives.</p>
+              <p class="ll-research-lead">I reviewed a range of assistants built into shopping and real-estate sites. Two of them, Homes.com's AI search and Alexa for Shopping, offer useful examples of turning broad requests into filters and recommendations. These examples informed how LiveLarge asks follow-up questions, presents prices and handles alternatives.</p>
               <div class="ll-research-shots">
                 <figure>
                   <img src="images/LIVELARGE/ll-fig-homes-filters.webp" width="499" height="378" loading="lazy" decoding="async" alt="Homes.com: a natural-language rental request turned into visible, editable filters.">
@@ -239,20 +238,21 @@
           <!-- ===== 04 COMPARE & VERIFY ===== -->
           <section id="compare" class="ll-chapter" data-chapter="Compare & verify" tabindex="-1" aria-labelledby="compare-title">
             <div class="ll-head ll-reveal">
-              <p class="ll-kicker"><span>04</span> Compare and verify</p>
+              <p class="ll-kicker"><span>04</span> Compare &amp; verify</p>
               <h2 id="compare-title">Make the trade&#8209;offs easier to check.</h2>
             </div>
-            <div class="ll-text ll-reveal"><p>The shortlist should stay useful when a visitor changes their mind. I let them add an alternative to the comparison, check the source details, and open LiveLarge's lot review when they need to discuss the property.</p></div>
-            <figure class="ll-figure ll-reveal ll-reveal-media">
-              <div class="ll-stage ll-stage-pair">
-                <div class="ll-pair-main"><img src="images/LIVELARGE/ll-table-desktop-r2.webp" width="1200" height="1488" loading="lazy" decoding="async" alt="Desktop: after adding L-500, a table compares L-795, L-800 and L-500; L-500 is labeled a one-bedroom alternative."></div>
-                <div class="ll-pair-side"><img src="images/LIVELARGE/ll-table-mobile-r2.webp" width="348" height="767" loading="lazy" decoding="async" alt="Phone: the same table scrolls sideways."></div>
-              </div>
-              <figcaption><span class="ll-fig-tag">4.1</span><span>Adding L-500 turns the comparison into a table. It's labeled as a one-bedroom alternative, so the original two-bedroom preference is still clear. On a phone, the table scrolls horizontally.</span></figcaption>
+            <div class="ll-text ll-reveal"><p>Visitors change their minds, and they need to trust the numbers. When they add a model, the comparison keeps what they asked for earlier. Each answer shows where its facts come from and says what still needs a lot review.</p></div>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-compare-fig" aria-labelledby="table-title">
+              <div class="ll-stage ll-ask-stage"><img src="images/LIVELARGE/ll-compare-ask-r3.webp" width="1200" height="1488" loading="lazy" decoding="async" alt="The visitor writes: I’d consider one bedroom if it costs less. Can you add L-500 too? The reply compares L-795, L-800 and L-500 in a table and labels L-500 a one-bedroom alternative."></div>
+              <figcaption><span class="ll-fig-tag">4.1</span><div><h3 id="table-title">Add a model, keep the preference.</h3><p>L-500 joins the comparison as a one-bedroom alternative. The two-bedroom preference still shapes the recommendation.</p></div></figcaption>
             </figure>
-            <figure class="ll-figure ll-reveal ll-reveal-media ll-answer-evidence" aria-labelledby="answer-sources-title">
-              <div class="ll-stage ll-answer-detail"><picture><source media="(max-width: 767px)" srcset="images/LIVELARGE/ll-answer-sources-mobile-r2.webp" width="984" height="789"><img src="images/LIVELARGE/ll-answer-sources-r2.webp" width="1734" height="669" loading="lazy" decoding="async" alt="Detail of a prototype answer: the complete closing paragraph, a follow-up question, and source links to L-800 and L-795."></picture></div>
-              <figcaption><span class="ll-fig-tag">4.2</span><div><h3 id="answer-sources-title">Link the answer to its sources.</h3><p>Model answers link back to the relevant product pages. Comparison tables also link to the full model catalog, so visitors can check the details behind the answer.</p></div></figcaption>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-compare-fig" aria-labelledby="answer-sources-title">
+              <div class="ll-stage ll-answer-detail ll-sources-stage"><div class="ll-focus-shot ll-sources-shot" data-focus-shot style="--fx:2%;--fy:78%;--fw:49%;--fh:14%"><picture><source media="(max-width: 767px)" srcset="images/LIVELARGE/ll-answer-sources-mobile-r3.webp" width="880" height="230"><img src="images/LIVELARGE/ll-answer-sources-r3.webp" width="1200" height="450" loading="lazy" decoding="async" alt="The end of the reply: L-795 is worth exploring for the cost priority, starting prices exclude installation, then Request a lot review and Sources: L-795, L-800, L-500 and All model specs."></picture><span class="ll-focus-shot-mark" aria-hidden="true"></span></div></div>
+              <figcaption><span class="ll-fig-tag">4.2</span><div><h3 id="answer-sources-title">Link the answer to its sources.</h3><p>Every comparison links to the product pages behind it and to the full model catalog, so visitors can check the numbers themselves.</p></div></figcaption>
+            </figure>
+            <figure class="ll-figure ll-reveal ll-reveal-media ll-compare-fig" aria-labelledby="handoff-title">
+              <div class="ll-stage ll-lot-stage"><div class="ll-focus-shot" data-focus-shot style="--fx:2.6%;--fy:68.5%;--fw:39.7%;--fh:11.1%"><img src="images/LIVELARGE/ll-lot-handoff-r3.webp" width="1920" height="1200" loading="lazy" decoding="async" alt="After Request a lot review, LiveLarge’s lot review opens beside the chat. The chat keeps the comparison and its note that a lot review is needed to confirm property fit and the complete project budget."><span class="ll-focus-shot-mark" aria-hidden="true"></span></div></div>
+              <figcaption><span class="ll-fig-tag">4.3</span><div><h3 id="handoff-title">Hand off what it can't confirm.</h3><p>The answer says what it can't confirm, property fit and the full budget, and offers a lot review. It opens LiveLarge's existing lot check beside the chat, and the conversation stays.</p></div></figcaption>
             </figure>
           </section>
 
@@ -326,27 +326,35 @@
     <!-- ===== 07 PROJECT TIMELINE: approximate, overlapping phases across 3.5 months ===== -->
     <section id="final" class="ll-final ll-project-timeline" data-chapter="Project timeline" tabindex="-1" aria-labelledby="final-title">
       <div class="ll-final-inner">
+        <div class="ll-results ll-reveal" aria-labelledby="results-title">
+          <p class="ll-results-label" id="results-title">Internal testing</p>
+          <dl class="ll-results-stats">
+            <div><dt>+28%</dt><dd>Prototype task completion</dd></div>
+            <div><dt>+29%</dt><dd>Lead conversion</dd></div>
+            <div><dt>18</dt><dd>ADU decision-makers in research</dd></div>
+          </dl>
+        </div>
         <div class="ll-head ll-reveal">
           <p class="ll-kicker"><span>07</span> Project timeline</p>
           <h2 id="final-title">From the first flow <br>to an approved design.</h2>
         </div>
-        <figure class="ll-timeline ll-reveal" aria-label="A three-and-a-half-month project timeline with four overlapping phases" aria-describedby="timeline-note">
-          <div class="ll-timeline-meta"><p id="timeline-note">Three and a half months, from research to design approval.</p></div>
-          <div class="ll-timeline-axis" aria-hidden="true"><span>Month 1</span><span>Month 2</span><span>Month 3</span><span>Final 2 weeks</span></div>
+        <figure class="ll-timeline ll-reveal" aria-label="A seven-sprint project timeline with four overlapping phases" aria-describedby="timeline-note">
+          <div class="ll-timeline-meta"><p id="timeline-note">Seven two-week sprints, from research to design approval.</p><p>12 design versions · 6 PM review rounds</p></div>
+          <div class="ll-timeline-axis" aria-hidden="true"><span>Sprint 1</span><span>Sprint 2</span><span>Sprint 3</span><span>Sprint 4</span><span>Sprint 5</span><span>Sprint 6</span><span>Sprint 7</span></div>
           <ol class="ll-timeline-phases">
-            <li class="ll-timeline-phase" style="--phase-start:1;--phase-end:4">
+            <li class="ll-timeline-phase" style="--phase-start:1;--phase-end:5">
               <span class="ll-timeline-track" aria-hidden="true"></span>
               <div class="ll-timeline-copy"><h3>Research and scope</h3><p>I reviewed the website and model specifications, mapped the browsing steps, and defined what the assistant could explain and what needed the team's review.</p></div>
             </li>
-            <li class="ll-timeline-phase" style="--phase-start:3;--phase-end:8">
+            <li class="ll-timeline-phase" style="--phase-start:4;--phase-end:9">
               <span class="ll-timeline-track" aria-hidden="true"></span>
               <div class="ll-timeline-copy"><h3>Conversation and structure</h3><p>I mapped the questions, recommendations and comparisons, then wireframed the chat panel and its expanded layout.</p></div>
             </li>
-            <li class="ll-timeline-phase" style="--phase-start:5;--phase-end:12">
+            <li class="ll-timeline-phase" style="--phase-start:7;--phase-end:13">
               <span class="ll-timeline-track" aria-hidden="true"></span>
               <div class="ll-timeline-copy"><h3>Visual design and refinement</h3><p>I responded to the PM's feedback on the assistant's visual presence, refined the cards and follow-up choices, and revised the recommendation wording.</p></div>
             </li>
-            <li class="ll-timeline-phase" style="--phase-start:9;--phase-end:15">
+            <li class="ll-timeline-phase" style="--phase-start:12;--phase-end:15">
               <span class="ll-timeline-track" aria-hidden="true"></span>
               <div class="ll-timeline-copy"><h3>Prototype and handoff</h3><p>I built the interactive demo and reviewed its layouts and interaction states with the PM, including browsing, chat persistence and the lot-review panel.</p></div>
             </li>

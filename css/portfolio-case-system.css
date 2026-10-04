@@ -20,3 +20,17 @@
   .fb-page .fb-layout { grid-template-columns: var(--c-rail) minmax(0, 1fr) var(--c-rail); column-gap: var(--c-gap); margin: 0 0 120px; padding: 0 var(--c-edge); }
   .fb-page .fb-story { width: var(--c-content); max-width: none; justify-self: center; }
 }
+
+/* Contents rail (every case study with chapters): a light track and one grey marker, one text line tall.
+   js/portfolio-rail.js moves the marker to the current chapter; it glides there with the text colour on the same timing. */
+.ll-rail ol, .fb-rail ol { --rail-pad: 8px; --rail-ease: cubic-bezier(.22, 1, .36, 1); position: relative; padding-left: 18px; }
+.ll-rail a, .fb-rail a { padding-block: var(--rail-pad) !important; }
+.ll-rail ol::before, .fb-rail ol::before { content: ""; position: absolute; left: 0; top: var(--rail-pad); bottom: var(--rail-pad); width: 2px;
+  background: linear-gradient(90deg, transparent 25%, #e5e5e5 25% 75%, transparent 75%); }
+.ll-rail ol::after, .fb-rail ol::after { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: var(--rail-h, 0px);
+  transform: translateY(var(--rail-y, 0px)); border-radius: 1px; background: #86868b; opacity: var(--rail-on, 0); }
+.ll-rail ol.rail-ready::after, .fb-rail ol.rail-ready::after { transition: transform .45s var(--rail-ease), height .45s var(--rail-ease), opacity .2s ease; }
+.ll-rail a, .fb-rail a { color: #86868b !important; font-weight: 400 !important; transition: color .45s var(--rail-ease); }
+.ll-rail a::before, .fb-rail a::before { content: none !important; }
+.ll-rail a:hover, .fb-rail a:hover, .ll-rail a[aria-current="location"], .fb-rail a[aria-current="location"] { color: #1d1d1f !important; }
+@media (prefers-reduced-motion: reduce) { .ll-rail ol.rail-ready::after, .fb-rail ol.rail-ready::after, .ll-rail a, .fb-rail a { transition: none; } }

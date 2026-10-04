@@ -26,7 +26,7 @@
     select.replaceChildren(...sections.map(section => new Option(section.dataset.chapter, section.id)));
     const links = [...list.querySelectorAll('a')];
     const byId = new Map(sections.map(section => [section.id, section]));
-    let current = null, queued = false;
+    let current = null, queued = false, jumping = null, jumpTimer = 0;
     const setActive = id => {
       if (current === id) return;
       current = id;
@@ -35,11 +35,17 @@
     };
     const sync = () => {
       queued = false;
-      const line = window.innerHeight * 0.35;
+      if (jumping) return;
+      // A chapter becomes current when its top passes 40% of the window. The current one gets a small band
+      // either side, so the marker doesn't flicker when the reader stops near a boundary.
+      const line = window.innerHeight * 0.4, band = window.innerHeight * 0.03;
       let active = '';
-      for (const section of sections) { if (section.getBoundingClientRect().top <= line) active = section.id; else break; }
+      for (const section of sections) { if (section.getBoundingClientRect().top <= line + (section.id === current ? band : -band)) active = section.id; else break; }
       setActive(active);
     };
+    const endJump = () => { if (!jumping) return; jumping = null; clearTimeout(jumpTimer); queue(); };
+    window.addEventListener('scrollend', endJump);
+    ['wheel', 'touchstart', 'keydown'].forEach(type => window.addEventListener(type, endJump, { passive: true }));
     const queue = () => { if (!queued) { queued = true; requestAnimationFrame(sync); } };
     const go = (id, push = true) => {
       const target = byId.get(id);
@@ -47,8 +53,9 @@
       if (push && location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
       target.focus({ preventScroll: true });
       const far = Math.abs(target.getBoundingClientRect().top) > window.innerHeight * 2;
-      target.scrollIntoView({ block: 'start', behavior: far ? 'instant' : behavior() });
+      jumping = id; clearTimeout(jumpTimer); jumpTimer = setTimeout(endJump, 1200);
       setActive(id);
+      target.scrollIntoView({ block: 'start', behavior: far ? 'instant' : behavior() });
     };
     list.addEventListener('click', event => {
       const link = event.target.closest('a');

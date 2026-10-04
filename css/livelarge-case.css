@@ -704,3 +704,44 @@
 /* 05 · directions: the same lit sheet as 5.2; panels cropped to their edges with the page's panel shadow */
 .ll-page .ll-ab.is-dir { background: var(--ll-lit-light) !important; }
 .ll-page .ll-ab.is-dir img { border-radius: 14px; box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 12px 32px -12px rgba(0, 0, 0, .18); }
+
+/* ---------- 01 · the assistant band reads as running: the prototype's edge light and a breathing dot ---------- */
+@property --ll-edge-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.ll-page .ll-journey-band.is-after { position: relative; }
+.ll-page .ll-journey-band.is-after::before {
+  content: ""; position: absolute; inset: -1.5px; border-radius: 13px; padding: 1.5px; pointer-events: none;
+  background: conic-gradient(from var(--ll-edge-angle), rgba(182, 218, 250, .35) 0deg, rgba(182, 218, 250, .35) 200deg, #88c4ec 250deg, #fff 280deg, #d8b67f 315deg, rgba(234, 216, 186, .35) 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: ll-edge-spin 7s linear infinite;
+}
+@keyframes ll-edge-spin { to { --ll-edge-angle: 360deg; } }
+.ll-page .ll-live-dot { display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; vertical-align: 1px;
+  background: linear-gradient(135deg, #a9d6f2, #88c4ec 40%, #d8b67f); animation: ll-live-breathe 2.4s ease-in-out infinite; }
+@keyframes ll-live-breathe { 0%, 100% { box-shadow: 0 0 0 0 rgba(136, 196, 236, 0), 0 0 6px 1px rgba(136, 196, 236, .5); } 50% { box-shadow: 0 0 0 4px rgba(216, 182, 127, .18), 0 0 12px 2px rgba(216, 182, 127, .5); } }
+@media (prefers-reduced-motion: reduce) { .ll-page .ll-journey-band.is-after::before, .ll-page .ll-live-dot { animation: none; } }
+
+/* ---------- 07 · results from internal testing, above the timeline; seven-sprint axis ---------- */
+.ll-page .ll-results { padding-bottom: clamp(56px, 6vw, 96px); margin-bottom: clamp(56px, 6vw, 96px); border-bottom: 1px solid #ffffff26; }
+.ll-page .ll-results-label { margin: 0 0 24px; font-size: var(--t-label); color: #a1a1a6; }
+.ll-page .ll-results-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin: 0; }
+.ll-page .ll-results-stats dt { font-size: var(--t-display); line-height: 1; font-weight: 600; letter-spacing: -.03em; color: #f5f5f7; }
+.ll-page .ll-results-stats dd { margin: 12px 0 0; font-size: var(--t-callout); line-height: 1.5; color: rgba(255, 255, 255, .72); }
+.ll-timeline-axis { grid-template-columns: repeat(7, minmax(0, 1fr)) !important; }
+.ll-timeline-axis span:last-child { text-align: left !important; }
+.ll-page .ll-timeline-phases { background: repeating-linear-gradient(to right, transparent 0, transparent calc(100% / 7 - 1px), #ffffff0b calc(100% / 7 - 1px), #ffffff0b calc(100% / 7)) !important; }
+@media (max-width: 767px) { .ll-page .ll-results-stats { grid-template-columns: 1fr; gap: 24px; } .ll-page .ll-timeline-phases { background: none !important; } }
+/* 04: one prototype conversation in three figures — the ask and its table, the sources, the hand-off to a lot review.
+   4.2 and 4.3 use the 2.2 focus loop; 4.1 sits on the AI-light sheet like 4.2. */
+.ll-page .ll-compare-fig h3 { margin: 0 0 10px; font-size: var(--t-heading); line-height: 1.3; color: var(--ink); }
+.ll-page .ll-compare-fig figcaption p { max-width: 660px; margin: 0; color: var(--ink-read); }
+.ll-page .ll-ask-stage { display: grid; place-items: center; padding: clamp(28px, 4vw, 64px); background: var(--ll-lit-light); }
+.ll-page .ll-ask-stage img { display: block; width: min(100%, 600px); height: auto; border-radius: 12px; box-shadow: 0 12px 32px -12px rgba(0, 0, 0, .18); }
+.ll-page .ll-sources-stage .ll-focus-shot { width: min(100%, 720px); }
+.ll-page .ll-sources-stage picture { display: block; width: 100%; }
+.ll-page .ll-lot-stage { padding: clamp(20px, 3vw, 48px); }
+.ll-page .ll-sources-stage .ll-focus-shot img, .ll-page .ll-lot-stage .ll-focus-shot img { display: block; width: 100%; height: auto; box-shadow: none; border-radius: 0; }
+@media (max-width: 767px) {
+  .ll-page .ll-ask-stage { padding: 16px; }
+  .ll-page .ll-lot-stage { padding: 12px; }
+  .ll-page .ll-sources-shot { --fx: 2.7% !important; --fy: 58.7% !important; --fw: 66.6% !important; --fh: 26% !important; }
+}
