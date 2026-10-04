@@ -466,8 +466,9 @@
 .ll-page .ll-clarify-stage,
 .ll-page .ll-chatclip.is-inline,
 .ll-page .ll-stage-pair,
-.ll-page .ll-lot-evidence .ll-stage.ll-lot-detail,
-.ll-page .ll-visual-scene { background: var(--ll-lit-dark) !important; }
+.ll-page .ll-lot-evidence .ll-stage.ll-lot-detail { background: var(--ll-lit-dark) !important; }
+/* 5.1 sits on the light sheet like 4.1 and 4.2 */
+.ll-page .ll-visual-scene { background: var(--ll-lit-light) !important; }
 
 /* 3.5 focus: a ring in the markers' light around the qualification; the rest of the answer fades back */
 .ll-chatclip-focus { box-shadow: 0 0 0 9999px #faf8f5b8; }
