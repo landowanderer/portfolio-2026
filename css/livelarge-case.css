@@ -739,7 +739,7 @@
 .ll-page .ll-ask-stage img { display: block; width: min(100%, 600px); height: auto; border-radius: 12px; box-shadow: 0 12px 32px -12px rgba(0, 0, 0, .18); }
 .ll-page .ll-sources-stage .ll-focus-shot { width: min(100%, 720px); }
 .ll-page .ll-sources-stage picture { display: block; width: 100%; }
-.ll-page .ll-lot-stage { padding: clamp(20px, 3vw, 48px); }
+.ll-page .ll-lot-stage { padding: clamp(20px, 3vw, 48px); background: var(--ll-lit-light); }
 .ll-page .ll-sources-stage .ll-focus-shot img, .ll-page .ll-lot-stage .ll-focus-shot img { display: block; width: 100%; height: auto; box-shadow: none; border-radius: 0; }
 @media (max-width: 767px) {
   .ll-page .ll-ask-stage { padding: 16px; }
