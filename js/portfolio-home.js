@@ -33,7 +33,8 @@
 
   // Rain is one amount from 0 to 1. It rains while the cloud is held and stops when it is let go; drops already
   // falling still land. Drops lean with the cloud's tilt; nearer drops are longer, darker and faster, and only those
-  // break on the lines of text they meet.
+  // break on the lines of text they meet. Drops are 1.3–1.9 px, about the weight of the cloud's outline; fewer fall
+  // than when they were hairlines, so the gaps between them read the same.
   const sky=document.createElement('canvas');sky.className='intro-rain';sky.setAttribute('aria-hidden','true');intro.append(sky);const sctx=sky.getContext('2d');
   let sw=0,sh=0,drops=[],splashes=[],lines=[],stones=[],rainFrame=0,rainLast=0,spawn=0,level=0,lo=0,hi=0,auto=null;
   function sizeSky(){const r=intro.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);sw=r.width;sh=r.height;sky.width=Math.round(sw*d);sky.height=Math.round(sh*d);sctx.setTransform(d,0,0,d,0,0)}
@@ -66,12 +67,12 @@
     if(auto)storm=autoStep(dt);
     else{storm=held;level+=((storm?1:0)-level)*(storm?.07:.35)*dt;if(!storm&&level<.01)level=0;lo=0;hi=sw}
     cloud.classList.toggle('is-raining',auto?storm||level>.2:held);
-    if(level>0){const wind=Math.max(-.45,Math.min(.45,cx*.4))+.06,reach=sh*Math.abs(wind),span=Math.max(0,hi-lo);spawn+=level*6*dt;while(spawn>=1&&drops.length<420){spawn--;const z=Math.random(),vy=8+z*8+Math.random()*2;drops.push({x:lo+Math.random()*(span+reach)-(wind>0?reach:0),y:-20-Math.random()*40,vy,vx:vy*wind,len:6+z*16+Math.random()*4,a:.08+z*.32,w:.7+z*.6,z})}}
+    if(level>0){const wind=Math.max(-.45,Math.min(.45,cx*.4))+.06,reach=sh*Math.abs(wind),span=Math.max(0,hi-lo);spawn+=level*4.8*dt;while(spawn>=1&&drops.length<420){spawn--;const z=Math.random(),vy=8+z*8+Math.random()*2;drops.push({x:lo+Math.random()*(span+reach)-(wind>0?reach:0),y:-20-Math.random()*40,vy,vx:vy*wind,len:6+z*16+Math.random()*4,a:.06+z*.34,w:1.3+z*.6,z})}}
     sctx.clearRect(0,0,sw,sh);sctx.lineCap='round';
     const drips=[];drops=drops.filter(d=>{if(d.wait>0){d.wait-=dt*16.67;return true}const py=d.y;if(d.g)d.vy+=d.g*dt;d.x+=d.vx*dt;d.y+=d.vy*dt;
-      for(const b of stones){if(d.x>=b.left&&d.x<=b.right&&d.y>=b.top&&d.y<=b.bottom&&!(py>=b.top&&d.drip)){const top=py<b.top,y=top?b.top:d.y;for(let i=0,n=top?3+(Math.random()*2|0):1;i<n;i++)splashes.push({x:d.x,y,vx:top?(Math.random()-.5)*3+d.vx*.15:-Math.sign(d.vx||1)*(.6+Math.random()),vy:top?-1.5-Math.random()*2:-.4,life:1});if(top&&!d.drip&&Math.random()<.18&&drops.length<440)drips.push({x:b.left+3+Math.random()*(b.right-b.left-6),y:b.bottom+1,vy:.4,vx:0,g:.35,len:3,a:.4,w:1.1,z:1,drip:true,wait:280+Math.random()*700});return false}}
+      for(const b of stones){if(d.x>=b.left&&d.x<=b.right&&d.y>=b.top&&d.y<=b.bottom&&!(py>=b.top&&d.drip)){const top=py<b.top,y=top?b.top:d.y;for(let i=0,n=top?3+(Math.random()*2|0):1;i<n;i++)splashes.push({x:d.x,y,vx:top?(Math.random()-.5)*3+d.vx*.15:-Math.sign(d.vx||1)*(.6+Math.random()),vy:top?-1.5-Math.random()*2:-.4,life:1});if(top&&!d.drip&&Math.random()<.18&&drops.length<440)drips.push({x:b.left+3+Math.random()*(b.right-b.left-6),y:b.bottom+1,vy:.4,vx:0,g:.35,len:3,a:.4,w:1.7,z:1,drip:true,wait:280+Math.random()*700});return false}}
       if(d.z>.4)for(const l of lines){if(py<l.top&&d.y>=l.top&&d.x>=l.left&&d.x<=l.right&&Math.random()<.72){for(let i=0,n=2+(Math.random()*2|0);i<n;i++)splashes.push({x:d.x,y:l.top,vx:(Math.random()-.5)*2.6+d.vx*.15,vy:-1.2-Math.random()*1.8,life:1});return false}}if(d.y-d.len>sh)return false;sctx.lineWidth=d.w;sctx.strokeStyle=`rgba(32,32,32,${d.a*Math.max(0,Math.min(1,(sh-d.y)/70))})`;sctx.beginPath();sctx.moveTo(d.x,d.y);const len=d.drip?Math.min(14,2+d.vy*1.4):d.len;sctx.lineTo(d.x-d.vx/d.vy*len,d.y-len);sctx.stroke();return true});drops.push(...drips);
-    sctx.fillStyle='#202020';splashes=splashes.filter(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.22*dt;p.life-=.055*dt;if(p.life<=0)return false;sctx.globalAlpha=p.life*.55;sctx.fillRect(p.x-.6,p.y-.6,1.3,1.3);return true});sctx.globalAlpha=1;
+    sctx.fillStyle='#202020';splashes=splashes.filter(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.22*dt;p.life-=.055*dt;if(p.life<=0)return false;sctx.globalAlpha=p.life*.55;sctx.fillRect(p.x-.9,p.y-.9,1.8,1.8);return true});sctx.globalAlpha=1;
     if(auto||storm||level||drops.length||splashes.length)rainFrame=requestAnimationFrame(rainTick);else{rainFrame=0;rainLast=0;spawn=0}
   }
   function startLoop(){if(!rainFrame){sizeSky();measureLines();rainFrame=requestAnimationFrame(rainTick)}}
