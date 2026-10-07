@@ -287,4 +287,26 @@
       track.scrollTo({ left, behavior: behavior() });
     });
   });
+
+  /* ---------- Chat bubbles hug their text ----------
+     A wrapped block keeps its full width, which leaves a gap beside the last word. Each bubble is sized to its
+     longest line instead. */
+  const bubbles = [...document.querySelectorAll('.ll-bx-cases.is-chat .ll-bx-case-q, .ll-transcript-user, .ll-proposal-user')];
+  if (bubbles.length) {
+    const range = document.createRange();
+    const fit = () => bubbles.forEach(el => {
+      el.style.width = '';
+      if (!el.getClientRects().length) return;
+      range.selectNodeContents(el);
+      const rects = [...range.getClientRects()].filter(r => r.width > 0);
+      if (rects.length < 2 && el.scrollWidth <= el.clientWidth) return;
+      const line = Math.max(...rects.map(r => r.right)) - Math.min(...rects.map(r => r.left));
+      const cs = getComputedStyle(el);
+      el.style.width = `${Math.ceil(line + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + 1)}px`;
+    });
+    let t = 0;
+    window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 120); }, { passive: true });
+    if (document.fonts) document.fonts.ready.then(fit);
+    fit();
+  }
 })();

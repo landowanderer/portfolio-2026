@@ -9,7 +9,7 @@
 
 /* Field Brief: the same centred column, rail position and intro type as the LiveLarge case study. */
 .fb-page { --c-rail: 180px; --c-gap: clamp(40px, 3vw, 72px); --c-edge: var(--pf-edge, 40px);
-  --t-label: clamp(13px, .66vw, 14px); --t-body: clamp(16px, 1.1vw, 19px); --t-display: clamp(30px, 3vw, 56px); }
+  --t-label: clamp(13px, .66vw, 14px); --t-body: clamp(16px, .8vw, 17px); --t-display: clamp(28px, 1.9vw, 40px); }
 .pf-selected-case.fb-page .fb-project-label span { font-size: var(--t-label) !important; font-weight: 500; letter-spacing: normal; text-transform: none; color: #86868b; }
 .pf-selected-case.fb-page .pf-case-intro .pf-case-title { font-size: var(--t-display) !important; font-weight: 600 !important; letter-spacing: -.025em; color: #1d1d1f; }
 .pf-selected-case.fb-page .pf-case-copy > p { font: 400 var(--t-body)/1.6 Geist, Arial, sans-serif !important; color: #424245; max-width: none; }
