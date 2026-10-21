@@ -41,7 +41,8 @@
     }
     paperCtx.putImageData(P, 0, 0);
   }
-  function halftone(mask, img, x, y, w, h, cell, angle) {
+  /* One plate of a halftone. plate: 'c', 'm', 'y', 'k' (process colour separation) or 'mono' (a single dark ink). */
+  function halftone(mask, img, x, y, w, h, cell, angle, plate = 'mono') {
     const g = mk(Math.ceil(w / 2), Math.ceil(h / 2)), gx = g.getContext('2d');
     const ar = w / h, ir = img.width / img.height;
     let sw = img.width, sh = img.height, sx = 0, sy = 0;
@@ -54,7 +55,14 @@
       const px = x + w / 2 + u * ca - v * sa, py = y + h / 2 + u * sa + v * ca;
       if (px < x - cell || py < y - cell || px > x + w + cell || py > y + h + cell) continue;
       const ix = clamp(Math.floor((px - x) / 2), 0, g.width - 1), iy = clamp(Math.floor((py - y) / 2), 0, g.height - 1), gi = (iy * g.width + ix) * 4;
-      const lum = Math.min(1, (gd[gi] * .3 + gd[gi + 1] * .59 + gd[gi + 2] * .11) / 255 * 1.35 + .04), dark = 1 - lum;
+      const lift = v => Math.min(1, v / 255 * 1.25 + .03);   // stills are dark; open them up a little for print
+      const r = lift(gd[gi]), gr = lift(gd[gi + 1]), b = lift(gd[gi + 2]);
+      let dark;
+      if (plate === 'mono') dark = 1 - (r * .3 + gr * .59 + b * .11);
+      else {
+        const k = 1 - Math.max(r, gr, b), d = 1 - k || 1;
+        dark = plate === 'k' ? k * .85 : (plate === 'c' ? (1 - r - k) / d : plate === 'm' ? (1 - gr - k) / d : (1 - b - k) / d) * .92;
+      }
       if (dark < .06) continue;
       ctx.beginPath(); ctx.arc(px, py, cell * .62 * Math.sqrt(dark), 0, 6.2832); ctx.fill();
     }
@@ -85,7 +93,6 @@
     const w = 1182, h = 628, pad = 54, c = mk(w, h), cx = c.getContext('2d');
     paperCrop(cx, paper, w, h, i * 3 + 2, .5);
     const k = mk(w, h), kx = k.getContext('2d'); kx.fillStyle = '#000';
-    if (still) halftone(k, still, pad, 62, w - pad * 2, 262, 8, 45);
     // title, wrapped to two lines at most
     const words = t.title.toUpperCase().split(' '), lines = [''];
     kx.font = `600 54px ${SANS}`; if ('letterSpacing' in kx) kx.letterSpacing = '3px';
@@ -95,6 +102,14 @@
     kx.fillText(`${t.sub ? t.sub + ' · ' : ''}${t.year} · ${t.run}`, pad, h - 44);
     const ac = mk(w, h), ax = ac.getContext('2d'); ax.fillStyle = '#000';
     ax.fillRect(0, 0, w, 18); ax.fillRect(pad, h - 100, 140, 7);
+    // the cover still in four process inks, each plate screened at its own angle and laid down slightly out of register
+    if (still) {
+      const plates = [['y', 0, [238, 208, 86], -1, 2, .58], ['m', 75, [206, 70, 124], 2, 1, .62], ['c', 15, [40, 140, 190], 0, 0, .72], ['k', 45, INK, 1, -1, .85]];
+      for (const [p, ang, ink, dx, dy, dens] of plates) {
+        const pm = mk(w, h); halftone(pm, still, pad, 62, w - pad * 2, 262, 7, ang, p);
+        printInk(cx, w, h, soften(pm, 1.2), ink, { dx, dy, density: dens, tooth: .6, rough: .6 });
+      }
+    }
     printInk(cx, w, h, soften(k, 1.5), INK, { density: .82, tooth: .7, rough: .75 });
     printInk(cx, w, h, soften(ac, 1.5), hexRgb(t.accent), { dx: 3, dy: -2, density: .72, tooth: .7 });
     return c;

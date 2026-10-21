@@ -176,7 +176,10 @@ body.is-off #vol-down, body.is-off #tv-power { filter: saturate(.2); }
 .info a:hover { color: var(--ink); }
 
 @media (max-width: 700px) {
-  html, body { height: auto; overflow: auto; }
+  html, body { height: auto; overflow: visible; }
+  /* the TV photograph is wider than a phone: cut it at the edge of the screen so the page never slides sideways */
+  .set { overflow-x: clip; }
+  html { overflow-x: clip; overscroll-behavior-x: none; }
   .film-page { --tvw: calc(100vw * 1.36); }
   .set { position: relative; left: auto; top: auto; transform: none; margin-top: 150px; flex-direction: column; align-items: center; gap: calc(var(--tvw) * .04); }
   .shelf { align-self: center; margin-bottom: 0; }
