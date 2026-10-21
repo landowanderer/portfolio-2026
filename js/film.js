@@ -334,7 +334,7 @@
         vid.style.display = '';
         if (!vid.src.endsWith(t.src)) vid.src = t.src;
         vid.currentTime = 0;
-        vid.muted = S.vol === 0; vid.volume = gain();
+        vid.muted = S.vol === 0 || !S.on; vid.volume = gain();
         setLoading(true);
         const p = vid.play();
         if (p) p.catch(() => { S.muteBlocked = true; vid.muted = true; vid.play().catch(() => {}); showLow('SOUND OFF<small>CLICK THE SCREEN</small>', 0); });
@@ -355,7 +355,7 @@
   vid.addEventListener('playing', () => { if (player.t && !player.isVimeo) setLoading(false); });
 
   function applyVolume() {
-    const muted = S.vol === 0 || S.muteBlocked;
+    const muted = S.vol === 0 || S.muteBlocked || !S.on;   // sound comes out of the TV
     vid.muted = muted; vid.volume = gain();
     if (player.isVimeo) { vsend(player.t, 'setVolume', gain()); vsend(player.t, 'setMuted', muted); }
   }
@@ -374,7 +374,6 @@
     player.load(t);
     setTimeout(() => { if (S.cur === i) deckState(player.playing ? 'PLAY' : 'PAUSE'); }, 900);
     if (!S.muteBlocked) showTitle(t);
-    if (!S.on) player.pause();
   }
 
   /* ---------- Hardware: VOL +/- keys, TUNE knob, POWER ---------- */
@@ -415,6 +414,7 @@
     slice($('#vol-up'), .7643, .5676);
     slice($('#vol-down'), .7643, .6181);
     slice($('#tv-power'), .7643, .6181); // the same key as the one above, copied from the photograph
+    slice($('.led-off'), .7639, .6629);  // the lamp itself; CSS dims it for the off state
     const dw = deck.clientWidth, dh = deck.clientHeight;
     document.querySelectorAll('.deck-btn').forEach(b => {
       b.style.backgroundImage = 'url(images/FILM/deck.webp)';
@@ -459,12 +459,12 @@
   setInterval(() => {
     const tm = player.time();
     $('#d-time').textContent = tm === null ? '--:--' : fmt(tm);
-    if (S.cur !== null && !S.busy) deckState(!S.on ? 'STOP' : player.playing ? 'PLAY' : 'PAUSE');
+    if (S.cur !== null && !S.busy) deckState(player.playing ? 'PLAY' : 'PAUSE');
     if (tm !== null && osdTime.classList.contains('on')) osdTime.textContent = fmt(tm);
   }, 250);
 
   function playPause() {
-    if (S.cur === null || !S.on) return;
+    if (S.cur === null) return;
     player.toggle();
     setTimeout(() => {
       if (player.playing) { showState('PLAY ▶'); osdTime.classList.remove('on'); }
@@ -472,14 +472,17 @@
     }, 80);
   }
   function seek(d) {
-    if (S.cur === null || !S.on) return;
+    if (S.cur === null) return;
     player.seek(d); showState(d < 0 ? '◀◀ REW' : '▶▶ FF', { ms: 900 });
   }
   function power() {
     S.on = !S.on;
     body.classList.toggle('is-off', !S.on);
     screen.classList.remove('on', 'off'); void screen.offsetWidth; screen.classList.add(S.on ? 'on' : 'off');
-    if (S.on) { staticBurst(500, .8); if (S.cur !== null) player.play(); } else player.pause();
+    // The TV and the deck are separate machines: switching the TV off takes away picture and sound,
+    // the tape keeps running in the deck, and the picture comes back wherever the tape has got to.
+    applyVolume();
+    if (S.on) staticBurst(500, .8);
   }
   screen.addEventListener('click', () => { if (unlockSound()) return; playPause(); });
   screen.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); playPause(); } });

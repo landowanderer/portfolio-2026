@@ -99,8 +99,14 @@ body.is-off .spill { opacity: 0; }
 .screen.on { animation: power-on .5s cubic-bezier(.2,.8,.2,1); }
 @keyframes power-off { 0% { transform: scale(1); filter: brightness(1); } 55% { transform: scale(1, .006); filter: brightness(3); } 100% { transform: scale(0, .006); filter: brightness(0); } }
 @keyframes power-on { 0% { transform: scale(0, .006); filter: brightness(3); } 45% { transform: scale(1, .006); } 100% { transform: scale(1); filter: brightness(1); } }
-.led-off { position: absolute; left: 76.43%; top: 66%; width: 1.4%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: #120707; opacity: 0; transition: opacity .2s; }
+/* The power lamp when the TV is off: the lamp from the photograph itself, dimmed and drained of colour, so it is the same lens, unlit */
+.led-off { position: absolute; left: 76.39%; top: 66.29%; width: 2.6%; aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; opacity: 0; transition: opacity .25s; background-repeat: no-repeat;
+  filter: saturate(.35) brightness(.27) contrast(1.05);
+  -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 71%); mask-image: radial-gradient(circle, #000 52%, transparent 71%); }
 body.is-off .led-off { opacity: 1; }
+/* with the lamp off, its red reflection on the neighbouring keys goes too */
+#vol-down, #tv-power { transition: filter .25s; }
+body.is-off #vol-down, body.is-off #tv-power { filter: saturate(.2); }
 
 /* Controls on the set. Their names are printed on the set itself. */
 .knob { position: absolute; left: 76.43%; top: 47.62%; width: 7.4%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 0; padding: 0; cursor: grab; background-repeat: no-repeat; transition: rotate .3s cubic-bezier(.3,1.4,.5,1); touch-action: none; }
