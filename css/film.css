@@ -1,0 +1,178 @@
+/* FILM page: a 1980s television, a tape deck under it, and the films as VHS tapes.
+   Sizes are all derived from --tvw (width of the television photograph).
+   The television, the deck and the tape faces are photographs (images/FILM/); labels, controls and the screen are live. */
+@font-face { font-family: Geist; src: url(../fonts/geist/Geist-Variable.woff2) format("woff2"); font-weight: 100 900; }
+:root { --ink: #f2f2ef; --mute: #8a8a86; --line: #232323; --phosphor: #a8f5ab; --mono: "SFMono-Regular", Menlo, Consolas, monospace; }
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { background: #000; color: var(--ink); font-family: Geist, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; }
+
+.film-page {
+  --tvw: min(1100px, calc((100vh - 232px) / .72), calc((100vw - 80px) / 1.06));
+  --u: calc(var(--tvw) / 1000);
+  --W: calc(var(--tvw) * .32);            /* tape: 187 mm */
+  --H: calc(var(--W) * .13);              /* 25 mm (matches the spine photograph) */
+  --D: calc(var(--W) * .5014);            /* 103 mm (matches the top photograph) */
+}
+
+/* Same header as the rest of the site (css/portfolio-shell.css), on black */
+.pf-header { position: absolute; top: 0; left: 0; right: 0; z-index: 30; background: transparent; backdrop-filter: none; color: var(--ink); }
+.pf-header a:hover { color: var(--mute); }
+
+.set { position: absolute; left: 50%; top: calc(50% - 29px); transform: translate(-50%, -50%); display: flex; align-items: flex-end; gap: calc(var(--tvw) * .05); }
+.rig { display: flex; flex-direction: column; align-items: center; }
+
+/* ---------- Television ---------- */
+.tv { position: relative; width: var(--tvw); aspect-ratio: 4 / 3; margin: calc(var(--tvw) * -.084) calc(var(--tvw) * -.176) calc(var(--tvw) * -.106) calc(var(--tvw) * -.172); }
+.tv > img { width: 100%; height: 100%; display: block; mix-blend-mode: lighten; user-select: none; }
+.screen { isolation: isolate; position: absolute; left: 22.9%; top: 22.8%; width: 45.3%; height: 47.3%; border-radius: 9% / 11%; overflow: hidden; background: #050607; transform-origin: center; cursor: pointer; --osd: calc(var(--u) * 15);
+  --look-filter: saturate(.9) contrast(1.08) brightness(1.15); --scan: .7; --bulge: 1; --grain: .05; }
+.screen video, .screen .vframe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 0; filter: var(--look-filter); }
+.screen .vframe { left: 50%; width: 177.78%; inset: 0 auto 0 50%; transform: translateX(-50%); pointer-events: none; display: none; }
+.screen canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; opacity: 0; mix-blend-mode: screen; z-index: 3; pointer-events: none; }
+.screen .blue { position: absolute; inset: 0; background: #0b24c9; display: none; place-content: center; text-align: center; gap: .6em; color: #fff; font: 700 var(--osd)/1.2 var(--mono); letter-spacing: .1em; z-index: 1; }
+.screen .blue small { font-size: .62em; font-weight: 600; opacity: .85; }
+.screen[data-mode="blue"] .blue { display: grid; }
+.screen[data-mode="blue"] video, .screen[data-mode="blue"] .vframe { visibility: hidden; }
+.screen .scan { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, rgba(0,0,0,0) 1px 3px); pointer-events: none; z-index: 4; opacity: var(--scan); }
+.screen .bulge { position: absolute; inset: 0; background: radial-gradient(115% 100% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.65) 100%); pointer-events: none; z-index: 4; opacity: var(--bulge); }
+.screen .glass { position: absolute; inset: 0; background: linear-gradient(122deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.03) 24%, rgba(255,255,255,0) 38%); pointer-events: none; z-index: 4; }
+.screen .grain { position: absolute; inset: -10%; z-index: 3; pointer-events: none; mix-blend-mode: overlay; opacity: var(--grain); animation: grain .6s steps(5) infinite;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.6 -.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 180px 180px; }
+@keyframes grain { 0% { translate: 0 0; } 20% { translate: -23px 11px; } 40% { translate: 17px -29px; } 60% { translate: -9px -17px; } 80% { translate: 27px 19px; } 100% { translate: 0 0; } }
+
+/* TUNE: the picture texture, from a clean signal to a badly tuned one */
+.screen[data-look="clean"] { --look-filter: saturate(1) contrast(1.03) brightness(1.06); --scan: 0; --bulge: .3; --grain: 0; }
+.screen[data-look="crt"]   { --look-filter: saturate(.9) contrast(1.08) brightness(1.15); --scan: .7; --bulge: 1; --grain: .05; }
+.screen[data-look="vhs"]   { --look-filter: url(#f-vhs) saturate(.82) contrast(1.1) brightness(1.1) sepia(.14) blur(.35px); --scan: 1; --bulge: 1; --grain: .16; }
+.screen[data-look="ghost"] { --look-filter: url(#f-ghost) saturate(.72) contrast(1.05) brightness(1.1) hue-rotate(-8deg) blur(.3px); --scan: .8; --bulge: 1; --grain: .3; }
+.screen[data-look="mono"]  { --look-filter: grayscale(1) contrast(1.3) brightness(1.1); --scan: .8; --bulge: 1; --grain: .22; }
+
+/* VHS tracking noise while a tape loads (and now and then in VHS mode) */
+.screen .band { position: absolute; left: 0; right: 0; height: 16%; top: 100%; z-index: 3; pointer-events: none; opacity: 0;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 2px, rgba(255,255,255,.1) 2px 5px, rgba(0,0,0,.4) 5px 7px); mix-blend-mode: screen; }
+.screen.tracking .band { animation: band 1s linear; }
+.screen[data-look="vhs"]:not(.tracking) .band { animation: band-loop 9s linear infinite; }
+.screen.tracking video, .screen.tracking .vframe { animation: jitter .9s steps(9); }
+@keyframes band { 0% { top: 105%; opacity: .9; } 85% { opacity: .9; } 100% { top: -20%; opacity: 0; } }
+@keyframes band-loop { 0%, 82% { top: 105%; opacity: 0; } 84% { opacity: .55; } 100% { top: -20%; opacity: 0; } }
+@keyframes jitter { 0% { translate: 0 0; } 20% { translate: 5px 0; } 40% { translate: -4px 0; } 60% { translate: 7px 0; } 80% { translate: -2px 0; } 100% { translate: 0 0; } }
+
+/* On-screen display: green characters, like a set from the eighties */
+.osd { position: absolute; z-index: 5; font: 700 var(--osd)/1 var(--mono); color: var(--phosphor); text-shadow: 0 0 6px rgba(168,245,171,.65); letter-spacing: .08em; pointer-events: none; opacity: 0; transition: opacity .25s; white-space: nowrap; }
+.osd.on { opacity: 1; }
+.osd.state { top: 7%; left: 6%; }
+.osd.time { top: 7%; right: 6%; }
+.osd.low { bottom: 8%; left: 6%; }
+.osd.low small { display: block; font-size: .72em; opacity: .85; margin-top: .5em; }
+.osd.low .bars { display: flex; gap: .22em; margin-top: .55em; }
+.osd.low .bars i { display: block; width: .62em; height: 1.05em; background: var(--phosphor); box-shadow: 0 0 5px rgba(168,245,171,.6); }
+.osd.low .bars i.off { background: transparent; box-shadow: none; border: 1px solid rgba(168,245,171,.45); }
+.osd.low .bars.five i { width: 1.4em; }
+.osd.blink { animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.screen.off { animation: power-off .45s cubic-bezier(.6,0,.4,1) forwards; }
+.screen.on { animation: power-on .5s cubic-bezier(.2,.8,.2,1); }
+@keyframes power-off { 0% { transform: scale(1); filter: brightness(1); } 55% { transform: scale(1, .006); filter: brightness(3); } 100% { transform: scale(0, .006); filter: brightness(0); } }
+@keyframes power-on { 0% { transform: scale(0, .006); filter: brightness(3); } 45% { transform: scale(1, .006); } 100% { transform: scale(1); filter: brightness(1); } }
+.led-off { position: absolute; left: 76.43%; top: 66%; width: 1.4%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: #120707; opacity: 0; transition: opacity .2s; }
+body.is-off .led-off { opacity: 1; }
+
+/* Controls on the set. Their names are printed on the set itself. */
+.knob { position: absolute; left: 76.43%; top: 47.62%; width: 7.4%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 0; padding: 0; cursor: grab; background-repeat: no-repeat; transition: rotate .3s cubic-bezier(.3,1.4,.5,1); touch-action: none; }
+.knob:active { cursor: grabbing; }
+.tune-ring { position: absolute; left: 76.43%; top: 47.62%; width: 13.5%; aspect-ratio: 1; translate: -50% -50%; pointer-events: none; overflow: visible; }
+.tune-ring line { stroke: rgba(235,235,230,.4); stroke-width: 1.2; }
+.tune-ring line.lit { stroke: rgba(235,235,230,.98); }
+.print { position: absolute; left: 76.43%; translate: -50% -50%; font: 600 calc(var(--u) * 7.6)/1 var(--mono); letter-spacing: .1em; color: rgba(235,235,230,.55); pointer-events: none; white-space: nowrap; }
+.tvkey { position: absolute; left: 76.43%; width: 4.8%; height: 3.5%; transform: translate(-50%, -50%); border: 0; padding: 0; border-radius: 3px; background: transparent no-repeat; cursor: pointer; display: grid; place-items: center; user-select: none; }
+.tvkey span { font: 600 calc(var(--u) * 7)/1 var(--mono); letter-spacing: .04em; color: rgba(235,235,230,.6); pointer-events: none; white-space: nowrap; }
+.tvkey:active { filter: brightness(.7); }
+.knob:hover, .tvkey:hover, .deck-btn:hover { box-shadow: 0 0 0 1px rgba(242,242,239,.5); }
+.knob:focus-visible, .tvkey:focus-visible, .deck-btn:focus-visible, .tape:focus-visible, .slot:focus-visible { outline: 1px solid var(--phosphor); outline-offset: 3px; }
+
+/* ---------- Tape deck (photograph; controls and display are live on top of it) ---------- */
+.deck { position: relative; width: calc(var(--tvw) * .64); aspect-ratio: 1800 / 396; margin-top: calc(var(--tvw) * .006); }
+.deck-img { width: 100%; height: 100%; display: block; user-select: none; }
+.slot { position: absolute; left: 9.3%; top: 18.6%; width: 63%; height: 45.8%; border: 0; padding: 0; background: transparent; cursor: pointer; border-radius: 3px; }
+.door-glass { position: absolute; z-index: 12; left: 9.3%; top: 18.6%; width: 63%; height: 45.8%; pointer-events: none; border-radius: 3px; transition: opacity .35s;
+  background: linear-gradient(172deg, rgba(255,255,255,.1), rgba(255,255,255,0) 42%), rgba(6,6,7,.42); }
+.deck.open .door-glass { opacity: 0; }
+.deck-display { position: absolute; left: 74.4%; top: 18.6%; width: 21.9%; height: 31.2%; padding: 0 3%; display: flex; align-items: center; justify-content: space-between; pointer-events: none;
+  font: 700 calc(var(--u) * 17)/1 var(--mono); color: #8ff0b2; text-shadow: 0 0 6px rgba(143,240,178,.6); letter-spacing: .06em; }
+.deck-display .st { font-size: .6em; }
+.deck-btn { position: absolute; top: 58.6%; width: 5%; height: 10.9%; border: 0; padding: 0; border-radius: 2px; background: transparent; cursor: pointer; display: grid; place-items: center; }
+.deck-btn b { font: 600 calc(var(--u) * 9)/1 var(--mono); color: rgba(235,235,230,.55); pointer-events: none; }
+.deck-btn:active { background: rgba(0,0,0,.35); }
+
+/* ---------- Tapes: photographed faces on a real 3D box ---------- */
+.shelf { list-style: none; padding: 0; display: flex; flex-direction: column; gap: calc(var(--H) * .12); margin-bottom: calc(var(--tvw) * .004); }
+.holder { width: var(--W); height: var(--H); position: relative; }
+.holder:nth-child(4n+1) { translate: calc(var(--W) * .012) 0; }
+.holder:nth-child(4n+2) { translate: calc(var(--W) * -.016) 0; }
+.holder:nth-child(4n+3) { translate: calc(var(--W) * .02) 0; }
+.holder:nth-child(4n+4) { translate: calc(var(--W) * -.008) 0; }
+.holder::before { content: ""; position: absolute; inset: 0; border-radius: 2px; border: 1px dashed rgba(255,255,255,.12); opacity: 0; transition: opacity .3s; }
+.holder.empty::before { opacity: 1; }
+.tape { position: absolute; inset: 0; border: 0; padding: 0; background: none; cursor: pointer; perspective: calc(var(--W) * 3.2); transition: translate .25s cubic-bezier(.3,1.3,.5,1); z-index: 2; }
+.tape.is-rest:hover, .tape.is-rest:focus-visible { translate: calc(var(--W) * -.05) 0; }
+.tape.moving { z-index: 20; }
+.tape.in-deck { z-index: 10; cursor: default; filter: brightness(.6) contrast(1.1); }
+.cube { position: absolute; inset: 0; transform-style: preserve-3d; display: block; }
+.face { position: absolute; left: 50%; top: 50%; overflow: hidden; background: linear-gradient(180deg, #1d1d1f, #0b0b0c); display: block; }
+.face > img { width: 100%; height: 100%; display: block; object-fit: fill; user-select: none; }
+.f-spine { width: var(--W); height: var(--H); margin: calc(var(--H) / -2) 0 0 calc(var(--W) / -2); transform: translateZ(calc(var(--D) / 2)); }
+.f-back { width: var(--W); height: var(--H); margin: calc(var(--H) / -2) 0 0 calc(var(--W) / -2); transform: rotateY(180deg) translateZ(calc(var(--D) / 2)); }
+.f-top, .f-bottom { width: var(--W); height: var(--D); margin: calc(var(--D) / -2) 0 0 calc(var(--W) / -2); }
+.f-top { transform: rotateX(90deg) translateZ(calc(var(--H) / 2)); }
+.f-bottom { transform: rotateX(-90deg) translateZ(calc(var(--H) / 2)); }
+.f-left, .f-right { width: var(--D); height: var(--H); margin: calc(var(--H) / -2) 0 0 calc(var(--D) / -2); }
+.f-left { transform: rotateY(-90deg) translateZ(calc(var(--W) / 2)); }
+.f-right { transform: rotateY(90deg) translateZ(calc(var(--W) / 2)); }
+
+/* Ink printed on the blank labels in the photographs (positions measured from the photographs) */
+.spine-label { position: absolute; left: 13.1%; width: 73.8%; top: 13%; height: 75.5%; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 2.4% 0 3.2%; color: #15171b; mix-blend-mode: multiply; }
+.spine-label::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--H) * .07); background: var(--accent); }
+.spine-label b { font: 700 calc(var(--H) * .27)/1 Geist, Arial, sans-serif; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.spine-label span { font: 600 calc(var(--H) * .22)/1 var(--mono); white-space: nowrap; opacity: .75; }
+.top-label { position: absolute; left: 28.8%; width: 42.2%; top: 30.8%; height: 44.7%; padding: 4.5% 4% 3%; display: flex; flex-direction: column; gap: 4%; color: #15171b; mix-blend-mode: multiply; overflow: hidden; }
+.top-label::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3%; background: var(--accent); }
+.top-label img { width: 100%; height: 34%; object-fit: cover; filter: grayscale(.35) contrast(1.15); opacity: .88; }
+.top-label b { font: 700 calc(var(--D) * .056)/1.08 Geist, Arial, sans-serif; text-transform: uppercase; letter-spacing: .02em; }
+.top-label small { font: 600 calc(var(--D) * .04)/1.2 var(--mono); opacity: .75; text-transform: uppercase; }
+
+/* ---------- Footer: information row + social ---------- */
+.info { position: absolute; bottom: 72px; left: var(--pf-edge); right: var(--pf-edge); display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); padding-top: 12px; font-size: 12px; line-height: 1.45; z-index: 5; }
+.info span { color: var(--mute); display: block; }
+.info b { font-weight: 400; }
+.social { position: absolute; right: var(--pf-edge); bottom: 28px; display: flex; gap: 22px; font-size: 12px; z-index: 5; }
+.social a, .social button { color: var(--ink); text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; font-size: inherit; }
+.social a:hover, .social button:hover { color: var(--mute); }
+
+/* ---------- Full screen: the film alone on black ---------- */
+.theater { --ratio: 1.3333; position: fixed; inset: 0; background: #000; z-index: 40; display: none; }
+body.watching .theater { display: block; }
+.theater video, .theater iframe { position: absolute; left: 50%; top: 50%; width: min(calc((100vh - 170px) * var(--ratio)), calc(100vw - 80px)); aspect-ratio: var(--ratio); transform: translate(-50%, -50%); background: #000; border: 0; }
+.theater iframe, body.vimeo .theater video { display: none; }
+body.vimeo .theater iframe { display: block; }
+body.vimeo .theater .progress { display: none; }
+.theater .bar { position: absolute; left: 40px; right: 40px; height: 72px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; font-size: 12px; color: var(--mute); }
+.theater .bar.top { top: 0; }
+.theater .bar.bottom { bottom: 0; border-top: 1px solid var(--line); }
+.theater .bar b, .theater .bar button { color: var(--ink); font-weight: 500; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; }
+.theater .progress { position: absolute; left: 40px; right: 40px; bottom: 72px; height: 1px; background: #262626; }
+.theater .progress i { display: block; width: 0; height: 100%; background: var(--ink); }
+
+@media (max-width: 700px) {
+  html, body { height: auto; overflow: auto; }
+  .film-page { --tvw: calc(100vw * 1.36); }
+  .set { position: relative; left: auto; top: auto; transform: none; margin-top: 150px; flex-direction: column; align-items: center; gap: calc(var(--tvw) * .04); }
+  .shelf { align-self: center; margin-bottom: 0; }
+  .info { position: absolute; top: var(--pf-header-height); bottom: auto; left: 20px; right: 20px; grid-template-columns: 1fr 1fr; row-gap: 10px; font-size: 11px; }
+  .social { position: relative; right: auto; bottom: auto; margin: 36px 20px 28px; justify-content: space-between; font-size: 11px; }
+  .theater .bar { left: 20px; right: 20px; grid-template-columns: 1fr 1fr; }
+  .theater video, .theater iframe { width: calc(100vw - 40px); }
+}
+@media (prefers-reduced-motion: reduce) { .screen.off, .screen.on, .screen.tracking video, .screen.tracking .vframe, .screen.tracking .band, .screen .grain, .osd.blink { animation: none; } .knob, .tape, .door-glass { transition: none; } }

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Film — Harry Wu</title>
+<meta name="description" content="AI films by Harry Wu, on VHS: Specimen, Fitcheck and Artificial Atmosphere. Slide a tape into the deck to watch it.">
+<link rel="canonical" href="https://landowanderer.com/film.html">
+<link rel="icon" href="images/MAIN%20PAGE/sticker1.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/geist/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="images/FILM/tv-black.jpg" as="image">
+<link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+<link rel="preconnect" href="https://f.vimeocdn.com" crossorigin>
+<link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen">
+<link rel="stylesheet" href="css/film.css?v=2">
+</head>
+<body class="film-page">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- VHS: the red channel slips sideways, like colour smeared on tape -->
+    <filter id="f-vhs" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gb"/>
+      <feOffset in="r" dx="3" dy="0" result="ro"/>
+      <feBlend in="ro" in2="gb" mode="screen"/>
+    </filter>
+    <!-- Ghost: a faint second picture, as from a weak aerial -->
+    <filter id="f-ghost" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feOffset in="SourceGraphic" dx="10" dy="0" result="o"/>
+      <feComponentTransfer in="o" result="o2"><feFuncA type="linear" slope=".24"/></feComponentTransfer>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="o2"/></feMerge>
+    </filter>
+  </defs>
+</svg>
+
+<header class="pf-header" id="portfolio-top"><nav class="pf-links" aria-label="Main navigation"><a href="index.html">HARRY WU</a><a href="index.html#work-title">WORK</a><a href="film.html" aria-current="page">FILM</a><a href="index.html#experiments-title">EXPERIMENTS</a></nav></header>
+
+<main class="set" id="main">
+  <div class="rig">
+    <div class="tv" id="tv">
+      <img src="images/FILM/tv-black.jpg" alt="A charcoal 1980s colour television" draggable="false">
+      <div class="screen" id="screen" data-mode="blue" data-look="crt" role="button" tabindex="0" aria-label="Play or pause">
+        <video id="tvvideo" loop playsinline></video>
+        <div class="blue" id="blue"><div id="blue-main">NO TAPE</div><small id="blue-sub">INSERT A TAPE</small></div>
+        <canvas id="noise" width="160" height="120"></canvas>
+        <div class="grain"></div>
+        <div class="band"></div>
+        <div class="scan"></div><div class="bulge"></div><div class="glass"></div>
+        <div class="osd state" id="osd-state"></div>
+        <div class="osd time" id="osd-time"></div>
+        <div class="osd low" id="osd-low"></div>
+      </div>
+      <span class="led-off"></span>
+      <svg class="tune-ring" id="tune-ring" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
+      <span class="print" style="top:39.6%">TUNE</span>
+      <button class="knob" id="knob" aria-label="Tune the picture: clean, CRT, VHS, ghost, mono. Turn, scroll, or click right and left of the knob"></button>
+      <button class="tvkey" id="vol-up" style="top:56.76%" aria-label="Volume up"><span>VOL +</span></button>
+      <button class="tvkey" id="vol-down" style="top:61.81%" aria-label="Volume down"><span>VOL −</span></button>
+      <button class="tvkey" id="tv-power" style="top:72%" aria-label="Power"><span>POWER</span></button>
+    </div>
+
+    <div class="deck" id="deck">
+      <img class="deck-img" src="images/FILM/deck.webp" alt="A 1980s video cassette recorder" draggable="false">
+      <button class="slot" id="slot" aria-label="Eject tape"></button>
+      <div class="door-glass"></div>
+      <div class="deck-display"><span id="d-state" class="st">NO TAPE</span><span id="d-time">--:--</span></div>
+      <button class="deck-btn" data-act="rew" style="left:74.5%" aria-label="Rewind 5 seconds"><b>◀◀</b></button>
+      <button class="deck-btn" data-act="play" style="left:80.1%" aria-label="Play or pause"><b>▶❚❚</b></button>
+      <button class="deck-btn" data-act="ff" style="left:85.7%" aria-label="Forward 5 seconds"><b>▶▶</b></button>
+      <button class="deck-btn" data-act="eject" style="left:91.2%" aria-label="Eject tape"><b>⏏</b></button>
+    </div>
+  </div>
+
+  <ol class="shelf" id="shelf" aria-label="Films"></ol>
+</main>
+
+<div class="info" aria-live="polite"><div><span>Tape</span><b id="i-no">— / 04</b></div><div><span>Title</span><b id="i-title">—</b></div><div><span>Year</span><b id="i-year">—</b></div><div><span>Runtime</span><b id="i-run">—</b></div></div>
+<div class="social"><button id="full" type="button">Full screen ⤢</button><a href="#">Instagram ↗</a><a href="#">Vimeo ↗</a><a href="mailto:HARRY.WU313@GMAIL.COM">Email ↗</a></div>
+
+<div class="theater" role="dialog" aria-label="Film">
+  <div class="bar top"><button id="back">← Back to the set</button><span id="t-no"></span><span id="t-title"></span><span style="text-align:right">Sound on</span></div>
+  <video id="film" playsinline></video>
+  <iframe id="filmframe" title="Film" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <div class="progress"><i id="progress"></i></div>
+  <div class="bar bottom"><b id="t-name"></b><span id="t-year"></span><span id="t-run"></span><span style="text-align:right">Esc to return</span></div>
+</div>
+
+<script src="js/film.js?v=2"></script>
+</body>
+</html>

@@ -10,5 +10,5 @@
 .pf-end-links>a:hover{opacity:.6}.pf-end-next:hover>span{transform:translate(2px,-2px)}
 .pf-end-links>a:focus-visible{outline:2px solid currentColor;outline-offset:5px}
 .pf-end-mobile-label{display:none}
-@media(max-width:640px){.pf-endbar{padding-inline:20px}.pf-end-links{gap:18px;font-size:11px;min-height:64px;justify-content:space-between}.pf-end-mobile-label{display:block;font-size:11px}.pf-end-brand,.pf-end-work,.pf-end-experiments{display:none}.pf-end-next{max-width:65%;text-align:right}}
+@media(max-width:640px){.pf-endbar{padding-inline:20px}.pf-end-links{gap:18px;font-size:11px;min-height:64px;justify-content:space-between}.pf-end-mobile-label{display:block;font-size:11px}.pf-end-brand,.pf-end-work,.pf-end-film,.pf-end-experiments{display:none}.pf-end-next{max-width:65%;text-align:right}}
 @media(prefers-reduced-motion:reduce){.pf-header,.pf-end-links>a,.pf-end-next>span{transition:none}}
