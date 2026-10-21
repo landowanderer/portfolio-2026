@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Film — Harry Wu</title>
+<style>
+@font-face { font-family: Geist; src: url(../fonts/geist/Geist-Variable.woff2) format("woff2"); font-weight: 100 900; }
+:root { --ink: #f2f2ef; --mute: #8a8a86; --line: #232323; --leader: #3a3a38; --paper: #000; --phosphor: #a8f5ab; }
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--paper); color: var(--ink); font-family: Geist, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; }
+
+.nav { position: absolute; top: 0; left: 0; right: 0; height: 72px; padding: 0 40px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; font-size: 13px; letter-spacing: -.01em; z-index: 5; }
+.nav a { color: var(--mute); text-decoration: none; }
+.nav a.brand, .nav a[aria-current] { color: var(--ink); }
+.info { position: absolute; top: 72px; left: 40px; right: 40px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); padding-top: 12px; font-size: 12px; line-height: 1.45; z-index: 5; }
+.info span { color: var(--mute); display: block; }
+.info b { font-weight: 400; }
+
+.set { position: absolute; left: 50%; top: 55%; transform: translate(-56%, -50%); display: flex; align-items: center; }
+
+/* TV: low-key studio photograph; its black backdrop merges with the page */
+.tv { position: relative; width: 860px; aspect-ratio: 4 / 3; }
+.tv > img { width: 100%; height: 100%; display: block; mix-blend-mode: lighten; user-select: none; }
+.screen { position: absolute; left: 22.9%; top: 22.8%; width: 45.3%; height: 47.3%; border-radius: 9% / 11%; overflow: hidden; background: #050607; transform-origin: center; }
+.screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(1.08) brightness(1.15); }
+.screen canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; opacity: 0; mix-blend-mode: screen; z-index: 1; }
+.screen .scan { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.2) 0 1px, rgba(0,0,0,0) 1px 3px); }
+.screen .bulge { position: absolute; inset: 0; background: radial-gradient(115% 100% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.65) 100%); }
+.screen .glass { position: absolute; inset: 0; background: linear-gradient(122deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.03) 24%, rgba(255,255,255,0) 38%); pointer-events: none; }
+.osd { position: absolute; font: 600 14px/1 "SFMono-Regular", Menlo, Consolas, monospace; color: var(--phosphor); text-shadow: 0 0 6px rgba(168,245,171,.65); letter-spacing: .06em; z-index: 2; }
+.osd.ch { top: 7%; left: 7%; }
+.osd.title { bottom: 7%; left: 7%; font-size: 11px; opacity: .85; }
+.card { position: absolute; inset: 0; display: none; place-content: center; text-align: center; gap: 10px; font: 600 13px/1.6 "SFMono-Regular", Menlo, Consolas, monospace; color: var(--phosphor); letter-spacing: .08em; z-index: 1; }
+.card.bars { background: linear-gradient(90deg, #c0c0c0 0 14.28%, #c0c000 0 28.57%, #00c0c0 0 42.85%, #00c000 0 57.14%, #c000c0 0 71.42%, #c00000 0 85.71%, #0000c0 0); color: #000; text-shadow: none; }
+.card.bars span { background: #000; color: var(--phosphor); padding: 4px 10px; }
+.card a { color: var(--phosphor); text-decoration: none; }
+.screen.off { animation: power-off .45s cubic-bezier(.6,0,.4,1) forwards; }
+.screen.on { animation: power-on .5s cubic-bezier(.2,.8,.2,1); }
+@keyframes power-off { 0% { transform: scale(1); filter: brightness(1); } 55% { transform: scale(1, .006); filter: brightness(3); } 100% { transform: scale(0, .006); filter: brightness(0); } }
+@keyframes power-on { 0% { transform: scale(0, .006); filter: brightness(3); } 45% { transform: scale(1, .006); } 100% { transform: scale(1); filter: brightness(1); } }
+.led-off { position: absolute; left: 76.43%; top: 66%; width: 1.4%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: #120707; opacity: 0; transition: opacity .2s; }
+body.is-off .led-off { opacity: 1; }
+
+/* Clickable analog controls on the set */
+.knob { position: absolute; left: 76.43%; top: 47.62%; width: 7.4%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 0; padding: 0; cursor: grab; background-repeat: no-repeat; transition: rotate .35s cubic-bezier(.3,1.4,.5,1); touch-action: none; }
+.knob:active { cursor: grabbing; }
+.tvkey { position: absolute; left: 76.43%; width: 4.4%; height: 3.3%; transform: translate(-50%, -50%); border: 0; padding: 0; border-radius: 3px; background: transparent; cursor: pointer; }
+.tvkey:active { background: rgba(0,0,0,.35); }
+.knob:hover, .tvkey:hover, .key:hover { box-shadow: 0 0 0 1px rgba(242,242,239,.55); }
+.knob:focus-visible, .tvkey:focus-visible, .key:focus-visible { outline: 1px solid var(--phosphor); outline-offset: 3px; }
+
+/* Leader-line labels: one vocabulary for the set and the remote */
+.label { position: absolute; display: flex; align-items: center; gap: 8px; font-size: 10.5px; letter-spacing: .08em; color: var(--mute); white-space: nowrap; transform: translateY(-50%); pointer-events: none; transition: color .15s; }
+.label::before { content: ""; width: 54px; height: 1px; background: var(--leader); transition: background .15s; }
+.label b { color: var(--ink); font-weight: 500; }
+.label.hot { color: var(--ink); }
+.label.hot::before { background: var(--ink); }
+.tv .label { left: 81.5%; }
+
+.remote { position: relative; height: 440px; aspect-ratio: 3 / 4; margin-left: -40px; transform: rotate(-4deg); }
+.remote > img { width: 100%; height: 100%; display: block; mix-blend-mode: lighten; user-select: none; }
+.key { position: absolute; transform: translate(-50%, -50%); border: 0; padding: 0; background: transparent; border-radius: 40%; cursor: pointer; }
+.key:active { background: rgba(255,255,255,.08); }
+.remote .label { left: 66%; transform: translateY(-50%) rotate(4deg); transform-origin: left center; }
+
+.how { position: absolute; left: 40px; bottom: 30px; font-size: 12px; color: var(--mute); z-index: 5; }
+.how kbd { font: inherit; color: var(--ink); }
+.social { position: absolute; right: 40px; bottom: 30px; display: flex; gap: 22px; font-size: 12px; z-index: 5; }
+.social a { color: var(--ink); text-decoration: none; }
+
+/* Watching: the film alone, full size, no TV treatment */
+.theater { position: fixed; inset: 0; background: #000; z-index: 20; display: none; }
+body.watching .theater { display: block; }
+.theater video { position: absolute; left: 50%; top: 50%; width: min(calc((100vh - 170px) * 4 / 3), calc(100vw - 80px)); aspect-ratio: 4 / 3; transform: translate(-50%, -50%); background: #000; }
+.theater .bar { position: absolute; left: 40px; right: 40px; height: 72px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; font-size: 12px; color: var(--mute); }
+.theater .bar.top { top: 0; }
+.theater .bar.bottom { bottom: 0; border-top: 1px solid var(--line); }
+.theater .bar b, .theater .bar button { color: var(--ink); font-weight: 500; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; }
+.theater .progress { position: absolute; left: 40px; right: 40px; bottom: 72px; height: 1px; background: #262626; }
+.theater .progress i { display: block; width: 0; height: 100%; background: var(--ink); }
+
+@media (max-width: 700px) {
+  .nav { padding: 0 20px; display: flex; justify-content: space-between; font-size: 11px; }
+  .info { left: 20px; right: 20px; grid-template-columns: 1fr 1fr; row-gap: 10px; font-size: 11px; }
+  .set { top: 230px; transform: translateX(-50%); flex-direction: column; }
+  .tv { width: 150vw; }
+  .label { display: none; }
+  .remote { height: 300px; margin: -40px 0 0; transform: rotate(-90deg); }
+  .how { display: none; }
+  .social { left: 20px; right: 20px; bottom: 24px; justify-content: space-between; font-size: 11px; }
+  .theater .bar { left: 20px; right: 20px; grid-template-columns: 1fr 1fr; }
+  .theater video { width: calc(100vw - 40px); }
+}
+@media (prefers-reduced-motion: reduce) { .screen.off, .screen.on { animation: none; } .knob { transition: none; } }
+</style>
+</head>
+<body>
+<nav class="nav"><a class="brand" href="#">HARRY WU</a><a href="#">WORK</a><a href="#" aria-current="page">FILM</a><a href="#">EXPERIMENTS</a></nav>
+<div class="info" aria-live="polite"><div><span>Channel</span><b id="i-ch">01 / 03</b></div><div><span>Title</span><b id="i-title">Specimen</b></div><div><span>Year</span><b id="i-year">2026</b></div><div><span>Runtime</span><b id="i-run">00:25 · AI film</b></div></div>
+
+<div class="set">
+  <div class="tv">
+    <img src="tv-black.jpg" alt="A charcoal 1980s colour television" draggable="false">
+    <div class="screen" id="screen">
+      <video id="tvvideo" src="specimen.mp4" muted loop playsinline autoplay></video>
+      <div class="card bars" id="card-bars"><span>CH 02 · FITCHECK · IN EDIT</span></div>
+      <div class="card" id="card-contact"><div>FOLLOW THE CHANNEL</div><div><a href="#">INSTAGRAM ↗</a></div><div><a href="#">VIMEO ↗</a></div><div><a href="mailto:HARRY.WU313@GMAIL.COM">EMAIL ↗</a></div></div>
+      <canvas id="noise" width="160" height="120"></canvas>
+      <div class="scan"></div><div class="bulge"></div><div class="glass"></div>
+      <div class="osd ch" id="osd-ch">CH 01</div><div class="osd title" id="osd-title">SPECIMEN · 2026</div>
+    </div>
+    <span class="led-off"></span>
+    <button class="knob" id="knob" aria-label="Tune: next channel (drag to turn)"></button>
+    <button class="tvkey" id="tv-power" style="top:56.76%" aria-label="Power"></button>
+    <button class="tvkey" id="tv-watch" style="top:61.81%" aria-label="Watch the full film"></button>
+    <span class="label" data-for="tune" style="top:47.62%">TUNE</span>
+    <span class="label" data-for="power" style="top:56.76%">POWER</span>
+    <span class="label" data-for="watch" style="top:61.81%"><b>WATCH</b></span>
+  </div>
+  <div class="remote" role="group" aria-label="Remote control">
+    <img src="remote-black.jpg" alt="" draggable="false">
+    <button class="key" data-act="power" style="left:49.7%;top:18.5%;width:11%;height:8%" aria-label="Power"></button>
+    <button class="key" data-act="up" style="left:49.7%;top:51.4%;width:11%;height:7%" aria-label="Next channel"></button>
+    <button class="key" data-act="down" style="left:49.7%;top:59.1%;width:11%;height:7%" aria-label="Previous channel"></button>
+    <button class="key" data-act="watch" style="left:49.7%;top:71.4%;width:17%;height:5%" aria-label="Watch the full film"></button>
+    <span class="label" data-for="power" style="top:18.5%">POWER</span>
+    <span class="label" data-for="tune" style="top:55.2%">TUNE</span>
+    <span class="label" data-for="watch" style="top:71.4%"><b>WATCH</b> FULL FILM</span>
+  </div>
+</div>
+
+<p class="how">Turn the knob or use the remote · <kbd>←</kbd> <kbd>→</kbd> tune · <kbd>Enter</kbd> watch</p>
+<div class="social"><a href="#">Instagram ↗</a><a href="#">Vimeo ↗</a><a href="mailto:HARRY.WU313@GMAIL.COM">Email ↗</a></div>
+
+<div class="theater" role="dialog" aria-label="Film">
+  <div class="bar top"><button id="back">← Back to the set</button><span id="t-ch">CH 01</span><span id="t-title">Specimen</span><span style="text-align:right">Sound on</span></div>
+  <video id="film" src="specimen.mp4" playsinline></video>
+  <div class="progress"><i id="progress"></i></div>
+  <div class="bar bottom"><b id="t-name">Specimen</b><span id="t-year">2026</span><span id="t-run">AI film · 00:25</span><span style="text-align:right">Esc to return</span></div>
+</div>
+
+<script>
+const CHANNELS = [
+  { title: "Specimen", year: "2026", run: "00:25 · AI film", src: "specimen.mp4" },
+  { title: "Fitcheck", year: "2026", run: "In edit", card: "card-bars" },
+  { title: "Contact", year: "—", run: "Follow the channel", card: "card-contact" }
+];
+let channel = 0, isOn = true, knobAngle = 0;
+const $ = id => document.getElementById(id);
+const screen = $("screen"), tvvideo = $("tvvideo"), noise = $("noise"), nctx = noise.getContext("2d");
+const knob = $("knob");
+const pad = n => String(n).padStart(2, "0");
+
+// Static: low-res random noise, scaled up by CSS, fading out.
+let noiseFrame = null;
+const noiseImage = nctx.createImageData(noise.width, noise.height);
+function paintNoise() {
+  const d = noiseImage.data;
+  for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+  nctx.putImageData(noiseImage, 0, 0);
+}
+function staticBurst(ms = 320, level = 1) {
+  cancelAnimationFrame(noiseFrame);
+  const start = performance.now();
+  (function frame(now) {
+    paintNoise();
+    const t = Math.min(1, (now - start) / ms);
+    noise.style.opacity = String(level * (1 - t * t));
+    if (t < 1) noiseFrame = requestAnimationFrame(frame); else noise.style.opacity = "0";
+  })(start);
+}
+
+function show(index) {
+  channel = (index + CHANNELS.length) % CHANNELS.length;
+  const c = CHANNELS[channel];
+  staticBurst();
+  setTimeout(() => {
+    document.querySelectorAll(".card").forEach(el => { el.style.display = "none"; });
+    if (c.card) { $(c.card).style.display = "grid"; tvvideo.pause(); tvvideo.style.visibility = "hidden"; }
+    else { tvvideo.style.visibility = "visible"; tvvideo.play().catch(() => {}); }
+  }, 120);
+  $("osd-ch").textContent = `CH ${pad(channel + 1)}`;
+  $("osd-title").textContent = c.year !== "—" ? `${c.title.toUpperCase()} · ${c.year}` : c.title.toUpperCase();
+  $("i-ch").textContent = `${pad(channel + 1)} / ${pad(CHANNELS.length)}`;
+  $("i-title").textContent = c.title; $("i-year").textContent = c.year; $("i-run").textContent = c.run;
+}
+
+function tune(step) {
+  if (!isOn) return power();
+  knobAngle += step * 60;
+  knob.style.rotate = `${knobAngle}deg`;
+  show(channel + step);
+}
+
+function power() {
+  isOn = !isOn;
+  document.body.classList.toggle("is-off", !isOn);
+  screen.classList.remove("on", "off");
+  void screen.offsetWidth;
+  screen.classList.add(isOn ? "on" : "off");
+  if (isOn) { staticBurst(500, .8); show(channel); } else tvvideo.pause();
+}
+
+function watch() {
+  if (!isOn) return power();
+  const c = CHANNELS[channel];
+  if (!c.src) { staticBurst(260, .9); return; }
+  const film = $("film");
+  $("t-ch").textContent = `CH ${pad(channel + 1)}`; $("t-title").textContent = c.title; $("t-name").textContent = c.title; $("t-year").textContent = c.year; $("t-run").textContent = c.run;
+  document.body.classList.add("watching");
+  film.currentTime = 0; film.muted = false;
+  film.play().catch(() => { film.muted = true; film.play(); });
+}
+function leave() { $("film").pause(); document.body.classList.remove("watching"); }
+$("film").addEventListener("timeupdate", e => { const f = e.target; $("progress").style.width = `${(f.currentTime / (f.duration || 1)) * 100}%`; });
+$("film").addEventListener("click", e => e.target.paused ? e.target.play() : e.target.pause());
+$("back").addEventListener("click", leave);
+
+// The knob shows its own slice of the photograph so it can rotate in place.
+function fitKnob() {
+  const tv = document.querySelector(".tv");
+  const w = tv.clientWidth, h = tv.clientHeight, k = knob.offsetWidth;
+  knob.style.backgroundImage = "url(tv-black.jpg)";
+  knob.style.backgroundSize = `${w}px ${h}px`;
+  knob.style.backgroundPosition = `${-(0.7643 * w - k / 2)}px ${-(0.4762 * h - k / 2)}px`;
+}
+addEventListener("resize", fitKnob); fitKnob();
+
+// Click the knob to step; drag it to tune continuously (one channel per 60°).
+// Between detents the picture fills with static, like a set losing the signal.
+let drag = null;
+knob.addEventListener("pointerdown", e => {
+  const r = knob.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  drag = { cx, cy, last: Math.atan2(e.clientY - cy, e.clientX - cx), acc: 0, moved: false };
+  knob.setPointerCapture(e.pointerId);
+});
+knob.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const a = Math.atan2(e.clientY - drag.cy, e.clientX - drag.cx);
+  let d = a - drag.last; if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI;
+  drag.last = a; drag.acc += d * 180 / Math.PI;
+  if (Math.abs(drag.acc) > 4) drag.moved = true;
+  knob.style.transition = "none";
+  knob.style.rotate = `${knobAngle + drag.acc}deg`;
+  if (!isOn) return;
+  const offTune = Math.min(1, Math.abs(drag.acc) / 40);
+  paintNoise(); noise.style.opacity = String(offTune * .85);
+  if (Math.abs(drag.acc) >= 60) { const step = Math.sign(drag.acc); knobAngle += step * 60; drag.acc -= step * 60; show(channel + step); }
+});
+knob.addEventListener("pointerup", () => {
+  knob.style.transition = "";
+  if (drag && !drag.moved) tune(1);
+  else { knob.style.rotate = `${knobAngle}deg`; staticBurst(220, parseFloat(noise.style.opacity) || 0); }
+  drag = null;
+});
+
+$("tv-power").addEventListener("click", power);
+$("tv-watch").addEventListener("click", watch);
+const ACTIONS = { power, watch, up: () => tune(1), down: () => tune(-1) };
+document.querySelectorAll(".key").forEach(k => k.addEventListener("click", () => ACTIONS[k.dataset.act]()));
+
+// Hovering any control lights up the matching labels on both devices.
+document.querySelectorAll(".knob, .tvkey, .key").forEach(el => {
+  const name = el.id === "knob" ? "tune" : el.id === "tv-power" ? "power" : el.id === "tv-watch" ? "watch" : (el.dataset.act === "up" || el.dataset.act === "down") ? "tune" : el.dataset.act;
+  const set = on => document.querySelectorAll(`.label[data-for="${name}"]`).forEach(l => l.classList.toggle("hot", on));
+  ["pointerenter", "focus"].forEach(t => el.addEventListener(t, () => set(true)));
+  ["pointerleave", "blur"].forEach(t => el.addEventListener(t, () => set(false)));
+});
+
+addEventListener("keydown", e => {
+  if (document.body.classList.contains("watching")) { if (e.key === "Escape") leave(); return; }
+  if (e.key === "ArrowRight" || e.key === "ArrowUp") tune(1);
+  else if (e.key === "ArrowLeft" || e.key === "ArrowDown") tune(-1);
+  else if (e.key === "Enter" && e.target === document.body) watch();
+});
+show(0);
+</script>
+</body>
+</html>

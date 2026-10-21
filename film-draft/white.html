@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Film — Harry Wu</title>
+<style>
+@font-face { font-family: Geist; src: url(../fonts/geist/Geist-Variable.woff2) format("woff2"); font-weight: 100 900; }
+:root { --ink: #202020; --mute: #777; --line: #e7e7e7; --leader: #c9c9c6; --paper: #fff; --phosphor: #a8f5ab; }
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--paper); color: var(--ink); font-family: Geist, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* Site nav, same voice as landowanderer.com */
+.nav { position: absolute; top: 0; left: 0; right: 0; height: 72px; padding: 0 40px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; font-size: 13px; letter-spacing: -.01em; z-index: 5; }
+.nav a { color: var(--mute); text-decoration: none; }
+.nav a.brand, .nav a[aria-current] { color: var(--ink); }
+
+/* Four strict columns of small type (Workbyworks-style information row) */
+.info { position: absolute; top: 72px; left: 40px; right: 40px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); padding-top: 12px; font-size: 12px; line-height: 1.45; z-index: 5; }
+.info span { color: var(--mute); display: block; }
+
+.stage { position: absolute; inset: 0; z-index: 2; }
+.set { position: absolute; left: 50%; top: 54%; transform: translate(-58%, -50%); display: flex; align-items: center; }
+
+/* The TV: generated studio photograph; the white backdrop melts into the page */
+.tv { position: relative; width: 880px; aspect-ratio: 4 / 3; }
+.tv > img { width: 100%; height: 100%; display: block; mix-blend-mode: multiply; }
+/* Screen window, measured on the render (2688 x 2016) */
+.screen { position: absolute; left: 22.9%; top: 22.6%; width: 44.7%; height: 47.6%; border-radius: 9% / 11%; overflow: hidden; background: #070a0c; }
+.screen img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(1.08) brightness(1.12); }
+.screen .scan { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, rgba(0,0,0,0) 1px 3px); mix-blend-mode: multiply; }
+.screen .bulge { position: absolute; inset: 0; background: radial-gradient(115% 100% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.6) 100%); }
+.screen .glass { position: absolute; inset: 0; background: linear-gradient(122deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,.03) 24%, rgba(255,255,255,0) 38%); }
+.osd { position: absolute; font: 600 14px/1 "SFMono-Regular", Menlo, monospace; color: var(--phosphor); text-shadow: 0 0 6px rgba(168,245,171,.65); letter-spacing: .06em; }
+.osd.ch { top: 7%; left: 7%; }
+.osd.title { bottom: 7%; left: 7%; font-size: 11px; opacity: .85; }
+
+/* The remote, with technical leader-line labels */
+.remote { position: relative; height: 470px; aspect-ratio: 3 / 4; margin-left: -70px; transform: rotate(-4deg); }
+.remote > img { width: 100%; height: 100%; display: block; mix-blend-mode: multiply; }
+.key { position: absolute; width: 10%; height: 6.5%; transform: translate(-50%, -50%); border-radius: 30%; border: 0; padding: 0; background: transparent; cursor: pointer; }
+.key:hover { background: rgba(255,255,255,.12); }
+.key.on { box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 0 0 3px rgba(32,32,32,.9); }
+.label { position: absolute; left: 66%; display: flex; align-items: center; gap: 8px; font-size: 10.5px; letter-spacing: .08em; color: var(--mute); white-space: nowrap; transform: translateY(-50%) rotate(4deg); transform-origin: left center; }
+.label::before { content: ""; width: 70px; height: 1px; background: var(--leader); }
+.label b { color: var(--ink); font-weight: 500; }
+
+.social { position: absolute; right: 40px; bottom: 30px; display: flex; gap: 22px; font-size: 12px; z-index: 5; }
+.social a { color: var(--ink); text-decoration: none; }
+.how { position: absolute; left: 40px; bottom: 30px; font-size: 12px; color: var(--mute); z-index: 5; }
+
+/* ---------- Theater state: black ---------- */
+body.theater { background: #050505; color: #f2f2ef; }
+.theater-view { display: none; }
+body.theater .room { display: none; }
+body.theater .theater-view { display: block; }
+.theater-view .bar { position: absolute; left: 40px; right: 40px; height: 72px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; font-size: 12px; color: #9a9a96; }
+.theater-view .bar.top { top: 0; }
+.theater-view .bar.bottom { bottom: 0; border-top: 1px solid #222; }
+.theater-view .bar b { color: #f2f2ef; font-weight: 500; }
+.theater-view .film { position: absolute; left: 50%; top: 50%; width: min(calc((100vh - 170px) * 4 / 3), calc(100vw - 80px)); aspect-ratio: 4 / 3; transform: translate(-50%, -50%); }
+.theater-view .film img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.theater-view .progress { position: absolute; left: 40px; right: 40px; bottom: 72px; height: 1px; background: #262626; }
+.theater-view .progress i { display: block; width: 32%; height: 100%; background: #f2f2ef; }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 700px) {
+  .nav { padding: 0 20px; display: flex; justify-content: space-between; font-size: 11px; }
+  .info { left: 20px; right: 20px; grid-template-columns: 1fr 1fr; row-gap: 10px; font-size: 11px; }
+  .set { top: 250px; left: 50%; transform: translateX(-50%); flex-direction: column; }
+  .tv { width: 150vw; }
+  .remote { height: 300px; margin: -70px 0 0; transform: rotate(-90deg); }
+  .label { display: none; }
+  .how { display: none; }
+  .social { left: 20px; right: 20px; bottom: 24px; justify-content: space-between; font-size: 11px; }
+  .theater-view .bar { left: 20px; right: 20px; grid-template-columns: 1fr 1fr; }
+  .theater-view .film { width: calc(100vw - 40px); }
+  .theater-view .progress { left: 20px; right: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="room">
+  <nav class="nav"><a class="brand" href="#">HARRY WU</a><a href="#">WORK</a><a href="#" aria-current="page">FILM</a><a href="#">EXPERIMENTS</a></nav>
+  <div class="info"><div><span>Channel</span>01 / 04</div><div><span>Title</span>Specimen</div><div><span>Year</span>2026</div><div><span>Runtime</span>00:25 · AI film</div></div>
+
+  <div class="stage">
+    <div class="set">
+      <div class="tv">
+        <img src="tv-white.jpg" alt="A charcoal 1980s colour television">
+        <div class="screen">
+          <img src="frame-specimen.jpg" alt="Specimen: wind moving through tall grass at dusk, a figure in white at the edge of the field">
+          <div class="scan"></div><div class="bulge"></div><div class="glass"></div>
+          <div class="osd ch">CH 01</div><div class="osd title">SPECIMEN · 2026</div>
+        </div>
+      </div>
+      <div class="remote" role="group" aria-label="Remote control">
+        <img src="remote-white.jpg" alt="">
+        <button class="key" style="left:49.7%;top:18.8%" aria-label="Power"></button>
+        <button class="key on" style="left:44.2%;top:30.9%" aria-label="Channel 1"></button>
+        <button class="key" style="left:55.3%;top:30.9%" aria-label="Channel 2"></button>
+        <button class="key" style="left:44.2%;top:39.4%" aria-label="Channel 3"></button>
+        <button class="key" style="left:55.3%;top:39.4%" aria-label="Channel 4"></button>
+        <button class="key" style="left:49.7%;top:51.4%" aria-label="Channel up"></button>
+        <button class="key" style="left:49.7%;top:59.1%" aria-label="Channel down"></button>
+        <button class="key" style="left:49.7%;top:71.4%;width:16%" aria-label="Watch"></button>
+        <span class="label" style="top:18.8%">POWER</span>
+        <span class="label" style="top:35.1%"><b>01</b> SPECIMEN&nbsp;&nbsp;02 FITCHECK&nbsp;&nbsp;03 —&nbsp;&nbsp;04 —</span>
+        <span class="label" style="top:55.2%">TUNE</span>
+        <span class="label" style="top:71.4%"><b>WATCH</b> FULL FILM</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="how">Use the remote, or the ← → keys</p>
+  <div class="social"><a href="#">Instagram ↗</a><a href="#">TikTok ↗</a><a href="#">Vimeo ↗</a></div>
+</div>
+
+<div class="theater-view">
+  <div class="bar top"><b>← Back to the set</b><span>CH 01</span><span>Specimen</span><span style="text-align:right">Sound on</span></div>
+  <div class="film"><img src="frame-specimen.jpg" alt=""></div>
+  <div class="progress"><i></i></div>
+  <div class="bar bottom"><b>Specimen</b><span>2026</span><span>AI film · 00:25</span><span style="text-align:right">Next: CH 02 →</span></div>
+</div>
+<script>
+  if (location.hash === "#theater") document.body.classList.add("theater");
+</script>
+</body>
+</html>
