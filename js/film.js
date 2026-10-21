@@ -1,15 +1,10 @@
 /* FILM page: television + tape deck + VHS tapes.
    Every film is a tape on the shelf. Click one and it is lifted out, shown, slid into the deck and played on the set.
-   TUNE changes the picture texture, VOL +/- the sound, FULL shows the film alone on black. */
+   TUNE changes the picture texture, VOL +/- the sound. */
 (() => {
   'use strict';
 
-  const TAPES = [
-    { title: 'Specimen', sub: '', year: '2026', run: '00:25', src: 'videos/film/specimen.mp4', ratio: 4 / 3, still: 'images/FILM/label-specimen.jpg', accent: '#6f9c83' },
-    { title: 'Fitcheck', sub: '', year: '2026', run: '00:30', src: 'videos/film/fitcheck.mp4', ratio: 16 / 9, still: 'images/FILM/label-fitcheck.jpg', accent: '#d9779f' },
-    { title: 'Artificial Atmosphere', sub: 'LA RAIN', year: '2025', run: '02:53', vimeo: '1149379087', ratio: 16 / 9, still: 'images/FILM/label-la-rain.jpg', accent: '#5f86b8' },
-    { title: 'Artificial Atmosphere', sub: 'FOG', year: '2026', run: '01:30', vimeo: '1182815311', ratio: 16 / 9, still: 'images/FILM/label-fog.jpg', accent: '#8d9d7a' }
-  ];
+  const TAPES = window.FILM_TAPES;
   const LOOKS = [{ id: 'clean', name: 'CLEAN' }, { id: 'crt', name: 'CRT' }, { id: 'vhs', name: 'VHS' }, { id: 'ghost', name: 'GHOST' }, { id: 'mono', name: 'MONO' }];
   const VIMEO = 'https://player.vimeo.com';
   const nameOf = t => (t.sub ? `${t.title} — ${t.sub}` : t.title);
@@ -17,7 +12,7 @@
   const $ = s => document.querySelector(s);
   const body = document.body;
   const screen = $('#screen'), vid = $('#tvvideo'), noise = $('#noise'), nctx = noise.getContext('2d');
-  const deck = $('#deck'), slot = $('#slot'), knob = $('#knob'), shelf = $('#shelf');
+  const deck = $('#deck'), slot = $('#slot'), knob = $('#knob'), shelf = $('#shelf'), set = $('#main');
   const osdState = $('#osd-state'), osdTime = $('#osd-time'), osdLow = $('#osd-low');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const pad = n => String(n).padStart(2, '0');
@@ -34,83 +29,162 @@
     li.innerHTML =
       `<button class="tape is-rest" data-i="${i}" style="--accent:${t.accent}" aria-label="Insert tape ${i + 1}: ${label}">` +
       `<span class="cube">` +
-      `<span class="face f-spine"><img src="images/FILM/tape-spine.webp" alt=""><span class="spine-label"><b>${t.title}</b><span>${t.sub || t.year}</span></span></span>` +
+      `<span class="face f-spine"><img src="images/FILM/tape-spine.webp" alt=""><span class="spine-label"><img src="images/FILM/labels/${t.id}-spine.webp" alt=""></span></span>` +
       `<span class="face f-back"></span><span class="face f-left"></span><span class="face f-right"></span><span class="face f-bottom"></span>` +
-      `<span class="face f-top"><img src="images/FILM/tape-top.webp" alt=""><span class="top-label"><img src="${t.still}" alt=""><b>${t.title}</b><small>${t.sub ? t.sub + " · " : ""}${t.year} · ${t.run}</small></span></span>` +
+      `<span class="face f-top"><img src="images/FILM/tape-top.webp" alt=""><span class="top-label"><img src="images/FILM/labels/${t.id}-top.webp" alt=""></span></span>` +
       `</span></button>`;
+    li.querySelectorAll("img").forEach(im => { im.draggable = false; });
     shelf.appendChild(li);
     t.holder = li; t.tape = li.querySelector('.tape'); t.cube = li.querySelector('.cube');
   });
 
   /* ---------- Motion helpers ---------- */
-  const REST_T = 'translate(0px, 0px) scale(1)', REST_C = 'rotateY(0deg) rotateX(0deg)';
-  const EASE = 'cubic-bezier(.45,.05,.2,1)';
-  async function anim(el, to, ms, ease = EASE) {
-    const from = el._tf || (el.classList.contains('cube') ? REST_C : REST_T);
-    if (from === to) return;
-    const a = el.animate([{ transform: from }, { transform: to }], { duration: reduce ? 1 : ms, easing: ease, fill: 'forwards' });
+  const tf = (dx, dy, s = 1) => `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px) scale(${s.toFixed(4)})`;
+  const spin = (y, x) => `rotateY(${y.toFixed(2)}deg) rotateX(${x.toFixed(2)}deg)`;
+  const poseT = p => tf(p.x, p.y, p.s), poseC = p => spin(p.ry, p.rx);
+  /* One animation through several keyframes, so a move never stops at a waypoint.
+     A frame's `e` eases the stretch that ends at that frame. */
+  async function animKeys(el, frames, ms) {
+    const kf = [{ transform: el._tf || 'none', offset: 0 }].concat(frames.map(f => ({ transform: f.t, offset: f.o })));
+    frames.forEach((f, j) => { if (f.e) kf[j].easing = f.e; });
+    const a = el.animate(kf, { duration: reduce ? 1 : ms, fill: 'forwards' });
     try { await a.finished; } catch (e) { /* cancelled */ }
+    const to = frames[frames.length - 1].t;
     el.style.transform = to; el._tf = to; a.cancel();
   }
-  const settle = t => { t.tape.style.transform = ''; t.tape._tf = REST_T; t.cube.style.transform = ''; t.cube._tf = REST_C; };
-
-  function geom(i) {
-    const h = TAPES[i].holder.getBoundingClientRect(), s = slot.getBoundingClientRect(), d = deck.getBoundingClientRect();
-    return { hx: h.left + h.width / 2, hy: h.top + h.height / 2, sx: s.left + s.width / 2, sy: s.top + s.height / 2, W: h.width, H: h.height, D: h.height * 3.857, deckTop: d.top, slotW: s.width,
-      inScale: clamp(s.width * 0.9 / h.width, .5, .92) };
+  function setPose(t, p) {
+    t.pose = p;
+    t.tape.style.transform = t.tape._tf = poseT(p);
+    t.cube.style.transform = t.cube._tf = poseC(p);
   }
-  const tf = (dx, dy, s = 1) => `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px) scale(${s})`;
-  const spin = (y, x) => `rotateY(${y}deg) rotateX(${x}deg)`;
 
-  /* Lift the tape out of the shelf, turn its label to face you, turn it flat and slide it behind the deck door. */
-  async function insert(i) {
-    const t = TAPES[i], g = geom(i);
+  /* ---------- One smooth path ----------
+     The tape follows a single spline through its waypoints. Time is warped so the speed starts and ends at rest and only
+     eases (never stops) at the slow point. Position, size and both rotations share one parameter. */
+  function spline(knots, vals) {
+    const n = knots.length;
+    const m = vals.map((_, i) => { const a = Math.max(0, i - 1), b = Math.min(n - 1, i + 1); return (vals[b] - vals[a]) / ((knots[b] - knots[a]) || 1); });
+    return u => {
+      let i = 0; while (i < n - 2 && u > knots[i + 1]) i++;
+      const h = knots[i + 1] - knots[i], t = (u - knots[i]) / h, t2 = t * t, t3 = t2 * t;
+      return (2 * t3 - 3 * t2 + 1) * vals[i] + (t3 - 2 * t2 + t) * h * m[i] + (-2 * t3 + 3 * t2) * vals[i + 1] + (t3 - t2) * h * m[i + 1];
+    };
+  }
+  function timeWarp(slowAt, dip) {
+    const sm = (a, b, x) => { const q = clamp((x - a) / (b - a), 0, 1); return q * q * (3 - 2 * q); };
+    const speed = t => (.05 + sm(0, .22, t)) * (.05 + sm(0, .3, 1 - t)) * (1 - dip * Math.exp(-Math.pow((t - slowAt) / .13, 2)));
+    const N = 400, cum = [0];
+    for (let k = 1; k <= N; k++) cum[k] = cum[k - 1] + speed((k - .5) / N);
+    const total = cum[N];
+    return t => { const x = clamp(t, 0, 1) * N, i = Math.min(N - 1, Math.floor(x)); return (cum[i] + (cum[i + 1] - cum[i]) * (x - i)) / total; };
+  }
+  /* way: [{x, y, s, ry, rx}] starting at the tape's current pose; slowIdx: the waypoint passed slowest (or -1) */
+  async function fly(t, way, ms, slowIdx = -1, dip = .55, slowAt = .38) {
+    const U = timeWarp(slowAt, slowIdx < 0 ? 0 : dip), n = way.length;
+    const uSlow = slowIdx < 0 ? 0 : U(slowAt);
+    const knots = way.map((_, i) => slowIdx < 0 ? i / (n - 1) : (i <= slowIdx ? uSlow * i / (slowIdx || 1) : uSlow + (1 - uSlow) * (i - slowIdx) / (n - 1 - slowIdx)));
+    const ch = k => spline(knots, way.map(w => w[k]));
+    const fx = ch('x'), fy = ch('y'), fs = ch('s'), fry = ch('ry'), frx = ch('rx');
+    const N = Math.max(2, Math.round(ms / 28)), kt = [], kc = [];
+    for (let k = 1; k <= N; k++) {
+      const tt = k / N, u = U(tt);
+      kt.push({ o: tt, t: tf(fx(u), fy(u), fs(u)) });
+      kc.push({ o: tt, t: spin(fry(u), frx(u)) });
+    }
+    const last = way[n - 1];
+    kt[N - 1].t = poseT(last); kc[N - 1].t = poseC(last);
+    await Promise.all([animKeys(t.tape, kt, ms), animKeys(t.cube, kc, ms)]);
+    t.pose = last;
+  }
+  /* Falling onto something: accelerates, lands, a small bounce, settles. */
+  async function drop(t, to, ms = 300) {
+    const up = { ...to, y: to.y - dims().H * .12 };
+    await Promise.all([
+      animKeys(t.tape, [{ o: .7, t: poseT(to), e: 'cubic-bezier(.55,0,1,.45)' }, { o: .85, t: poseT(up), e: 'cubic-bezier(0,.55,.45,1)' }, { o: 1, t: poseT(to), e: 'cubic-bezier(.55,0,1,.45)' }], ms),
+      animKeys(t.cube, [{ o: .7, t: poseC(to) }, { o: 1, t: poseC(to) }], ms)
+    ]);
+    t.pose = to;
+  }
+
+  /* ---------- The stack ----------
+     Tapes lie on top of each other, to the right of the set. Take one out and the ones above it drop into the space.
+     A tape coming out of the deck goes back on top. All positions are offsets from one base box at the bottom of the stack. */
+  const GAP = .1, JIT = [.012, -.016, .02, -.008, .01, -.012];
+  S.stack = [];   // tape indices, bottom to top
+  function dims() {
+    const r = shelf.getBoundingClientRect(), W = r.width, H = W * .13;
+    return { W, H, D: H * 3.857, step: H * (1 + GAP), bx: r.left + W / 2, by: r.bottom - H / 2 };
+  }
+  const restPose = (i, level) => { const d = dims(); return { x: d.W * JIT[i % JIT.length], y: -level * d.step, s: 1, ry: 0, rx: 0 }; };
+  function deckPose() {
+    const d = dims(), s = slot.getBoundingClientRect();
+    return { x: s.left + s.width / 2 - d.bx, y: s.top + s.height / 2 - d.by, s: clamp(s.width * .9 / d.W, .5, .92), ry: 0, rx: 0 };
+  }
+  const restAll = () => S.stack.forEach((ti, lvl) => setPose(TAPES[ti], restPose(ti, lvl)));
+
+  /* Slide the tape out of the pile (outward, away from the TV); as soon as it is clear the tapes above it drop. */
+  async function pullOut(i) {
+    const t = TAPES[i], level = S.stack.indexOf(i), d = dims(), p = t.pose;
     t.tape.classList.remove('is-rest'); t.tape.classList.add('moving');
-    deck.classList.add('open');
-    const heroY = g.deckTop - (g.D * 1.4) / 2 - 24 - g.hy;
-    await Promise.all([anim(t.tape, tf(g.sx - g.hx, heroY, 1.4), 780), anim(t.cube, spin(-16, -90), 780)]);
-    await anim(t.cube, spin(14, -90), 820, 'cubic-bezier(.4,0,.3,1)');
-    await Promise.all([anim(t.tape, tf(g.sx - g.hx, g.sy - g.hy - g.H * 2.2, 1), 600), anim(t.cube, REST_C, 600)]);
-    await anim(t.tape, tf(g.sx - g.hx, g.sy - g.hy, g.inScale), 400, 'cubic-bezier(.5,0,.8,.4)');
-    t.tape.classList.remove('moving'); t.tape.classList.add('in-deck');
-    t.holder.classList.add('empty');
-    deck.classList.remove('open'); deck.classList.add('live');
-    S.cur = i; updateInfo();
+    S.stack.splice(level, 1);
+    const sliding = fly(t, [p, { x: p.x + d.W * .66, y: p.y - d.H * .25, s: 1.06, ry: -8, rx: -10 }], 340);
+    await sleep(190);
+    const falling = S.stack.slice(level).map((ti, n) => sleep(n * 45).then(() => drop(TAPES[ti], restPose(ti, level + n), 300)));
+    if (falling.length) setTimeout(() => click(320, .05, 30), 260);
+    await Promise.all([sliding, ...falling]);
   }
 
-  /* Pop the tape out of the slot. Resolves once it is clear of the deck; the flight home continues in `homing`. */
-  async function ejectCurrent() {
-    const i = S.cur, t = TAPES[i], g = geom(i);
-    S.cur = null; updateInfo(); player.stop();
+  /* The showcase: the tape comes right up to the camera in front of the screen, tilted so you see the picture on its
+     label, while the set behind it dims. Then it drops to the door, lines up in front of it and is pushed in. */
+  async function insert(i) {
+    const t = TAPES[i], d = dims(), dp = deckPose(), sr = screen.getBoundingClientRect();
+    const show = { x: sr.left + sr.width / 2 - d.bx, y: sr.top + sr.height * .54 - d.by, s: clamp(sr.width * 1.12 / d.W, 1.4, 1.9), ry: -6, rx: -74 };   // nearly face-on, so the cover reads
+    deck.classList.add('open');
+    set.classList.add('showcase');
+    setTimeout(() => set.classList.remove('showcase'), reduce ? 0 : 1050);
+    await fly(t, [
+      t.pose,
+      show,                                                                    // in front of the screen: the slowest point
+      { x: dp.x + d.W * .1, y: dp.y - d.H * .9, s: 1.4, ry: 4, rx: -24 },
+      { ...dp, s: 1.28 },                                                      // in front of the door, lined up
+      dp                                                                        // pushed in
+    ], 1900, 1, .6, .4);
+    t.tape.classList.remove('moving'); t.tape.classList.add('in-deck');
+    deck.classList.remove('open'); deck.classList.add('live');
+    S.cur = i; updateInfo(); click(170, .16, 90);
+  }
+
+  /* Pull the tape straight out of the door, carry it left along the deck and drop it on top of the pile. */
+  async function ejectToStack() {
+    const i = S.cur, t = TAPES[i], d = dims(), dp = deckPose();
+    S.cur = null; updateInfo(); player.stop(); click(210, .1, 70);
     showBlue('EJECT ⏏', ''); deckState('EJECT');
     deck.classList.add('open');
-    await sleep(260);
-    await anim(t.tape, tf(g.sx - g.hx, g.sy - g.hy - g.H * 2.2), 400, 'cubic-bezier(.2,.7,.3,1)');
     t.tape.classList.add('moving'); t.tape.classList.remove('in-deck');
-    const homing = (async () => {
-      await Promise.all([anim(t.tape, REST_T, 780), anim(t.cube, REST_C, 780)]);
-      settle(t); t.tape.classList.remove('moving'); t.tape.classList.add('is-rest'); t.holder.classList.remove('empty');
-    })();
-    return { homing };
-  }
-
-  function placeInstant(i) {
-    const t = TAPES[i], g = geom(i);
-    t.tape.classList.remove('is-rest'); t.tape.classList.add('in-deck');
-    t.tape.style.transform = tf(g.sx - g.hx, g.sy - g.hy, g.inScale); t.tape._tf = t.tape.style.transform;
-    t.holder.classList.add('empty'); deck.classList.add('live');
+    const rest = restPose(i, S.stack.length);
+    await fly(t, [
+      t.pose,
+      { ...dp, s: 1.28 },                                                      // straight out, toward you
+      { x: dp.x * .45, y: dp.y + d.H * .3, s: 1.3, ry: 6, rx: -14 },          // back along the deck, in front of it
+      { ...rest, y: rest.y - d.step * 1.4, s: 1.04 }                          // just above the pile
+    ], 950);
+    deck.classList.remove('open'); deck.classList.remove('live');
+    S.stack.push(i);
+    await drop(t, rest, 280);
+    click(300, .06, 35);
+    t.tape.classList.remove('moving'); t.tape.classList.add('is-rest');
   }
 
   async function run(i) {
     S.busy = true;
-    warm(TAPES[i]); // start fetching the film while the tape is still on its way
+    warm(TAPES[i]);   // start fetching the film while the tapes move
     try {
-      let homing = Promise.resolve();
-      if (S.cur !== null) { homing = (await ejectCurrent()).homing; }
+      if (S.cur !== null) await ejectToStack();   // one tape in the air at a time
       else showBlue('NO TAPE', 'INSERT A TAPE');
+      prepare(TAPES[i]);
+      await pullOut(i);
       await insert(i);
       startPlayback(i);
-      await homing;
     } finally { S.busy = false; }
     const q = S.queue; S.queue = null;
     if (q !== null && q !== S.cur) run(q);
@@ -119,10 +193,9 @@
   async function ejectOnly() {
     if (S.cur === null || S.busy) return;
     S.busy = true;
-    const { homing } = await ejectCurrent();
-    deck.classList.remove('open'); deck.classList.remove('live');
-    setTimeout(() => showBlue('NO TAPE', 'INSERT A TAPE'), 500);
-    await homing; S.busy = false;
+    await ejectToStack();
+    showBlue('NO TAPE', 'INSERT A TAPE');
+    S.busy = false;
   }
 
   shelf.addEventListener('click', e => { const b = e.target.closest('.tape'); if (b) request(+b.dataset.i); });
@@ -233,6 +306,12 @@
     if (m.event === 'pause') t.vplaying = false;
   });
 
+  /* Start loading the film while the tape is still in the air, so nothing has to start when it lands. */
+  function prepare(t) {
+    if (t.vimeo) { frameFor(t); return; }
+    if (!vid.src.endsWith(t.src)) { vid.src = t.src; vid.load(); }
+  }
+
   function warm(t) {
     if (t.vimeo) { frameFor(t); return; }
     if (!t.warmEl) { const w = document.createElement('video'); w.preload = 'auto'; w.muted = true; w.src = t.src; t.warmEl = w; }
@@ -253,7 +332,8 @@
         if (t.ready) { vimeoStart(t); setTimeout(() => { if (!t.started && S.loading && player.t === t && t.vtime === 0) { /* still waiting for the first frame */ } }, 0); }
       } else {
         vid.style.display = '';
-        vid.src = t.src; vid.currentTime = 0;
+        if (!vid.src.endsWith(t.src)) vid.src = t.src;
+        vid.currentTime = 0;
         vid.muted = S.vol === 0; vid.volume = gain();
         setLoading(true);
         const p = vid.play();
@@ -298,13 +378,13 @@
   }
 
   /* ---------- Hardware: VOL +/- keys, TUNE knob, POWER ---------- */
-  const KNOB0 = 54; // where the pointer line sits in the photograph, in degrees from straight up
+  const KNOB0 = 200; // the pointer bar in the photograph points at 200 degrees (clockwise from straight up) when the knob is not rotated
   const ring = $('#tune-ring');
   (function drawRing() {
     let h = '';
     for (let k = 0; k < LOOKS.length; k++) {
       const a = (-120 + k * 60) * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
-      h += `<line data-k="${k}" x1="${(33 * s).toFixed(2)}" y1="${(-33 * c).toFixed(2)}" x2="${(41 * s).toFixed(2)}" y2="${(-41 * c).toFixed(2)}"/>`;
+      h += `<line data-k="${k}" x1="${(30.5 * s).toFixed(2)}" y1="${(-30.5 * c).toFixed(2)}" x2="${(35 * s).toFixed(2)}" y2="${(-35 * c).toFixed(2)}"/>`;
     }
     ring.innerHTML = h;
   })();
@@ -317,7 +397,7 @@
     i = clamp(i, 0, LOOKS.length - 1);
     if (i === S.look && announce) { showLook(); return; }
     S.look = i; paintLook();
-    if (announce) { showLook(); staticBurst(220, .45); }
+    if (announce) { showLook(); staticBurst(220, .45); click(1700, .045, 18); }
   }
   function setVol(v) {
     S.vol = clamp(Math.round(v), 0, 10);
@@ -332,7 +412,15 @@
       el.style.backgroundPosition = `${-(cx * w - el.offsetWidth / 2)}px ${-(cy * h - el.offsetHeight / 2)}px`;
     };
     slice(knob, .7643, .4762);
+    slice($('#vol-up'), .7643, .5676);
+    slice($('#vol-down'), .7643, .6181);
     slice($('#tv-power'), .7643, .6181); // the same key as the one above, copied from the photograph
+    const dw = deck.clientWidth, dh = deck.clientHeight;
+    document.querySelectorAll('.deck-btn').forEach(b => {
+      b.style.backgroundImage = 'url(images/FILM/deck.webp)';
+      b.style.backgroundSize = `${dw}px ${dh}px`;
+      b.style.backgroundPosition = `${-b.offsetLeft}px ${-b.offsetTop}px`;
+    });
   }
 
   let drag = null;
@@ -396,71 +484,98 @@
   screen.addEventListener('click', () => { if (unlockSound()) return; playPause(); });
   screen.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); playPause(); } });
   $('#tv-power').addEventListener('click', power);
-  $('#full').addEventListener('click', () => openTheater());
   document.querySelectorAll('.deck-btn').forEach(b => b.addEventListener('click', () => ({ play: playPause, rew: () => seek(-5), ff: () => seek(5), eject: ejectOnly })[b.dataset.act]()));
 
-  /* ---------- Info row ---------- */
+  /* ---------- Bottom left: title and year ---------- */
   function updateInfo() {
     const t = S.cur === null ? null : TAPES[S.cur];
-    $('#i-no').textContent = t ? `${pad(S.cur + 1)} / ${pad(TAPES.length)}` : `— / ${pad(TAPES.length)}`;
     $('#i-title').textContent = t ? nameOf(t) : '—';
     $('#i-year').textContent = t ? t.year : '—';
-    $('#i-run').textContent = t ? `${t.run} · AI film` : '—';
   }
 
-  /* ---------- Full screen: the film alone on black ---------- */
-  const film = $('#film'), frame = $('#filmframe'), theater = document.querySelector('.theater');
-  function openTheater() {
-    if (!S.on) return power();
-    if (S.cur === null) { showBlue('NO TAPE', 'INSERT A TAPE'); return; }
-    const t = TAPES[S.cur], at = player.time() || 0;
-    $('#t-no').textContent = `TAPE ${pad(S.cur + 1)}`; $('#t-title').textContent = nameOf(t); $('#t-name').textContent = nameOf(t);
-    $('#t-year').textContent = t.year; $('#t-run').textContent = `${t.run} · AI film`;
-    theater.style.setProperty('--ratio', t.ratio);
-    player.pause();
-    body.classList.add('watching'); body.classList.toggle('vimeo', !!t.vimeo);
-    if (t.vimeo) { frame.src = `${VIMEO}/video/${t.vimeo}?title=0&byline=0&portrait=0&autoplay=1&autopause=0#t=${Math.floor(at)}s`; return; }
-    film.src = t.src; film.currentTime = at; film.volume = gain(); film.muted = false;
-    film.play().catch(() => { film.muted = true; film.play(); });
+  /* ---------- Light from the picture, reflections in the glass ---------- */
+  const spill = $('#spill'), sc = document.createElement('canvas');
+  sc.width = 8; sc.height = 6;
+  const sctx = sc.getContext('2d', { willReadFrequently: true });
+  let sp = [40, 60, 90];
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  function sampleSpill() {
+    let target;
+    if (!S.on) target = [0, 0, 0];
+    else if (screen.dataset.mode === 'blue') target = [40, 70, 255];
+    else if (player.t && !player.isVimeo && vid.readyState >= 2) {
+      try {
+        sctx.drawImage(vid, 0, 0, 8, 6);
+        const d = sctx.getImageData(0, 0, 8, 6).data; let r = 0, g = 0, b = 0;
+        for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i + 1]; b += d[i + 2]; }
+        const n = d.length / 4; target = [r / n * 1.5, g / n * 1.5, b / n * 1.5];
+      } catch (e) { target = sp; }
+    } else if (player.t) target = hex(player.t.accent).map(v => v * .8); // Vimeo cannot be read; use the tape colour
+    else target = [40, 50, 70];
+    sp = sp.map((v, i) => v + (target[i] - v) * .4);
+    spill.style.setProperty('--sp', sp.map(v => Math.round(clamp(v, 0, 255))).join(', '));
   }
-  function closeTheater() {
-    const at = film.currentTime;
-    film.pause(); film.removeAttribute('src'); frame.removeAttribute('src');
-    body.classList.remove('watching', 'vimeo');
-    if (S.cur !== null && !player.isVimeo) vid.currentTime = at;
-    player.play();
+  setInterval(sampleSpill, 250);
+
+  // the reflection of the room moves a little as the pointer moves
+  let rxy = null;
+  addEventListener('pointermove', e => {
+    const r = screen.getBoundingClientRect();
+    const x = clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2), -1, 1), y = clamp((e.clientY - (r.top + r.height / 2)) / (innerHeight / 2), -1, 1);
+    if (!rxy) requestAnimationFrame(() => { screen.style.setProperty('--rx', rxy[0].toFixed(3)); screen.style.setProperty('--ry', rxy[1].toFixed(3)); rxy = null; });
+    rxy = [x, y];
+  }, { passive: true });
+
+  /* ---------- Feel: key travel, a small mechanical click ---------- */
+  let actx = null;
+  function click(freq = 1500, level = .04, ms = 22) {
+    if (!S.gesture) return;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      const t0 = actx.currentTime, o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'square'; o.frequency.setValueAtTime(freq, t0); o.frequency.exponentialRampToValueAtTime(freq * .4, t0 + ms / 1000);
+      g.gain.setValueAtTime(level, t0); g.gain.exponentialRampToValueAtTime(.0001, t0 + ms / 1000 + .004);
+      o.connect(g); g.connect(actx.destination); o.start(t0); o.stop(t0 + ms / 1000 + .01);
+    } catch (e) { /* no audio */ }
+    if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate(5);
   }
-  film.addEventListener('timeupdate', () => { $('#progress').style.width = `${(film.currentTime / (film.duration || 1)) * 100}%`; });
-  film.addEventListener('click', () => (film.paused ? film.play() : film.pause()));
-  $('#back').addEventListener('click', closeTheater);
+  const flash = el => { if (!el) return; el.classList.add('down'); setTimeout(() => el.classList.remove('down'), 130); };
+  document.querySelectorAll('.tvkey, .deck-btn').forEach(b => b.addEventListener('pointerdown', () => click(b.classList.contains('deck-btn') ? 800 : 1200, .045)));
+  knob.addEventListener('pointerdown', () => click(900, .03, 16));
 
   /* ---------- Keyboard ---------- */
   addEventListener('keydown', e => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
-    if (body.classList.contains('watching')) { if (e.key === 'Escape') closeTheater(); return; }
     const onBody = e.target === document.body, k = e.key.toLowerCase();
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
       const n = TAPES.length, step = e.key === 'ArrowRight' ? 1 : -1;
       request(S.cur === null ? 0 : (S.cur + step + n) % n);
-    } else if (e.key === 'ArrowUp') { e.preventDefault(); setVol(S.vol + 1); }
-    else if (e.key === 'ArrowDown') { e.preventDefault(); setVol(S.vol - 1); }
+    } else if (e.key === 'ArrowUp') { e.preventDefault(); flash($('#vol-up')); click(1200, .045); setVol(S.vol + 1); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); flash($('#vol-down')); click(1200, .045); setVol(S.vol - 1); }
     else if (e.key === ' ' && onBody) { e.preventDefault(); playPause(); }
-    else if ((e.key === 'Enter' || k === 'f') && onBody) openTheater();
     else if (k === 'e' && onBody) ejectOnly();
     else if (k === 'm' && onBody) setVol(S.vol === 0 ? 6 : 0);
-    else if (k === 'p' && onBody) power();
+    else if (k === 'p' && onBody) { flash($('#tv-power')); click(1200, .045); power(); }
     else if (k === 't' && onBody) setLook((S.look + 1) % LOOKS.length);
   });
 
   /* ---------- Start: the first tape is already in the deck and playing ---------- */
   function boot() {
-    fitSlices(); paintLook(); updateInfo();
-    placeInstant(0); S.cur = 0; updateInfo();
+    fitSlices(); paintLook();
+    shelf.style.setProperty('--n', TAPES.length);
+    S.stack = TAPES.map((_, i) => i).filter(i => i !== 0).reverse();   // bottom to top: the first films end up on top
+    restAll();
+    const t0 = TAPES[0];
+    t0.tape.classList.remove('is-rest'); t0.tape.classList.add('in-deck'); setPose(t0, deckPose());
+    deck.classList.add('live'); shelf.classList.add('ready');
+    S.cur = 0; updateInfo();
     startPlayback(0);
   }
   addEventListener('resize', () => {
     fitSlices();
-    if (S.cur !== null && !S.busy) { const g = geom(S.cur), t = TAPES[S.cur]; t.tape.style.transform = tf(g.sx - g.hx, g.sy - g.hy, g.inScale); t.tape._tf = t.tape.style.transform; }
+    if (S.busy) return;
+    restAll();
+    if (S.cur !== null) setPose(TAPES[S.cur], deckPose());
   });
   if (document.readyState === 'complete') boot(); else addEventListener('load', boot);
 })();

@@ -28,3 +28,4 @@
 /* Cloud sticker: preserve the complete square composition. */
 .experiment.is-square .experiment-media{aspect-ratio:1}.experiment-media video.motion-preview{object-fit:contain;background:#101110}.dialog-media video{display:block;width:auto;max-width:100%;height:auto;max-height:59dvh;object-fit:contain;background:#101110}
 @media(max-width:640px){.dialog-media video{max-height:52dvh}}
+.intro-detail .intro-film{color:#171717;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;white-space:nowrap}.intro-detail .intro-film:hover{color:#606060}

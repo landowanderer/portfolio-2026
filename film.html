@@ -8,11 +8,11 @@
 <link rel="canonical" href="https://landowanderer.com/film.html">
 <link rel="icon" href="images/MAIN%20PAGE/sticker1.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/geist/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="images/FILM/tv-black.jpg" as="image">
+<link rel="preload" href="images/FILM/tv.webp" as="image">
 <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
 <link rel="preconnect" href="https://f.vimeocdn.com" crossorigin>
 <link rel="stylesheet" href="css/portfolio-shell.css?v=intro-specimen">
-<link rel="stylesheet" href="css/film.css?v=2">
+<link rel="stylesheet" href="css/film.css?v=18">
 </head>
 <body class="film-page">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -23,6 +23,12 @@
       <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gb"/>
       <feOffset in="r" dx="3" dy="0" result="ro"/>
       <feBlend in="ro" in2="gb" mode="screen"/>
+    </filter>
+    <!-- Ink: printed letters have slightly rough, soaked-in edges -->
+    <filter id="f-ink" x="-3%" y="-8%" width="106%" height="116%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="1.1" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation=".12"/>
     </filter>
     <!-- Ghost: a faint second picture, as from a weak aerial -->
     <filter id="f-ghost" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
@@ -37,8 +43,20 @@
 
 <main class="set" id="main">
   <div class="rig">
+    <div class="deck" id="deck">
+      <img class="deck-img" src="images/FILM/deck-cut.webp" alt="A 1980s video cassette recorder" draggable="false">
+      <button class="slot" id="slot" aria-label="Eject tape"></button>
+      <div class="door-glass"></div>
+      <div class="deck-display"><span id="d-state" class="st">NO TAPE</span><span id="d-time">--:--</span></div>
+      <button class="deck-btn" data-act="rew" style="left:74.5%" aria-label="Rewind 5 seconds"><b>◀◀</b></button>
+      <button class="deck-btn" data-act="play" style="left:80.1%" aria-label="Play or pause"><b>▶❚❚</b></button>
+      <button class="deck-btn" data-act="ff" style="left:85.7%" aria-label="Forward 5 seconds"><b>▶▶</b></button>
+      <button class="deck-btn" data-act="eject" style="left:91.2%" aria-label="Eject tape"><b>⏏</b></button>
+    </div>
+
     <div class="tv" id="tv">
-      <img src="images/FILM/tv-black.jpg" alt="A charcoal 1980s colour television" draggable="false">
+      <img src="images/FILM/tv.webp" alt="A charcoal 1980s colour television" draggable="false">
+      <div class="spill" id="spill"></div>
       <div class="screen" id="screen" data-mode="blue" data-look="crt" role="button" tabindex="0" aria-label="Play or pause">
         <video id="tvvideo" loop playsinline></video>
         <div class="blue" id="blue"><div id="blue-main">NO TAPE</div><small id="blue-sub">INSERT A TAPE</small></div>
@@ -52,39 +70,20 @@
       </div>
       <span class="led-off"></span>
       <svg class="tune-ring" id="tune-ring" viewBox="-50 -50 100 100" aria-hidden="true"></svg>
-      <span class="print" style="top:39.6%">TUNE</span>
+      <span class="print" style="top:40%">TUNE</span>
       <button class="knob" id="knob" aria-label="Tune the picture: clean, CRT, VHS, ghost, mono. Turn, scroll, or click right and left of the knob"></button>
       <button class="tvkey" id="vol-up" style="top:56.76%" aria-label="Volume up"><span>VOL +</span></button>
       <button class="tvkey" id="vol-down" style="top:61.81%" aria-label="Volume down"><span>VOL −</span></button>
       <button class="tvkey" id="tv-power" style="top:72%" aria-label="Power"><span>POWER</span></button>
-    </div>
-
-    <div class="deck" id="deck">
-      <img class="deck-img" src="images/FILM/deck.webp" alt="A 1980s video cassette recorder" draggable="false">
-      <button class="slot" id="slot" aria-label="Eject tape"></button>
-      <div class="door-glass"></div>
-      <div class="deck-display"><span id="d-state" class="st">NO TAPE</span><span id="d-time">--:--</span></div>
-      <button class="deck-btn" data-act="rew" style="left:74.5%" aria-label="Rewind 5 seconds"><b>◀◀</b></button>
-      <button class="deck-btn" data-act="play" style="left:80.1%" aria-label="Play or pause"><b>▶❚❚</b></button>
-      <button class="deck-btn" data-act="ff" style="left:85.7%" aria-label="Forward 5 seconds"><b>▶▶</b></button>
-      <button class="deck-btn" data-act="eject" style="left:91.2%" aria-label="Eject tape"><b>⏏</b></button>
     </div>
   </div>
 
   <ol class="shelf" id="shelf" aria-label="Films"></ol>
 </main>
 
-<div class="info" aria-live="polite"><div><span>Tape</span><b id="i-no">— / 04</b></div><div><span>Title</span><b id="i-title">—</b></div><div><span>Year</span><b id="i-year">—</b></div><div><span>Runtime</span><b id="i-run">—</b></div></div>
-<div class="social"><button id="full" type="button">Full screen ⤢</button><a href="#">Instagram ↗</a><a href="#">Vimeo ↗</a><a href="mailto:HARRY.WU313@GMAIL.COM">Email ↗</a></div>
+<div class="info" aria-live="polite"><b id="i-title">—</b><b id="i-year">—</b><a href="mailto:HARRY.WU313@GMAIL.COM">Email ↗</a></div>
 
-<div class="theater" role="dialog" aria-label="Film">
-  <div class="bar top"><button id="back">← Back to the set</button><span id="t-no"></span><span id="t-title"></span><span style="text-align:right">Sound on</span></div>
-  <video id="film" playsinline></video>
-  <iframe id="filmframe" title="Film" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-  <div class="progress"><i id="progress"></i></div>
-  <div class="bar bottom"><b id="t-name"></b><span id="t-year"></span><span id="t-run"></span><span style="text-align:right">Esc to return</span></div>
-</div>
-
-<script src="js/film.js?v=2"></script>
+<script src="js/film-tapes.js?v=1"></script>
+<script src="js/film.js?v=14"></script>
 </body>
 </html>
